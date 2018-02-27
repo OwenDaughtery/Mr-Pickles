@@ -5,9 +5,7 @@ class Cell extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            players: [
-                {index: 1}
-            ]
+            players: []
         };
         this._generateStyle();
         this._generateTokens();

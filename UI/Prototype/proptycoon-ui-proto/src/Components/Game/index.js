@@ -7,15 +7,15 @@ class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            model = new GameModel()
+            model: new GameModel()
         }
     }
 
     render() {
         return (
             <div>
-                <PlayerLegend />
-                <Board />
+                <PlayerLegend gameModel={this.state.model} />
+                <Board gameModel={this.state.model} />
             </div>
         );
     }
