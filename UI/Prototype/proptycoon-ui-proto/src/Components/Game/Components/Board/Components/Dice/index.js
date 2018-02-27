@@ -26,10 +26,10 @@ class Dice extends Component {
             <div className="container" style={style}>
                 <div className="row">
                     <div className="col" style={leftDieStyle}>
-                        <Die/>
+                        <Die index={0}/>
                     </div>
                     <div className="col" style={rightDieStyle}>
-                        <Die/>
+                        <Die index={1}/>
                     </div>
                 </div>
                 <div>

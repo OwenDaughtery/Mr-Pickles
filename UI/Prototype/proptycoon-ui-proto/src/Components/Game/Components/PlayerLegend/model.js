@@ -1,16 +1,13 @@
 
-import { api } from '../../../../API';
+import ViewModel from '../../../../ViewModel';
+import api from '../../../../API';
 
-class PlayerLegendModel {
-    constructor () {
-        this._component = null;
-    }
-    set parentComponent(component) {
-        this._component = component;
-    }
+class PlayerLegendModel extends ViewModel {
     set numberOfPlayers(playerCount) {
-        if (this._component === null) 
+        if (this._component === null) {
             api.error("PlayerLegend component not assigned.");
+            return;
+        }
         this._component.numberOfPlayers = playerCount;
     }
 }
