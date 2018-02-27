@@ -15,4 +15,5 @@ class PlayerLegendModel {
     }
 }
 
-export let playerLegendModel = new PlayerLegendModel();
+let playerLegendModel = new PlayerLegendModel();
+export default playerLegendModel;

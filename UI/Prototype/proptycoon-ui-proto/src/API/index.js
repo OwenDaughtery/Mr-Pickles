@@ -1,4 +1,5 @@
-import Player from '../Models/Game/Models/Player';
+
+import playerLegendModel from '../Components/Game/Components/PlayerLegend/model.js';
 
 class API {
     /*_postApiCall() {
@@ -6,9 +7,7 @@ class API {
     }*/
 
     startGame(numberOfPlayers) {
-        for(var i=0; i<numberOfPlayers; i++) 
-            game.players.push(new Player)
-        //this._postApiCall();
+        playerLegendModel.numberOfPlayers = numberOfPlayers;
     }
 
     error(message) {

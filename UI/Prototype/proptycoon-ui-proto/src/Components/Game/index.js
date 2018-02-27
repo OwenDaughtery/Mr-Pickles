@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Board from './Components/Board';
 import PlayerLegend from './Components/PlayerLegend';
-import { game } from '../../Models/Game';
 import { api } from '../../API';
 
 class Game extends Component {
