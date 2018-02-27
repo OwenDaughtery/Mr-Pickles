@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import Token from '../Token';
+import { game } from '../../../../Models/Game';
 
 class PlayerLegend extends Component {
     constructor(props) {
         super(props);
+        //Initialise state.
         this.state = {
-            numberOfPlayers: 5
+            numberOfPlayers: 0
         };
     }
 
-    _generateLegendEntries() {
+    _generateLegendEntries(numberOfPlayers) {
         var legendEntries = [];
-        for (var i = 0; i < this.state.numberOfPlayers; i++) {
+        for (var i = 0; i < numberOfPlayers; i++) {
             var spanStyle = {
                 marginRight: "18pt"
             };
@@ -25,6 +27,16 @@ class PlayerLegend extends Component {
         return legendEntries;
     }
 
+    set numberOfPlayers(playerCount) {
+        this.setState({
+            numberOfPlayers: playerCount
+        });
+    }
+
+    get numberOfPlayers() {
+        return this.state.numberOfPlayers;
+    }
+
     render() {
         var style = {
             marginBottom: "12pt"
@@ -35,7 +47,7 @@ class PlayerLegend extends Component {
                     Player Legend:
                 </p>
                 {
-                    this._generateLegendEntries()
+                    this._generateLegendEntries(this.numberOfPlayers)
                 }
             </div>
         );

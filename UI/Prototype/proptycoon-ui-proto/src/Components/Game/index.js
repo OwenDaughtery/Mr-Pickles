@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import Board from './Components/Board';
 import PlayerLegend from './Components/PlayerLegend';
-import GameModel from '../../Models/Game';
+import { game } from '../../Models/Game';
+import { api } from '../../API';
 
 class Game extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            model: new GameModel()
-        }
+    componentDidMount() {
+        api.startGame(4);
     }
 
     render() {
         return (
             <div>
-                <PlayerLegend gameModel={this.state.model} />
-                <Board gameModel={this.state.model} />
+                <PlayerLegend />
+                <Board />
             </div>
         );
     }
