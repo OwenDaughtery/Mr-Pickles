@@ -1,6 +1,6 @@
-class Player {
+export default class Player {
     constructor(_name, _playerNumber, _dice) {
-        assert(_playerNumber > 0 && _playerNumber < 7);
+        //assert(_playerNumber > 0 && _playerNumber < 7);
         this.isInPrizon = false;
         this.turnsInPrizon = 0;
         this.position = 0;

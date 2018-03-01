@@ -1,7 +1,7 @@
 /**
  * 2 fair Die which can be roled
  */
-class Dice {
+export default class Dice {
 
     constructor() {
         this.die1 = 0;

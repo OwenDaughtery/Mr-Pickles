@@ -1,9 +1,4 @@
-// index.js
-require('import-export');
-require('./src/Dice.js');
-require('./src/Board.js');
-require('./src/Space.js');
-require('./src/Player.js');
-require('./src/Game.js');
+import Game from './src/Game.js';
 
-//
+var players = [["a",0],["b",2],["C",3],["D",4],["E",5]];
+var game = new Game(players);
