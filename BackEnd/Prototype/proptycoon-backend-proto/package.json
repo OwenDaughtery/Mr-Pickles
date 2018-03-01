@@ -14,5 +14,6 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "rimraf": "^2.6.2"
-  }
+  },
+  "repository": "https://github.com/OwenDaughtery/Mr-Pickles.git"
 }
