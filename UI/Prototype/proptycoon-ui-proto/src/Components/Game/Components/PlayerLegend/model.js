@@ -1,13 +1,14 @@
 
 import ViewModel from '../../../../ViewModel';
-import api from '../../../../API';
 
 class PlayerLegendModel extends ViewModel {
+    constructor() {
+        super();
+        this._componentType = "PlayerLegend";
+    }
+
     set numberOfPlayers(playerCount) {
-        if (this._component === null) {
-            api.error("PlayerLegend component not assigned.");
-            return;
-        }
+        if (this._componentCheck()) return;
         this._component.numberOfPlayers = playerCount;
     }
 }

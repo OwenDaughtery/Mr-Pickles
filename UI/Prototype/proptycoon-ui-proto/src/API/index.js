@@ -7,11 +7,13 @@ class API {
         game.onApiCall();
     }*/
 
-    startGame(numberOfPlayers, dieValues) {
+    startGame(numberOfPlayers, diceValues) {
         playerLegendModel.numberOfPlayers = numberOfPlayers;
-        primaryDieModel.dieValue = dieValues.primary;
-        secondaryDieModel.dieValue = dieValues.secondary;
+        primaryDieModel.dieValue = diceValues.primary;
+        secondaryDieModel.dieValue = diceValues.secondary;
     }
+
+    
 
     error(message) {
         console.log("PropertyTycoon UI error: " + message);

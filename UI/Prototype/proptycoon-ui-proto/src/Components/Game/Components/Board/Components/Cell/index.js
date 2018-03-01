@@ -1,14 +1,42 @@
 import React, { Component } from 'react';
 import Token from '../../../Token';
+import models from './model.js';
 
 class Cell extends Component {
     constructor(props) {
         super(props);
+        //Get index of this cell component.
+        this._index = this.props.position;
+        //Assign corresponding model to it.
+        models[this._index].parentComponent = this;
+        //Initialise state.
         this.state = {
-            players: []
+            players: [],
+            name: ""
         };
+        //Generate intial cell style.
+        //(Positioning and such.)
         this._generateStyle();
-        this._generateTokens();
+    }
+
+    get name () {
+        return this.state.name;
+    }
+
+    set name (name) {
+        this.setState({
+            name: name 
+        });
+    }
+
+    get players () {
+        return this.state.players;
+    }
+
+    set players (players) {
+        this.setState({
+            players: players
+        });
     }
 
     _generateStyle() {
