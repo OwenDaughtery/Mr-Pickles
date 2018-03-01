@@ -1,0 +1,11 @@
+{
+  "name": "proptycoon-backend-proto",
+  "version": "0.1.0",
+  "description": "Property Tycoon back-end prototype.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "AymanZenos",
+  "license": "ISC"
+}
