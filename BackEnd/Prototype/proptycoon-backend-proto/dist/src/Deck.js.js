@@ -1,10 +1,12 @@
+'use strict';
+
 var allPotLuckCards = [];
 var allOpportunityCards = [];
 
 for (i = 0; i < 5; i++) {
 	var card = new Card(i, 'blah ' + i.toString());
-	this.allPotLuckCards.push(this.card);
-	this.allOpportunityCards.push(this.card);
+	undefined.allPotLuckCards.push(undefined.card);
+	undefined.allOpportunityCards.push(undefined.card);
 }
 
 /**
@@ -15,11 +17,11 @@ function Deck(typeOfDeck) {
 	this.type = typeOfDeck;
 	this.contents = [];
 
-	this.print = function() {
+	this.print = function () {
 		console.log(this);
 	};
 
-	this.populate = function() {
+	this.populate = function () {
 		if (this.type == 'PotLuck') {
 			for (i = 0; i < allPotLuckCards.length; i++) {
 				this.contents.push(allPotLuckCards[i]);
@@ -31,7 +33,7 @@ function Deck(typeOfDeck) {
 		}
 	};
 
-	this.shuffle = function() {
+	this.shuffle = function () {
 		var j, x, i;
 		for (i = this.contents.length - 1; i > 0; i--) {
 			j = Math.floor(Math.random() * (i + 1));
@@ -48,7 +50,7 @@ function Deck(typeOfDeck) {
 function Card(ID, desc) {
 	this.ID = ID;
 	this.desc = desc;
-	this.print = function() {
+	this.print = function () {
 		console.log(this.desc);
 	};
 }
@@ -56,7 +58,6 @@ function Card(ID, desc) {
 var potLuckDeck = new Deck('PotLuck');
 var opportunityKnocks = new Deck('OppKnocks');
 potLuckDeck.print();
-
 
 //console.log('');
 //opportunityKnocks.print();

@@ -1,9 +1,13 @@
 
 import ViewModel from '../../../../../../../../ViewModel';
+import api from '../../../../../../../../API';
 
 class DieModel extends ViewModel {
     set dieValue(value) {
-        if (this._componentCheck()) return;
+        if (this._component === null) {
+            api.error("Die component not assigned.");
+            return;
+        }
         this._component.value = value;
     }
 }

@@ -4,7 +4,7 @@
   "description": "Property Tycoon back-end prototype.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha -w",
+    "test": "npm run compile && mocha --compilers js:babel-core/register",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && node dist/index.js"
   },
@@ -14,9 +14,16 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.5",
     "mocha": "^5.0.1",
-    "should": ">= 0.0.1",
-    "rimraf": "^2.6.2"
+    "mochawesome": "^3.0.2",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2",
+    "should": ">= 0.0.1"
   },
-  "repository": "https://github.com/OwenDaughtery/Mr-Pickles.git"
+  "repository": "https://github.com/OwenDaughtery/Mr-Pickles.git",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
 }
