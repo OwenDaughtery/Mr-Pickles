@@ -67,6 +67,10 @@ function Deck(typeOfDeck) {
     return this.card;
   }
 
+  this.currentState = function(){
+    return this.contents;
+  }
+
 	this.populate();
 	this.shuffle();
 }
