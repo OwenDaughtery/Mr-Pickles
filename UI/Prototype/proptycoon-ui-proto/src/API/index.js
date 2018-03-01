@@ -1,4 +1,3 @@
-
 import playerLegendModel from '../Components/Game/Components/PlayerLegend/model.js';
 import { primaryDieModel, secondaryDieModel } from '../Components/Game/Components/Board/Components/Dice/Components/Die/model.js';
 
