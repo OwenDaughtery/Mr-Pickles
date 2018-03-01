@@ -15,7 +15,6 @@ class Die extends Component {
             secondaryDieModel.parentComponent = this;
         else
             api.error("Die index out of range.");
-            ;
     }
 
     set value(val) {
