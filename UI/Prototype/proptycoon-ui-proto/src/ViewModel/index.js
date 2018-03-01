@@ -6,7 +6,7 @@ export default class ViewModel {
         this._component = null;
         this._componentType = "#Unknown#";
     }
-
+    
     _componentCheck() {
         if (this._component === null) {
             api.error(this._componentType + " component not assigned.");
