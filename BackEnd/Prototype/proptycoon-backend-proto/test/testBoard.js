@@ -13,10 +13,10 @@ describe('addition', function () {
     });
   });
 
-  describe('first Test ',function(){
-      it('should instantiate a dice correctly',function (done){
-          let d = new Dice();
-
-      })
-  })
+describe('first Test ', function () {
+    it('should instantiate a dice correctly', function (done) {
+        let d = new Dice();
+        done();
+    });
+});
 
