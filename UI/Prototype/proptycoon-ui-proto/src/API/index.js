@@ -11,12 +11,6 @@ class API {
         primaryDieModel.dieValue = diceValues.primary;
         secondaryDieModel.dieValue = diceValues.secondary;
     }
-
-    
-
-    error(message) {
-        console.log("PropertyTycoon UI error: " + message);
-    }
 }
 
 let api = new API(); 

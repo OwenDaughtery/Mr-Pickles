@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Token from '../Token';
-//import model from './model.js';
+import model from './model.js';
 
 class PlayerLegend extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class PlayerLegend extends Component {
         this.state = {
             numberOfPlayers: 0
         };
-        //model.parentComponent = this;
+        model.parentComponent = this;
     }
 
     _generateLegendEntries(numberOfPlayers) {
