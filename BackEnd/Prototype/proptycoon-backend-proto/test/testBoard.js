@@ -1,5 +1,7 @@
 // testing suite for Class Board 
 'use strict';
+import 'babel-polyfill';
+import Dice from "../src/Dice.js";
 
 describe('addition', function () {
     it('should add 1+1 correctly', function (done) {
@@ -11,4 +13,10 @@ describe('addition', function () {
     });
   });
 
+  describe('first Test ',function(){
+      it('should instantiate a dice correctly',function (done){
+          let d = new Dice();
+
+      })
+  })
 
