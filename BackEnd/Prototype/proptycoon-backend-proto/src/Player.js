@@ -8,6 +8,11 @@ export default class Player {
         this.name = _name;
         this.playerNumber = _playerNumber;
         this.dice = _dice;
+
+        this.potLuckDeck = [];
+        this.oppKnocks = [];
+
+        this.realEstate = [];
     }
 
     rollDice() {

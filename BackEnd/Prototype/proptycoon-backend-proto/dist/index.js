@@ -8,3 +8,5 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var players = [["a", 0], ["b", 2], ["C", 3], ["D", 4], ["E", 5]];
 var game = new _Game2.default(players);
+
+console.log(game);
