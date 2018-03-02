@@ -13,8 +13,8 @@ var Player = function () {
         _classCallCheck(this, Player);
 
         //assert(_playerNumber > 0 && _playerNumber < 7);
-        this.isInPrizon = false;
-        this.turnsInPrizon = 0;
+        this.isInPrison = false;
+        this.turnsInPrison = 0;
         this.position = 0;
         this.doublesRolled = 0;
         this.name = _name;
