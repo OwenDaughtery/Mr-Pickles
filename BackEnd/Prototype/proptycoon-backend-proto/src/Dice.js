@@ -9,7 +9,7 @@ export default class Dice {
     }
 
     //returns numbers on dice
-    get numbers() {
+    getnumbers() {
         return (this.die1, this.die2);
     }
 

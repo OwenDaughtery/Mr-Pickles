@@ -8,8 +8,17 @@ var expect = require('chai').expect;
 describe('Player_Unit_Test', function () {
     it('Instatiate Player Object', function (done) {
         var player = new Player();
-        expect(new Player()).to.be.an.instanceof(Player);
-       
+        assert.typeOf(player , Player);
+    
         done();
     });
+    it('Player starts at position 0 on the Board',function(done){
+        var player = new Player();
+        assert.typeOf(player, Player); //assert player is a type of player 
+        // player starts at position zero 
+        player.rollDice();
+        done();
+
+        
+    })
 });
