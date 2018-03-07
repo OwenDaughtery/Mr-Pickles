@@ -1,4 +1,5 @@
 /**
+ * @author Ayman Zenos
  * 2 fair Die which can be roled
  */
 export default class Dice {
@@ -8,8 +9,10 @@ export default class Dice {
         this.die2 = 0;
     }
 
-    //returns numbers on dice
-    getnumbers() {
+    /**
+     * @return numbers on dice
+     */
+    get numbers() {
         return (this.die1, this.die2);
     }
 
