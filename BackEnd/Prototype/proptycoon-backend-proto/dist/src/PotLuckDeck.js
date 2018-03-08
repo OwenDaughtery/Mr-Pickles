@@ -16,20 +16,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var OpportunityKnocksDeck = function (_Deck) {
-    _inherits(OpportunityKnocksDeck, _Deck);
+/** 
+ * Passes though the path of the PotLuck.csv file to the constructor 
+ * of Deck
+ */
+var PotLuckDeck = function (_Deck) {
+    _inherits(PotLuckDeck, _Deck);
 
-    /** 
-     * Passes though the path of the OpportunityKnocks.csv file to the constructor 
-     * of Deck
-     */
-    function OpportunityKnocksDeck() {
-        _classCallCheck(this, OpportunityKnocksDeck);
+    function PotLuckDeck() {
+        _classCallCheck(this, PotLuckDeck);
 
-        return _possibleConstructorReturn(this, (OpportunityKnocksDeck.__proto__ || Object.getPrototypeOf(OpportunityKnocksDeck)).call(this, "./csv/decks/OpportunityKnocks.csv"));
+        return _possibleConstructorReturn(this, (PotLuckDeck.__proto__ || Object.getPrototypeOf(PotLuckDeck)).call(this, "./csv/decks/PotLuck.csv"));
     }
 
-    return OpportunityKnocksDeck;
+    return PotLuckDeck;
 }(_Deck3.default);
 
-exports.default = OpportunityKnocksDeck;
+exports.default = PotLuckDeck;

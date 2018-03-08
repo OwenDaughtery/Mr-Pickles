@@ -1,14 +1,20 @@
 import Game from './src/Game.js';
 import OpportunityKnocksDeck from './src/OpportunityKnocksDeck.js';
+import PotLuckDeck from './src/PotLuckDeck.js';
 
-var deck = new OpportunityKnocksDeck();
+var oppKnocksDeck = new OpportunityKnocksDeck();
 
-deck.populate()
+oppKnocksDeck.populate()
 .then(()=>{
-    //console.log(deck);
+    console.log(oppKnocksDeck);
 });
 
-console.log(deck instanceof OpportunityKnocksDeck);
+var potLuckDeck = new PotLuckDeck();
+
+potLuckDeck.populate()
+.then(()=>{
+  console.log(potLuckDeck);
+})
 
 var players = [["a",0],["b",2],["C",3],["D",4],["E",5]];
 var game = new Game(players);

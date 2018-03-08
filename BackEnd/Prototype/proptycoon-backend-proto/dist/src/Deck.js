@@ -24,14 +24,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 //npm install fast-csv
 
+//TODO NEED WAY TO ENSURE THAT POT LUCK CARD CANNOT BE ADDED TO DECK OF OPPORTUNITY KNOCKS DECK AND VICE VERSA!
+
 var Deck = function () {
     function Deck(path) {
         _classCallCheck(this, Deck);
 
+        //The path to the .csv file
         this.path = path;
+        this.cards = [];
         this.populate();
-        this.contents = [];
+        //console.log(this.cards);
     }
+
+    /** 
+     * Reads .csv file in the given path and for each row of entries, creates a new
+     * Card object and adds them to the array of cards.
+     */
+
 
     _createClass(Deck, [{
         key: 'populate',
@@ -56,17 +66,29 @@ var Deck = function () {
                 });
             });
         }
+
+        /** 
+         * Shuffles the deck of cards at the begining of the game. This function is called at 
+         * very end of the populate() function
+         */
+
     }, {
         key: 'shuffle',
         value: function shuffle() {
             var j, x, i;
-            for (i = this.contents.length - 1; i > 0; i--) {
+            for (i = this.cards.length - 1; i > 0; i--) {
                 j = Math.floor(Math.random() * (i + 1));
-                x = this.contents[i];
-                this.contents[i] = this.contents[j];
-                this.contents[j] = x;
+                x = this.cards[i];
+                this.cards[i] = this.contents[j];
+                this.cards[j] = x;
             }
         }
+
+        /**
+         * Adds a card to the stack of cards. 
+         * @param {*} card The card to be added to the stack
+         */
+
     }, {
         key: 'enqueue',
         value: function enqueue(card) {
@@ -74,28 +96,16 @@ var Deck = function () {
             newArray.push(card);
             this.contents = newArray.concat(this.contents);
         }
+
+        /** 
+         * Pops the top card off from the top of the deck.  
+         */
+
     }, {
         key: 'dequeue',
         value: function dequeue() {
             return this.contents.pop();
         }
-
-        //Due to be rid of.
-        /*enqueue(_card) {
-            
-            this.contents[this.back] = _card;
-            this.back ++;
-            this.currentLength ++;
-            this.back = this.back % this.currentLength;
-        }
-         dequeue() {
-            var card = this.contents[this.front];
-            this.contents[this.front] = null;
-            this.front = this.front + 1;
-            this.front = this.front % this.currentLength;
-            return card; 
-        }*/
-
     }]);
 
     return Deck;
