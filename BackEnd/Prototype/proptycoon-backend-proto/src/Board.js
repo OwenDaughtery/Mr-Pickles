@@ -1,6 +1,7 @@
 import Space from './Space.js';
 
 /** 
+ * @author Ayman Zenos
  * The board of the game which holds spaces in an array between 0 to 40, where 40 will be Jail.
 */
 export default class Board {
