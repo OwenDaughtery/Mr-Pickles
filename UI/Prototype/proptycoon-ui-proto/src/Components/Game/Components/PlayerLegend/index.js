@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import Token from '../Token';
-import model from './model.js';
 
 class PlayerLegend extends Component {
-    constructor(props) {
-        super(props);
-        //Initialise state.
-        this.state = {
-            numberOfPlayers: 0
-        };
-        model.parentComponent = this;
-    }
-
+    //Generate HTML spans representing players.
+    //Returns array of React elements.
     _generateLegendEntries(numberOfPlayers) {
         var legendEntries = [];
         for (var i = 0; i < numberOfPlayers; i++) {
@@ -28,14 +20,8 @@ class PlayerLegend extends Component {
         return legendEntries;
     }
 
-    set numberOfPlayers(playerCount) {
-        this.setState({
-            numberOfPlayers: playerCount
-        });
-    }
-
     get numberOfPlayers() {
-        return this.state.numberOfPlayers;
+        return this.props.numberOfPlayers;
     }
 
     render() {
@@ -48,13 +34,11 @@ class PlayerLegend extends Component {
                     Player Legend:
                 </p>
                 {
-                    this._generateLegendEntries(this.numberOfPlayers)
+                    this._generateLegendEntries(this.props.numberOfPlayers)
                 }
             </div>
         );
     }
-
-    
 }
 
 export default PlayerLegend;
