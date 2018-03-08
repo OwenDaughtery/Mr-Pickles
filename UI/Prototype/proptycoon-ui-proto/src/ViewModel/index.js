@@ -1,5 +1,5 @@
 
-import api from '../API';
+import common from '../Common';
 
 export default class ViewModel {
     constructor() {
@@ -9,7 +9,7 @@ export default class ViewModel {
 
     _componentCheck() {
         if (this._component === null) {
-            api.error(this._componentType + " component not assigned.");
+            common.error(this._componentType + " component not assigned.");
             return true;
         }
         return false;
