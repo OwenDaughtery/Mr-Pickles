@@ -1,3 +1,4 @@
+import backEndApi from '../BackEnd/API';
 
 /**
  * Handles interaction from UI to back-end.
@@ -6,20 +7,20 @@
 class API {
     /**
      * Logs a message, but with a prefix to make sure message can
-     * be identified as belonging to PropertyTycoon.
+     * be identified as belonging to PropertyTycoon UI.s
      * @param {string} msg - Message to log.
      */
     log(msg) {
-        console.log("PropTycoon: " + msg);
+        console.log("PropTycoon UI: " + msg);
     }
 
     /**
      * Logs an error message, but with a prefix to make sure message can
-     * be identified as belonging to PropertyTycoon.
+     * be identified as belonging to PropertyTycoon UI.
      * @param {string} msg - Message to log.
      */
     error(msg) {
-        console.error("PropTycoon: " + msg);
+        console.error("PropTycoon UI: " + msg);
     }
 
     /**
@@ -29,19 +30,28 @@ class API {
      * @returns {Promise}
      */
     intialisePlayers(playerNames) {
-        //Will return player names.
+        //Will respond with player names.
         return new Promise(
             (resolve) => {
-                //TODO replace 'playerNames' with some getter
-                //from the back-end.
-                //TODO remove timeout (it's onlu for emulation.)
-                setTimeout(() => 
-                    {
-                        resolve(playerNames);
-                    }, 5000
-                );
+                //Link to back-end's API call.
+                resolve(backEndApi.initialisePlayers(playerNames));
             }
         );
+    }
+
+    /** 
+     * Make request to get array of objects containing players' positions.
+     * @returns {Promise}
+     * //TODO add more state values. 
+     */
+    get playerStates() {
+        //Will respond with player states.
+        return new Promise(
+            (resolve) => {
+                //Get player states from back-end.
+                resolve(backEndApi.playerStates);
+            }
+        )
     }
 }
 

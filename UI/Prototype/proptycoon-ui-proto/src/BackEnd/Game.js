@@ -20,10 +20,9 @@ export default class Game {
         this.playerTurn = 0;//Number relative to position of player in array.
         //Adds players to Players array.
         for(var x = 0; x < _players.length; x++){
-            this.players.push(new Player(_players[x][0], _players[x][1], this.dice))
+            this.players.push(new Player(_players[x][0], _players[x][1], this.dice));
         }
     }
-
 
     /**
      * Hard sets the players turn. Only done at begining of game acfter deciding who goes first.
