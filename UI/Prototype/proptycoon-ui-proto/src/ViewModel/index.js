@@ -13,6 +13,7 @@ export default class ViewModel {
             return true;
         }
         return false;
+    
     }
 
     set parentComponent (component) {

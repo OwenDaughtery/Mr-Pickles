@@ -1,9 +1,15 @@
+import PotLuckDeck from "./PotLuckDeck.js";
+import OpportunityKnocksDeck from "./OpportunityKnocksDeck.js";
+
 /** 
  * @author Ayman Zenos
  * 
  * Stores money, the wild card decks and real estate.
 */
 export default class Bank {
+    /**
+     * @param {*} _players The array of participating players.
+     */
     constructor(_players) {
         //Creates a mapping between players name and there balance.
         this.balanceOf = new Map();
@@ -12,10 +18,10 @@ export default class Bank {
         }
         this.balance = 50000;
 
-        this.potLuckDeck = new Deck('PotLuck');
-        this.oppKnocks = new Deck('OppKnocks');
+        this.potLuckDeck = new PotLuckDeck();
+        this.oppKnocks = new OpportunityKnocksDeck();
 
-        this.realEstate = new RealEstate();
+        //this.realEstate = new RealEstate();
     }
 
     /**

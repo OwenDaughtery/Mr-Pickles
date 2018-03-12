@@ -9,6 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
+ * @author Ayman Zenos
  * 2 fair Die which can be roled
  */
 var Dice = function () {
@@ -19,7 +20,9 @@ var Dice = function () {
         this.die2 = 0;
     }
 
-    //returns numbers on dice
+    /**
+     * @return numbers on dice
+     */
 
 
     _createClass(Dice, [{

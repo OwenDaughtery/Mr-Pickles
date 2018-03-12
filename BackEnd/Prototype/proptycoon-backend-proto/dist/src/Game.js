@@ -23,24 +23,57 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
+ * @author Ayman Zenos
+ * 
  * Creates a board, dice and all the players. The players are stored in an array.
  */
 var Game = function () {
     /**
-     * @param {*} _Players is an array of tuples where the first space represents the name of the player and the second is the character that the player has chosen.
+     * Initialises board, dice, and players.
+     * PlayerInfo object:
+     *  - name : string
+     *  - index : integer
+     * @param {Object} playerInfoList - An array of objects containing player name & player index. (Index will correspond to a character).
      */
-    function Game(_players) {
+    function Game(playerInfoList) {
         _classCallCheck(this, Game);
 
         this.board = new _Board2.default();
         this.dice = new _Dice2.default();
         this.players = [];
-        this.playerTurn = 0;
-        //Adds players to Players array.
-        for (var x = 0; x < _players.length; x++) {
-            this.players.push(new _Player2.default(_players[x][0], _players[x][1], this.dice));
+        this.playerTurn = 0; //Number relative to position of player in array.
+        //Adds players to player array.
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = playerInfoList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var playerInfo = _step.value;
+
+                this.players.push(new _Player2.default(playerInfo.name, playerInfo.index, this.dice));
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
         }
     }
+
+    /**
+     * Hard sets the players turn. Only done at begining of game acfter deciding who goes first.
+     * @param {int} _playerIndex 
+     */
+
 
     _createClass(Game, [{
         key: 'setTurn',
@@ -48,6 +81,11 @@ var Game = function () {
             //assert(_playerIndex >= 0 && _playerIndex < this.players.length);
             this.playerTurn = _playerIndex;
         }
+
+        /**
+         * Increments player turn.
+         */
+
     }, {
         key: 'newTurn',
         value: function newTurn() {

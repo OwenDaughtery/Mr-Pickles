@@ -11,19 +11,22 @@ import Player from './Player.js';
  */
 export default class Game {
     /**
-     * @param {Player} _Players is an array of tuples where the first space represents the name of the player and the second is the character that the player has chosen.
+     * Initialises board, dice, and players.
+     * PlayerInfo object:
+     *  - name : string
+     *  - index : integer
+     * @param {Object} playerInfoList - An array of objects containing player name & player index. (Index will correspond to a character).
      */
-    constructor(_players){
+    constructor(playerInfoList) {
         this.board = new Board();
         this.dice = new Dice();
         this.players = [];
-        this.playerTurn = 0;//Number relative to position of player in array.
-        //Adds players to Players array.
-        for(var x = 0; x < _players.length; x++){
-            this.players.push(new Player(_players[x][0], _players[x][1], this.dice))
+        this.playerTurn = 0; //Number relative to position of player in array.
+        //Adds players to player array.
+        for(var playerInfo of playerInfoList) {
+            this.players.push(new Player(playerInfo.name, playerInfo.index, this.dice));
         }
     }
-
 
     /**
      * Hard sets the players turn. Only done at begining of game acfter deciding who goes first.
