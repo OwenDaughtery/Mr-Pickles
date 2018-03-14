@@ -58,5 +58,11 @@ export default class Player {
     goJail() {
         this.position = 40;
     }
+    /**
+     * Get out jail
+     */
+    goJail() {
+        this.position = 11;
+    }
     //TODO and methods to change in prison boolion, turns in prison, doubles roled
 }
