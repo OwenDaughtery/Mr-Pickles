@@ -8,19 +8,35 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * @author Ayman Zenos
+ * 
+ * A player which can move around the board and role dice and own real estate and wild cards.
+ */
 var Player = function () {
     function Player(_name, _playerNumber, _dice) {
         _classCallCheck(this, Player);
 
         //assert(_playerNumber > 0 && _playerNumber < 7);
-        this.isInPrizon = false;
-        this.turnsInPrizon = 0;
+        this.isInPrison = false;
+        this.turnsInPrison = 0;
         this.position = 0;
         this.doublesRolled = 0;
         this.name = _name;
         this.playerNumber = _playerNumber;
         this.dice = _dice;
+
+        this.potLuckDeck = [];
+        this.oppKnocks = [];
+
+        this.realEstate = [];
     }
+
+    /** 
+     * rolls the dice and moved that amount round the board. If double roll again.
+     * TODO if 3 doubles go to prison.
+    */
+
 
     _createClass(Player, [{
         key: "rollDice",
@@ -37,6 +53,12 @@ var Player = function () {
                 this.move(positions[0] + positions[1]);
             }
         }
+
+        /**
+         * Moves player to position on board.
+         * @param {int} _positions number reletive to position on the board
+         */
+
     }, {
         key: "move",
         value: function move(_positions) {
@@ -48,6 +70,9 @@ var Player = function () {
             }
             this.position = newPos;
         }
+
+        //TODO and methods to change in prison boolion, turns in prison, doubles roled
+
     }]);
 
     return Player;

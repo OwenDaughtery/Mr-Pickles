@@ -27,6 +27,8 @@
   },
   "repository": "https://github.com/OwenDaughtery/Mr-Pickles.git",
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "csvtojson": "^1.1.9",
+    "fast-csv": "^2.4.1"
   }
 }

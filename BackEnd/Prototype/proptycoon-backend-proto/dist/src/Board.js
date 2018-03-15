@@ -13,6 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /** 
+ * @author Ayman Zenos
  * The board of the game which holds spaces in an array between 0 to 40, where 40 will be Jail.
 */
 var Board = function Board() {

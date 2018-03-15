@@ -25,8 +25,8 @@ export default class Player {
      * TODO if 3 doubles go to prison.
     */
     rollDice() {
-        var positions = this.dice.rollDice()
-        if(this.position[0] == this.position[1]){
+        var numbers = this.dice.rollDice()
+        if(this.numbers[0] == this.numbers[1]){
             this.doublesRolled +=1;
         } else {
             this.doublesRolled = 0;
@@ -34,23 +34,35 @@ export default class Player {
         if(this.doublesRolled == 3){
             this.position = 40;
         } else {
-            this.move(positions[0] + positions[1]);
+            this.move(numbers[0] + numbers[1]);
         }
     }
 
     /**
-     * Moves player to position on board.
-     * @param {int} _positions number reletive to position on the board
+     * Moves player by _positions number of spaces.
+     * @param {int} _number number reletive to position on the board
      */
-    move(_positions) {
-        var newPos = this.position + positions % 40;
+    move(_number) {
+        var newPos = this.position + number % 40;
         if (newPos < this.position){
-            if(_positions > 0){
+            if(_newPos > 0){
                 //give £200
             }
         }
         this.position = newPos;
     }
 
+    /**
+     * Move player to jail.
+     */
+    goJail() {
+        this.position = 40;
+    }
+    /**
+     * Get out jail
+     */
+    goJail() {
+        this.position = 11;
+    }
     //TODO and methods to change in prison boolion, turns in prison, doubles roled
 }
