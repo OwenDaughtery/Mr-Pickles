@@ -41,8 +41,8 @@ var Player = function () {
     _createClass(Player, [{
         key: "rollDice",
         value: function rollDice() {
-            var positions = this.dice.rollDice();
-            if (this.position[0] == this.position[1]) {
+            var numbers = this.dice.rollDice();
+            if (this.numbers[0] == this.numbers[1]) {
                 this.doublesRolled += 1;
             } else {
                 this.doublesRolled = 0;
@@ -50,27 +50,45 @@ var Player = function () {
             if (this.doublesRolled == 3) {
                 this.position = 40;
             } else {
-                this.move(positions[0] + positions[1]);
+                this.move(numbers[0] + numbers[1]);
             }
         }
 
         /**
-         * Moves player to position on board.
-         * @param {int} _positions number reletive to position on the board
+         * Moves player by _positions number of spaces.
+         * @param {int} _number number reletive to position on the board
          */
 
     }, {
         key: "move",
-        value: function move(_positions) {
-            var newPos = this.position + positions % 40;
+        value: function move(_number) {
+            var newPos = this.position + number % 40;
             if (newPos < this.position) {
-                if (_positions > 0) {
+                if (_newPos > 0) {
                     //give £200
                 }
             }
             this.position = newPos;
         }
 
+        /**
+         * Move player to jail.
+         */
+
+    }, {
+        key: "goJail",
+        value: function goJail() {
+            this.position = 40;
+        }
+        /**
+         * Get out jail
+         */
+
+    }, {
+        key: "goJail",
+        value: function goJail() {
+            this.position = 11;
+        }
         //TODO and methods to change in prison boolion, turns in prison, doubles roled
 
     }]);

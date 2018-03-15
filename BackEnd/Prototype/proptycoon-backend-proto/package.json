@@ -9,7 +9,8 @@
     "start": "npm run build && node dist/index.js",
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile",
-    "coverage": "./node_modules/.bin/istanbul cover _mocha test/*.js -- --require babel-register"
+    "coverage": "./node_modules/.bin/istanbul cover _mocha test/*.js -- --require babel-register",
+    "showcoverage": "open coverage/lcov-report/index.html"
   },
   "author": "AymanZenos",
   "license": "ISC",
