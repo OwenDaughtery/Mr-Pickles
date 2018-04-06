@@ -1,7 +1,7 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.model;
+package zytom.proptycoon.model.card;
 
 /**
  *

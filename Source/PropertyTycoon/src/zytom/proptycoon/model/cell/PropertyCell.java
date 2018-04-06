@@ -1,12 +1,12 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.model;
+package zytom.proptycoon.model.cell;
 
 /**
  *
  * @author Tom Chesters
  */
-public interface AssetOwner {
+public abstract class PropertyCell extends Cell {
     
 }

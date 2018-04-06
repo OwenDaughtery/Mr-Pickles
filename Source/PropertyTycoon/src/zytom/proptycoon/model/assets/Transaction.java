@@ -1,12 +1,12 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.model;
+package zytom.proptycoon.model.assets;
 
 /**
  *
  * @author Tom Chesters
  */
-public abstract class Card {
+public class Transaction {
     
 }

@@ -1,12 +1,12 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.model;
+package zytom.proptycoon.model.cell;
 
 /**
  *
  * @author Tom Chesters
  */
-public class CardsAsset extends Asset {
+public abstract class Cell {
     
 }
