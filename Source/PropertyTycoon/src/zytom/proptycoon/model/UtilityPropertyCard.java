@@ -5,8 +5,8 @@ package zytom.proptycoon.model;
 
 /**
  *
- * @author Tom Chesters
+ * @author utopia
  */
-public class CardAsset extends Asset {
+public class UtilityPropertyCard extends PropertyCard {
     
 }
