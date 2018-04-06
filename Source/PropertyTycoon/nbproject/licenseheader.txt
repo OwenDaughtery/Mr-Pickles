@@ -1,0 +1,7 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}PropertyTycoon Application by Zytom
+<#if licenseLast??>
+${licenseLast}
+</#if>
