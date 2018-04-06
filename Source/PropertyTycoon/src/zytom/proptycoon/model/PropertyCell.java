@@ -5,8 +5,8 @@ package zytom.proptycoon.model;
 
 /**
  *
- * @author utopia
+ * @author Tom Chesters
  */
-public abstract class PropertyCell {
+public abstract class PropertyCell extends Cell {
     
 }

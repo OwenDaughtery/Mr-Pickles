@@ -7,6 +7,6 @@ package zytom.proptycoon.model;
  *
  * @author Tom Chesters
  */
-public class Game {
+public class PotLuckCard extends ActionCard {
     
 }
