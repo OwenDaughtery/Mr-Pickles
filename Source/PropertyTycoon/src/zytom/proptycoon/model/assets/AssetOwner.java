@@ -15,6 +15,8 @@ import zytom.proptycoon.model.card.PropertyCard;
  * @author Tom Chesters
  */
 public interface AssetOwner {
+    private
+    
     /**
      * @return The amount of money this asset owner is in possesion of.
      */
@@ -34,4 +36,6 @@ public interface AssetOwner {
      * @return An array list containing (copies) of all the property cards that this asset owner is in possesion of.
      */
     public ArrayList<PropertyCard> getProperties();
+    
+    public take
 }
