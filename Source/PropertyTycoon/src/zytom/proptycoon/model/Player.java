@@ -9,6 +9,6 @@ package zytom.proptycoon.model;
  *
  * @author Tom Chesters
  */
-public class Player {
+public class Player implements AssetOwner {
     
 }
