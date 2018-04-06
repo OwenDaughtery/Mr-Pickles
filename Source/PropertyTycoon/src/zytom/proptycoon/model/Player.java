@@ -9,6 +9,6 @@ import zytom.proptycoon.model.assets.AssetOwner;
  *
  * @author Tom Chesters
  */
-public class Player implements AssetOwner {
+/*public class Player implements AssetOwner {
     
-}
+}*/

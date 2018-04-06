@@ -14,28 +14,32 @@ import zytom.proptycoon.model.card.PropertyCard;
  * (Players and the bank).
  * @author Tom Chesters
  */
-public interface AssetOwner {
-    private
-    
+public interface AssetOwner {    
     /**
      * @return The amount of money this asset owner is in possesion of.
      */
     public int getBalance();
     
     /**
-     * @return An array list containing (copies) of all the cards that this asset owner is in possesion of.
+     * 
+     * @return All the cards that this asset owner is in possesion of.
      */
     public ArrayList<Card> getCards();
     
     /**
-     * @return An array list containing (copies) of all the pot luck cards that this asset owner is in possesion of.
+     * @return All the pot luck cards that this asset owner is in possesion of.
      */
     public ArrayList<PotLuckCard> getPotLuckCards();
     
     /**
-     * @return An array list containing (copies) of all the property cards that this asset owner is in possesion of.
+     * @return All the property cards that this asset owner is in possesion of.
      */
     public ArrayList<PropertyCard> getProperties();
     
-    public take
+    /**
+     * 
+     * @param Requested
+     * @return 
+     */
+    public Asset takeAsset(Asset Requested);
 }
