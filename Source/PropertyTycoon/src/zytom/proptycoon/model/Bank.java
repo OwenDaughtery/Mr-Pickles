@@ -12,9 +12,18 @@ import java.util.ArrayList;
  * @author Max Pattman
  */
 public class Bank implements AssetOwner {
-
+    
+    ArrayList<Card> cards;
+    ArrayList<PropertyCard> propertyCards;
+    ArrayList<PotLuckCard> potLuckCards;
+    
+    /**
+     * @author Zenos Pavlakou
+     */
     public Bank(){
-
+        this.cards = new ArrayList<>();
+        this.propertyCards = new ArrayList<>();
+        this.potLuckCards = new ArrayList<>();
     }
 
     /**
@@ -22,7 +31,7 @@ public class Bank implements AssetOwner {
      */
     @Override
     public int getBalance() {
-        return 0;
+        return Integer.MAX_VALUE; //because the bank has unlimited money
     }
 
     /**
@@ -32,7 +41,7 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<Card> getCards() {
-        return null;
+        return this.cards;
     }
 
     /**
@@ -42,7 +51,7 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<PotLuckCard> getPotLuckCards() {
-        return null;
+        return this.potLuckCards;
     }
 
     /**
@@ -52,20 +61,56 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<PropertyCard> getProperties() {
-        return null;
+        return this.propertyCards;
     }
-
+    
     /**
-     * Remove the contents of the specified asset
-     * from this asset owner and return them within
-     * the asset instance.
-     *
-     * @param requested The asset to look for in this asset owner.
-     * @return An asset instance containing the requested contents.
+     * @author Zenos Pavlakou
+     * 
+     * @param requested 
+     * @return A PropertyCard instance containing the requested card.
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(Asset requested) throws AssetNotFoundException {
-        return null;
+    public Asset takeAsset(PropertyCard requested) throws AssetNotFoundException {
+        if(!cards.contains(requested)) {
+            throw AssetNotFoundException;
+        } 
+        propertyCards.remove(requested);
+        cards.remove(requested);
+        return requested;
+    }    
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * @param requested 
+     * @return A PotLuckCard instance containing the requested card.
+     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     */
+    @Override
+    public Asset takeAsset(PotLuckCard requested) throws AssetNotFoundException {
+        if(!cards.contains(requested)) {
+            throw AssetNotFoundException;
+        } 
+        potLuckCards.remove(requested);
+        cards.remove(requested);
+        return requested;
+    }
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * @param money The amount of money that will be taken from the player 
+     * @return An instance of a MoneyAsset.
+     * 
+     * Parameter has been changed here as I could not see any other way of creating a MoneyAsset instance
+     * because the MoneyAssset constructor takes an integer as a parameter
+     * 
+     * No need for the method to throw the AssetNotFoundException as the bank has unlimited money
+     */
+    @Override
+    public Asset takeAsset(int money) {
+        return new MoneyAsset(money);
     }
 }
