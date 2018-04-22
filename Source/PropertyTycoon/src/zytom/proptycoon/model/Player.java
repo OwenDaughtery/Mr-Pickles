@@ -30,6 +30,15 @@ public class Player implements AssetOwner {
         this.position = position;
         this.balance = balance;
     }
+    
+    /**
+     * @author Zenos
+     * 
+     * @return The name of the player.
+     */
+    public String getName() {
+        return this.name;
+    }
 
     /**
      * @author Zenos
