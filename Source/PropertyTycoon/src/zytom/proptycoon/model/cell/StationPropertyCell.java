@@ -9,4 +9,11 @@ package zytom.proptycoon.model.cell;
  */
 public class StationPropertyCell extends PropertyCell {
     
+    /**
+     * @author Zenos Pavlakou
+     */
+    public StationPropertyCell() {
+        super("Station Property");
+    }
+    
 }
