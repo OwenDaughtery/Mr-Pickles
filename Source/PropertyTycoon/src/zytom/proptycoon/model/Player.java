@@ -20,15 +20,18 @@ public class Player implements AssetOwner {
     String name ;
     int position;
     int balance ;
-    ArrayList<Card> cards = new ArrayList<>();
-    ArrayList<PropertyCard> propertyCards = new ArrayList<>();
-    ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
+    ArrayList<Card> cards;
+    ArrayList<PropertyCard> propertyCards;
+    ArrayList<PotLuckCard> potLuckCards;
 
 
     public Player(String name , int position , int balance){
         this.name = name;
         this.position = position;
         this.balance = balance;
+        this.cards = new ArrayList<>();
+        this.propertyCards = new ArrayList<>();
+        this.potLuckCards = new ArrayList<>();
     }
     
     /**
@@ -41,7 +44,6 @@ public class Player implements AssetOwner {
     }
 
     /**
-     * @author Zenos
      * 
      * @return The amount of money this asset owner is in possesion of.
      */
