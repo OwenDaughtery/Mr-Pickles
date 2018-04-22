@@ -25,10 +25,9 @@ public abstract class PropertyCell extends Cell {
      * @author Zenos Pavlakou
      * 
      * @param associatedCard The property card associated with this property
-     * 
-     * When creating the associated property card, how will constructor be initialized?
      */
     public void setAssociatedCard(PropertyCard associatedCard) {
+        // When creating the associated property card, how will constructor be initialized?
         this.associatedCard = associatedCard;
     }
     
