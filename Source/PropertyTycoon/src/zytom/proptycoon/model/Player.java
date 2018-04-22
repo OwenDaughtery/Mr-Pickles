@@ -32,6 +32,8 @@ public class Player implements AssetOwner {
     }
 
     /**
+     * @author Zenos
+     * 
      * @return The amount of money this asset owner is in possesion of.
      */
     @Override
@@ -40,24 +42,26 @@ public class Player implements AssetOwner {
     }
 
     /**
-     *
-     * @return
+     * @author Zenos
+     * 
+     * @return the position of the player
      */
     public int getPosition(){
         return this.position;
     }
 
     /**
-     *
+     * @author Zenos
+     * 
      * @param numberOfSpaces
      */
     public void move(int numberOfSpaces){
-
+        this.position = (this.position + numberOfSpaces) % 40;
     }
 
 
     /**
-     *
+     * Not sure why the movingForwards boolean is needed here. 
      */
     public void moveTo(int position,boolean movingForewards){
 
@@ -92,29 +96,89 @@ public class Player implements AssetOwner {
     public ArrayList<PropertyCard> getProperties() {
         return this.propertyCards;
     }
-
+    
     /**
-     * Remove the contents of the specified asset
-     * from this asset owner and return them within
-     * the asset instance.
-     *
-     * @param requested The asset to look for in this asset owner.
-     * @return An asset instance containing the requested contents.
+     * @author Zenos
+     * 
+     * @param requested 
+     * @return A PropertyCard instance containing the requested card.
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     * //TODO
      */
     @Override
-    public Asset takeAsset(Asset requested) throws AssetNotFoundException {
-        return null;
-    }
-
+    public Asset takeAsset(PropertyCard requested) throws AssetNotFoundException {
+        if(!cards.contains(requested)) {
+            throw AssetNotFoundException;
+        } 
+        propertyCards.remove(requested);
+        cards.remove(requested);
+        return requested;
+    }    
+    
     /**
-     *
-     * @param giving
-     * @return
-     * @throws AssetNotFoundException
+     * @author Zenos
+     * 
+     * @param requested 
+     * @return A PotLuckCard instance containing the requested card.
+     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
-    public Asset giveAsset(Asset giving) throws AssetNotFoundException {
-
+    @Override
+    public Asset takeAsset(PotLuckCard requested) throws AssetNotFoundException {
+        if(!cards.contains(requested)) {
+            throw AssetNotFoundException;
+        } 
+        potLuckCards.remove(requested);
+        cards.remove(requested);
+        return requested;
+    }
+    
+    /**
+     * @author Zenos
+     * 
+     * @param money The amount of money that will be taken from the player 
+     * @return An instance of a MoneyAsset.
+     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     * 
+     * Parameter has been changed here as I could not see any other way of creating a MoneyAsset instance
+     * because the MoneyAssset constructor takes an integer as a parameter
+     */
+    @Override
+    public Asset takeAsset(int money) throws AssetNotFoundException {
+        MoneyAsset moneyAsset;
+        if(this.balance >= money && this.balance - money < this.balance) {
+            moneyAsset = new MoneyAsset(money);
+            this.balance -= money;
+        } else {
+            throw AssetNotFoundException;
+        }
+        return moneyAsset;
+    }  
+  
+    /**
+     * @author Zenos
+     * 
+     * @param giving The property card the player will receive
+     */
+    public void giveAsset(PropertyCard giving) throws AssetNotFoundException {
+        propertyCards.add(giving);
+        cards.add(giving);
+    }
+    
+    /**
+     * @author Zenos
+     * 
+     * @param giving The potluck card the player will receive
+     */
+    public void giveAsset(PotLuckCard giving) throws AssetNotFoundException {
+        potLuckCards.add(giving);
+        cards.add(giving);
+    }
+    
+    /**
+     * @author Zenos
+     * 
+     * @param giving The money which the player will receive 
+     */
+    public void giveAsset(MoneyAsset giving) throws AssetNotFoundException {
+        this.balance += giving.getMoney();
     }
 }
