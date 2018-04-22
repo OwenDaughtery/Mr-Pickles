@@ -4,10 +4,8 @@ public class GoToJailCell extends Cell{
     
     /**
      * @author Zenos Pavlakou
-     * 
-     * @param title The title of the cell
      */
-    public GoToJailCell(String title) {
+    public GoToJailCell() {
         super("Go To Jail");
     }
     
