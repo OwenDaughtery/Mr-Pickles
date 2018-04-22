@@ -9,4 +9,23 @@ package zytom.proptycoon.model.cell;
  */
 public abstract class Cell {
     
+    private String title;
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * @param title The title of the cell being created
+     */
+    public Cell(String title) {
+        this.title = title;
+    }
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * @return The title of the cell
+     */
+    public String getTitle() {
+        return this.title;
+    }
 }
