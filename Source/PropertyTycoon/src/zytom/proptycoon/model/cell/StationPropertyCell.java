@@ -12,7 +12,7 @@ public class StationPropertyCell extends PropertyCell {
     /**
      * @author Zenos Pavlakou
      * 
-     * @param titleOfPropertyCell The title of the cell being created
+     * @param titleOfStation The title of the station 
      */
     public StationPropertyCell(String titleOfStation) {
         super(titleOfStation);
