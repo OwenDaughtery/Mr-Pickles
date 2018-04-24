@@ -8,6 +8,24 @@ import zytom.proptycoon.model.Player;
  * @author Tom Chesters
  */
 public class Transaction {
+    public void settleTransaction() throws AssetNotFoundException { 
+        //First, assert that primary asset owner
+        //owns what it is giving.
+        //If so take 
+        Asset takenFromPrimary;
+        try {
+            takenFromPrimary = primary.takeAsset(giving);
+        } catch(AssetNotFoundException ex) {
+            throw ex;
+        }
+        Asset takenFromSecondary;
+        try {
+            takenFromSecondary = secondary.takeAsset(receiving);
+        } catch(AssetNotFoundException ex) {
+            throw ex;
+        }
+        
+    }
     
     private AssetOwner primaryOwner;
     private AssetOwner secondaryOwner;

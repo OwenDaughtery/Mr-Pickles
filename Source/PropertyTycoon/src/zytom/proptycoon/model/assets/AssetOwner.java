@@ -57,10 +57,11 @@ public interface AssetOwner {
          * Generate the exception message.
          * @param requested The asset that was requested.
          */
-        public AssetNotFoundException(Asset requested) {
+        public AssetNotFoundException(AssetOwner giver, Asset requested) {
             super (
-                    "Requested asset could not be found: \n" +
-                            requested.toString()
+                    "Requested asset could not be found in " +
+                    giver.toString() +
+                    ": \n" + requested.toString()
             );
         }
         /**
@@ -68,6 +69,7 @@ public interface AssetOwner {
          * contents.
          * @return The exception message.
          */
+        @Override
         public String getMessage()
         {
             return super.getMessage();
