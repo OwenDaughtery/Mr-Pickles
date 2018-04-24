@@ -145,23 +145,18 @@ public class Player implements AssetOwner {
     /**
      * @author Zenos
      * 
-     * @param money The amount of money that will be taken from the player 
+     * @param requested The money asset which has been requested
      * @return An instance of a MoneyAsset.
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     * 
-     * Parameter has been changed here as I could not see any other way of creating a MoneyAsset instance
-     * because the MoneyAssset constructor takes an integer as a parameter
      */
     @Override
-    public Asset takeAsset(int money) throws AssetNotFoundException {
-        MoneyAsset moneyAsset;
-        if(this.balance >= money && this.balance - money < this.balance) {
-            moneyAsset = new MoneyAsset(money);
-            this.balance -= money;
+    public Asset takeAsset(MoneyAsset requested) throws AssetNotFoundException {
+        if(this.balance >= requested.getMoney() && this.balance - requested.getMoney() < this.balance) {
+            this.balance -= requested.getMoney();
         } else {
             throw AssetNotFoundException;
         }
-        return moneyAsset;
+        return requested;
     }  
   
     /**
