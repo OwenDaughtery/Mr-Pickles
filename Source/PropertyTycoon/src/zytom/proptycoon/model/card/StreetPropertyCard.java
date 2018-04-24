@@ -1,4 +1,7 @@
 package zytom.proptycoon.model.card;
+
+import zytom.proptycoon.model.cell.StreetPropertyCell;
+
 /**
  *
  @author Ayman Free
@@ -6,10 +9,10 @@ package zytom.proptycoon.model.card;
  * Stores rent prices and house prices.
  */
 public class StreetPropertyCard extends PropertyCard {
-    private int[]rentCost;
+    private int[] rentCost;
     private int houseCost;
     private int hotelCost;
-    private  StreetPropertyCell cellRef;
+    private StreetPropertyCell cellRef;
 
 
     /**

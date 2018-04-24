@@ -127,69 +127,55 @@ public class Player implements AssetOwner {
     
     /**
      * @author Zenos
+     * @author Tom
      * 
-     * @param requested 
-     * @return A PotLuckCard instance containing the requested card.
+     * @param requested A CardAsset describing the Card requested from th eplayer.
+     * @return The requested Card
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(PotLuckCard requested) throws AssetNotFoundException {
+    public Asset takeAsset(Card requested) throws AssetNotFoundException {
         if(!cards.contains(requested)) {
             throw AssetNotFoundException;
-        } 
-        potLuckCards.remove(requested);
+        }
         cards.remove(requested);
         return requested;
     }
     
     /**
+     * @author Tom
      * @author Zenos
      * 
-     * @param money The amount of money that will be taken from the player 
+     * @param requested MoneyAsset describing the requested amount of money from the player.
      * @return An instance of a MoneyAsset.
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     * 
-     * Parameter has been changed here as I could not see any other way of creating a MoneyAsset instance
-     * because the MoneyAssset constructor takes an integer as a parameter
      */
     @Override
-    public Asset takeAsset(int money) throws AssetNotFoundException {
-        MoneyAsset moneyAsset;
-        if(this.balance >= money && this.balance - money < this.balance) {
-            moneyAsset = new MoneyAsset(money);
-            this.balance -= money;
-        } else {
-            throw AssetNotFoundException;
-        }
+    public MoneyAsset takeAsset(MoneyAsset requested) throws AssetNotFoundException {
+        if(this.balance >= requested.getMoney() && requested.getMoney() > 0) 
+            this.balance -= requested.getMoney();
+        else 
+            throw new AssetNotFoundException(this, requested);
         return moneyAsset;
-    }  
-  
-    /**
-     * @author Zenos
-     * 
-     * @param giving The property card the player will receive
-     */
-    public void giveAsset(PropertyCard giving) throws AssetNotFoundException {
-        propertyCards.add(giving);
-        cards.add(giving);
     }
     
     /**
+     * @author Tom
      * @author Zenos
      * 
-     * @param giving The potluck card the player will receive
+     * @param giving The card that the player will receive.
      */
-    public void giveAsset(PotLuckCard giving) throws AssetNotFoundException {
-        potLuckCards.add(giving);
-        cards.add(giving);
+    public void giveAsset(CardsAsset giving){
+        cards.addAll(giving.getCards());
     }
     
     /**
+     * @author Tom
      * @author Zenos
      * 
-     * @param giving The money which the player will receive 
+     * @param giving A money asset describing the money that the player will receive 
      */
-    public void giveAsset(MoneyAsset giving) throws AssetNotFoundException {
+    public void giveAsset(MoneyAsset giving) {
         this.balance += giving.getMoney();
     }
 }
