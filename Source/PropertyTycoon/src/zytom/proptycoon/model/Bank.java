@@ -2,6 +2,7 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.MoneyAsset;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.PropertyCard;
@@ -64,19 +65,6 @@ public class Bank implements AssetOwner {
         return this.propertyCards;
     }
 
-    /**
-     * Remove the contents of the specified asset
-     * from this asset owner and return them within
-     * the asset instance.
-     *
-     * @param requested The asset to look for in this asset owner.
-     * @return An asset instance containing the requested contents.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     */
-    @Override
-    public Asset takeAsset(Asset requested) throws AssetNotFoundException {
-        return null;
-    }
 
     /**
      * @author Zenos Pavlakou

@@ -16,7 +16,7 @@ public class Game {
     }
 
     public Player getCurrentPlayer() {
-        return currentPlayer;
+      return currentPlayer;
     }
 
     public Dice getDice() {
