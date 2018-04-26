@@ -2,11 +2,16 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.CardsAsset;
+import zytom.proptycoon.model.assets.MoneyAsset;
 import zytom.proptycoon.model.card.Card;
+import zytom.proptycoon.model.card.OpportunityKnocksCard;
 import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.PropertyCard;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author Max Pattman
@@ -15,7 +20,8 @@ public class Bank implements AssetOwner {
     
     ArrayList<Card> cards;
     ArrayList<PropertyCard> propertyCards;
-    ArrayList<PotLuckCard> potLuckCards;
+    Queue<PotLuckCard> potLuckCards;
+    Queue<OpportunityKnocksCard> opportunityKnocksCards;
     
     /**
      * @author Zenos Pavlakou
@@ -23,7 +29,8 @@ public class Bank implements AssetOwner {
     public Bank(){
         this.cards = new ArrayList<>();
         this.propertyCards = new ArrayList<>();
-        this.potLuckCards = new ArrayList<>();
+        this.potLuckCards = new LinkedList<>();
+        this.opportunityKnocksCards = new LinkedList<>();
     }
 
     /**
@@ -75,7 +82,17 @@ public class Bank implements AssetOwner {
      */
     @Override
     public Asset takeAsset(Asset requested) throws AssetNotFoundException {
-        return null;
+        if(!cards.contains(requested)){
+            throw new AssetNotFoundException(this,requested);
+        }
+        propertyCards.remove(requested);
+        cards.remove(requested);
+        return requested;
+    }
+
+    @Override
+    public void giveAsset() {
+
     }
 
     /**
@@ -86,9 +103,9 @@ public class Bank implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(PropertyCard requested) throws AssetNotFoundException {
-        if(!cards.contains(requested)) {
-            throw AssetNotFoundException;
+    public Asset takeAsset(PropertyCard requested) throws AssetOwner.AssetNotFoundException {
+        if(!cards.containsAll(requested)) {
+            throw new AssetNotFoundException(this ,requested);
         } 
         propertyCards.remove(requested);
         cards.remove(requested);
@@ -103,9 +120,9 @@ public class Bank implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(PotLuckCard requested) throws AssetNotFoundException {
+    public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException {
         if(!cards.contains(requested)) {
-            throw AssetNotFoundException;
+            throw new AssetNotFoundException(this,requested);
         } 
         potLuckCards.remove(requested);
         cards.remove(requested);
