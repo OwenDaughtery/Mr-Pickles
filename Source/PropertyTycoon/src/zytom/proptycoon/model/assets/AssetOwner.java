@@ -77,4 +77,6 @@ public interface AssetOwner {
             return super.getMessage();
         }
     }
+    
+    public void giveAsset(Asset giving) ;
 }
