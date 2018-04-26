@@ -2,28 +2,34 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.CardsAsset;
 import zytom.proptycoon.model.card.Card;
+import zytom.proptycoon.model.card.OpportunityKnocksCard;
 import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.PropertyCard;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author Max Pattman
  */
 public class Bank implements AssetOwner {
-    
-    ArrayList<Card> cards;
+
     ArrayList<PropertyCard> propertyCards;
-    ArrayList<PotLuckCard> potLuckCards;
+
+    Queue<PotLuckCard> potLuckCards;
+    Queue<OpportunityKnocksCard> opportunityKnocksCards;
     
     /**
      * @author Zenos Pavlakou
      */
     public Bank(){
-        this.cards = new ArrayList<>();
         this.propertyCards = new ArrayList<>();
-        this.potLuckCards = new ArrayList<>();
+        this.potLuckCards = new LinkedList<>();
+        this.opportunityKnocksCards = new LinkedList<>();
+
     }
 
     /**
@@ -41,7 +47,11 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<Card> getCards() {
-        return this.cards;
+        ArrayList<Card> cards = new ArrayList<Card>();
+        cards.addAll(propertyCards);
+        cards.addAll(potLuckCards);
+        cards.addAll(opportunityKnocksCards);
+        return cards;
     }
 
     /**
@@ -64,19 +74,6 @@ public class Bank implements AssetOwner {
         return this.propertyCards;
     }
 
-    /**
-     * Remove the contents of the specified asset
-     * from this asset owner and return them within
-     * the asset instance.
-     *
-     * @param requested The asset to look for in this asset owner.
-     * @return An asset instance containing the requested contents.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     */
-    @Override
-    public Asset takeAsset(Asset requested) throws AssetNotFoundException {
-        return null;
-    }
 
     /**
      * @author Zenos Pavlakou
@@ -86,31 +83,35 @@ public class Bank implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(PropertyCard requested) throws AssetNotFoundException {
-        if(!cards.contains(requested)) {
-            throw AssetNotFoundException;
+    public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException {
+        if(!this.getCards().containsAll(requested.getCards())) {
+            throw new AssetNotFoundException(this, requested);
         } 
-        propertyCards.remove(requested);
-        cards.remove(requested);
-        return requested;
-    }    
-    
-    /**
-     * @author Zenos Pavlakou
-     * 
-     * @param requested 
-     * @return A PotLuckCard instance containing the requested card.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     */
-    @Override
-    public Asset takeAsset(PotLuckCard requested) throws AssetNotFoundException {
-        if(!cards.contains(requested)) {
-            throw AssetNotFoundException;
-        } 
-        potLuckCards.remove(requested);
-        cards.remove(requested);
+//        propertyCards.removeAll(requested.getCards());
+//        cards.remove(requested.getCards());
+        //removeCards(requested.getCards());
+
+        for(Card card : requested.getCards()) {
+            removeCard(card);
+        }
         return requested;
     }
+
+    private void removeCard(Card card) {
+
+        this.propertyCards.remove(card);
+    }
+
+//    private void removeCards(ArrayList<PropertyCard> cards) {
+//        this.propertyCards.removeAll(cards);
+//    }
+
+//    private void removeCards(ArrayList<PropertyCard> cards) {
+//        propertyCards.removeAll(cards);
+//    }
+
+
+
     
     /**
      * @author Zenos Pavlakou
