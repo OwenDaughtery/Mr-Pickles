@@ -101,34 +101,20 @@ public class Player implements AssetOwner {
         return this.potLuckCards;
     }
 
+
     /**
      * Copies cards, does not remove.
      *
      * @return All the property cards that this asset owner is in possesion of.
      */
     @Override
-    public ArrayList<PropertyCard> getProperties() {
+    public ArrayList<PropertyCard> getPropertyCards() {
         return this.propertyCards;
     }
 
 
-    /**
-     * @author Zenos
-     * 
-     * @param requested 
-     * @return A PropertyCard instance containing the requested card.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     */
-    @Override
-    public Asset takeAsset(Asset requested) throws AssetOwner.AssetNotFoundException {
-        if(!cards.contains(requested)) {
-            throw new AssetNotFoundException(this , requested);
-        } 
-        propertyCards.remove(requested);
-        cards.remove(requested);
-        return requested;
-    }    
-    
+
+
     /**
      * @author Zenos
      * @author Tom
@@ -137,6 +123,7 @@ public class Player implements AssetOwner {
      * @return The requested Card
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
+
     @Override
     public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException {
         if(!this.cards.containsAll(requested.getCards())) {
@@ -154,6 +141,7 @@ public class Player implements AssetOwner {
      * @return An instance of a MoneyAsset.
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
+
     @Override
     public MoneyAsset takeAsset(MoneyAsset requested) throws AssetOwner.AssetNotFoundException {
         if(this.balance >= requested.getMoney() && requested.getMoney() > 0) 
@@ -162,13 +150,17 @@ public class Player implements AssetOwner {
             throw new AssetNotFoundException(this, requested);
         return requested;
     }
-    
+
+
+
+
     /**
      * @author Tom
      * @author Zenos
      * 
      * @param giving The card that the player will receive.
      */
+    @Override
     public void giveAsset(CardsAsset giving){
         cards.addAll(giving.getCards());
     }
@@ -179,6 +171,7 @@ public class Player implements AssetOwner {
      * 
      * @param giving A money asset describing the money that the player will receive 
      */
+    @Override
     public void giveAsset(MoneyAsset giving) {
         this.balance += giving.getMoney();
     }

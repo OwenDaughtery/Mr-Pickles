@@ -14,30 +14,30 @@ import zytom.proptycoon.model.card.PropertyCard;
  * (Players and the bank).
  * @author Tom Chesters
  */
-public interface AssetOwner {    
+public interface AssetOwner {
     /**
      * @return The amount of money this asset owner is in possesion of.
      */
     public int getBalance();
-    
+
     /**
      * Copies cards, does not remove.
      * @return All the cards that this asset owner is in possesion of.
      */
     public ArrayList<Card> getCards();
-    
+
     /**
      * Copies cards, does not remove.
      * @return All the pot luck cards that this asset owner is in possesion of.
      */
     public ArrayList<PotLuckCard> getPotLuckCards();
-    
+
     /**
      * Copies cards, does not remove.
      * @return All the property cards that this asset owner is in possesion of.
      */
-    public ArrayList<PropertyCard> getProperties();
-    
+    public ArrayList<PropertyCard> getPropertyCards();
+
     /**
      * Remove the contents of the specified asset 
      * from this asset owner and return them within
@@ -46,9 +46,12 @@ public interface AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      * @return An asset instance containing the requested contents.
      */
-    public Asset takeAsset(Asset requested) throws AssetNotFoundException;
-    
-    public void giveAsset(Asset giving);
+    public Asset takeAsset(MoneyAsset requested) throws AssetOwner.AssetNotFoundException;
+
+    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException;
+
+    public void giveAsset(CardsAsset giving) ;
+    public void giveAsset(MoneyAsset giving);
 
     /**
      * An exception to be thrown if an asset is trying to be taken
@@ -62,8 +65,8 @@ public interface AssetOwner {
         public AssetNotFoundException(AssetOwner giver, Asset requested) {
             super (
                     "Requested asset could not be found in " +
-                    giver.toString() +
-                    ": \n" + requested.toString()
+                            giver.toString() +
+                            ": \n" + requested.toString()
             );
         }
         /**
@@ -77,4 +80,6 @@ public interface AssetOwner {
             return super.getMessage();
         }
     }
+    
+
 }

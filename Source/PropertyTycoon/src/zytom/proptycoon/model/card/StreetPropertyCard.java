@@ -28,6 +28,7 @@ public class StreetPropertyCard extends PropertyCard {
         this.houseCost = houseCost;
         this.hotelCost = hotelCost;
         this.cellRef = cellRef;
+
     }
 
     /**
@@ -43,7 +44,7 @@ public class StreetPropertyCard extends PropertyCard {
             return rentCost[cellRef.getNumberOfHouses()];
         }
         //If condition needs to be done
-        else if ()  {
+        else if (cellRef.getNumberOfHouses() == 0 )  {
             return rentCost[0]*2;
         }
         else{
