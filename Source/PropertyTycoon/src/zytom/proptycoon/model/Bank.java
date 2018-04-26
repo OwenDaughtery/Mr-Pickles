@@ -17,8 +17,7 @@ import java.util.Queue;
  * @author Max Pattman
  */
 public class Bank implements AssetOwner {
-    
-    ArrayList<Card> cards;
+
     ArrayList<PropertyCard> propertyCards;
     Queue<PotLuckCard> potLuckCards;
     Queue<OpportunityKnocksCard> opportunityKnocksCards;
@@ -27,7 +26,6 @@ public class Bank implements AssetOwner {
      * @author Zenos Pavlakou
      */
     public Bank(){
-        this.cards = new ArrayList<>();
         this.propertyCards = new ArrayList<>();
         this.potLuckCards = new LinkedList<>();
         this.opportunityKnocksCards = new LinkedList<>();
@@ -48,7 +46,11 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<Card> getCards() {
-        return this.cards;
+        ArrayList<Card> cards = new ArrayList<Card>();
+        cards.addAll(propertyCards);
+        cards.addAll(potLuckCards);
+        cards.addAll(opportunityKnocksCards);
+        return cards;
     }
 
     /**
@@ -107,8 +109,13 @@ public class Bank implements AssetOwner {
         if(!cards.containsAll(requested)) {
             throw new AssetNotFoundException(this ,requested);
         } 
-        propertyCards.remove(requested);
-        cards.remove(requested);
+//        propertyCards.removeAll(requested.getCards());
+//        cards.remove(requested.getCards());
+        //removeCards(requested.getCards());
+
+        for(Card card : requested.getCards()) {
+            removeCard(card);
+        }
         return requested;
     }    
     
@@ -128,6 +135,22 @@ public class Bank implements AssetOwner {
         cards.remove(requested);
         return requested;
     }
+
+    private void removeCard(Card card) {
+
+        this.propertyCards.remove(card);
+    }
+
+//    private void removeCards(ArrayList<PropertyCard> cards) {
+//        this.propertyCards.removeAll(cards);
+//    }
+
+//    private void removeCards(ArrayList<PropertyCard> cards) {
+//        propertyCards.removeAll(cards);
+//    }
+
+
+
     
     /**
      * @author Zenos Pavlakou
