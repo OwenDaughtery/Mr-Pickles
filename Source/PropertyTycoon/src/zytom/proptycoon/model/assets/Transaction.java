@@ -12,11 +12,11 @@ public class Transaction {
     private AssetOwner secondaryOwner;
     private Asset giving;
     private Asset receiving;
-    
-    
+
+
     /**
      * @author Zenos Pavlakou
-     * 
+     *
      * @param primary The primary asset owner
      * @param secondary The secondary asset owner
      * @param giving The asset which the primary owner will be trading with the secondary asset owner
@@ -28,27 +28,27 @@ public class Transaction {
         this.giving = giving;
         this.receiving = receiving;
     }
-    
+
     /**
      * @author Tom Chesters
-     * @throws AssetNotFoundException if one of the AssetOwners does not have the asset being requested from them.
+     * @throws AssetOwner.AssetNotFoundException if one of the AssetOwners does not have the asset being requested from them.
      */
-    public void settleTransaction() throws AssetNotFoundException { 
+    public void settleTransaction() throws AssetOwner.AssetNotFoundException {
         //First, assert that primary asset owner
         //owns what it is giving.
-        //If so take 
+        //If so take
         Asset takenFromPrimary;
         try {
-            takenFromPrimary = primary.takeAsset(giving);
-        } catch(AssetNotFoundException ex) {
+            takenFromPrimary = this.primaryOwner.takeAsset(giving);
+        } catch(AssetOwner.AssetNotFoundException ex) {
             throw ex;
         }
         Asset takenFromSecondary;
         try {
-            takenFromSecondary = secondary.takeAsset(receiving);
-        } catch(AssetNotFoundException ex) {
+            takenFromSecondary = this.secondaryOwner.takeAsset(receiving);
+        } catch(AssetOwner.AssetNotFoundException ex) {
             throw ex;
         }
     }
-    
+
 }
