@@ -6,20 +6,22 @@ package zytom.proptycoon.model.assets;
 import zytom.proptycoon.model.card.Card;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import zytom.proptycoon.model.card.PropertyCard;
 
 /**
  *
  * @author Tom Chesters
  */
-public class CardsAsset extends Asset {
-
-    ArrayList<Card> cards;
-    public CardsAsset(ArrayList<Card> cards){
+public class CardsAsset<T extends Card> extends Asset {
+    
+    private final ArrayList<T> cards;
+    
+    public CardsAsset(ArrayList<T> cards){
         this.cards = cards;
-
     }
 
-    public ArrayList<Card> getCards() {
+    public ArrayList<T> getCards() {
         return cards;
     }
 }
