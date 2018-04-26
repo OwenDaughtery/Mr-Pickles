@@ -9,4 +9,5 @@ package zytom.proptycoon.model.assets;
  */
 public class CardsAsset extends Asset {
     
+    
 }

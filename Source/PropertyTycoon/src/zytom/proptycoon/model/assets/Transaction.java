@@ -49,6 +49,10 @@ public class Transaction {
         } catch(AssetOwner.AssetNotFoundException ex) {
             throw ex;
         }
+        //Give primary asset owner the asset taken from secondary.
+        this.primaryOwner.giveAsset(takenFromSecondary);
+        //And vice-versa.
+        this.secondaryOwner.giveAsset(takenFromPrimary);
     }
 
 }

@@ -21,9 +21,9 @@ public class StreetPropertyCard extends PropertyCard {
      * @param hotelCost
      * @param cellRef
      */
-    public StreetPropertyCard(StreetPropertyCell cellRef, int[] rentCost, String title, 
-            int price, int houseCost, int hotelCost) {
-        super()
+    public StreetPropertyCard(StreetPropertyCell cellRef, String title, int price, int[] rentCost,
+             int houseCost, int hotelCost) {
+        super(cellRef, title, price);
         this.rentCost = rentCost;
         this.houseCost = houseCost;
         this.hotelCost = hotelCost;
