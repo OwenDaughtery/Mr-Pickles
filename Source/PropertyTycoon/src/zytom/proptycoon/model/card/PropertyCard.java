@@ -3,11 +3,14 @@ import zytom.proptycoon.model.cell.Cell;
 
 public abstract class PropertyCard {
     private final Cell cellRef;
-    private final int mortgageValue;
+    private final String title;
+    private final int price;
+    private static final double MORTGAGE_PROPORTION = 0.5;
     
-    public PropertyCard(Cell cellRef, int mortgageValue) {
+    public PropertyCard(Cell cellRef, String title, int price) {
         this.cellRef = cellRef;
-        this.mortgageValue = mortgageValue;
+        this.title = title;
+        this.price = price;
     }
     
     public Cell getCellRef() {
@@ -15,6 +18,6 @@ public abstract class PropertyCard {
     }
     
     public int getMortgageValue() {
-        return mortgageValue;
+        return (int)(MORTGAGE_PROPORTION * (double)price);
     }
 }

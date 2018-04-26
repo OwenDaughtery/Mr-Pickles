@@ -76,5 +76,7 @@ public interface AssetOwner {
         }
     }
     
-    public void giveAsset
+    public void giveAsset() {
+        
+    }
 }

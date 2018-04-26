@@ -3,8 +3,8 @@ package zytom.proptycoon.model.card;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 /**
- *
- @author Ayman Free
+ * 
+ * @author Ayman Free
  *
  * Stores rent prices and house prices.
  */
@@ -21,7 +21,9 @@ public class StreetPropertyCard extends PropertyCard {
      * @param hotelCost
      * @param cellRef
      */
-    public StreetPropertyCard(int[] rentCost, int houseCost, int hotelCost, StreetPropertyCell cellRef){
+    public StreetPropertyCard(StreetPropertyCell cellRef, int[] rentCost, String title, 
+            int price, int houseCost, int hotelCost) {
+        super()
         this.rentCost = rentCost;
         this.houseCost = houseCost;
         this.hotelCost = hotelCost;

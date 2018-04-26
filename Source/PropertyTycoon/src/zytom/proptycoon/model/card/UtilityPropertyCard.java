@@ -14,9 +14,9 @@ public class UtilityPropertyCard extends PropertyCard {
     private final int rentMultiplierOnPair;
     private final String description;
     
-    public UtilityPropertyCard(UtilityPropertyCell cellRef, int mortgageValue, int rentMultiplierOnSingle,
+    public UtilityPropertyCard(UtilityPropertyCell cellRef, String title, int price, int rentMultiplierOnSingle,
             int rentMultiplierOnPair, String description) {
-        super(cellRef, mortgageValue);
+        super(cellRef, title, price);
         this.rentMultiplierOnSingle = rentMultiplierOnSingle;
         this.rentMultiplierOnPair = rentMultiplierOnPair;
         this.description = description;
