@@ -3,6 +3,7 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.CardsAsset;
 import zytom.proptycoon.model.assets.MoneyAsset;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.PotLuckCard;
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 
 public class FreeParking implements AssetOwner {
     int balance;
-
 
     public FreeParking(){
 
@@ -52,28 +52,19 @@ public class FreeParking implements AssetOwner {
      * @return All the property cards that this asset owner is in possesion of.
      */
     @Override
-    public ArrayList<PropertyCard> getProperties() {
+    public ArrayList<PropertyCard> getPropertyCards() {
         return null;
     }
 
     /**
-     * Remove the contents of the specified asset
-     * from this asset owner and return them within
-     * the asset instance.
+     * Copies cards, does not remove.
      *
-     * @param requested The asset to look for in this asset owner.
-     * @return An asset instance containing the requested contents.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     * @return All the property cards that this asset owner is in possesion of.
      */
-    @Override
-    public Asset takeAsset(Asset requested) throws AssetNotFoundException {
-        return null;
-    }
 
     @Override
     public void giveAsset(Asset giving) {
         return;
-
     }
 
     /**
@@ -92,13 +83,15 @@ public class FreeParking implements AssetOwner {
         else
             throw new AssetNotFoundException(this, requested);
         return requested;
-
-
-
     }
-
+    
     @Override
     public void giveAsset(MoneyAsset giving) {this.balance +=giving.getMoney();}
+
+    @Override
+    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException {
+        return null;
+    }
 
 
 }

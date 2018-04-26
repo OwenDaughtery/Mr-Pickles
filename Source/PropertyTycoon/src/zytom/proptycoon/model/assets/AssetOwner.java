@@ -50,6 +50,9 @@ public interface AssetOwner {
 
     public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException;
 
+    public void giveAsset(Asset giving) ;
+    public void giveAsset(MoneyAsset giving);
+
     /**
      * An exception to be thrown if an asset is trying to be taken
      * but does not exist within the specified asset owner.
@@ -78,5 +81,5 @@ public interface AssetOwner {
         }
     }
     
-    public void giveAsset(Asset giving) ;
+
 }
