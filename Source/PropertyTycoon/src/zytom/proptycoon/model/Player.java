@@ -101,33 +101,19 @@ public class Player implements AssetOwner {
         return this.potLuckCards;
     }
 
+
     /**
      * Copies cards, does not remove.
      *
      * @return All the property cards that this asset owner is in possesion of.
      */
     @Override
-    public ArrayList<PropertyCard> getProperties() {
+    public ArrayList<PropertyCard> getPropertyCards() {
         return this.propertyCards;
     }
 
 
-    /**
-     * @author Zenos
-     * 
-     * @param requested 
-     * @return A PropertyCard instance containing the requested card.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     */
-    @Override
-    public Asset takeAsset(Asset requested) throws AssetOwner.AssetNotFoundException {
-        if(!cards.contains(requested)) {
-            throw new AssetNotFoundException(this , requested);
-        } 
-        propertyCards.remove(requested);
-        cards.remove(requested);
-        return requested;
-    }
+
 
     /**
      * @author Zenos

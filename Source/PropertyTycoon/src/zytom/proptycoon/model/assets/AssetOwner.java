@@ -50,7 +50,7 @@ public interface AssetOwner {
 
     public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException;
 
-    public void giveAsset(Asset giving) ;
+    public void giveAsset(CardsAsset giving) ;
     public void giveAsset(MoneyAsset giving);
 
     /**

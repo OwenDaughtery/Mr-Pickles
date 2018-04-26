@@ -63,7 +63,7 @@ public class FreeParking implements AssetOwner {
      */
 
     @Override
-    public void giveAsset(Asset giving) {
+    public void giveAsset(CardsAsset giving) {
         return;
     }
 
