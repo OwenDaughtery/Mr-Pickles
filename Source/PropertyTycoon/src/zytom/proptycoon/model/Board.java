@@ -11,10 +11,6 @@ public class Board {
     public Board(){
 
         this.cells = initCells();
-
-
-
-
     }
 
     /**

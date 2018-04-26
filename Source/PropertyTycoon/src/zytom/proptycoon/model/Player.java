@@ -134,11 +134,11 @@ public class Player implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(Card requested) throws AssetNotFoundException {
-        if(!cards.contains(requested)) {
+    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException {
+        if(!this.cards.contains(requested.getCards())) {
             throw AssetNotFoundException;
         }
-        cards.remove(requested);
+        this.cards.remove(requested.getCards());
         return requested;
     }
     

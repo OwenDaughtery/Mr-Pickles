@@ -15,7 +15,7 @@ public class CardAction {
     int value;
     boolean movingForewards;
 
-    public CardAction CardAction(enum type, int value ){
+    public CardAction(enum type, int value ){
 
 
     }

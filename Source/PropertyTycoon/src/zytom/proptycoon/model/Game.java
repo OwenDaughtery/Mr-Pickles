@@ -8,22 +8,18 @@ package zytom.proptycoon.model;
  * @author Tom Chesters
  */
 public class Game {
+    private Player currentPlayer;
+    private Dice dice;
 
-  private  Player currentPlayer  ;
-
-    public Game(){
-
-
-
+    public Game() {
+        
     }
-
 
     public Player getCurrentPlayer() {
-
-
+        return currentPlayer;
     }
 
-    public
-
-
+    public Dice getDice() {
+        return dice;
+    }
 }

@@ -8,5 +8,7 @@ package zytom.proptycoon.model.card;
  * @author Tom Chesters
  */
 public class OpportunityKnocksCard extends ActionCard {
-    
+    public OpportunityKnocksCard(String description, Action action) {
+        super(description, action);
+    }
 }

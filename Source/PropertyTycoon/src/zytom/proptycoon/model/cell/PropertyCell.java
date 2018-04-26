@@ -15,10 +15,10 @@ public abstract class PropertyCell extends Cell {
     /**
      * @author Zenos Pavlakou
      * 
-     * @param titleOfPropertyCell The name of the cell
+     * @param title The name of the cell
      */
-    public PropertyCell(String titleOfPropertyCell) {
-        super(titleOfPropertyCell);
+    public PropertyCell(String title) {
+        super(title);
     }
     
     /**

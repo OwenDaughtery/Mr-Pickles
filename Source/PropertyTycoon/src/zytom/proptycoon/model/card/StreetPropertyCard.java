@@ -9,11 +9,10 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
  * Stores rent prices and house prices.
  */
 public class StreetPropertyCard extends PropertyCard {
-    private int[] rentCost;
-    private int houseCost;
-    private int hotelCost;
-    private StreetPropertyCell cellRef;
-
+    private final int[] rentCost;
+    private final int houseCost;
+    private final int hotelCost;
+    private final StreetPropertyCell cellRef;
 
     /**
      *
@@ -30,18 +29,19 @@ public class StreetPropertyCard extends PropertyCard {
     }
 
     /**
-     * Gets the relevent rent that is needed to be paid
-     * @return int
+     * @author Ayman
+     * @author Tom
+     * @return the relevent rent that is needed to be paid for this property.
      */
     public int getRent() {
-        if(cellRef.getNumberOfHotels == 1){
-            return rentCost[5]
+        if (cellRef.getNumberOfHotels() == 1) {
+            return rentCost[5];
         }
-        else if(cellRef.getNumberOfHouses >=1){
-            return rentCost[cellRef.getNumberOfHouses];
+        else if (cellRef.getNumberOfHouses() >=1 ) {
+            return rentCost[cellRef.getNumberOfHouses()];
         }
         //If condition needs to be done
-        else if('check owner has all'){
+        else if ()  {
             return rentCost[0]*2;
         }
         else{
