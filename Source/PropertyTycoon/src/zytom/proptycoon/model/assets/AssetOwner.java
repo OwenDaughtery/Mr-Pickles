@@ -46,12 +46,10 @@ public interface AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      * @return An asset instance containing the requested contents.
      */
-    public Asset takeAsset(MoneyAsset requested) throws AssetOwner.AssetNotFoundException;
+    public Asset takeAsset(Asset requested) throws AssetNotFoundException;
 
-    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException;
 
-    public void giveAsset(CardsAsset giving) ;
-    public void giveAsset(MoneyAsset giving);
+    public void giveAsset(Asset giving) ;
 
     /**
      * An exception to be thrown if an asset is trying to be taken

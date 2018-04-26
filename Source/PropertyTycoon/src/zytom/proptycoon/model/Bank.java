@@ -107,8 +107,8 @@ public class Bank implements AssetOwner {
      */
     @Override
     public Asset takeAsset(PropertyCard requested) throws AssetOwner.AssetNotFoundException {
-        if(!getPropertyCards().containsAll(requested)) {
-            throw new AssetNotFoundException(this ,requested);
+        if(!getCards().containsAll(requested)) {
+            throw new AssetNotFoundException(this, requested);
         } 
 //        propertyCards.removeAll(requested.getCards());
 //        cards.remove(requested.getCards());
