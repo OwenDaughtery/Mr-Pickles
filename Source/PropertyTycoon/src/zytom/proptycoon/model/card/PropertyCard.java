@@ -1,7 +1,7 @@
 package zytom.proptycoon.model.card;
 import zytom.proptycoon.model.cell.Cell;
 
-public abstract class PropertyCard extends card {
+public abstract class PropertyCard extends Card {
     private final Cell cellRef;
     private final String title;
     private final int price;

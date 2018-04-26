@@ -2,6 +2,7 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.CardsAsset;
 import zytom.proptycoon.model.assets.MoneyAsset;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.OpportunityKnocksCard;
@@ -9,6 +10,7 @@ import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.PropertyCard;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -45,7 +47,7 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<Card> getCards() {
-        ArrayList<Card> cards = new ArrayList<Card>();
+        ArrayList<Card> cards = new ArrayList<>();
         cards.addAll(propertyCards);
         cards.addAll(potLuckCards);
         cards.addAll(opportunityKnocksCards);
@@ -59,7 +61,25 @@ public class Bank implements AssetOwner {
      */
     @Override
     public ArrayList<PotLuckCard> getPotLuckCards() {
-        return this.potLuckCards;
+        ArrayList<PotLuckCard> potLuckCardsnew = new ArrayList<PotLuckCard>();
+        potLuckCardsnew.addAll(this.potLuckCards);
+        return potLuckCardsnew;
+    }
+
+    /**
+     * Remove the contents of the specified asset
+     * from this asset owner and return them within
+     * the asset instance.
+     *
+     * @param requested The asset to look for in this asset owner.
+     * @return An asset instance containing the requested contents.
+     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     */
+    @Override
+    public Asset takeAsset(MoneyAsset requested) throws AssetNotFoundException {
+        //Bank has infinate money
+        MoneyAsset newMoneyAsset = new MoneyAsset(requested.getMoney());
+        return newMoneyAsset;
     }
 
     /**
@@ -68,7 +88,7 @@ public class Bank implements AssetOwner {
      * @return All the property cards that this asset owner is in possesion of.
      */
     @Override
-    public ArrayList<PropertyCard> getProperties() {
+    public ArrayList<PropertyCard> getPropertyCards() {
         return this.propertyCards;
     }
 
@@ -87,7 +107,7 @@ public class Bank implements AssetOwner {
      */
     @Override
     public Asset takeAsset(PropertyCard requested) throws AssetOwner.AssetNotFoundException {
-        if(!cards.containsAll(requested)) {
+        if(!getPropertyCards().containsAll(requested)) {
             throw new AssetNotFoundException(this ,requested);
         } 
 //        propertyCards.removeAll(requested.getCards());
@@ -115,6 +135,16 @@ public class Bank implements AssetOwner {
         potLuckCards.remove(requested);
         cards.remove(requested);
         return requested;
+    }
+
+    @Override
+    public void giveAsset(CardsAsset giving) {
+
+    }
+
+    @Override
+    public void giveAsset(MoneyAsset giving) {
+
     }
 
     private void removeCard(Card card) {
