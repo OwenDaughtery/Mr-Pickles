@@ -47,6 +47,8 @@ public interface AssetOwner {
      * @return An asset instance containing the requested contents.
      */
     public Asset takeAsset(Asset requested) throws AssetNotFoundException;
+    
+    public void giveAsset(Asset giving);
 
     /**
      * An exception to be thrown if an asset is trying to be taken
@@ -74,9 +76,5 @@ public interface AssetOwner {
         {
             return super.getMessage();
         }
-    }
-    
-    public void giveAsset() {
-        
     }
 }
