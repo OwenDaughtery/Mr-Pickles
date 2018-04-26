@@ -21,7 +21,7 @@ public class CardAction {
     }
 
     /**
-     *
+     * function pays the player from the bank
      * @param bank
      * @param player
      * @param value

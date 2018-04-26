@@ -5,11 +5,14 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.CardsAsset;
+import zytom.proptycoon.model.assets.MoneyAsset;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.PropertyCard;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -107,7 +110,8 @@ public class Player implements AssetOwner {
     public ArrayList<PropertyCard> getProperties() {
         return this.propertyCards;
     }
-    
+
+
     /**
      * @author Zenos
      * 
@@ -116,9 +120,9 @@ public class Player implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(PropertyCard requested) throws AssetNotFoundException {
+    public Asset takeAsset(Asset requested) throws AssetOwner.AssetNotFoundException {
         if(!cards.contains(requested)) {
-            throw AssetNotFoundException;
+            throw new AssetNotFoundException(this , requested);
         } 
         propertyCards.remove(requested);
         cards.remove(requested);
@@ -134,11 +138,11 @@ public class Player implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException {
-        if(!this.cards.contains(requested.getCards())) {
-            throw AssetNotFoundException;
+    public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException {
+        if(!this.cards.containsAll(requested.getCards())) {
+            throw new AssetNotFoundException(this,requested);
         }
-        this.cards.remove(requested.getCards());
+        this.cards.removeAll(requested.getCards());
         return requested;
     }
     
@@ -151,12 +155,12 @@ public class Player implements AssetOwner {
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public MoneyAsset takeAsset(MoneyAsset requested) throws AssetNotFoundException {
+    public MoneyAsset takeAsset(MoneyAsset requested) throws AssetOwner.AssetNotFoundException {
         if(this.balance >= requested.getMoney() && requested.getMoney() > 0) 
             this.balance -= requested.getMoney();
         else 
             throw new AssetNotFoundException(this, requested);
-        return moneyAsset;
+        return requested;
     }
     
     /**
