@@ -28,7 +28,10 @@ public class Player implements AssetOwner {
     ArrayList<PotLuckCard> potLuckCards;
 
 
-    public Player(String name , int position , int balance){
+    /**
+     * 
+     */
+    public Player(String name, int position , int balance){
         this.name = name;
         this.position = position;
         this.balance = balance;

@@ -77,29 +77,6 @@ public class Bank implements AssetOwner {
     public void giveAsset() {
 
     }
-
-    /**
-     * @author Zenos Pavlakou
-     * 
-     * @param requested 
-     * @return A PropertyCard instance containing the requested card.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
-     */
-    @Override
-    public Asset takeAsset(PropertyCard requested) throws AssetOwner.AssetNotFoundException {
-        if(!cards.containsAll(requested)) {
-            throw new AssetNotFoundException(this ,requested);
-        } 
-//        propertyCards.removeAll(requested.getCards());
-//        cards.remove(requested.getCards());
-        //removeCards(requested.getCards());
-
-        for(Card card : requested.getCards()) {
-            removeCard(card);
-        }
-        return requested;
-    }    
-    
     /**
      * @author Zenos Pavlakou
      * 
@@ -109,29 +86,26 @@ public class Bank implements AssetOwner {
      */
     @Override
     public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException {
-        if(!cards.contains(requested)) {
+        if(!this.cards.containsAll(requested.getCards())) {
             throw new AssetNotFoundException(this,requested);
-        } 
-        potLuckCards.remove(requested);
-        cards.remove(requested);
+        }
+        for (<T extends Card> card : requested.getCards()) {
+            this.removeCard(card);
+        }
         return requested;
     }
 
-    private void removeCard(Card card) {
-
+    private void removeCard(PropertyCard card) {
         this.propertyCards.remove(card);
     }
-
-//    private void removeCards(ArrayList<PropertyCard> cards) {
-//        this.propertyCards.removeAll(cards);
-//    }
-
-//    private void removeCards(ArrayList<PropertyCard> cards) {
-//        propertyCards.removeAll(cards);
-//    }
-
-
-
+    
+    private void removeCard(PotLuckCard card) {
+        this.propertyCards.remove(card);
+    }
+    
+    private void removeCard(OpportunityKnocks card) {
+        this.propertyCards.remove(card);
+    }
     
     /**
      * @author Zenos Pavlakou
