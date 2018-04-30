@@ -24,7 +24,6 @@ public class CardAction {
     enum Type{GAIN,PAY,FORWARD,BACKWARD,STEP,CALCULATE,MULTI,CHOOSE};
     Type type;
     int value;
-    boolean movingForewards;
 
     public CardAction(Type type, int value){
         this.type = type;
