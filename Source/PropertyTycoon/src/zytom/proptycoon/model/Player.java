@@ -100,7 +100,6 @@ public class Player implements AssetOwner {
 
             }
         }
-
     }
 
     /**
@@ -123,6 +122,16 @@ public class Player implements AssetOwner {
         return this.potLuckCards;
     }
 
+    /**
+     * @author Ayman
+     * Copies cards, does not remove.
+     *
+     * @return All the opportunity Knocks cards that this asset owner is in possesion of.
+     */
+    @Override
+    public ArrayList<PotLuckCard> getOpportunityKnocksCards() {
+        return null;
+    }
 
     /**
      * Copies cards, does not remove.

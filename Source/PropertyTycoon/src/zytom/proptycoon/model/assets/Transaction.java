@@ -2,7 +2,6 @@
  * PropertyTycoon Application by Zytom
  */
 package zytom.proptycoon.model.assets;
-import zytom.proptycoon.model.Player;
 /**
  *
  * @author Tom Chesters
