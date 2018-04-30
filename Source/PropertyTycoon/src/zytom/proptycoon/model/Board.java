@@ -20,10 +20,6 @@ public class Board {
     public ArrayList<Cell> initCells() {
         ArrayList<Cell> cells = new ArrayList<>();
 
-
-
-
-
         return cells;
     }
 
