@@ -95,7 +95,6 @@ public class Player implements AssetOwner {
 
             }
         }
-
     }
 
     /**
@@ -113,6 +112,22 @@ public class Player implements AssetOwner {
         return null;
     }
 
+    /**
+     * @author Ayman
+     * Copies cards, does not remove.
+     *
+     * @return All the opportunity Knocks cards that this asset owner is in possesion of.
+     */
+    @Override
+    public ArrayList<PotLuckCard> getOpportunityKnocksCards() {
+        return null;
+    }
+
+    /**
+     * Copies cards, does not remove.
+     *
+     * @return All the property cards that this asset owner is in possesion of.
+     */
     @Override
     public ArrayList<PropertyCard> getPropertyCards() {
         return null;

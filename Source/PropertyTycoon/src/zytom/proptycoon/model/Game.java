@@ -22,16 +22,19 @@ public class Game {
     private static final Bank bank = new Bank();
 
     /**
+     * Initialises Game
      * Creates players if the number of players in between 2-6, if not throw exception.
      * @param players
+     * @param startingPlayer
      * @throws PlayerNumberException
      */
-    public Game(ArrayList<Player> players) throws PlayerNumberException {
+    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException {
         if(1<players.size() || players.size()<7){
             throw new PlayerNumberException(players.size());
         } else {
             this.players = players;
         }
+        currentPlayer = startingPlayer;
     }
 
 
