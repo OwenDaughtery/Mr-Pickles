@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * Creates instaces of all players, board and dice. Stores current players turn.
  */
 public class Game {
-    private Player currentPlayer;
+    private static Player currentPlayer;
     private static final Dice dice = new Dice();
-    private final ArrayList<Player> players;
+    private static  ArrayList<Player> players;
     private static final Board board = new Board();
     private static final Bank bank = new Bank();
 
@@ -42,7 +42,7 @@ public class Game {
      * @author Tom Chesters
      * @return currentPlayer
      */
-    public Player getCurrentPlayer() {
+    public static Player getCurrentPlayer() {
       return currentPlayer;
     }
 
@@ -66,8 +66,18 @@ public class Game {
      * @author Ayman Free
      * @return players
      */
-    public ArrayList<Player> getPlayers() {
+    public static ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    /**
+     * @author Ayman
+     *
+     * sets current player to new current player
+     * @param newCurrentPlayer
+     */
+    public static void setCurrentPlayer(Player newCurrentPlayer) {
+        Game.currentPlayer = newCurrentPlayer;
     }
 
     /**
