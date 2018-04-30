@@ -7,7 +7,6 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
 
 /**
- *
  * @author Tom Chesters
  */
 public class Player implements AssetOwner {
@@ -26,8 +25,9 @@ public class Player implements AssetOwner {
         this.position = 0;
         this.assetCollection = new AssetCollection(INITIAL_BALANCE);
     }
-    
+
     /**
+     * @return The name of the player.
      * @author Zenos
      * @return The name of the player.
      */
@@ -37,26 +37,51 @@ public class Player implements AssetOwner {
 
     /**
      * @author Zenos
-     * @return the position of the player
      */
-    public int getPosition(){
+    public int getPosition() {
         return this.position;
     }
 
     /**
-     * @author Zenos
+     *
+     * @author Zenos + Ayman
      * @param numberOfSpaces
      */
-    public void move(int numberOfSpaces){
+    public void move(int numberOfSpaces) {
+        int currentPosition = this.position;
         this.position = (this.position + numberOfSpaces) % 40;
+        if (numberOfSpaces > 0 && position < currentPosition) {
+            try {
+                Bank bank = Game.getBank();
+                (new Transaction(bank, this, new MoneyAsset(200),
+                        new MoneyAsset(0))).settleTransaction();
+            } catch (AssetNotFoundException ex) {
+
+            }
+
+        }
     }
-
-
+    
     /**
-     * 
+     *
+     * @author Ayman
+     * @param position
+     * @param movingForewards
      */
-    public void moveTo(int position, boolean movingForewards){
-        
+    public void moveTo(int position, boolean movingForewards) throws AssetNotFoundException {
+        int currentPosition = this.position;
+        this.position = position;
+
+        if (movingForewards == true && position < currentPosition) {
+            try {
+                Bank bank = Game.getBank();
+                (new Transaction(bank, this, new MoneyAsset(200),
+                        new MoneyAsset(0))).settleTransaction();
+            } catch (AssetNotFoundException ex) {
+
+
+            }
+        }
     }
     
     /**
@@ -65,6 +90,11 @@ public class Player implements AssetOwner {
     @Override
     public AssetCollection getAssetCollection() {
         return this.assetCollection;
+    }
+
+    @Override
+    public ArrayList<PotLuckCard> getPotLuckCards() {
+        return null;
     }
 
     /**

@@ -24,7 +24,6 @@ public class CardAction {
     enum Type{GAIN,PAY,FORWARD,BACKWARD,STEP,CALCULATE,MULTI,CHOOSE};
     Type type;
     int value;
-    boolean movingForewards;
 
     public CardAction(Type type, int value){
         this.type = type;
@@ -111,7 +110,7 @@ public class CardAction {
      * @param player
      * @param space
      */
-    private void moveForward(Player player, int space){
+    private void moveForward(Player player, int space) throws AssetNotFoundException {
         player.moveTo(space,true);
     }
 
@@ -121,7 +120,7 @@ public class CardAction {
      * @param player
      * @param space
      */
-    private void moveBackwards(Player player, int space){
+    private void moveBackwards(Player player, int space) throws AssetNotFoundException {
         player.moveTo(space,false);
     }
 
@@ -136,6 +135,7 @@ public class CardAction {
     }
 
     public void execute(){
+
         
     }
 }
