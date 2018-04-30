@@ -15,15 +15,19 @@ import static zytom.proptycoon.model.assets.AssetOwner.*;
 
 /**
  *
- * @author Tom Chesters
+ * @author Ayman Free
+ *
+ * Has all methods that can be made by PotLuck and Opertunity Knocks cards.
+ * Execute will call relevent methods to implement
  */
 public class CardAction {
-    enum type{};
+    enum Type{GAIN,PAY,FORWARD,BACKWARD,STEP,CALCULATE,MULTI,CHOOSE};
+    Type type;
     int value;
-    boolean movingForewards;
 
-    public CardAction(enum type, int value){
-
+    public CardAction(Type type, int value){
+        this.type = type;
+        this.value = value;
 
     }
 
@@ -34,7 +38,7 @@ public class CardAction {
      * @param player
      * @param value
      */
-    public void payPlayer(Bank bank , Player player , int value){
+    private void payPlayer(Bank bank , Player player , int value){
         try {
             (new Transaction(bank,player,new MoneyAsset(value),
                     new MoneyAsset(0))).settleTransaction();
@@ -51,7 +55,7 @@ public class CardAction {
      * @param player
      * @param value
      */
-    public void payBank(Bank bank , Player player , int value) throws AssetNotFoundException{
+    private void payBank(Bank bank , Player player , int value) throws AssetNotFoundException{
         Asset bankAsset = new MoneyAsset(0);
         Asset playerAsset = new MoneyAsset(value);
         try {
@@ -70,7 +74,7 @@ public class CardAction {
      * @param player
      * @param value
      */
-    public void payFreeParking(FreeParking freeParking , Player player , int value) throws AssetNotFoundException {
+    private void payFreeParking(FreeParking freeParking , Player player , int value) throws AssetNotFoundException {
         Asset freeParkingAsset = new MoneyAsset(0);
         Asset playerAsset = new MoneyAsset(value);
         try {
@@ -88,7 +92,7 @@ public class CardAction {
      * @param player2
      * @param value
      */
-    public void playerPayPlayer(Player player1 , Player player2 , int value) throws AssetNotFoundException {
+    private void playerPayPlayer(Player player1 , Player player2 , int value) throws AssetNotFoundException {
 
         Asset player1Asset = new MoneyAsset(0);
         Asset player2Asset = new MoneyAsset(value);
@@ -100,4 +104,38 @@ public class CardAction {
         }
     }
 
+    /**
+     * @author Ayman Free
+     * Move player forward to space
+     * @param player
+     * @param space
+     */
+    private void moveForward(Player player, int space){
+        player.moveTo(space,true);
+    }
+
+    /**
+     * @author Ayman Free
+     * Move player backwards to space
+     * @param player
+     * @param space
+     */
+    private void moveBackwards(Player player, int space){
+        player.moveTo(space,false);
+    }
+
+    /**
+     * @author Ayman Free
+     * Move player backwards a specified number of spaces
+     * @param player
+     * @param space
+     */
+    private void stepBack(Player player, int space){
+        player.move(space);
+    }
+
+    public void execute(){
+
+        
+    }
 }
