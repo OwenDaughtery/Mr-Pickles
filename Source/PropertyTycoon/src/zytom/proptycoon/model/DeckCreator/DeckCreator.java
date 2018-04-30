@@ -10,14 +10,9 @@ import java.util.Scanner;
  * @author Zenos
  */
 public class DeckCreator {
-    private static String nameOfCSV;
 
-    public DeckCreator(String nameOfCSV) {
-        this.nameOfCSV = nameOfCSV;
-        initDeck();
-    }
 
-    public static ArrayList<String[]> initDeck() {
+    public static ArrayList<String[]> initDeck(String nameOfCSV) {
         ArrayList<String[]> deck = new ArrayList<>();
         String[] currentParams = new String[3];
         int index = 0;
