@@ -1,100 +1,107 @@
 package zytom.proptycoon.model;
 
-
-import zytom.proptycoon.model.assets.Asset;
-import zytom.proptycoon.model.assets.AssetOwner;
-import zytom.proptycoon.model.assets.CardsAsset;
-import zytom.proptycoon.model.assets.MoneyAsset;
-import zytom.proptycoon.model.card.Card;
-import zytom.proptycoon.model.card.PotLuckCard;
-import zytom.proptycoon.model.card.PropertyCard;
-
 import java.util.ArrayList;
+import zytom.proptycoon.model.assets.AssetCollection;
+import zytom.proptycoon.model.assets.AssetOwner;
 
 public class FreeParking implements AssetOwner {
-    int balance;
 
-    public FreeParking(){
+    public static final int INITIAL_BALANCE = 0;
+    AssetCollection assetCollection;
 
+    public FreeParking() {
+        assetCollection = new AssetCollection(INITIAL_BALANCE);
     }
 
     /**
-     * @return The amount of money this asset owner is in possesion of.
+     * @return All the assets that this asset owner is in possesion of.
      */
     @Override
-    public int getBalance() {
-        return this.balance;
+    public AssetCollection getAssetCollection() {
+        return this.assetCollection;
     }
 
     /**
-     * Copies cards, does not remove.
+     * Remove the contents of the specified money asset from this asset owner
+     * and return them within the asset instance.
      *
-     * @return All the cards that this asset owner is in possesion of.
-     */
-    @Override
-    public ArrayList<Card> getCards() {
-        return null;
-    }
-
-    /**
-     * Copies cards, does not remove.
-     *
-     * @return All the pot luck cards that this asset owner is in possesion of.
-     */
-    @Override
-    public ArrayList<PotLuckCard> getPotLuckCards() {
-        return null;
-    }
-
-    /**
-     * Copies cards, does not remove.
-     *
-     * @return All the property cards that this asset owner is in possesion of.
-     */
-    @Override
-    public ArrayList<PropertyCard> getPropertyCards() {
-        return null;
-    }
-
-    /**
-     * Copies cards, does not remove.
-     *
-     * @return All the property cards that this asset owner is in possesion of.
-     */
-
-    @Override
-    public void giveAsset(CardsAsset giving) {
-        return;
-    }
-
-    /**
-     * Remove the contents of the specified asset
-     * from this asset owner and return them within
-     * the asset instance.
-     *
-     * @param requested The asset to look for in this asset owner.
+     * @param requested The asset collection to look for in this asset owner.
      * @return An asset instance containing the requested contents.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     * @throws AssetNotFoundException If requested asset contents cannot be
+     * found in this asset owner.
      */
     @Override
-    public MoneyAsset takeAsset(MoneyAsset requested) throws AssetOwner.AssetNotFoundException {
-        if(this.balance >= requested.getMoney() && requested.getMoney() > 0)
-            this.balance -= requested.getMoney();
-        else
-            throw new AssetNotFoundException(this, requested);
+    public AssetCollection takeAssetCollection(AssetCollection requested) throws AssetNotFoundException {
+        //Remove requested potluck cards. (Throw exception if not found).
+        if (this.assetCollection.getPotLuckCards().containsAll(requested.getPotLuckCards())) {
+            this.assetCollection.getPotLuckCards().removeAll(requested.getPotLuckCards());
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+
+        //Remove requested opportunityknocks cards. (Throw exception if not found).
+        if (this.assetCollection.getOpportunityKnocksCards().containsAll(requested.getOpportunityKnocksCards())) {
+            this.assetCollection.getOpportunityKnocksCards().removeAll(requested.getOpportunityKnocksCards());
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+
+        //Remove requested street property cards. (Throw exception if not found).
+        if (this.assetCollection.getStreetPropertyCards().containsAll(requested.getStreetPropertyCards())) {
+            this.assetCollection.getStreetPropertyCards().removeAll(requested.getStreetPropertyCards());
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+
+        //Remove requested station property cards. (Throw exception if not found).
+        if (this.assetCollection.getStationPropertyCards().containsAll(requested.getStationPropertyCards())) {
+            this.assetCollection.getStationPropertyCards().removeAll(requested.getStationPropertyCards());
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+
+        //Remove requested utility property cards. (Throw exception if not found).
+        if (this.assetCollection.getUtilityPropertyCards().containsAll(requested.getUtilityPropertyCards())) {
+            this.assetCollection.getUtilityPropertyCards().removeAll(requested.getUtilityPropertyCards());
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+
+        //Remove requested money. (Throw exception if not found).
+        if (this.assetCollection.getMoney() >= requested.getMoney()) {
+            this.assetCollection.setMoney(
+                    this.assetCollection.getMoney() - requested.getMoney()
+            );
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+
+        //Return the requested AssetCollection.
         return requested;
     }
-    
-    @Override
-    public void giveAsset(MoneyAsset giving) {this.balance +=giving.getMoney();}
 
+    /**
+     * Append the contents of the specified asset collection to the asset
+     * owner's asset collection.
+     *
+     * @param giving
+     */
     @Override
-    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException {
-        return null;
+    public void giveAssetCollection(AssetCollection giving)
+            throws AssetOwner.CannotAcceptAssetException {
+        if (giving.getPotLuckCards().size() > 0)
+            throw new CannotAcceptAssetException(this, giving);
+        if (giving.getOpportunityKnocksCards().size() > 0)
+            throw new CannotAcceptAssetException(this, giving);
+        if (giving.getStreetPropertyCards().size() > 0)
+            throw new CannotAcceptAssetException(this, giving);
+        if (giving.getStationPropertyCards().size() > 0)
+            throw new CannotAcceptAssetException(this, giving);
+        if (giving.getUtilityPropertyCards().size() > 0)
+            throw new CannotAcceptAssetException(this, giving);
+        this.assetCollection.setMoney(
+                this.assetCollection.getMoney() + giving.getMoney()
+        );
     }
 
-
 }
-
-
-

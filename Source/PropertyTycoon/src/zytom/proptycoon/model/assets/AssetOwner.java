@@ -3,11 +3,6 @@
  */
 package zytom.proptycoon.model.assets;
 
-import java.util.ArrayList;
-import zytom.proptycoon.model.card.Card;
-import zytom.proptycoon.model.card.PotLuckCard;
-import zytom.proptycoon.model.card.PropertyCard;
-
 /**
  * An entity that can own assets and therefor can
  * take part in transactions.
@@ -31,16 +26,17 @@ public interface AssetOwner {
      * @return An asset collection containing the requested contents.
      */
     public AssetCollection takeAssetCollection(AssetCollection requested) 
-            throws AssetOwner.AssetNotFoundException;
+            throws AssetNotFoundException;
     
     
     /**
      * Append the contents of the specified asset collection
      * to the asset owner's asset collection.
      * @param giving 
+     * @throws CannotAcceptAssetException 
      */
-    @Override
-    public void giveAssetCollection(AssetCollection giving);
+    public void giveAssetCollection(AssetCollection giving)
+            throws CannotAcceptAssetException;
    
     /**
      * An exception to be thrown if an asset is trying to be taken
@@ -74,5 +70,33 @@ public interface AssetOwner {
         }
     }
     
+    public static class CannotAcceptAssetException extends Exception {
+        /**
+         * Generate the exception message.
+         * @param receiver The asset owner that was receiving an asset 
+         * collection.
+         * @param receiving The asset collection that was being received.
+         */
+        public CannotAcceptAssetException(
+                AssetOwner receiver, 
+                AssetCollection receiving
+        ) {
+            super (
+                    "Asset collection cannot be accepted by " +
+                            receiver.toString() +
+                            ": \n" + receiving.toString()
+            );
+        }
+        /**
+         * Gets the message containing details of the requested asset
+         * contents.
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
 
 }

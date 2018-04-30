@@ -13,10 +13,11 @@ import zytom.proptycoon.model.card.UtilityPropertyCard;
  * @author Max Pattman
  */
 public class Bank implements AssetOwner {
+
     public static final int INITIAL_BALANCE = 50000;
-    
-    AssetCollection assetCollection;
-    
+
+    private final AssetCollection assetCollection;
+
     /**
      * @author Zenos Pavlakou
      * @param potLuckCards
@@ -31,8 +32,8 @@ public class Bank implements AssetOwner {
             ArrayList<StreetPropertyCard> streetPropertyCards,
             ArrayList<StationPropertyCard> stationPropertyCards,
             ArrayList<UtilityPropertyCard> utilityPropertyCards
-    ){
-        this.assetCollection = new AssetCollection (
+    ) {
+        this.assetCollection = new AssetCollection(
                 potLuckCards,
                 opportunityKnocksCards,
                 streetPropertyCards,
@@ -41,7 +42,7 @@ public class Bank implements AssetOwner {
         );
         this.assetCollection.setMoney(INITIAL_BALANCE);
     }
-    
+
     /**
      * @return All the assets that this asset owner is in possesion of.
      */
@@ -51,54 +52,72 @@ public class Bank implements AssetOwner {
     }
 
     /**
-     * Remove the contents of the specified money asset
-     * from this asset owner and return them within
-     * the asset instance.
+     * Remove the contents of the specified money asset from this asset owner
+     * and return them within the asset instance.
      *
      * @param requested The asset collection to look for in this asset owner.
      * @return An asset instance containing the requested contents.
-     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     * @throws AssetNotFoundException If requested asset contents cannot be
+     * found in this asset owner.
      */
     @Override
     public AssetCollection takeAssetCollection(AssetCollection requested) throws AssetNotFoundException {
         //Remove requested potluck cards. (Throw exception if not found).
-        if (this.assetCollection.getPotLuckCards().containsAll(requested.getPotLuckCards()))
+        if (this.assetCollection.getPotLuckCards().containsAll(requested.getPotLuckCards())) {
             this.assetCollection.getPotLuckCards().removeAll(requested.getPotLuckCards());
-        else
+        } else {
             throw new AssetOwner.AssetNotFoundException(this, requested);
-        
+        }
+
         //Remove requested opportunityknocks cards. (Throw exception if not found).
-        if (this.assetCollection.getOpportunityKnocksCards().containsAll(requested.getOpportunityKnocksCards()))
+        if (this.assetCollection.getOpportunityKnocksCards().containsAll(requested.getOpportunityKnocksCards())) {
             this.assetCollection.getOpportunityKnocksCards().removeAll(requested.getOpportunityKnocksCards());
-        else
+        } else {
             throw new AssetOwner.AssetNotFoundException(this, requested);
-       
+        }
+
         //Remove requested street property cards. (Throw exception if not found).
-        if (this.assetCollection.getStreetPropertyCards().containsAll(requested.getStreetPropertyCards()))
+        if (this.assetCollection.getStreetPropertyCards().containsAll(requested.getStreetPropertyCards())) {
             this.assetCollection.getStreetPropertyCards().removeAll(requested.getStreetPropertyCards());
-        else
+        } else {
             throw new AssetOwner.AssetNotFoundException(this, requested);
-        
+        }
+
         //Remove requested station property cards. (Throw exception if not found).
-        if (this.assetCollection.getStationPropertyCards().containsAll(requested.getStationPropertyCards()))
+        if (this.assetCollection.getStationPropertyCards().containsAll(requested.getStationPropertyCards())) {
             this.assetCollection.getStationPropertyCards().removeAll(requested.getStationPropertyCards());
-        else
+        } else {
             throw new AssetOwner.AssetNotFoundException(this, requested);
-        
+        }
+
         //Remove requested utility property cards. (Throw exception if not found).
-        if (this.assetCollection.getUtilityPropertyCards().containsAll(requested.getUtilityPropertyCards()))
+        if (this.assetCollection.getUtilityPropertyCards().containsAll(requested.getUtilityPropertyCards())) {
             this.assetCollection.getUtilityPropertyCards().removeAll(requested.getUtilityPropertyCards());
-        else
+        } else {
             throw new AssetOwner.AssetNotFoundException(this, requested);
-        
+        }
+
+        //Bank never gains or loses money.
+        /*
+        //Remove requested money. (Throw exception if not found).
+        if (this.assetCollection.getMoney() >= requested.getMoney()) {
+            this.assetCollection.setMoney(
+                    this.assetCollection.getMoney() - requested.getMoney()
+            );
+        } else {
+            throw new AssetOwner.AssetNotFoundException(this, requested);
+        }
+        */
+
         //Return the requested AssetCollection.
         return requested;
     }
-    
+
     /**
-     * Append the contents of the specified asset collection
-     * to the asset owner's asset collection.
-     * @param giving 
+     * Append the contents of the specified asset collection to the asset
+     * owner's asset collection.
+     *
+     * @param giving
      */
     @Override
     public void giveAssetCollection(AssetCollection giving) {
@@ -117,5 +136,9 @@ public class Bank implements AssetOwner {
         this.assetCollection.getUtilityPropertyCards().addAll(
                 giving.getUtilityPropertyCards()
         );
+        //Bank never gains or loses money.
+        /*this.assetCollection.setMoney(
+                this.assetCollection.getMoney() + giving.getMoney()
+        );*/
     }
 }

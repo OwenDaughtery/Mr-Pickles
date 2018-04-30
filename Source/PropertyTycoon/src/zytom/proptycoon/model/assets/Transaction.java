@@ -2,7 +2,6 @@
  * PropertyTycoon Application by Zytom
  */
 package zytom.proptycoon.model.assets;
-import zytom.proptycoon.model.Player;
 /**
  *
  * @author Tom Chesters
@@ -12,7 +11,6 @@ public class Transaction {
     private final AssetOwner secondaryOwner;
     private final AssetCollection giving;
     private final AssetCollection receiving;
-
 
     /**
      * @author Zenos Pavlakou
