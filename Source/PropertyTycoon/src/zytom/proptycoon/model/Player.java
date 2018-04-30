@@ -3,26 +3,28 @@
  */
 package zytom.proptycoon.model;
 
-import zytom.proptycoon.model.assets.Asset;
 import zytom.proptycoon.model.assets.AssetOwner;
-import zytom.proptycoon.model.assets.CardsAsset;
 import zytom.proptycoon.model.assets.MoneyAsset;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.PropertyCard;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import zytom.proptycoon.model.assets.AssetCollection;
 
 /**
  *
  * @author Tom Chesters
  */
 public class Player implements AssetOwner {
+    public static final int INITIAL_BALANCE = 1500;
 
-    String name ;
+    String name;
     int position;
-    int balance ;
+    
+    AssetCollection assetCollection;
+    
+    int balance;
     ArrayList<Card> cards;
     ArrayList<PropertyCard> propertyCards;
     ArrayList<PotLuckCard> potLuckCards;
@@ -31,13 +33,10 @@ public class Player implements AssetOwner {
     /**
      * 
      */
-    public Player(String name, int position , int balance){
+    public Player(String name, int position){
         this.name = name;
         this.position = position;
-        this.balance = balance;
-        this.cards = new ArrayList<>();
-        this.propertyCards = new ArrayList<>();
-        this.potLuckCards = new ArrayList<>();
+        this.assetCollection = new AssetCollection(INITIAL_BALANCE);
     }
     
     /**
