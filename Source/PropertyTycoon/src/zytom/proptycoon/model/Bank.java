@@ -13,11 +13,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
+import zytom.proptycoon.model.assets.CardAsset;
 
 /**
  * @author Max Pattman
  */
-public class Bank implements AssetOwner {
+public class Bank<A extends Asset> implements AssetOwner {
 
     ArrayList<PropertyCard> propertyCards;
     Queue<PotLuckCard> potLuckCards;
@@ -56,18 +57,37 @@ public class Bank implements AssetOwner {
 
     /**
      * Copies cards, does not remove.
-     *
      * @return All the pot luck cards that this asset owner is in possesion of.
      */
     @Override
     public ArrayList<PotLuckCard> getPotLuckCards() {
-        ArrayList<PotLuckCard> potLuckCardsnew = new ArrayList<PotLuckCard>();
-        potLuckCardsnew.addAll(this.potLuckCards);
-        return potLuckCardsnew;
+        ArrayList<PotLuckCard> cards = new ArrayList<>();
+        cards.addAll(this.potLuckCards);
+        return cards;
+    }
+    
+    /**
+     * Copies cards, does not remove.
+     * @return All the pot luck cards that this asset owner is in possesion of.
+     */
+    @Override
+    public ArrayList<OpportunityKnocksCard> getOpportunityKnocksCards() {
+        ArrayList<OpportunityKnocksCard> cards = new ArrayList<>();
+        cards.addAll(this.opportunityKnocksCards);
+        return cards;
+    }
+    
+    /**
+     * Copies cards, does not remove.
+     * @return All the property cards that this asset owner is in possesion of.
+     */
+    @Override
+    public ArrayList<PropertyCard> getPropertyCards() {
+        return new ArrayList<>(this.propertyCards);
     }
 
     /**
-     * Remove the contents of the specified asset
+     * Remove the contents of the specified money asset
      * from this asset owner and return them within
      * the asset instance.
      *
@@ -77,69 +97,26 @@ public class Bank implements AssetOwner {
      */
     @Override
     public Asset takeAsset(MoneyAsset requested) throws AssetNotFoundException {
-        //Bank has infinate money
-        MoneyAsset newMoneyAsset = new MoneyAsset(requested.getMoney());
-        return newMoneyAsset;
+        return new MoneyAsset(
+                requested.getMoney()
+        );
     }
-
+    
     /**
-     * Copies cards, does not remove.
+     * Remove the contents of the specified cards asset
+     * from this asset owner and return them within
+     * the asset instance.
      *
-     * @return All the property cards that this asset owner is in possesion of.
-     */
-    @Override
-    public ArrayList<PropertyCard> getPropertyCards() {
-        return this.propertyCards;
-    }
-
-
-    @Override
-    public void giveAsset() {
-
-    }
-    /**
-     * @author Zenos Pavlakou
-     * 
-     * @param requested 
-     * @return A PotLuckCard instance containing the requested card.
+     * @param requested The asset to look for in this asset owner.
+     * @return An asset instance containing the requested contents.
      * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
      */
     @Override
-    public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException {
-        if(!this.cards.containsAll(requested.getCards())) {
-            throw new AssetNotFoundException(this,requested);
+    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException {
+        for (CardAsset cardAsset : requested.getCardAssets()) {
+            
         }
-        for (<T extends Card> card : requested.getCards()) {
-            this.removeCard(card);
-        }
-        return requested;
     }
 
-    private void removeCard(PropertyCard card) {
-        this.propertyCards.remove(card);
-    }
-    
-    private void removeCard(PotLuckCard card) {
-        this.propertyCards.remove(card);
-    }
-    
-    private void removeCard(OpportunityKnocks card) {
-        this.propertyCards.remove(card);
-    }
-    
-    /**
-     * @author Zenos Pavlakou
-     * 
-     * @param money The amount of money that will be taken from the player 
-     * @return An instance of a MoneyAsset.
-     * 
-     * Parameter has been changed here as I could not see any other way of creating a MoneyAsset instance
-     * because the MoneyAssset constructor takes an integer as a parameter
-     * 
-     * No need for the method to throw the AssetNotFoundException as the bank has unlimited money
-     */
-    @Override
-    public Asset takeAsset(int money) {
-        return new MoneyAsset(money);
-    }
+
 }

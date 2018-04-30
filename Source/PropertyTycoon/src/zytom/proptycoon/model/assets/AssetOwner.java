@@ -13,8 +13,9 @@ import zytom.proptycoon.model.card.PropertyCard;
  * take part in transactions.
  * (Players and the bank).
  * @author Tom Chesters
+ * @param <A>
  */
-public interface AssetOwner {
+public interface AssetOwner<A extends Asset> {
     /**
      * @return The amount of money this asset owner is in possesion of.
      */
@@ -31,6 +32,13 @@ public interface AssetOwner {
      * @return All the pot luck cards that this asset owner is in possesion of.
      */
     public ArrayList<PotLuckCard> getPotLuckCards();
+    
+    
+    /**
+     * Copies cards, does not remove.
+     * @return All the pot luck cards that this asset owner is in possesion of.
+     */
+    public ArrayList<PotLuckCard> getOpportunityKnocksCards();
 
     /**
      * Copies cards, does not remove.
@@ -39,7 +47,7 @@ public interface AssetOwner {
     public ArrayList<PropertyCard> getPropertyCards();
 
     /**
-     * Remove the contents of the specified asset 
+     * Remove the contents of the specified money asset 
      * from this asset owner and return them within
      * the asset instance.
      * @param requested The asset to look for in this asset owner.
@@ -47,11 +55,16 @@ public interface AssetOwner {
      * @return An asset instance containing the requested contents.
      */
     public Asset takeAsset(MoneyAsset requested) throws AssetOwner.AssetNotFoundException;
-
-    public Asset takeAsset(CardsAsset requested) throws AssetNotFoundException;
-
-    public void giveAsset(CardsAsset giving) ;
-    public void giveAsset(MoneyAsset giving);
+   
+    /**
+     * Remove the contents of the specified cards asset 
+     * from this asset owner and return them within
+     * the asset instance.
+     * @param requested The asset to look for in this asset owner.
+     * @throws AssetNotFoundException If requested asset contents cannot be found in this asset owner.
+     * @return An asset instance containing the requested contents.
+     */
+    public Asset takeAsset(CardsAsset requested) throws AssetOwner.AssetNotFoundException;
 
     /**
      * An exception to be thrown if an asset is trying to be taken
@@ -60,6 +73,7 @@ public interface AssetOwner {
     public static class AssetNotFoundException extends Exception {
         /**
          * Generate the exception message.
+         * @param giver The asset owner that was attempting to give an asset.
          * @param requested The asset that was requested.
          */
         public AssetNotFoundException(AssetOwner giver, Asset requested) {
