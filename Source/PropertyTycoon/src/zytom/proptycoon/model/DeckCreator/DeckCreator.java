@@ -15,7 +15,7 @@ public class DeckCreator {
         ArrayList<String[]> deck = new ArrayList<>();
         String[] currentParams = new String[3];
         int index = 0;
-        String path = "zytom/proptycoon/model/src/Resources/" + nameOfCSV; //path may need fixing
+        String path = "./" + nameOfCSV; //path may need fixing
         File file = new File(path);
         try{
             Scanner inputStream = new Scanner(file);
@@ -35,5 +35,9 @@ public class DeckCreator {
         Collections.shuffle(deck);
         return deck;
     }
-
+    
+    public static void main(String[] args) {
+        DeckCreator.initDeck("PotLuck.csv");
+    }
 }
+
