@@ -5,7 +5,7 @@ import zytom.proptycoon.model.cell.Cell;
 
 import java.util.ArrayList;
 
-public class Board {
+public final class Board {
     ArrayList<Cell> cells = new ArrayList<>();
 
     public Board(){
@@ -23,10 +23,13 @@ public class Board {
         return cells;
     }
 
+    /**
+     * @author Zenos Pavlakou
+     * @return The first cell in the ArrayList of cells. 
+     */
     public Cell getGoCell(){
-
-
-
+        //not completely sure this is correct.
+        return this.cells.get(0);
     }
 
 }
