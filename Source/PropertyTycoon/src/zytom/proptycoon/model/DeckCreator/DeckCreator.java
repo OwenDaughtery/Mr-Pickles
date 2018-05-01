@@ -37,7 +37,10 @@ public class DeckCreator {
                 index = 0;
             }
         }
-        Collections.shuffle(deck);
+        //Only shuffle PotLuck cards and OpportunityKnocks cards.
+        if("PotLuck.csv".equals(nameOfCSV) || "OpportunityKnocks.csv".equals(nameOfCSV)) {
+            Collections.shuffle(deck);
+        }
         return deck;
         
         
