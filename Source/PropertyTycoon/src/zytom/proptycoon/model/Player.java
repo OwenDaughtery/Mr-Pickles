@@ -58,8 +58,8 @@ public class Player implements AssetOwner {
         if (numberOfSpaces > 0 && position < currentPosition) {
             try {
                 Bank bank = Game.getBank();
-                (new Transaction(bank, this, new MoneyAsset(200),
-                        new MoneyAsset(0))).settleTransaction();
+                (new Transaction(bank, this, new AssetCollection(200),
+                        new AssetCollection(0))).settleTransaction();
             } catch (AssetNotFoundException ex) {
 
             }
@@ -80,8 +80,8 @@ public class Player implements AssetOwner {
         if (movingForewards == true && position < currentPosition) {
             try {
                 Bank bank = Game.getBank();
-                (new Transaction(bank, this, new MoneyAsset(200),
-                        new MoneyAsset(0))).settleTransaction();
+                (new Transaction(bank, this, new AssetCollection(200),
+                        new AssetCollection(0))).settleTransaction();
             } catch (AssetNotFoundException ex) {
 
 
