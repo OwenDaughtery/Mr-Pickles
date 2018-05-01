@@ -35,9 +35,5 @@ public class DeckCreator {
         Collections.shuffle(deck);
         return deck;
     }
-    
-    public static void main(String[] args) {
-        DeckCreator.initDeck("PotLuck.csv");
-    }
 }
 

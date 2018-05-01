@@ -2,6 +2,10 @@
  * PropertyTycoon Application by Zytom
  */
 package zytom.proptycoon.model.assets;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Tom Chesters
@@ -51,10 +55,18 @@ public class Transaction {
         } catch(AssetOwner.AssetNotFoundException ex) {
             throw ex;
         }
-        //Give primary asset owner the asset taken from secondary.
-        this.primaryOwner.giveAssetCollection(takenFromSecondary);
-        //And vice-versa.
-        this.secondaryOwner.giveAssetCollection(takenFromPrimary);
+        try {
+            //Give primary asset owner the asset taken from secondary.
+            this.primaryOwner.giveAssetCollection(takenFromSecondary);
+        } catch (AssetOwner.CannotAcceptAssetException ex) {
+            Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            //And vice-versa.
+            this.secondaryOwner.giveAssetCollection(takenFromPrimary);
+        } catch (AssetOwner.CannotAcceptAssetException ex) {
+            Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
