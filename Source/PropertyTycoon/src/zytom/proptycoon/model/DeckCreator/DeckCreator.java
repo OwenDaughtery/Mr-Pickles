@@ -35,5 +35,5 @@ public class DeckCreator {
         Collections.shuffle(deck);
         return deck;
     }
-}
+} 
 
