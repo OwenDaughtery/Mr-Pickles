@@ -41,9 +41,7 @@ public class DeckCreator {
         if("PotLuck.csv".equals(nameOfCSV) || "OpportunityKnocks.csv".equals(nameOfCSV)) {
             Collections.shuffle(deck);
         }
-        return deck;
-        
-        
+        return deck; 
     }
 } 
 

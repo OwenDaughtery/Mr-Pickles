@@ -9,7 +9,7 @@ package zytom.proptycoon.model.cell;
  */
 public abstract class Cell {
     
-    private String title;
+    private final String title;
     
     /**
      * @author Zenos Pavlakou
