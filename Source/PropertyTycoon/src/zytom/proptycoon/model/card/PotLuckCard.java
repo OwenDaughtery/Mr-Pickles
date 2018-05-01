@@ -9,4 +9,8 @@ package zytom.proptycoon.model.card;
  */
 public class PotLuckCard extends ActionCard {
     
+    public PotLuckCard(String description, CardAction action) {
+        super(description, action);
+    }
+    
 }
