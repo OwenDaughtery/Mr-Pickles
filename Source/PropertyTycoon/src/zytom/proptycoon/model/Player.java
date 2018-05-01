@@ -5,6 +5,10 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
+import zytom.proptycoon.model.assets.Transaction;
+import zytom.proptycoon.model.card.PotLuckCard;
+
+import java.util.ArrayList;
 
 /**
  * @author Tom Chesters
@@ -12,6 +16,7 @@ import zytom.proptycoon.model.assets.AssetCollection;
 public class Player implements AssetOwner {
     public static final int INITIAL_BALANCE = 1500;
 
+    private int turnsInJail = 0;
     private final String name;
     private int position;
     private final AssetCollection assetCollection;
@@ -53,8 +58,8 @@ public class Player implements AssetOwner {
         if (numberOfSpaces > 0 && position < currentPosition) {
             try {
                 Bank bank = Game.getBank();
-                (new Transaction(bank, this, new MoneyAsset(200),
-                        new MoneyAsset(0))).settleTransaction();
+                (new Transaction(bank, this, new AssetCollection(200),
+                        new AssetCollection(0))).settleTransaction();
             } catch (AssetNotFoundException ex) {
 
             }
@@ -75,8 +80,8 @@ public class Player implements AssetOwner {
         if (movingForewards == true && position < currentPosition) {
             try {
                 Bank bank = Game.getBank();
-                (new Transaction(bank, this, new MoneyAsset(200),
-                        new MoneyAsset(0))).settleTransaction();
+                (new Transaction(bank, this, new AssetCollection(200),
+                        new AssetCollection(0))).settleTransaction();
             } catch (AssetNotFoundException ex) {
 
 
@@ -95,6 +100,23 @@ public class Player implements AssetOwner {
     @Override
     public ArrayList<PotLuckCard> getPotLuckCards() {
         return null;
+    }
+
+    /**
+     * @author ayman
+     *
+     * @return turnsInJail
+     */
+    public int getTurnsInJail() {
+        return turnsInJail;
+    }
+
+    /**
+     * @author ayman
+     * @param turnsInJail
+     */
+    public void setTurnsInJail(int turnsInJail) {
+        this.turnsInJail = turnsInJail;
     }
 
     /**
