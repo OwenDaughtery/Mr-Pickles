@@ -12,17 +12,17 @@ import java.util.Scanner;
 public class DeckCreator {
     
     /**
-     * Method creates an ArrayList of length 3 String arryas, each index of the String
-     * array cointains the first, second and third feature of each row in the csv file
-     * i.e. description, action and value. 
+     * Method creates an ArrayList of String arrays to collect the data in the csv files
+     * for all card types. 
      * 
      * @param nameOfCSV The name of the csv document containing the data of the cards.
+     * @param columnsToRead The number of features
      * @return The ArrayList of String arrays if the csv file can be found. 
      * @throws java.io.FileNotFoundException 
      */
-    public static ArrayList<String[]> initDeck(String nameOfCSV) throws FileNotFoundException {
+    public static ArrayList<String[]> initDeck(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
         ArrayList<String[]> deck = new ArrayList<>();
-        String[] currentParams = new String[3];
+        String[] currentParams = new String[columnsToRead];
         int index = 0;
         String path = "./" + nameOfCSV; //path may need fixing
         File file = new File(path);
@@ -31,9 +31,9 @@ public class DeckCreator {
         while(inputStream.hasNext()) {
             currentParams[index] = inputStream.next();
             index++;
-            if(index == 3) {
+            if(index == columnsToRead) {
                 deck.add(currentParams);
-                currentParams = new String[3];
+                currentParams = new String[columnsToRead];
                 index = 0;
             }
         }
