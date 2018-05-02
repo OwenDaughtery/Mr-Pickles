@@ -12,8 +12,8 @@ import java.util.Random;
 public class Dice {
     private int firstValue;
     private int secondValue;
-    private static final int high = 6;
-    private static final int low = 1;
+    private static final int HIGH = 6;
+    private static final int LOW = 1;
 
     public Dice() {
         //assert that values are between 1-6
@@ -31,7 +31,7 @@ public class Dice {
 
     public void roll() {
         Random r = new Random();
-        this.firstValue = r.nextInt(high - low) + low;
-        this.secondValue = r.nextInt(high - low) + low;
+        this.firstValue = r.nextInt(HIGH - LOW) + LOW;
+        this.secondValue = r.nextInt(HIGH - LOW) + LOW;
     }
 }

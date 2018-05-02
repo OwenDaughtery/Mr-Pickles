@@ -3,8 +3,6 @@
  */
 package zytom.proptycoon.model.card;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Tom Chesters
