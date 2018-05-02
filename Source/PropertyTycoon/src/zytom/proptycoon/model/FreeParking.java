@@ -1,6 +1,5 @@
 package zytom.proptycoon.model;
 
-import java.util.ArrayList;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 

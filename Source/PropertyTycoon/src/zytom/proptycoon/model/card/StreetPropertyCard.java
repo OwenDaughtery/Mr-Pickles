@@ -34,6 +34,7 @@ public class StreetPropertyCard extends PropertyCard {
     /**
      * @author Ayman
      * @author Tom
+     * @param cell
      * @return the relevent rent that is needed to be paid for this property.
      */
     public int getRent(StreetPropertyCell cell) {
@@ -56,6 +57,8 @@ public class StreetPropertyCard extends PropertyCard {
     public int getBuildCost() {
         return this.buildCost;
     }
+    
+ 
 
     @Override
     public String toString() {

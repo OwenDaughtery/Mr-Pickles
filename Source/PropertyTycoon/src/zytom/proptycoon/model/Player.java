@@ -6,11 +6,8 @@ package zytom.proptycoon.model;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
-import zytom.proptycoon.model.card.*;
 import zytom.proptycoon.model.cell.GoCell;
-import zytom.proptycoon.model.cell.StreetPropertyCell;
 
-import java.util.ArrayList;
 
 /**
  * @author Tom Chesters
@@ -67,7 +64,7 @@ public class Player implements AssetOwner {
      * @author Ayman
      * @param position
      * @param movingForewards
-     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
+     * @param bank
      */
     public void moveTo(int position, boolean movingForewards, Bank bank){
         int currentPosition = this.position;
@@ -92,7 +89,7 @@ public class Player implements AssetOwner {
         } catch (AssetNotFoundException ex) {
             //There will be no exception.
             //So do nothing.
-            ;
+           
         }
     }
     

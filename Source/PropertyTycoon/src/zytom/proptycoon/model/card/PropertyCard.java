@@ -25,6 +25,9 @@ public abstract class PropertyCard extends Card {
         return (int)(MORTGAGE_PROPORTION * (double)price);
     }
 
+    public int getPrice() {
+        return this.price;
+    }
 
     @Override
     public String toString(){
@@ -33,5 +36,5 @@ public abstract class PropertyCard extends Card {
                 "Property Price : "+ this.price + "\n"+
                 "Morgage Value : " + this.getMortgageValue() + "\n";
         return info;
-}
+    }
 }
