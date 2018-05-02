@@ -10,23 +10,22 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
  */
 public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
-    private final int houseCost;
-    private final int hotelCost;
+    private final int buildCost;
     private final int cellRef;
 
     /**
      *
      * @param rentCost
-     * @param houseCost
-     * @param hotelCost
+     * @param title
+     * @param price
      * @param cellRef
+     * @param buildCost
      */
     public StreetPropertyCard(int cellRef, String title, int price, int[] rentCost,
-             int houseCost, int hotelCost) {
+             int buildCost) {
         super(cellRef, title, price);
         this.rentCost = rentCost;
-        this.houseCost = houseCost;
-        this.hotelCost = hotelCost;
+        this.buildCost = buildCost;
         this.cellRef = cellRef;
 
     }
@@ -53,11 +52,7 @@ public class StreetPropertyCard extends PropertyCard {
 
     }
 
-    public int getHouseCost() {
-        return houseCost;
-    }
-
-    public int getHotelCost() {
-        return hotelCost;
+    public int getBuildCost() {
+        return this.buildCost;
     }
 }

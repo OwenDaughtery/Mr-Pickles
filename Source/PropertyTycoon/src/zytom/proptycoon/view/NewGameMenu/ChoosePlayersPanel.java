@@ -3,17 +3,30 @@
  */
 package zytom.proptycoon.view.NewGameMenu;
 
+import java.io.IOException;
+import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenLabel;
+
 /**
  *
  * @author utopia
  */
 public class ChoosePlayersPanel extends javax.swing.JPanel {
-
+    
+    private final TokenLabel[] tokenLabels;
+    
     /**
      * Creates new form ChoosePlayersPanel
+     * @throws java.io.IOException
      */
-    public ChoosePlayersPanel() {
+    public ChoosePlayersPanel() throws IOException {
         initComponents();
+        tokenLabels = new TokenLabel[6];
+        tokenLabels[0] = new TokenLabel(TokenLabel.TokenType.BOOT);
+        tokenLabels[1] = new TokenLabel(TokenLabel.TokenType.SMARTPHONE);
+        tokenLabels[2] = new TokenLabel(TokenLabel.TokenType.GOBLET);
+        tokenLabels[3] = new TokenLabel(TokenLabel.TokenType.HATSTAND);
+        tokenLabels[4] = new TokenLabel(TokenLabel.TokenType.CAT);
+        tokenLabels[5] = new TokenLabel(TokenLabel.TokenType.SPOON);
     }
 
     /**
@@ -32,10 +45,88 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
         chosenTokenPanel4 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
         chosenTokenPanel5 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
         chosenTokenPanel6 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
+        tokenPanel1 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        tokenPanel2 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        tokenPanel3 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        tokenPanel4 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        tokenPanel5 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        tokenPanel6 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
 
         ChoosePLayersLabel.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         ChoosePLayersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChoosePLayersLabel.setText("Choose Players...");
+
+        tokenPanel1.setMinimumSize(new java.awt.Dimension(64, 64));
+        tokenPanel1.setPreferredSize(new java.awt.Dimension(64, 64));
+
+        javax.swing.GroupLayout tokenPanel1Layout = new javax.swing.GroupLayout(tokenPanel1);
+        tokenPanel1.setLayout(tokenPanel1Layout);
+        tokenPanel1Layout.setHorizontalGroup(
+            tokenPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        tokenPanel1Layout.setVerticalGroup(
+            tokenPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        tokenPanel2.setMinimumSize(new java.awt.Dimension(64, 64));
+        tokenPanel2.setPreferredSize(new java.awt.Dimension(64, 64));
+
+        javax.swing.GroupLayout tokenPanel2Layout = new javax.swing.GroupLayout(tokenPanel2);
+        tokenPanel2.setLayout(tokenPanel2Layout);
+        tokenPanel2Layout.setHorizontalGroup(
+            tokenPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        tokenPanel2Layout.setVerticalGroup(
+            tokenPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout tokenPanel3Layout = new javax.swing.GroupLayout(tokenPanel3);
+        tokenPanel3.setLayout(tokenPanel3Layout);
+        tokenPanel3Layout.setHorizontalGroup(
+            tokenPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        tokenPanel3Layout.setVerticalGroup(
+            tokenPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout tokenPanel4Layout = new javax.swing.GroupLayout(tokenPanel4);
+        tokenPanel4.setLayout(tokenPanel4Layout);
+        tokenPanel4Layout.setHorizontalGroup(
+            tokenPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        tokenPanel4Layout.setVerticalGroup(
+            tokenPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout tokenPanel5Layout = new javax.swing.GroupLayout(tokenPanel5);
+        tokenPanel5.setLayout(tokenPanel5Layout);
+        tokenPanel5Layout.setHorizontalGroup(
+            tokenPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        tokenPanel5Layout.setVerticalGroup(
+            tokenPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout tokenPanel6Layout = new javax.swing.GroupLayout(tokenPanel6);
+        tokenPanel6.setLayout(tokenPanel6Layout);
+        tokenPanel6Layout.setHorizontalGroup(
+            tokenPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        tokenPanel6Layout.setVerticalGroup(
+            tokenPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -43,22 +134,38 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(chosenTokenPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tokenPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chosenTokenPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(ChoosePLayersLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(chosenTokenPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chosenTokenPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chosenTokenPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tokenPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tokenPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chosenTokenPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chosenTokenPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chosenTokenPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chosenTokenPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chosenTokenPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chosenTokenPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chosenTokenPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tokenPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tokenPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(tokenPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -74,7 +181,15 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
                     .addComponent(chosenTokenPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chosenTokenPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chosenTokenPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tokenPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tokenPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tokenPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tokenPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tokenPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tokenPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -87,5 +202,11 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
     private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel4;
     private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel5;
     private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel6;
+    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel1;
+    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel2;
+    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel3;
+    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel4;
+    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel5;
+    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel6;
     // End of variables declaration//GEN-END:variables
 }
