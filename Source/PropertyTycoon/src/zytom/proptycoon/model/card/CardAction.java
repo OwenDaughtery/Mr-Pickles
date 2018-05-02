@@ -137,8 +137,8 @@ public class CardAction {
      * @param player
      * @param space
      */
-    private void moveForward(Player player, int space) throws AssetNotFoundException {
-        player.moveTo(space,true);
+    private void moveForward(Player player, int space, Bank bank) throws AssetNotFoundException {
+        player.moveTo(space,true,bank);
     }
 
     /**
@@ -147,8 +147,8 @@ public class CardAction {
      * @param player
      * @param space
      */
-    private void moveBackwards(Player player, int space) throws AssetNotFoundException {
-        player.moveTo(space,false);
+    private void moveBackwards(Player player, int space, Bank bank) throws AssetNotFoundException {
+        player.moveTo(space,false,bank);
     }
 
     /**
@@ -157,8 +157,8 @@ public class CardAction {
      * @param player
      * @param space
      */
-    private void stepBack(Player player, int space){
-        player.move(space);
+    private void stepBack(Player player, int space, Bank bank){
+        player.move(space,bank);
     }
 
     public void execute(){

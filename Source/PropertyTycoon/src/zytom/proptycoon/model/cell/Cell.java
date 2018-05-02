@@ -10,7 +10,6 @@ package zytom.proptycoon.model.cell;
 public abstract class Cell {
     
     private final String title;
-
     
     /**
      * @author Zenos Pavlakou
@@ -19,7 +18,6 @@ public abstract class Cell {
      */
     public Cell(String title) {
         this.title = title;
-
     }
     
     /**
@@ -29,14 +27,5 @@ public abstract class Cell {
      */
     public String getTitle() {
         return this.title;
-    }
-    
-
-
-    @Override
-    public String toString(){
-        String info  = "Cell Title : "+ getTitle() +"\n";
-
-        return info;
     }
 }

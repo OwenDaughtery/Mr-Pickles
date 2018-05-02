@@ -5,6 +5,9 @@ package zytom.proptycoon.model.assets;
 import java.util.ArrayList;
 
 import zytom.proptycoon.model.card.*;
+import zytom.proptycoon.model.cell.Cell;
+import zytom.proptycoon.model.cell.PropertyCell;
+import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 /**
  *
@@ -71,6 +74,16 @@ public class AssetCollection {
     
     public void setMoney(int value) {
         this.money = value;
+    }
+
+    public int calculateValue(){
+        int value = money;
+        for (StreetPropertyCard s:streetPropertyCards) {
+            value +=s.getPrice();
+            StreetPropertyCell cell = (StreetPropertyCell) s.getCellRef();
+            value += cell.getNumberOfHouses()*s.getBuildCost();
+        }
+        return value;
     }
 
     @Override
