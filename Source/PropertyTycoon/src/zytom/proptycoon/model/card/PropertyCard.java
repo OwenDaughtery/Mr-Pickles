@@ -21,5 +21,11 @@ public abstract class PropertyCard extends Card {
     
     public int getMortgageValue() {
         return (int)(MORTGAGE_PROPORTION * (double)price);
-    } 
+    }
+
+
+    @Override
+    public String toString(){
+        String info = "CELL Reference "
+    }
 }

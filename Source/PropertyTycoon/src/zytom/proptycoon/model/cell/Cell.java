@@ -34,4 +34,11 @@ public abstract class Cell {
     public int getIndex() {
         return this.index;
     }
+
+    @Override
+    public String toString(){
+        String info  = "Cell Title : "+ getTitle() +"\n"+
+                        "Cell Index :" + getIndex()+ "\n";
+        return info;
+    }
 }

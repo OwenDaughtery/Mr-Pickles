@@ -216,41 +216,7 @@ public class Player implements AssetOwner {
                 "Cash : " + this.getAssetCollection().getMoney() + "\n";
 
 
-        String stationprops = "STATION PROPERTIES : " + "\n\n";
-
-        for (PropertyCard p :
-                this.getAssetCollection().getStationPropertyCards()) {
-            String current = "Station Name : " + p.getTitle() + "\n" +
-                    "Mortgage Value : " + p.getMortgageValue() + '\n';
-            stationprops += current;
-        }
-
-        String utilitiesprops = "UTILITIES PROPERTIES : " + "\n\n";
-
-        for (UtilityPropertyCard p :
-                this.getAssetCollection().getUtilityPropertyCards()) {
-            String current = "Utility Name : " + p.getTitle() + "\n" +
-                    "Mortgage Value : " + p.getMortgageValue() + '\n';
-            utilitiesprops += current;
-        }
-
-        String streetprops = "STREET PROPERTIES : " + "\n\n";
-
-        for (StreetPropertyCard p :
-                this.getAssetCollection().getStreetPropertyCards()) {
-            String current = "Street Name : " + p.getTitle() + "\n" +
-                    "MortgageValue : " + p.getMortgageValue() + '\n' +
-                    "Price for Building House : " + p.getHouseCost() + "\n" +
-                    "Price for Building Hotel : " + p.getHotelCost() + "\n";
-
-            streetprops += current;
-        }
-
-        info += stationprops;
-        info += utilitiesprops;
-        info += streetprops;
-
         return info;
-        
+
     }
 }

@@ -39,5 +39,11 @@ public abstract class PropertyCell extends Cell {
     public PropertyCard getAssociatedCard() {
         return this.associatedCard;
     }
+
+    @Override
+    public String toString(){
+       String info = super.toString();
+       info += "Associated Card Information : " + getAssociatedCard().toString()+"\n";
+    }
     
 }

@@ -3,11 +3,8 @@
  */
 package zytom.proptycoon.model.assets;
 import java.util.ArrayList;
-import zytom.proptycoon.model.card.OpportunityKnocksCard;
-import zytom.proptycoon.model.card.PotLuckCard;
-import zytom.proptycoon.model.card.StationPropertyCard;
-import zytom.proptycoon.model.card.StreetPropertyCard;
-import zytom.proptycoon.model.card.UtilityPropertyCard;
+
+import zytom.proptycoon.model.card.*;
 
 /**
  *
@@ -74,5 +71,46 @@ public class AssetCollection {
     
     public void setMoney(int value) {
         this.money = value;
+    }
+
+    @Override
+    public String toString(){
+
+        String info  = "ASSET COLLECTION :" + "\n"+
+                        "CASH BALANCE : " + this.getMoney() + "\n";
+
+        String stationprops = "STATION PROPERTIES : " + "\n\n";
+
+        for (PropertyCard p :
+                this.getStationPropertyCards()) {
+            String current = "Station Name : " + p.getTitle() + "\n" +
+                    "Mortgage Value : " + p.getMortgageValue() + '\n';
+            stationprops += current;
+        }
+
+        String utilitiesprops = "UTILITIES PROPERTIES : " + "\n\n";
+
+        for (UtilityPropertyCard p :
+                this.getUtilityPropertyCards()) {
+            String current = "Utility Name : " + p.getTitle() + "\n" +
+                    "Mortgage Value : " + p.getMortgageValue() + '\n';
+            utilitiesprops += current;
+        }
+
+        String streetprops = "STREET PROPERTIES : " + "\n\n";
+
+        for (StreetPropertyCard p :
+                this.getStreetPropertyCards()) {
+            String current = "Street Name : " + p.getTitle() + "\n" +
+                    "MortgageValue : " + p.getMortgageValue() + '\n' +
+                    "Price for Building House : " + p.getHouseCost() + "\n" +
+                    "Price for Building Hotel : " + p.getHotelCost() + "\n";
+            streetprops += current;
+        }
+        info += stationprops;
+        info += utilitiesprops;
+        info += streetprops;
+
+        return info;
     }
 }
