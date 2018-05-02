@@ -12,7 +12,6 @@ import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
-import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StationPropertyCell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
@@ -193,9 +192,9 @@ public class DeckCreator {
                 if("UTILITIES".equals(data[1])) {
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
-                    //int cellRef = Integer.parseInt(data[0]);
                     UtilityPropertyCell cellRef = (UtilityPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     UtilityPropertyCard utilityPropertyCard = new UtilityPropertyCard(cellRef, title, buyPrice, 4, 10);
+                    cellRef.setAssociatedCard(utilityPropertyCard);
                     this.utilityPropertyCardDeck.add(utilityPropertyCard);
                 }
             }
@@ -234,6 +233,7 @@ public class DeckCreator {
                     int buyPrice = Integer.parseInt(data[3]);
                     StationPropertyCell cellRef = (StationPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     StationPropertyCard stationPropertyCard = new StationPropertyCard(cellRef, title, buyPrice, rentPrices);
+                    cellRef.setAssociatedCard(stationPropertyCard);
                     this.stationPropertyCardDeck.add(stationPropertyCard);
                 }
             }
@@ -276,6 +276,7 @@ public class DeckCreator {
                     this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses
                     this.rentPrices[5] = Integer.parseInt(data[9]); //hotel
                     StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice);
+                    cellRef.setAssociatedCard(streetPropertyCard);
                     this.streetPropertyCardDeck.add(streetPropertyCard);
                 }
             }
