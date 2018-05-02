@@ -8,12 +8,15 @@ import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.cell.GoCell;
 
+import java.util.ArrayList;
+
 /**
  * @author Tom Chesters
  */
 public class Player implements AssetOwner {
     public static final int INITIAL_BALANCE = 1500;
 
+    private int turnsInJail = 0;
     private final String name;
     private int position;
     private final AssetCollection assetCollection;
@@ -98,6 +101,23 @@ public class Player implements AssetOwner {
         return this.assetCollection;
     }
     
+    /**
+     * @author ayman
+     *
+     * @return turnsInJail
+     */
+    public int getTurnsInJail() {
+        return turnsInJail;
+    }
+
+    /**
+     * @author ayman
+     * @param turnsInJail
+     */
+    public void setTurnsInJail(int turnsInJail) {
+        this.turnsInJail = turnsInJail;
+    }
+
     /**
      * Remove the contents of the specified money asset from this asset owner
      * and return them within the asset instance.
