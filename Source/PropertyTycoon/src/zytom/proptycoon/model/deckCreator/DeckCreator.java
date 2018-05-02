@@ -5,12 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.card.CardAction;
 import zytom.proptycoon.model.card.OpportunityKnocksCard;
 import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
+import zytom.proptycoon.model.cell.Cell;
 
 
 /**
@@ -18,7 +20,12 @@ import zytom.proptycoon.model.card.UtilityPropertyCard;
  */
 public class DeckCreator {
     
-
+    private final Board board;
+    
+    public DeckCreator(Board board) {
+        this.board = board;
+    }
+    
     /**
      * @return An ArrayList representation of the PotLuckCard deck.
      * @throws FileNotFoundException 
@@ -44,10 +51,11 @@ public class DeckCreator {
     /**
      * @return An ArrayList representation of the UtilityPropertyCard deck.
      * @throws FileNotFoundException 
+     * @throws zytom.proptycoon.model.Board.CellNotFoundException 
      */
-    public ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException {
+    public ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
         ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
-        UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData);
+        UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
     
@@ -56,9 +64,9 @@ public class DeckCreator {
      * @return An ArrayList representation of the StationPropertyCard deck.
      * @throws FileNotFoundException 
      */
-    public ArrayList<StationPropertyCard> createStationPropertyCardDeck() throws FileNotFoundException {
+    public ArrayList<StationPropertyCard> createStationPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
         ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
-        StationPropertyCardDeck deck = new StationPropertyCardDeck(deckData);
+        StationPropertyCardDeck deck = new StationPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
     
@@ -67,9 +75,9 @@ public class DeckCreator {
      * @return An ArrayList representation of the StreetPropertyCard deck. 
      * @throws FileNotFoundException 
      */
-    public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck() throws FileNotFoundException {
+    public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException  {
         ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
-        StreetPropertyCardDeck deck = new StreetPropertyCardDeck(deckData);
+        StreetPropertyCardDeck deck = new StreetPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
     
@@ -176,13 +184,14 @@ public class DeckCreator {
         
         private final ArrayList<UtilityPropertyCard> utilityPropertyCardDeck;
         
-        private UtilityPropertyCardDeck(ArrayList<String[]> deckData) {
+        private UtilityPropertyCardDeck(ArrayList<String[]> deckData, Board board) throws Board.CellNotFoundException {
             this.utilityPropertyCardDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 if("UTILITIES".equals(data[1])) {
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
-                    int cellRef = Integer.parseInt(data[0]);
+                    //int cellRef = Integer.parseInt(data[0]);
+                    Cell cellRef = board.getCell(Integer.parseInt(data[0]));
                     UtilityPropertyCard utilityPropertyCard = new UtilityPropertyCard(cellRef, title, buyPrice, 4, 10);
                     this.utilityPropertyCardDeck.add(utilityPropertyCard);
                 }
@@ -207,7 +216,7 @@ public class DeckCreator {
         private final ArrayList<StationPropertyCard> stationPropertyCardDeck;
         int[] rentPrices = new int[4];
         
-        private StationPropertyCardDeck(ArrayList<String[]> deckData) {
+        private StationPropertyCardDeck(ArrayList<String[]> deckData, Board board) throws Board.CellNotFoundException {
             
             this.stationPropertyCardDeck = new ArrayList<>();
             
@@ -220,7 +229,7 @@ public class DeckCreator {
                 if("STATION".equals(data[1])){
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
-                    int cellRef = Integer.parseInt(data[0]);
+                    Cell cellRef = board.getCell(Integer.parseInt(data[0]));
                     StationPropertyCard stationPropertyCard = new StationPropertyCard(cellRef, title, buyPrice, rentPrices);
                     this.stationPropertyCardDeck.add(stationPropertyCard);
                 }
@@ -245,7 +254,7 @@ public class DeckCreator {
         private final ArrayList<StreetPropertyCard> streetPropertyCardDeck;
         int[] rentPrices = new int[6];
         
-        private StreetPropertyCardDeck(ArrayList<String[]> deckData) {
+        private StreetPropertyCardDeck(ArrayList<String[]> deckData, Board board) throws Board.CellNotFoundException {
             streetPropertyCardDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 String colour = data[1];
@@ -253,7 +262,7 @@ public class DeckCreator {
                         "PURPLE".equals(colour) || "ORANGE".equals(colour) ||
                         "RED".equals(colour) || "YELLOW".equals(colour) ||
                         "GREEN".equals(colour) || "DEEP BLUE".equals(colour)) {
-                    int cellRef = Integer.parseInt(data[0]);
+                    Cell cellRef = board.getCell(Integer.parseInt(data[0]));
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
                     int buildPrice = Integer.parseInt(data[10]);

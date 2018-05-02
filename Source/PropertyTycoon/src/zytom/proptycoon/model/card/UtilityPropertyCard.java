@@ -3,6 +3,8 @@
  */
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.cell.Cell;
+
 /**
  *
  * @author utopia
@@ -11,7 +13,7 @@ public class UtilityPropertyCard extends PropertyCard {
     private final int rentMultiplierOnSingle;
     private final int rentMultiplierOnPair;
     
-    public UtilityPropertyCard(int cellRef, String title, int price, int rentMultiplierOnSingle,
+    public UtilityPropertyCard(Cell cellRef, String title, int price, int rentMultiplierOnSingle,
             int rentMultiplierOnPair) {
         super(cellRef, title, price);
         this.rentMultiplierOnSingle = rentMultiplierOnSingle;
