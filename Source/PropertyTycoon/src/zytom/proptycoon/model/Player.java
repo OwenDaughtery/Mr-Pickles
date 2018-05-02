@@ -212,8 +212,7 @@ public class Player implements AssetOwner {
     public String toString() {
         String info = "Player Name : " + this.name + "\n" +
                 "PLayer Position : " + this.position + "\n" +
-                "Players Current Assets : \n" +
-                "Cash : " + this.getAssetCollection().getMoney() + "\n";
+                "Players Current Assets : " + this.getAssetCollection().toString() + "\n";
 
 
         return info;

@@ -14,7 +14,7 @@ public class UtilityPropertyCard extends PropertyCard {
     private final int rentMultiplierOnPair;
     
     public UtilityPropertyCard(Cell cellRef, String title, int price, int rentMultiplierOnSingle,
-            int rentMultiplierOnPair) {
+                               int rentMultiplierOnPair) {
         super(cellRef, title, price);
         this.rentMultiplierOnSingle = rentMultiplierOnSingle;
         this.rentMultiplierOnPair = rentMultiplierOnPair;
@@ -24,5 +24,6 @@ public class UtilityPropertyCard extends PropertyCard {
         //TODO
         return 0;
     }
+
     
 }

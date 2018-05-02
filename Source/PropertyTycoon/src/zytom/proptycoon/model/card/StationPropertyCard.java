@@ -10,4 +10,12 @@ public class StationPropertyCard extends PropertyCard {
         super(cellRef, title, price);
         this.rentCost = rentCost;
     }
+
+    @Override
+    public String toString(){
+        String info = super.toString();
+        info+= "Rent Costs: "+ rentCost.toString() + "\n" ;
+        return info;
+    }
+
 }
