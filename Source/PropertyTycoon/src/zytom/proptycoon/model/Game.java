@@ -5,9 +5,11 @@ package zytom.proptycoon.model;
 
 //import zytom.proptycoon.model.assets.Asset; //no longer a class
 //import zytom.proptycoon.model.assets.AssetOwner; //not used
-
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import zytom.proptycoon.model.DeckCreator.DeckCreator;
 
 /**
  *
@@ -16,43 +18,66 @@ import java.util.ArrayList;
  * Creates instaces of all players, board and dice. Stores current players turn.
  */
 public class Game {
-    
-    private static Player currentPlayer;
-    private static final Dice dice = new Dice();
-    private static  ArrayList<Player> players;
-    private static final Board board = new Board();
-    private static final Bank bank = new Bank(); //TODO
+
+    private ArrayList<Player> players;
+    private Player currentPlayer;
+    private final Bank bank;
+    private final Board board;
+    private final Dice dice;
 
     /**
-     * Initialises Game
-     * Creates players if the number of players in between 2-6, if not throw exception.
+     * Initialises Game Creates players if the number of players in between 2-6,
+     * if not throw exception.
+     *
      * @param players
      * @param startingPlayer
      * @throws PlayerNumberException
+     * @throws java.io.FileNotFoundException
      */
-    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException {
-        if(1<players.size() || players.size()>6){
+    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException {
+        //Check number of players is valid.
+        if (1 < players.size() || players.size() > 6) {
             throw new PlayerNumberException(players.size());
         } else {
-            Game.players = players;
+            this.players = players;
         }
         currentPlayer = startingPlayer;
+        
+        //Create Bank and read card decks into it.
+        DeckCreator deckCreator = new DeckCreator();
+        try {
+            bank = new Bank(
+                    deckCreator.createPotLuckDeck(),
+                    deckCreator.createOpportunityKnocksDeck(),
+                    deckCreator.createStreetPropertyCardDeck(),
+                    deckCreator.createStationPropertyCardDeck(),
+                    deckCreator.createUtilityPropertyCardDeck()
+            );
+        } catch (FileNotFoundException ex) {
+            throw ex;
+        }
+        
+        //Initialise board.
+        //TODO initialise cells.
+        board = new Board();
+        
+        //Initialise dice.
+        dice = new Dice();
     }
-
 
     /**
      * @author Tom Chesters
      * @return currentPlayer
      */
-    public static Player getCurrentPlayer() {
-      return currentPlayer;
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     /**
      * @author Tom Chesters
      * @return dice
      */
-    public static Dice getDice() {
+    public Dice getDice() {
         return dice;
     }
 
@@ -60,7 +85,7 @@ public class Game {
      * @author Ayman Free
      * @return board
      */
-    public static Board getBoard() {
+    public Board getBoard() {
         return board;
     }
 
@@ -68,7 +93,7 @@ public class Game {
      * @author Ayman Free
      * @return players
      */
-    public static ArrayList<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
@@ -78,40 +103,43 @@ public class Game {
      * sets current player to new current player
      * @param newCurrentPlayer
      */
-    public static void setCurrentPlayer(Player newCurrentPlayer) {
-        Game.currentPlayer = newCurrentPlayer;
+    public void setCurrentPlayer(Player newCurrentPlayer) {
+        currentPlayer = newCurrentPlayer;
     }
 
     /**
      * @Author Ayman Free
      * @return bank
      */
-    public static Bank getBank() {
-        return bank;  //TODO
+    public Bank getBank() {
+        return bank;
     }
 
     /**
      * An exception to be thrown if playerSize is not between 2-6
      */
     public static class PlayerNumberException extends Exception {
+
         /**
          * Generate the exception message.
+         *
          * @param playersSize The size of array list 'players'.
          */
         public PlayerNumberException(int playersSize) {
-            super (
-                    "player size of  " +
-                            playersSize +
-                            " is not between 2-6"
+            super(
+                    "player size of  "
+                    + playersSize
+                    + " is not between 2-6"
             );
         }
+
         /**
          * Gets the message containing details of the current player size
+         *
          * @return The exception message.
          */
         @Override
-        public String getMessage()
-        {
+        public String getMessage() {
             return super.getMessage();
         }
     }

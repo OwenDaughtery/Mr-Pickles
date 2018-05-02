@@ -1,4 +1,4 @@
-package zytom.proptycoon.model.DeckCreator;
+package zytom.proptycoon.model.deckCreator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +17,7 @@ import zytom.proptycoon.model.card.UtilityPropertyCard;
  * @author Zenos
  */
 public class DeckCreator {
+    
 
     /**
      * @return An ArrayList representation of the PotLuckCard deck.

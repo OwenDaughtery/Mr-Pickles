@@ -9,7 +9,6 @@ public final class Board {
     ArrayList<Cell> cells = new ArrayList<>();
 
     public Board() {
-
         this.cells = initCells();
     }
 

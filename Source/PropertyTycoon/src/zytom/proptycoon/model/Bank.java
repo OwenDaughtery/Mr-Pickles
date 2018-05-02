@@ -1,10 +1,9 @@
 package zytom.proptycoon.model;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import zytom.proptycoon.model.DeckCreator.DeckCreator;
+import zytom.proptycoon.model.deckCreator.DeckCreator;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.PotLuckCard;
@@ -19,30 +18,24 @@ import zytom.proptycoon.model.card.UtilityPropertyCard;
 public class Bank implements AssetOwner {
 
     public static final int INITIAL_BALANCE = 50000;
-    private ArrayList<PotLuckCard> potLuckCards;
-    private ArrayList<OpportunityKnocksCard> opportunityKnocksCards;
-    private ArrayList<StreetPropertyCard> streetPropertyCards;
-    private ArrayList<StationPropertyCard> stationPropertyCards;
-    private ArrayList<UtilityPropertyCard> utilityPropertyCards;
     private final AssetCollection assetCollection;
 
     /**
      * @author Zenos Pavlakou
-
+     * @param potLuckCards
+     * @param opportunityKnocksCards
+     * @param streetPropertyCards
+     * @param stationPropertyCards
+     * @param utilityPropertyCards
+     * 
      */
-    public Bank() throws FileNotFoundException{
-        DeckCreator deckCreator = new DeckCreator();
-
-        this.opportunityKnocksCards = deckCreator.createOpportunityKnocksDeck();
-        this.potLuckCards = deckCreator.createPotLuckDeck();
-        this.streetPropertyCards = deckCreator.createStreetPropertyCardsDeck();
-        this.stationPropertyCards = deckCreator.createStationPropertyCardsDeck();
-        this.utilityPropertyCards = deckCreator.createUtilitiesPropertyCardsDeck();
-
-
-
-
-
+    public Bank (
+            ArrayList<PotLuckCard> potLuckCards,
+            ArrayList<OpportunityKnocksCard> opportunityKnocksCards,
+            ArrayList<StreetPropertyCard> streetPropertyCards,
+            ArrayList<StationPropertyCard> stationPropertyCards,
+            ArrayList<UtilityPropertyCard> utilityPropertyCards
+        ) {
         this.assetCollection = new AssetCollection(
                 potLuckCards,
                 opportunityKnocksCards,
