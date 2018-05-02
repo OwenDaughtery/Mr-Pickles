@@ -13,6 +13,9 @@ import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
 import zytom.proptycoon.model.cell.Cell;
+import zytom.proptycoon.model.cell.StationPropertyCell;
+import zytom.proptycoon.model.cell.StreetPropertyCell;
+import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 
 /**
@@ -191,7 +194,7 @@ public class DeckCreator {
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
                     //int cellRef = Integer.parseInt(data[0]);
-                    Cell cellRef = board.getCell(Integer.parseInt(data[0]));
+                    UtilityPropertyCell cellRef = (UtilityPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     UtilityPropertyCard utilityPropertyCard = new UtilityPropertyCard(cellRef, title, buyPrice, 4, 10);
                     this.utilityPropertyCardDeck.add(utilityPropertyCard);
                 }
@@ -229,7 +232,7 @@ public class DeckCreator {
                 if("STATION".equals(data[1])){
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
-                    Cell cellRef = board.getCell(Integer.parseInt(data[0]));
+                    StationPropertyCell cellRef = (StationPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     StationPropertyCard stationPropertyCard = new StationPropertyCard(cellRef, title, buyPrice, rentPrices);
                     this.stationPropertyCardDeck.add(stationPropertyCard);
                 }
@@ -262,7 +265,7 @@ public class DeckCreator {
                         "PURPLE".equals(colour) || "ORANGE".equals(colour) ||
                         "RED".equals(colour) || "YELLOW".equals(colour) ||
                         "GREEN".equals(colour) || "DEEP BLUE".equals(colour)) {
-                    Cell cellRef = board.getCell(Integer.parseInt(data[0]));
+                    StreetPropertyCell cellRef = (StreetPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
                     int buildPrice = Integer.parseInt(data[10]);
