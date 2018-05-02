@@ -6,7 +6,9 @@ package zytom.proptycoon.model;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
+import zytom.proptycoon.model.card.*;
 import zytom.proptycoon.model.cell.GoCell;
+import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 import java.util.ArrayList;
 
@@ -204,5 +206,17 @@ public class Player implements AssetOwner {
         this.assetCollection.setMoney(
                 this.assetCollection.getMoney() + giving.getMoney()
         );
+    }
+
+    @Override
+    public String toString() {
+        String info = "Player Name : " + this.name + "\n" +
+                "PLayer Position : " + this.position + "\n" +
+                "Players Current Assets : \n" +
+                "Cash : " + this.getAssetCollection().getMoney() + "\n";
+
+
+        return info;
+
     }
 }
