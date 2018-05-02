@@ -9,15 +9,17 @@ package zytom.proptycoon.model.cell;
  */
 public abstract class Cell {
     
-    private String title;
+    private final String title;
+    private final int index;
     
     /**
      * @author Zenos Pavlakou
      * 
      * @param title The title of the cell being created
      */
-    public Cell(String title) {
+    public Cell(String title, int index) {
         this.title = title;
+        this.index = index;
     }
     
     /**
@@ -27,5 +29,9 @@ public abstract class Cell {
      */
     public String getTitle() {
         return this.title;
+    }
+    
+    public int getIndex() {
+        return this.index;
     }
 }

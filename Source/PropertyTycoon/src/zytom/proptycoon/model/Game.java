@@ -3,10 +3,11 @@
  */
 package zytom.proptycoon.model;
 
-import zytom.proptycoon.model.assets.Asset;
-import zytom.proptycoon.model.assets.AssetOwner;
+//import zytom.proptycoon.model.assets.Asset; //no longer a class
+//import zytom.proptycoon.model.assets.AssetOwner; //not used
 
 import java.util.ArrayList;
+
 
 /**
  *
@@ -15,11 +16,12 @@ import java.util.ArrayList;
  * Creates instaces of all players, board and dice. Stores current players turn.
  */
 public class Game {
+    
     private static Player currentPlayer;
     private static final Dice dice = new Dice();
     private static  ArrayList<Player> players;
     private static final Board board = new Board();
-    private static final Bank bank = new Bank();
+    private static final Bank bank = new Bank(); //TODO
 
     /**
      * Initialises Game
@@ -29,10 +31,10 @@ public class Game {
      * @throws PlayerNumberException
      */
     public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException {
-        if(1<players.size() || players.size()<7){
+        if(1<players.size() || players.size()>6){
             throw new PlayerNumberException(players.size());
         } else {
-            this.players = players;
+            Game.players = players;
         }
         currentPlayer = startingPlayer;
     }
@@ -85,7 +87,7 @@ public class Game {
      * @return bank
      */
     public static Bank getBank() {
-        return bank;
+        return bank;  //TODO
     }
 
     /**

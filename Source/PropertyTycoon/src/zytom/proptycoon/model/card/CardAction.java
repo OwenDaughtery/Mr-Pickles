@@ -3,19 +3,21 @@
  */
 package zytom.proptycoon.model.card;
 
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.FreeParking;
 import zytom.proptycoon.model.Player;
-import zytom.proptycoon.model.assets.Asset;
-import zytom.proptycoon.model.assets.AssetOwner;
-import zytom.proptycoon.model.assets.MoneyAsset;
+//import zytom.proptycoon.model.assets.Asset; //Asset no longer exists
+//import zytom.proptycoon.model.assets.MoneyAsset; //MoneyAsset no longer exists
+import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
 
 import static zytom.proptycoon.model.assets.AssetOwner.*;
 
 /**
  *
- * @author Ayman Free
+ * @author Ayman Free, Zenos Pavlakou
  *
  * Has all methods that can be made by PotLuck and Opertunity Knocks cards.
  * Execute will call relevent methods to implement
@@ -25,39 +27,64 @@ public class CardAction {
     Type type;
     int value;
 
-    public CardAction(Type type, int value){
-        this.type = type;
+    public CardAction(String action, int value){
+        
+        switch(action) {
+            case "GAIN":
+                this.type = Type.GAIN;
+                break;
+            case "PAY":
+                this.type = Type.PAY;
+                break;
+            case "FORWARD":
+                this.type = Type.FORWARD;
+                break;
+            case "BACKWARD":
+                this.type = Type.BACKWARD;
+            case "STEP":
+                this.type = Type.STEP;
+                break;
+            case "CALCULATE":
+                this.type = Type.CALCULATE;
+                break;
+            case "MULTI":
+                this.type = Type.MULTI;
+                break;
+            case "CHOOSE":
+                this.type = Type.CHOOSE;
+                break;
+        }
+        
         this.value = value;
-
     }
 
     /**
-     * @author Ayman Free
+     * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
      * function pays the player from the bank
      * @param bank
      * @param player
      * @param value
-     */
+     */    
     private void payPlayer(Bank bank , Player player , int value){
         try {
-            (new Transaction(bank,player,new MoneyAsset(value),
-                    new MoneyAsset(0))).settleTransaction();
+            (new Transaction(bank,player,new AssetCollection(value),
+                   new AssetCollection(0))).settleTransaction();
         } catch (AssetNotFoundException ex) {
-
+          //  Logger.getLogger(Transaction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
     /**
-     * @author Ayman Free
+     * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
      * player pays bank
      * @param bank
      * @param player
      * @param value
      */
     private void payBank(Bank bank , Player player , int value) throws AssetNotFoundException{
-        Asset bankAsset = new MoneyAsset(0);
-        Asset playerAsset = new MoneyAsset(value);
+        AssetCollection bankAsset = new AssetCollection(0);
+        AssetCollection playerAsset = new AssetCollection(value);
         try {
             (new Transaction(bank,player,bankAsset ,
                     playerAsset)).settleTransaction();
@@ -68,15 +95,15 @@ public class CardAction {
 
 
     /**
-     * @author Ayman Free
+     * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
      * player payes free parking fine
      * @param freeParking
      * @param player
      * @param value
      */
     private void payFreeParking(FreeParking freeParking , Player player , int value) throws AssetNotFoundException {
-        Asset freeParkingAsset = new MoneyAsset(0);
-        Asset playerAsset = new MoneyAsset(value);
+        AssetCollection freeParkingAsset = new AssetCollection(0);
+        AssetCollection playerAsset = new AssetCollection(value);
         try {
             (new Transaction(freeParking,player,freeParkingAsset,
                     playerAsset)).settleTransaction();
@@ -86,7 +113,7 @@ public class CardAction {
     }
 
     /**
-     * @author Ayman Free
+     * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
      * Player1 pays player 2.
      * @param player1
      * @param player2
@@ -94,8 +121,8 @@ public class CardAction {
      */
     private void playerPayPlayer(Player player1 , Player player2 , int value) throws AssetNotFoundException {
 
-        Asset player1Asset = new MoneyAsset(0);
-        Asset player2Asset = new MoneyAsset(value);
+        AssetCollection player1Asset = new AssetCollection(0);
+        AssetCollection player2Asset = new AssetCollection(value);
         try {
             (new Transaction(player1,player2,player1Asset ,
                     player2Asset)).settleTransaction();

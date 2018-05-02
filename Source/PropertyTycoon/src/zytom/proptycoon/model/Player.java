@@ -32,8 +32,7 @@ public class Player implements AssetOwner {
     }
 
     /**
-     * @return The name of the player.
-     * @author Zenos
+     * @author Zenos Pavlakou
      * @return The name of the player.
      */
     public String getName() {
@@ -41,7 +40,8 @@ public class Player implements AssetOwner {
     }
 
     /**
-     * @author Zenos
+     * @author Zenos Pavlakou
+     * @return The position of the player
      */
     public int getPosition() {
         return this.position;
@@ -65,6 +65,7 @@ public class Player implements AssetOwner {
      * @author Ayman
      * @param position
      * @param movingForewards
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
     public void moveTo(int position, boolean movingForewards, Bank bank){
         int currentPosition = this.position;
