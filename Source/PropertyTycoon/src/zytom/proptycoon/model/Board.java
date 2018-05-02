@@ -39,6 +39,8 @@ public final class Board {
         return this.cells.get(0);
     }
 
+   
+
     public static class CellNotFoundException extends Exception {
         /**
          * Generate the exception message.

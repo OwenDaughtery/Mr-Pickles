@@ -34,4 +34,6 @@ public class Dice {
         this.firstValue = r.nextInt(HIGH - LOW) + LOW;
         this.secondValue = r.nextInt(HIGH - LOW) + LOW;
     }
+
+
 }

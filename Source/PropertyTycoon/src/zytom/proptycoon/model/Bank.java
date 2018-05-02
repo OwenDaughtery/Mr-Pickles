@@ -144,4 +144,11 @@ public class Bank implements AssetOwner {
                 this.assetCollection.getMoney() + giving.getMoney()
         );*/
     }
+
+    @Override
+    public String toString(){
+        String info = "Bank Information : \n "
+                + this.getAssetCollection().toString();
+        return info;
+    }
 }
