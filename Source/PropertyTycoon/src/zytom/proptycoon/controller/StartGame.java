@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import zytom.proptycoon.model.Game;
 import zytom.proptycoon.model.Player;
@@ -30,7 +31,7 @@ public class StartGame {
 
     int time = 0;
 
-    public StartGame(ArrayList<Player> players, Player startingPlayer) throws Game.PlayerNumberException, AssetOwner.AssetNotFoundException {
+    public StartGame(ArrayList<Player> players, Player startingPlayer) throws Game.PlayerNumberException, AssetOwner.AssetNotFoundException, FileNotFoundException {
         this.game = new Game(players, startingPlayer);
         this.playerTurn = players.indexOf(startingPlayer);
 
@@ -44,10 +45,10 @@ public class StartGame {
     }
 
     public void turn() throws AssetOwner.AssetNotFoundException {
-        Player currentPlayer = Game.getCurrentPlayer();
+        Player currentPlayer = game.getCurrentPlayer();
         if (currentPlayer.getPosition() == 40) {
             if (currentPlayer.getTurnsInJail() > 1) {
-                currentPlayer.moveTo(10, false);
+                currentPlayer.moveTo(10, false,game.getBank());
                 //end Turn Button
             } else{
                 currentPlayer.setTurnsInJail(currentPlayer.getTurnsInJail()+1);
@@ -59,9 +60,9 @@ public class StartGame {
     }
 
     public void landOnCell() throws Board.CellNotFoundException {
-        Player currentPlayer = Game.getCurrentPlayer();
+        Player currentPlayer = game.getCurrentPlayer();
         int cellNumber = currentPlayer.getPosition();
-        Cell currentCell = Game.getBoard().getCell(cellNumber);
+        Cell currentCell = game.getBoard().getCell(cellNumber);
         //Do cell action and button and shit
     }
 
@@ -69,26 +70,30 @@ public class StartGame {
 
     public void retireAction( button){
         button.addActionListener((ActionEvent e) -> {
-            Player currentPlayer = Game.getCurrentPlayer();
-            playerTurn = playerTurn++ % Game.getPlayers().size();
-            Game.setCurrentPlayer(Game.getPlayers().get(playerTurn));
-            Game.getPlayers().remove(currentPlayer);
+            Player currentPlayer = game.getCurrentPlayer();
+            playerTurn = playerTurn++ % game.getPlayers().size();
+            game.setCurrentPlayer(game.getPlayers().get(playerTurn));
+            game.getPlayers().remove(currentPlayer);
             turn();
         });
     }
 
 
     public void rollDiceAction(button) {
-        //Add while loop for doubles and shit.
-        // ActionListener Button 'roll' rolls the dice
         button.addActionListener((ActionEvent e) -> {
-            Player currentPlayer = Game.getCurrentPlayer();
-            Game.getDice().roll();
-            int dice1 = Game.getDice().getFirstValue();
-            int dice2 = Game.getDice().getSecondValue();
+            Player currentPlayer = game.getCurrentPlayer();
+            game.getDice().roll();
+            int dice1 = game.getDice().getFirstValue();
+            int dice2 = game.getDice().getSecondValue();
             int moveAmount = dice1 + dice2;
-            currentPlayer.move(moveAmount);
-
+            if(dice1==dice2){
+                doubles++;
+            }
+            if(doubles==2){
+                currentPlayer.moveTo(40,false,game.getBank());
+            }else {
+                currentPlayer.move(moveAmount, game.getBank());
+            }
             //landOnCell();
 
             ////endTurnButton
@@ -98,10 +103,11 @@ public class StartGame {
 
     public void endTurnAction(button) {
         button.addActionListener((ActionEvent e) -> {
-            if(Game.getDice().getFirstValue()!=Game.getDice().getSecondValue()|| Game.getCurrentPlayer().getPosition()!=40) {
-                playerTurn = playerTurn++ % Game.getPlayers().size();
+            if(game.getDice().getFirstValue()!=game.getDice().getSecondValue()|| game.getCurrentPlayer().getPosition()!=40) {
+                playerTurn = playerTurn++ % game.getPlayers().size();
+                doubles = 0;
             }
-            Game.setCurrentPlayer(Game.getPlayers().get(playerTurn));
+            game.setCurrentPlayer(game.getPlayers().get(playerTurn));
             turn();
         });
     }

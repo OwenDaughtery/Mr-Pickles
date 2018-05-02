@@ -1,10 +1,9 @@
 package zytom.proptycoon.model;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import zytom.proptycoon.model.DeckCreator.DeckCreator;
+import zytom.proptycoon.model.deckCreator.DeckCreator;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.PotLuckCard;
