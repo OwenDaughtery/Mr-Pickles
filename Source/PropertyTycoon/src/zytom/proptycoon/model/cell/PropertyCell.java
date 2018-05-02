@@ -44,6 +44,7 @@ public abstract class PropertyCell extends Cell {
     public String toString(){
        String info = super.toString();
        info += "Associated Card Information : " + getAssociatedCard().toString()+"\n";
+       return info;
     }
     
 }

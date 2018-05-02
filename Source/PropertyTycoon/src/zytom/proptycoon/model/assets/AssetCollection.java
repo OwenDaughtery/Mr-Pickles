@@ -79,33 +79,23 @@ public class AssetCollection {
         String info  = "ASSET COLLECTION :" + "\n"+
                         "CASH BALANCE : " + this.getMoney() + "\n";
 
-        String stationprops = "STATION PROPERTIES : " + "\n\n";
+        String stationprops = "STATION PROPERTIES : " + "\n\n" + "--------------------------\n";
 
         for (PropertyCard p :
                 this.getStationPropertyCards()) {
-            String current = "Station Name : " + p.getTitle() + "\n" +
-                    "Mortgage Value : " + p.getMortgageValue() + '\n';
-            stationprops += current;
+            stationprops += p.toString();
         }
-
-        String utilitiesprops = "UTILITIES PROPERTIES : " + "\n\n";
+        String utilitiesprops = "UTILITIES PROPERTIES : " + "\n\n"+ "--------------------------\n";
 
         for (UtilityPropertyCard p :
                 this.getUtilityPropertyCards()) {
-            String current = "Utility Name : " + p.getTitle() + "\n" +
-                    "Mortgage Value : " + p.getMortgageValue() + '\n';
-            utilitiesprops += current;
+            utilitiesprops += p.toString();
         }
-
-        String streetprops = "STREET PROPERTIES : " + "\n\n";
+        String streetprops = "STREET PROPERTIES : " + "\n\n"+ "--------------------------\n";
 
         for (StreetPropertyCard p :
                 this.getStreetPropertyCards()) {
-            String current = "Street Name : " + p.getTitle() + "\n" +
-                    "MortgageValue : " + p.getMortgageValue() + '\n' +
-                    "Price for Building House : " + p.getHouseCost() + "\n" +
-                    "Price for Building Hotel : " + p.getHotelCost() + "\n";
-            streetprops += current;
+            streetprops += p.toString();
         }
         info += stationprops;
         info += utilitiesprops;

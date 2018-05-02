@@ -10,16 +10,16 @@ package zytom.proptycoon.model.cell;
 public abstract class Cell {
     
     private final String title;
-    private final int index;
+
     
     /**
      * @author Zenos Pavlakou
      * 
      * @param title The title of the cell being created
      */
-    public Cell(String title, int index) {
+    public Cell(String title) {
         this.title = title;
-        this.index = index;
+
     }
     
     /**
@@ -31,14 +31,12 @@ public abstract class Cell {
         return this.title;
     }
     
-    public int getIndex() {
-        return this.index;
-    }
+
 
     @Override
     public String toString(){
-        String info  = "Cell Title : "+ getTitle() +"\n"+
-                        "Cell Index :" + getIndex()+ "\n";
+        String info  = "Cell Title : "+ getTitle() +"\n";
+
         return info;
     }
 }
