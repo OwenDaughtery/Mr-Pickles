@@ -79,16 +79,20 @@ public class StartGame {
 
 
     public void rollDiceAction(button) {
-        //Add while loop for doubles and shit.
-        // ActionListener Button 'roll' rolls the dice
         button.addActionListener((ActionEvent e) -> {
             Player currentPlayer = Game.getCurrentPlayer();
             Game.getDice().roll();
             int dice1 = Game.getDice().getFirstValue();
             int dice2 = Game.getDice().getSecondValue();
             int moveAmount = dice1 + dice2;
-            currentPlayer.move(moveAmount);
-
+            if(dice1==dice2){
+                doubles++;
+            }
+            if(doubles==2){
+                currentPlayer.moveTo(40,false,Game.getBank());
+            }else {
+                currentPlayer.move(moveAmount, Game.getBank());
+            }
             //landOnCell();
 
             ////endTurnButton
@@ -100,6 +104,7 @@ public class StartGame {
         button.addActionListener((ActionEvent e) -> {
             if(Game.getDice().getFirstValue()!=Game.getDice().getSecondValue()|| Game.getCurrentPlayer().getPosition()!=40) {
                 playerTurn = playerTurn++ % Game.getPlayers().size();
+                doubles = 0;
             }
             Game.setCurrentPlayer(Game.getPlayers().get(playerTurn));
             turn();

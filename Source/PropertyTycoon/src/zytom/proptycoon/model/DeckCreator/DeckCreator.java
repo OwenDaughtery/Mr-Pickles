@@ -1,4 +1,4 @@
-package zytom.proptycoon.model.DeckCreator;
+package zytom.proptycoon.model.deckCreator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
