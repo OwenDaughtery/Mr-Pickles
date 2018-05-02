@@ -51,7 +51,7 @@ public class DeckCreator {
         String path = "./" + nameOfCSV; //path may need fixing
         File file = new File(path);
         Scanner inputStream = new Scanner(file);
-        inputStream.useDelimiter(">>");
+        inputStream.useDelimiter(">");
         while(inputStream.hasNext()) {
             currentParams[index] = inputStream.next();
             index++;
