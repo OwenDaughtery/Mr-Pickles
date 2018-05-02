@@ -6,7 +6,7 @@ package zytom.proptycoon.model;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
-import zytom.proptycoon.model.card.PotLuckCard;
+import zytom.proptycoon.model.cell.GoCell;
 
 import java.util.ArrayList;
 
@@ -51,20 +51,13 @@ public class Player implements AssetOwner {
      *
      * @author Zenos + Ayman
      * @param numberOfSpaces
+     * @param bank
      */
-    public void move(int numberOfSpaces) {
+    public void move(int numberOfSpaces, Bank bank) {
         int currentPosition = this.position;
         this.position = (this.position + numberOfSpaces) % 40;
-        if (numberOfSpaces > 0 && position < currentPosition) {
-            try {
-                Bank bank = Game.getBank();
-                (new Transaction(bank, this, new AssetCollection(200),
-                        new AssetCollection(0))).settleTransaction();
-            } catch (AssetNotFoundException ex) {
-
-            }
-
-        }
+        if (numberOfSpaces > 0 && position < currentPosition)
+            hasPassedGo(bank);
     }
     
     /**
@@ -74,19 +67,30 @@ public class Player implements AssetOwner {
      * @param movingForewards
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
-    public void moveTo(int position, boolean movingForewards) throws AssetNotFoundException {
+    public void moveTo(int position, boolean movingForewards, Bank bank){
         int currentPosition = this.position;
         this.position = position;
-
-        if (movingForewards == true && position < currentPosition) {
-            try {
-                Bank bank = Game.getBank();
-                (new Transaction(bank, this, new AssetCollection(200),
-                        new AssetCollection(0))).settleTransaction();
-            } catch (AssetNotFoundException ex) {
-
-
-            }
+        if (movingForewards == true && position < currentPosition)
+            hasPassedGo(bank);
+    }
+    
+    /**
+     * 
+     * @param bank 
+     */
+    private void hasPassedGo(Bank bank) {
+        try {
+            Transaction transaction = new Transaction(
+                    bank,
+                    this,
+                    new AssetCollection(GoCell.PASS_GO_MONEY),
+                    new AssetCollection(0)
+            );
+            transaction.settleTransaction();
+        } catch (AssetNotFoundException ex) {
+            //There will be no exception.
+            //So do nothing.
+            ;
         }
     }
     
@@ -97,12 +101,7 @@ public class Player implements AssetOwner {
     public AssetCollection getAssetCollection() {
         return this.assetCollection;
     }
-
-    //@Override removed because super class does not have this method. 
-    public ArrayList<PotLuckCard> getPotLuckCards() {
-        return null;
-    }
-
+    
     /**
      * @author ayman
      *
