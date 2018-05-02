@@ -17,20 +17,20 @@ import zytom.proptycoon.model.cell.UtilityPropertyCell;
 public class DeckCreator {
 
     public static ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
-        ArrayList<String[]> deckData = initDeckData("PotLuck.csv", 3);
+        ArrayList<String[]> deckData = parseCSV("PotLuck.csv", 3);
         PotLuckDeck deck = new PotLuckDeck(deckData);
         return deck.getCards();
     }
     
     public static ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
-        ArrayList<String[]> deckData = initDeckData("OpportunityKnocks.csv", 3);
+        ArrayList<String[]> deckData = parseCSV("OpportunityKnocks.csv", 3);
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(deckData);
         return deck.getCards();
     }
    
 //    TODO CSV WITH PROPERTY CELLS SHOULD BE FORMATTED DIFFERENTLY. 
 //    public static ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException {
-//        ArrayList<String[]> deckData = initDeckData("UtilityPropertyCard.csv", 6);
+//        ArrayList<String[]> deckData = parseCSV("UtilityPropertyCard.csv", 6);
 //        UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData);
 //        return deck.getCards();
 //    }
@@ -44,7 +44,7 @@ public class DeckCreator {
      * @return The ArrayList of String arrays if the csv file can be found. 
      * @throws java.io.FileNotFoundException 
      */
-    private static ArrayList<String[]> initDeckData(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
+    private static ArrayList<String[]> parseCSV(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
         ArrayList<String[]> deckData = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
@@ -75,28 +75,26 @@ public class DeckCreator {
      */
     private static class PotLuckDeck {
 
-        private final ArrayList<PotLuckCard> potLuckCards;
+        private final ArrayList<PotLuckCard> potLuckDeck;
         
         /**
-         * 
          * @param deckData The parsed csv data
          */
         private PotLuckDeck(ArrayList<String[]> deckData) {
-            this.potLuckCards = new ArrayList<>();
+            this.potLuckDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 CardAction currentCardAction = new CardAction(data[1], Integer.parseInt(data[2]));
                 PotLuckCard currentPotLuckCard = new PotLuckCard(data[0], currentCardAction);
-                this.potLuckCards.add(currentPotLuckCard);
+                this.potLuckDeck.add(currentPotLuckCard);
             }
            
         }
         
         /**
-         * 
          * @return The ArrayList of potLuck cards
          */
         public ArrayList<PotLuckCard> getCards() {
-            return this.potLuckCards;
+            return this.potLuckDeck;
         }
     }
     
@@ -107,28 +105,26 @@ public class DeckCreator {
      */
     private static class OpportunityKnocksDeck {
 
-        private final ArrayList<OpportunityKnocksCard> opportunityKnocksCards;
+        private final ArrayList<OpportunityKnocksCard> opportunityKnocksDeck;
         
         /**
-         * 
          * @param deckData The parsed csv data
          */
         private OpportunityKnocksDeck(ArrayList<String[]> deckData) {       
-            this.opportunityKnocksCards = new ArrayList<>();
+            this.opportunityKnocksDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 CardAction currentCardAction = new CardAction(data[1], Integer.parseInt(data[2]));
                 OpportunityKnocksCard currentPotLuckCard = new OpportunityKnocksCard(data[0], currentCardAction);
-                this.opportunityKnocksCards.add(currentPotLuckCard);
+                this.opportunityKnocksDeck.add(currentPotLuckCard);
             }
            
         }
         
         /**
-         * 
          * @return The ArrayList of opportunityKnocks cards
          */
         public ArrayList<OpportunityKnocksCard> getCards() {
-            return this.opportunityKnocksCards;
+            return this.opportunityKnocksDeck;
         }
     }
     

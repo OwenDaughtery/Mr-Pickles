@@ -8,6 +8,7 @@ package zytom.proptycoon.model;
 
 import java.util.ArrayList;
 
+
 /**
  *
  * @author Ayman Free
@@ -15,11 +16,12 @@ import java.util.ArrayList;
  * Creates instaces of all players, board and dice. Stores current players turn.
  */
 public class Game {
+    
     private static Player currentPlayer;
     private static final Dice dice = new Dice();
     private static  ArrayList<Player> players;
     private static final Board board = new Board();
-    private static final Bank bank = new Bank(); //TODO
+    //private static final Bank bank = new Bank(); //TODO
 
     /**
      * Initialises Game

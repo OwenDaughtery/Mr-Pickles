@@ -17,7 +17,7 @@ import static zytom.proptycoon.model.assets.AssetOwner.*;
 
 /**
  *
- * @author Ayman Free
+ * @author Ayman Free, Zenos Pavlakou
  *
  * Has all methods that can be made by PotLuck and Opertunity Knocks cards.
  * Execute will call relevent methods to implement
@@ -27,10 +27,35 @@ public class CardAction {
     Type type;
     int value;
 
-    public CardAction(Type type, int value){
-        this.type = type;
+    public CardAction(String action, int value){
+        
+        switch(action) {
+            case "GAIN":
+                this.type = Type.GAIN;
+                break;
+            case "PAY":
+                this.type = Type.PAY;
+                break;
+            case "FORWARD":
+                this.type = Type.FORWARD;
+                break;
+            case "BACKWARD":
+                this.type = Type.BACKWARD;
+            case "STEP":
+                this.type = Type.STEP;
+                break;
+            case "CALCULATE":
+                this.type = Type.CALCULATE;
+                break;
+            case "MULTI":
+                this.type = Type.MULTI;
+                break;
+            case "CHOOSE":
+                this.type = Type.CHOOSE;
+                break;
+        }
+        
         this.value = value;
-
     }
 
     /**
