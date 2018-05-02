@@ -28,9 +28,7 @@ public final class Board {
         }
         catch (Exception e) {
             throw new CellNotFoundException(index);
-
         }
-
     }
 
     /**
@@ -42,7 +40,6 @@ public final class Board {
         return this.cells.get(0);
     }
 
-
     public static class CellNotFoundException extends Exception {
         /**
          * Generate the exception message.
@@ -51,7 +48,6 @@ public final class Board {
         public CellNotFoundException(int index) {
             super(
                     "Requested cell could not be found at Board Index " +
-
                             ": \n" + index
             );
         }
