@@ -30,4 +30,12 @@ public abstract class PropertyCard extends Card {
     public String toString(){
         String info = "CELL Reference "
     }
+
+    /**
+     * @author ayman
+     * @return price
+     */
+    public int getPrice() {
+        return price;
+    }
 }
