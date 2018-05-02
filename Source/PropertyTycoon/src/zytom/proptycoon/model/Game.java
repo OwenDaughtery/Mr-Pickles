@@ -21,7 +21,7 @@ public class Game {
     private static final Dice dice = new Dice();
     private static  ArrayList<Player> players;
     private static final Board board = new Board();
-    //private static final Bank bank = new Bank(); //TODO
+    private static final Bank bank = new Bank(); //TODO
 
     /**
      * Initialises Game
