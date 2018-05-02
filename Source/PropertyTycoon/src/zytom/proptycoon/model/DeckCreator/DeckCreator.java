@@ -8,32 +8,70 @@ import java.util.Scanner;
 import zytom.proptycoon.model.card.CardAction;
 import zytom.proptycoon.model.card.OpportunityKnocksCard;
 import zytom.proptycoon.model.card.PotLuckCard;
+import zytom.proptycoon.model.card.StationPropertyCard;
+import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
-import zytom.proptycoon.model.cell.UtilityPropertyCell;
+
 
 /**
  * @author Zenos
  */
 public class DeckCreator {
 
-    public static ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
+    /**
+     * @return An ArrayList representation of the PotLuckCard deck.
+     * @throws FileNotFoundException 
+     */
+    public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
         ArrayList<String[]> deckData = parseCSV("PotLuck.csv", 3);
         PotLuckDeck deck = new PotLuckDeck(deckData);
         return deck.getCards();
     }
     
-    public static ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
+    
+    /**
+     * @return An ArrayList representation of the OpportunityKnocksCard deck.
+     * @throws FileNotFoundException 
+     */
+    public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
         ArrayList<String[]> deckData = parseCSV("OpportunityKnocks.csv", 3);
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(deckData);
         return deck.getCards();
     }
+    
    
-//    TODO CSV WITH PROPERTY CELLS SHOULD BE FORMATTED DIFFERENTLY. 
-//    public static ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException {
-//        ArrayList<String[]> deckData = parseCSV("UtilityPropertyCard.csv", 6);
-//        UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData);
-//        return deck.getCards();
-//    }
+    /**
+     * @return An ArrayList representation of the UtilityPropertyCard deck.
+     * @throws FileNotFoundException 
+     */
+    public ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException {
+        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData);
+        return deck.getCards();
+    }
+    
+    
+    /**
+     * @return An ArrayList representation of the StationPropertyCard deck.
+     * @throws FileNotFoundException 
+     */
+    public ArrayList<StationPropertyCard> createStationPropertyCardDeck() throws FileNotFoundException {
+        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        StationPropertyCardDeck deck = new StationPropertyCardDeck(deckData);
+        return deck.getCards();
+    }
+    
+    
+    /**
+     * @return An ArrayList representation of the StreetPropertyCard deck. 
+     * @throws FileNotFoundException 
+     */
+    public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck() throws FileNotFoundException {
+        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        StreetPropertyCardDeck deck = new StreetPropertyCardDeck(deckData);
+        return deck.getCards();
+    }
+    
     
     /**
      * Creates an ArrayList of String arrays to collect the data in the csv files
@@ -44,7 +82,7 @@ public class DeckCreator {
      * @return The ArrayList of String arrays if the csv file can be found. 
      * @throws java.io.FileNotFoundException 
      */
-    private static ArrayList<String[]> parseCSV(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
+    private ArrayList<String[]> parseCSV(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
         ArrayList<String[]> deckData = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
@@ -73,7 +111,7 @@ public class DeckCreator {
     /**
      * Intended to be a short-lived object containing a deck of PotLuck cards. 
      */
-    private static class PotLuckDeck {
+    private class PotLuckDeck {
 
         private final ArrayList<PotLuckCard> potLuckDeck;
         
@@ -103,7 +141,7 @@ public class DeckCreator {
     /**
      * Intended to be a short-lived object containing a deck of OpportunityKnocks cards. 
      */
-    private static class OpportunityKnocksDeck {
+    private class OpportunityKnocksDeck {
 
         private final ArrayList<OpportunityKnocksCard> opportunityKnocksDeck;
         
@@ -130,25 +168,111 @@ public class DeckCreator {
     
     
     
-//    private static class UtilityPropertyCardDeck {
-//        
-//        private final ArrayList<UtilityPropertyCard> utilityPropertyCardDeck;
-//        
-//        private UtilityPropertyCardDeck(ArrayList<String[]> deckData) {
-//            this.utilityPropertyCardDeck = new ArrayList<>();
-//            for(String[] data : deckData) {
-//                UtilityPropertyCell cellRef = new UtilityPropertyCell(data[0]);
-//                UtilityPropertyCard utilityPropertyCard = new UtilityPropertyCard(cellRef, cellRef.getTitle(), Integer.parseInt(data[1]), 
-//                        Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4]);
-//                this.utilityPropertyCardDeck.add(utilityPropertyCard);
-//                
-//                //give the cell reference to the new card
-//                cellRef.setAssociatedCard(utilityPropertyCard);
-//            }
-//        }
-//        
-//        public ArrayList<UtilityPropertyCard> getCards() {
-//            return this.utilityPropertyCardDeck;
-//        }
-//    }
+    /**
+     * Intended to be a short-lived object containing a deck of UtilityProperty cards. 
+     */
+    private class UtilityPropertyCardDeck {
+        
+        private final ArrayList<UtilityPropertyCard> utilityPropertyCardDeck;
+        
+        private UtilityPropertyCardDeck(ArrayList<String[]> deckData) {
+            this.utilityPropertyCardDeck = new ArrayList<>();
+            for(String[] data : deckData) {
+                if("UTILITIES".equals(data[1])) {
+                    String title = data[2];
+                    int buyPrice = Integer.parseInt(data[3]);
+                    int cellRef = Integer.parseInt(data[0]);
+                    UtilityPropertyCard utilityPropertyCard = new UtilityPropertyCard(cellRef, title, buyPrice, 4, 10);
+                    this.utilityPropertyCardDeck.add(utilityPropertyCard);
+                }
+            }
+        }
+        
+        /**
+         * @return The ArrayList of utilityProperty cards
+         */
+        public ArrayList<UtilityPropertyCard> getCards() {
+            return this.utilityPropertyCardDeck;
+        }
+    }
+    
+    
+    
+    /**
+     * Intended to be a short-lived object containing a deck of StationProperty cards. 
+     */
+    private class StationPropertyCardDeck {
+        
+        private final ArrayList<StationPropertyCard> stationPropertyCardDeck;
+        int[] rentPrices = new int[4];
+        
+        private StationPropertyCardDeck(ArrayList<String[]> deckData) {
+            
+            this.stationPropertyCardDeck = new ArrayList<>();
+            
+            this.rentPrices[0] = 25;
+            this.rentPrices[1] = 50;
+            this.rentPrices[2] = 100;
+            this.rentPrices[3] = 200;
+            
+            for(String[] data : deckData) {
+                if("STATION".equals(data[1])){
+                    String title = data[2];
+                    int buyPrice = Integer.parseInt(data[3]);
+                    int cellRef = Integer.parseInt(data[0]);
+                    StationPropertyCard stationPropertyCard = new StationPropertyCard(cellRef, title, buyPrice, rentPrices);
+                    this.stationPropertyCardDeck.add(stationPropertyCard);
+                }
+            }
+        }
+        
+        /**
+         * @return The ArrayList of stationProperty cards
+         */
+        public ArrayList<StationPropertyCard> getCards() {
+            return this.stationPropertyCardDeck;
+        }
+    }
+    
+    
+
+   /**
+     * Intended to be a short-lived object containing a deck of StreetProperty cards. 
+     */
+    private class StreetPropertyCardDeck {
+        
+        private final ArrayList<StreetPropertyCard> streetPropertyCardDeck;
+        int[] rentPrices = new int[6];
+        
+        private StreetPropertyCardDeck(ArrayList<String[]> deckData) {
+            streetPropertyCardDeck = new ArrayList<>();
+            for(String[] data : deckData) {
+                String colour = data[1];
+                if("BROWN".equals(colour) || "BLUE".equals(colour) ||
+                        "PURPLE".equals(colour) || "ORANGE".equals(colour) ||
+                        "RED".equals(colour) || "YELLOW".equals(colour) ||
+                        "GREEN".equals(colour) || "DEEP BLUE".equals(colour)) {
+                    int cellRef = Integer.parseInt(data[0]);
+                    String title = data[2];
+                    int buyPrice = Integer.parseInt(data[3]);
+                    int buildPrice = Integer.parseInt(data[10]);
+                    this.rentPrices[0] = Integer.parseInt(data[4]); //0 houses
+                    this.rentPrices[1] = Integer.parseInt(data[5]); //1 house
+                    this.rentPrices[2] = Integer.parseInt(data[6]); //2 houses
+                    this.rentPrices[3] = Integer.parseInt(data[7]); //3 houses
+                    this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses
+                    this.rentPrices[5] = Integer.parseInt(data[9]); //hotel
+                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice);
+                    this.streetPropertyCardDeck.add(streetPropertyCard);
+                }
+            }
+        }
+        
+        /**
+         * @return The ArrayList of streetProperty cards
+         */
+        public ArrayList<StreetPropertyCard> getCards() {
+            return this.streetPropertyCardDeck;
+        }
+    }
 } 

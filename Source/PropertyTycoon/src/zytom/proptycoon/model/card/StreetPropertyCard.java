@@ -10,23 +10,22 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
  */
 public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
-    private final int houseCost;
-    private final int hotelCost;
-    private final StreetPropertyCell cellRef;
+    private final int buildCost;
+    private final int cellRef;
 
     /**
      *
      * @param rentCost
-     * @param houseCost
-     * @param hotelCost
+     * @param title
+     * @param price
      * @param cellRef
+     * @param buildCost
      */
-    public StreetPropertyCard(StreetPropertyCell cellRef, String title, int price, int[] rentCost,
-             int houseCost, int hotelCost) {
+    public StreetPropertyCard(int cellRef, String title, int price, int[] rentCost,
+             int buildCost) {
         super(cellRef, title, price);
         this.rentCost = rentCost;
-        this.houseCost = houseCost;
-        this.hotelCost = hotelCost;
+        this.buildCost = buildCost;
         this.cellRef = cellRef;
 
     }
@@ -36,15 +35,15 @@ public class StreetPropertyCard extends PropertyCard {
      * @author Tom
      * @return the relevent rent that is needed to be paid for this property.
      */
-    public int getRent() {
-        if (cellRef.getNumberOfHotels() == 1) {
+    public int getRent(StreetPropertyCell cell) {
+        if (cell.getNumberOfHotels() == 1) {
             return rentCost[5];
         }
-        else if (cellRef.getNumberOfHouses() >=1 ) {
-            return rentCost[cellRef.getNumberOfHouses()];
+        else if (cell.getNumberOfHouses() >=1 ) {
+            return rentCost[cell.getNumberOfHouses()];
         }
         //If condition needs to be done
-        else if (cellRef.getNumberOfHouses() == 0 )  {
+        else if (cell.getNumberOfHouses() == 0 )  {
             return rentCost[0]*2;
         }
         else{
@@ -53,13 +52,7 @@ public class StreetPropertyCard extends PropertyCard {
 
     }
 
-    public int getHouseCost() {
-        return houseCost;
+    public int getBuildCost() {
+        return this.buildCost;
     }
-
-    public int getHotelCost() {
-        return hotelCost;
-    }
-
-
 }
