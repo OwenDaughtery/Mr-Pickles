@@ -3,8 +3,14 @@
  */
 package zytom.proptycoon.view.NewGameMenu;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel;
 import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenLabel;
+import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel;
 
 /**
  *
@@ -12,21 +18,32 @@ import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenLabel;
  */
 public class ChoosePlayersPanel extends javax.swing.JPanel {
     
-    private final TokenLabel[] tokenLabels;
+    private TokenLabel[] tokenLabels;
     
     /**
      * Creates new form ChoosePlayersPanel
-     * @throws java.io.IOException
      */
-    public ChoosePlayersPanel() throws IOException {
+    public ChoosePlayersPanel() {
         initComponents();
-        tokenLabels = new TokenLabel[6];
-        tokenLabels[0] = new TokenLabel(TokenLabel.TokenType.BOOT);
-        tokenLabels[1] = new TokenLabel(TokenLabel.TokenType.SMARTPHONE);
-        tokenLabels[2] = new TokenLabel(TokenLabel.TokenType.GOBLET);
-        tokenLabels[3] = new TokenLabel(TokenLabel.TokenType.HATSTAND);
-        tokenLabels[4] = new TokenLabel(TokenLabel.TokenType.CAT);
-        tokenLabels[5] = new TokenLabel(TokenLabel.TokenType.SPOON);
+        try {
+            tokenLabels = new TokenLabel[6];
+            tokenLabels[0] = new TokenLabel(TokenLabel.TokenType.BOOT);
+            tokenLabels[1] = new TokenLabel(TokenLabel.TokenType.SMARTPHONE);
+            tokenLabels[2] = new TokenLabel(TokenLabel.TokenType.GOBLET);
+            tokenLabels[3] = new TokenLabel(TokenLabel.TokenType.HATSTAND);
+            tokenLabels[4] = new TokenLabel(TokenLabel.TokenType.CAT);
+            tokenLabels[5] = new TokenLabel(TokenLabel.TokenType.SPOON);
+            TokenPanel[] tokenPanels = {
+                tokenPanel1, tokenPanel2, tokenPanel3,
+                tokenPanel4, tokenPanel5, tokenPanel6
+            };
+            for (int i=0; i<6; i++) {
+                tokenPanels[i].add(tokenLabels[i]);
+                tokenLabels[i].setVisible(true);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ChoosePlayersPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

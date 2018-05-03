@@ -15,11 +15,15 @@ import javax.swing.JLabel;
  * @author Tom
  */
 public class TokenLabel extends JLabel {
+
     private static final String TOKEN_ICONS_PATH = "./resources/images/tokens/";
-    public enum TokenType { BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON };
-    
+
+    public enum TokenType {
+        BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
+    };
+
     public TokenLabel(TokenType tokenType) throws IOException {
-        super(getImageIcon(tokenType));
+        super("A Label");
     }
 
     public static ImageIcon getImageIcon(TokenType tokenType) throws IOException {
