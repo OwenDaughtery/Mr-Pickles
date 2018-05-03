@@ -8,7 +8,7 @@ public class GoCellTest {
 
     @Test
     public void getTitle() {
-        GoCell gocell = new GoCell();
-        assertTrue(gocell.getTitle() == "Go");
+        GoCell goCell = new GoCell();
+        assertTrue("Go".equals(goCell.getTitle()));
     }
 }

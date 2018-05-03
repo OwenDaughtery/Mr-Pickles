@@ -6,6 +6,6 @@ public class JailCell extends Cell {
      * @author Zenos Pavlakou
      */
     public JailCell() {
-        super("Jail Cell");
+        super("JAIL CELL");
     }
 }

@@ -6,6 +6,6 @@ public class PassingJailCell extends Cell {
      * @author Zenos Pavlakou
      */
     public PassingJailCell() {
-        super("Passing Jail");
+        super("JUST VISITING JAIL");
     }
 }
