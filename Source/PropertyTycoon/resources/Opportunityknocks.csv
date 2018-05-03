@@ -6,11 +6,11 @@ Fined £15 for speeding>PAY>15>
 Pay university fees of £150>PAY>150>
 Take a trip to Hove station. If you pass GO collect £200>MOVE>15>
 Loan matures, collect £150>GAIN>150>
-You are assessed for repairs, £40/house, £115/hotel>PAY>CALCULATE>
+You are assessed for repairs, £40/house, £115/hotel>PAY>0>
 Advance to GO>MOVE>0>
-You are assessed for repairs, £25/house, £100/hotel>PAY>CALCULATE>
-Go back 3 spaces>MOVE>CALCULATE>
+You are assessed for repairs, £25/house, £100/hotel>PAY>0>
+Go back 3 spaces>MOVE>0>
 Advance to Skywalker Drive. If you pass GO collect £200>MOVE>11>
-Go to jail. Do not pass GO, do not collect £200>JAIL>JAIL>
+Go to jail. Do not pass GO, do not collect £200>JAIL>0>
 Drunk in charge of a skateboard. Fine £20>PAY>20>
-Get out of jail free>FREE>FREE>
+Get out of jail free>FREE>0>
