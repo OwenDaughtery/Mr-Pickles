@@ -41,20 +41,19 @@ public class Game {
         
         currentPlayer = startingPlayer;
         
-        //Initialise board.
-        //TODO initialise cells in board MUST happen before creating DeckCreator because some methods in DeckCreator need
-        //reference to the cells which are currently null. However, to create new cell objects some need a title 
-        //as a constructor argument which can only be found in the CSV which DeckCreator reads. 
-        board = new Board();
         
-        //Create Bank and read card decks into it.
-        DeckCreator deckCreator = new DeckCreator(board);
+        DeckCreator deckCreator = new DeckCreator();
+        
+
+        board = new Board(deckCreator.getPropertyData());
+        
+
         bank = new Bank(
                 deckCreator.createPotLuckDeck(),
                 deckCreator.createOpportunityKnocksDeck(),
-                deckCreator.createStreetPropertyCardDeck(),
-                deckCreator.createStationPropertyCardDeck(),
-                deckCreator.createUtilityPropertyCardDeck()
+                deckCreator.createStreetPropertyCardDeck(this.board),
+                deckCreator.createStationPropertyCardDeck(this.board),
+                deckCreator.createUtilityPropertyCardDeck(this.board)
         );
         
         

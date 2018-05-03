@@ -17,14 +17,12 @@ import zytom.proptycoon.model.cell.StationPropertyCell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.SuperTaxCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
-import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 public final class Board {
     ArrayList<Cell> cells = new ArrayList<>();
 
-    public Board() throws FileNotFoundException {
-        DeckCreator deckCreator = new DeckCreator(this);
-        this.cells = initCells(deckCreator.getDeckData("PropertyCards.csv", 11));
+    public Board(ArrayList<String[]> propertyData) throws FileNotFoundException {
+        this.cells = initCells(propertyData);
     }
 
     /**
