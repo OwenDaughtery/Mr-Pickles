@@ -9,6 +9,6 @@ public class GoCellTest {
     @Test
     public void getTitle() {
         GoCell goCell = new GoCell();
-        assertTrue("Go".equals(goCell.getTitle()));
+        assertTrue("GO".equals(goCell.getTitle()));
     }
 }
