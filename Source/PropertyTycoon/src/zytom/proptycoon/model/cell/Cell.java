@@ -28,4 +28,10 @@ public abstract class Cell {
     public String getTitle() {
         return this.title;
     }
+
+    @Override
+    public String toString(){
+        String info = "Cell title : " + getTitle() + "\n";
+        return info;
+    }
 }

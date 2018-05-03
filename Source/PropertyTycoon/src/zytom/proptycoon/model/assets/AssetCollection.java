@@ -10,6 +10,9 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 /**
  *
  * @author Tom Chesters
+ *
+ * Class AssetCollection :
+ * Holds all Relavent Card and Money assets for Player in the Game , along with the bank.
  */
 public class AssetCollection {
     
@@ -45,7 +48,11 @@ public class AssetCollection {
         this.utilityPropertyCards = new ArrayList<>();
         this.money = 0;
     }
-        
+
+    /**
+     *
+     * @return Array list of Potluck cards
+     */
     public ArrayList<PotLuckCard> getPotLuckCards() {
         return potLuckCards;
     }
