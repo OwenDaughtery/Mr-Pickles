@@ -20,6 +20,7 @@ public class Game {
     private final Bank bank;
     private final Board board;
     private final Dice dice;
+    private final FreeParking freeParking;
 
     /**
      * Initialises Game Creates players if the number of players in between 2-6,
@@ -56,7 +57,7 @@ public class Game {
                 deckCreator.createUtilityPropertyCardDeck(this.board)
         );
         
-        
+        freeParking = new FreeParking();
         //Initialise dice.
         dice = new Dice();
     }
@@ -140,5 +141,11 @@ public class Game {
         }
     }
 
-
+    /**
+     * @author Ayman Free
+     * @return bank
+     */
+    public FreeParking getFreeParking() {
+        return freeParking;
+    }
 }
