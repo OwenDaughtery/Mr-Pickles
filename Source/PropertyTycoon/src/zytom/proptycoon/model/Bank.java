@@ -3,11 +3,7 @@ package zytom.proptycoon.model;
 import java.util.ArrayList;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
-import zytom.proptycoon.model.card.PotLuckCard;
-import zytom.proptycoon.model.card.OpportunityKnocksCard;
-import zytom.proptycoon.model.card.StationPropertyCard;
-import zytom.proptycoon.model.card.StreetPropertyCard;
-import zytom.proptycoon.model.card.UtilityPropertyCard;
+import zytom.proptycoon.model.card.*;
 
 /**
  * @author Max Pattman
@@ -140,6 +136,30 @@ public class Bank implements AssetOwner {
         /*this.assetCollection.setMoney(
                 this.assetCollection.getMoney() + giving.getMoney()
         );*/
+    }
+
+    @Override
+    public boolean checkHasAsset(Card asset) {
+        if(this.getAssetCollection().getStreetPropertyCards().contains(asset)){
+
+        }else if (this.getAssetCollection().getUtilityPropertyCards().contains(asset)){
+            return true;
+        }else if (this.getAssetCollection().getStationPropertyCards().contains(asset)){
+            return true;
+        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains(asset)){
+            return true;
+        }else if (this.getAssetCollection().getPotLuckCards().contains(asset)){
+            return true;
+        }
+        return false;
+    }
+    @Override
+    public boolean checkHasAsset(int money){
+        if(this.getAssetCollection().getMoney() > money){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
