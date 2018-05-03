@@ -23,11 +23,10 @@ public class TokenLabel extends JLabel {
     };
 
     public TokenLabel(TokenType tokenType) throws IOException {
-        super(getImageIcon(tokenType));
+        super("A Label");
     }
 
     public static ImageIcon getImageIcon(TokenType tokenType) throws IOException {
-        System.out.println(System.getProperty("user.dir"));
         EnumMap<TokenType, String> iconMap = new EnumMap(TokenType.class);
         iconMap.put(TokenType.BOOT, "boot.png");
         iconMap.put(TokenType.SMARTPHONE, "smartphone.png");
