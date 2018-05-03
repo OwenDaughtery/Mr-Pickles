@@ -22,8 +22,7 @@ public class StreetPropertyCard extends PropertyCard {
      * @param cellRef
      * @param buildCost
      */
-    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,
-                              int buildCost) {
+    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost) {
         super(cellRef, title, price);
         this.rentCost = rentCost;
         this.buildCost = buildCost;
@@ -64,7 +63,7 @@ public class StreetPropertyCard extends PropertyCard {
     public String toString() {
         String info = super.toString();
          info += "Cell Referenced" + "\n" +
-                 "Base Rent  : " + this.rentCost+"\n"+
+                 "Base Rent  : " + this.getRent((StreetPropertyCell) this.cellRef)+"\n"+
                  "Build Cost : " + this.buildCost+"\n"+
                  "Current Rent :" + this.getRent((StreetPropertyCell) this.cellRef) + "\n";
         return info;

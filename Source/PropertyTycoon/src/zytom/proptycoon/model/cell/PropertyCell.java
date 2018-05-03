@@ -10,7 +10,7 @@ import zytom.proptycoon.model.card.PropertyCard;
  */
 public abstract class PropertyCell extends Cell {
     
-    private PropertyCard associatedCard;
+    public PropertyCard associatedCard;
     
     /**
      * @author Zenos Pavlakou
@@ -43,7 +43,7 @@ public abstract class PropertyCell extends Cell {
     @Override
     public String toString(){
        String info = super.toString();
-       info += "Associated Card Information : " + getAssociatedCard().toString()+"\n";
+       info += "Associated Card Information : " + getAssociatedCard().getTitle();
        return info;
     }
     
