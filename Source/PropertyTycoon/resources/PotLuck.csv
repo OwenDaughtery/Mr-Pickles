@@ -1,4 +1,4 @@
-You inherit £100>GAIN>10>>
+You inherit £100>GAIN>10>
 You have won 2nd prize in a beauty contest,collect £20>GAIN>20>
 Go back to Crapper Street>MOVE>1>
 Student loan refund. Collect £20>GAIN>20>
@@ -7,11 +7,10 @@ Pay bill for text books of £100>PAY>100>
 Mega late night taxi bill pay £50>PAY>50>
 Advance to go>MOVE>0>
 From sale of Bitcoin you get £50>GAIN>50>
-Pay a £10 fine or take opportunity knocks>PAY>CALCULATE>
+Pay a £10 fine or take opportunity knocks>PAY>0>
 Pay insurance fee of £50>PAY>50>
 Savings bond matures,collect £100>GAIN>100>
-Go to jail. Do not pass GO,do not collect £200>JAIL>JAIL>
+Go to jail. Do not pass GO,do not collect £200>JAIL>0>
 Received interest on shares of £25>GAIN>25>
-It's your birthday. Collect £10 from each player>GAIN>CALCULATE>
-Get out of jail free>FREE>FREE>
-
+It's your birthday. Collect £10 from each player>GAIN>0>
+Get out of jail free>FREE>0>
