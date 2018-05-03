@@ -33,7 +33,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("PotLuck.csv", 3);
+        ArrayList<String[]> deckData = getDeckData("PotLuck.csv", 3);
         PotLuckDeck deck = new PotLuckDeck(deckData);
         return deck.getCards();
     }
@@ -44,7 +44,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("OpportunityKnocks.csv", 3);
+        ArrayList<String[]> deckData = getDeckData("OpportunityKnocks.csv", 3);
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(deckData);
         return deck.getCards();
     }
@@ -56,7 +56,7 @@ public class DeckCreator {
      * @throws zytom.proptycoon.model.Board.CellNotFoundException 
      */
     public ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        ArrayList<String[]> deckData = getDeckData("PropertyCards.csv", 11);
         UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
@@ -67,7 +67,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<StationPropertyCard> createStationPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        ArrayList<String[]> deckData = getDeckData("PropertyCards.csv", 11);
         StationPropertyCardDeck deck = new StationPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
@@ -78,7 +78,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException  {
-        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        ArrayList<String[]> deckData = getDeckData("PropertyCards.csv", 11);
         StreetPropertyCardDeck deck = new StreetPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
@@ -93,7 +93,7 @@ public class DeckCreator {
      * @return The ArrayList of String arrays if the csv file can be found. 
      * @throws java.io.FileNotFoundException 
      */
-    private ArrayList<String[]> parseCSV(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
+    public ArrayList<String[]> getDeckData(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
         ArrayList<String[]> deckData = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
@@ -116,6 +116,10 @@ public class DeckCreator {
         }
         return deckData; 
     }
+
+//    public ArrayList<String[]> getDeckData(String propertyCardscsv, int i) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
     
     
