@@ -46,7 +46,7 @@ public class AssetCollection {
         this.streetPropertyCards = new ArrayList<>();
         this.stationPropertyCards = new ArrayList<>();
         this.utilityPropertyCards = new ArrayList<>();
-        this.money = 0;
+        this.money = money;
     }
 
     /**
