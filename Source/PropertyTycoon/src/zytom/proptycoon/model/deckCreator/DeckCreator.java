@@ -12,7 +12,6 @@ import zytom.proptycoon.model.card.PotLuckCard;
 import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
-import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StationPropertyCell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
@@ -34,7 +33,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("PotLuck.csv", 3);
+        ArrayList<String[]> deckData = getDeckData("PotLuck.csv", 3);
         PotLuckDeck deck = new PotLuckDeck(deckData);
         return deck.getCards();
     }
@@ -45,7 +44,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("OpportunityKnocks.csv", 3);
+        ArrayList<String[]> deckData = getDeckData("OpportunityKnocks.csv", 3);
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(deckData);
         return deck.getCards();
     }
@@ -57,7 +56,7 @@ public class DeckCreator {
      * @throws zytom.proptycoon.model.Board.CellNotFoundException 
      */
     public ArrayList<UtilityPropertyCard> createUtilityPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        ArrayList<String[]> deckData = getDeckData("PropertyCards.csv", 11);
         UtilityPropertyCardDeck deck = new UtilityPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
@@ -68,7 +67,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<StationPropertyCard> createStationPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
-        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        ArrayList<String[]> deckData = getDeckData("PropertyCards.csv", 11);
         StationPropertyCardDeck deck = new StationPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
@@ -79,7 +78,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      */
     public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException  {
-        ArrayList<String[]> deckData = parseCSV("PropertyCards.csv", 11);
+        ArrayList<String[]> deckData = getDeckData("PropertyCards.csv", 11);
         StreetPropertyCardDeck deck = new StreetPropertyCardDeck(deckData, this.board);
         return deck.getCards();
     }
@@ -94,7 +93,7 @@ public class DeckCreator {
      * @return The ArrayList of String arrays if the csv file can be found. 
      * @throws java.io.FileNotFoundException 
      */
-    private ArrayList<String[]> parseCSV(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
+    public ArrayList<String[]> getDeckData(String nameOfCSV, int columnsToRead) throws FileNotFoundException {
         ArrayList<String[]> deckData = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
@@ -117,6 +116,10 @@ public class DeckCreator {
         }
         return deckData; 
     }
+
+//    public ArrayList<String[]> getDeckData(String propertyCardscsv, int i) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
     
     
@@ -193,9 +196,9 @@ public class DeckCreator {
                 if("UTILITIES".equals(data[1])) {
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
-                    //int cellRef = Integer.parseInt(data[0]);
                     UtilityPropertyCell cellRef = (UtilityPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     UtilityPropertyCard utilityPropertyCard = new UtilityPropertyCard(cellRef, title, buyPrice, 4, 10);
+                    cellRef.setAssociatedCard(utilityPropertyCard);
                     this.utilityPropertyCardDeck.add(utilityPropertyCard);
                 }
             }
@@ -234,6 +237,7 @@ public class DeckCreator {
                     int buyPrice = Integer.parseInt(data[3]);
                     StationPropertyCell cellRef = (StationPropertyCell) board.getCell(Integer.parseInt(data[0]));
                     StationPropertyCard stationPropertyCard = new StationPropertyCard(cellRef, title, buyPrice, rentPrices);
+                    cellRef.setAssociatedCard(stationPropertyCard);
                     this.stationPropertyCardDeck.add(stationPropertyCard);
                 }
             }
@@ -276,6 +280,7 @@ public class DeckCreator {
                     this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses
                     this.rentPrices[5] = Integer.parseInt(data[9]); //hotel
                     StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice);
+                    cellRef.setAssociatedCard(streetPropertyCard);
                     this.streetPropertyCardDeck.add(streetPropertyCard);
                 }
             }

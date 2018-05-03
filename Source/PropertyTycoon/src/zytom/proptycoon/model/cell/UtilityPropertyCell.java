@@ -10,4 +10,5 @@ public class UtilityPropertyCell extends PropertyCell {
     public UtilityPropertyCell(String titleOfUtilityProperty) {
         super(titleOfUtilityProperty);
     }
+    
 }

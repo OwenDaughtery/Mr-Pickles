@@ -3,13 +3,9 @@
  */
 package zytom.proptycoon.model;
 
-//import zytom.proptycoon.model.assets.Asset; //no longer a class
-//import zytom.proptycoon.model.assets.AssetOwner; //not used
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import zytom.proptycoon.model.DeckCreator.DeckCreator;
+import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 /**
  *
@@ -33,33 +29,34 @@ public class Game {
      * @param startingPlayer
      * @throws PlayerNumberException
      * @throws java.io.FileNotFoundException
+     * @throws zytom.proptycoon.model.Board.CellNotFoundException
      */
-    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException {
+    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException, Board.CellNotFoundException {
         //Check number of players is valid.
-        if (1 < players.size() || players.size() > 6) {
+        if (players.size() < 1  || players.size() > 6) {
             throw new PlayerNumberException(players.size());
         } else {
             this.players = players;
         }
+        
         currentPlayer = startingPlayer;
         
-        //Create Bank and read card decks into it.
-        DeckCreator deckCreator = new DeckCreator();
-        try {
-            bank = new Bank(
-                    deckCreator.createPotLuckDeck(),
-                    deckCreator.createOpportunityKnocksDeck(),
-                    deckCreator.createStreetPropertyCardDeck(),
-                    deckCreator.createStationPropertyCardDeck(),
-                    deckCreator.createUtilityPropertyCardDeck()
-            );
-        } catch (FileNotFoundException ex) {
-            throw ex;
-        }
-        
         //Initialise board.
-        //TODO initialise cells.
+        //TODO initialise cells in board MUST happen before creating DeckCreator because some methods in DeckCreator need
+        //reference to the cells which are currently null. However, to create new cell objects some need a title 
+        //as a constructor argument which can only be found in the CSV which DeckCreator reads. 
         board = new Board();
+        
+        //Create Bank and read card decks into it.
+        DeckCreator deckCreator = new DeckCreator(board);
+        bank = new Bank(
+                deckCreator.createPotLuckDeck(),
+                deckCreator.createOpportunityKnocksDeck(),
+                deckCreator.createStreetPropertyCardDeck(),
+                deckCreator.createStationPropertyCardDeck(),
+                deckCreator.createUtilityPropertyCardDeck()
+        );
+        
         
         //Initialise dice.
         dice = new Dice();

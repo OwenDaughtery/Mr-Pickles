@@ -3,13 +3,9 @@
  */
 package zytom.proptycoon.model.card;
 
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.FreeParking;
 import zytom.proptycoon.model.Player;
-//import zytom.proptycoon.model.assets.Asset; //Asset no longer exists
-//import zytom.proptycoon.model.assets.MoneyAsset; //MoneyAsset no longer exists
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
 
