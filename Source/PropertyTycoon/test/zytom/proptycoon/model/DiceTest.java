@@ -32,4 +32,6 @@ public class DiceTest {
        assertTrue(dice.getFirstValue() != 0);
        assertTrue(dice.getSecondValue() != 0 );
     }
+
+
 }
