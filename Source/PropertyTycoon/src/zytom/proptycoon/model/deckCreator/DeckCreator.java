@@ -102,7 +102,8 @@ public class DeckCreator {
         ArrayList<String[]> data = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
-        String path = "./resources/" + nameOfCSV; //path may need fixing
+
+        String path = "Source/PropertyTycoon/resources/" + nameOfCSV; //path may need fixing
         File file = new File(path);
         Scanner inputStream = new Scanner(file);
         inputStream.useDelimiter(">");

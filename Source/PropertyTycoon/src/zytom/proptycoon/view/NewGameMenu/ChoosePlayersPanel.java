@@ -29,7 +29,7 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
             tokenLabels[3] = new TokenLabel(TokenLabel.TokenType.HATSTAND);
             tokenLabels[4] = new TokenLabel(TokenLabel.TokenType.CAT);
             tokenLabels[5] = new TokenLabel(TokenLabel.TokenType.SPOON);
-            for (TokenLabel tokenLabel : tokenLAbels)
+            for (TokenLabel tokenLabel : tokenLabels);
         } catch (IOException ex) {
             Logger.getLogger(ChoosePlayersPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
