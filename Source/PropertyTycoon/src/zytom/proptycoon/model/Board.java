@@ -30,7 +30,7 @@ public final class Board {
      * @param cellTitles
      * @return
      */
-    public ArrayList<Cell> initCells(ArrayList<String[]> cellTitles) {
+    private ArrayList<Cell> initCells(ArrayList<String[]> cellTitles) {
         ArrayList<Cell> boardCells = new ArrayList<>();
         boardCells.add(new GoCell()); //index 0 
         boardCells.add(new StreetPropertyCell(cellTitles.get(1)[2])); //index 1
