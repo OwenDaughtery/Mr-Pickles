@@ -15,14 +15,19 @@ import javax.swing.JLabel;
  * @author Tom
  */
 public class TokenLabel extends JLabel {
+
     private static final String TOKEN_ICONS_PATH = "./resources/images/tokens/";
-    public enum TokenType { BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON };
-    
+
+    public enum TokenType {
+        BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
+    };
+
     public TokenLabel(TokenType tokenType) throws IOException {
         super(getImageIcon(tokenType));
     }
 
     public static ImageIcon getImageIcon(TokenType tokenType) throws IOException {
+        System.out.println(System.getProperty("user.dir"));
         EnumMap<TokenType, String> iconMap = new EnumMap(TokenType.class);
         iconMap.put(TokenType.BOOT, "boot.png");
         iconMap.put(TokenType.SMARTPHONE, "smartphone.png");
