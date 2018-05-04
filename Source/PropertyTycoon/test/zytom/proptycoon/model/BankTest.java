@@ -39,7 +39,7 @@ public class BankTest {
     }
 
     @Test
-    public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
+    public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException, CardAction.InvalidActionException {
         ArrayList<Player> players = new ArrayList<>();
         Player player1 = new Player("zenos");
         Player player2 = new Player("Tom");

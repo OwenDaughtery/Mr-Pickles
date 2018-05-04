@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.card.CardAction;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 public class PlayerTest {
@@ -18,7 +19,7 @@ public class PlayerTest {
     Bank bank;
     
     @Before 
-    public void init() throws FileNotFoundException, Board.CellNotFoundException {
+    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
         this.player = new Player("zenos");
         this.deckCreator = new DeckCreator();
         this.board = new Board(deckCreator.getPropertyData());

@@ -11,6 +11,9 @@ import zytom.proptycoon.model.card.UtilityPropertyCard;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Class Auction generates an Auction for an unsold property a player has landed on
+ */
 public class Auction {
     private ArrayList<Player> players;
     private Bank bank;

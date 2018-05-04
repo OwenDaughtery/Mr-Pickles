@@ -9,11 +9,7 @@ import org.junit.Before;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Player;
-import zytom.proptycoon.model.card.OpportunityKnocksCard;
-import zytom.proptycoon.model.card.PotLuckCard;
-import zytom.proptycoon.model.card.StationPropertyCard;
-import zytom.proptycoon.model.card.StreetPropertyCard;
-import zytom.proptycoon.model.card.UtilityPropertyCard;
+import zytom.proptycoon.model.card.*;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 
@@ -30,7 +26,7 @@ public class TransactionTest {
     private ArrayList<PotLuckCard> potLuckCards;
     
     @Before
-    public void init() throws FileNotFoundException, Board.CellNotFoundException {
+    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
         DeckCreator dc = new DeckCreator();
         this.board = new Board(dc.getPropertyData());
         this.bank = new Bank(dc.createPotLuckDeck(), dc.createOpportunityKnocksDeck(), 
