@@ -2,6 +2,7 @@ package zytom.proptycoon.model;
 
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.card.Card;
 
 public class FreeParking implements AssetOwner {
 
@@ -101,6 +102,16 @@ public class FreeParking implements AssetOwner {
         this.assetCollection.setMoney(
                 this.assetCollection.getMoney() + giving.getMoney()
         );
+    }
+
+    @Override
+    public boolean checkHasAsset(Card card) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean checkHasAsset(int money) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

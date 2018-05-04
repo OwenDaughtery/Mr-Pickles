@@ -21,7 +21,7 @@ public class DeckCreatorTest {
     
     @Before 
     public void init() throws FileNotFoundException {
-        deckCreator = new DeckCreator();
+        this.deckCreator = new DeckCreator();
     }
     
     
@@ -46,21 +46,21 @@ public class DeckCreatorTest {
     @Test
     public void createUtilityPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
         Board board = new Board(this.deckCreator.getPropertyData());
-        ArrayList<UtilityPropertyCard> utilityPropertyCards = deckCreator.createUtilityPropertyCardDeck(board);
+        ArrayList<UtilityPropertyCard> utilityPropertyCards = this.deckCreator.createUtilityPropertyCardDeck(board);
         Assert.assertEquals(2, utilityPropertyCards.size());
     }
 
     @Test
     public void createStationPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
         Board board = new Board(this.deckCreator.getPropertyData());
-        ArrayList<StationPropertyCard> stationPropertyCards = deckCreator.createStationPropertyCardDeck(board);
+        ArrayList<StationPropertyCard> stationPropertyCards = this.deckCreator.createStationPropertyCardDeck(board);
         Assert.assertEquals(4, stationPropertyCards.size());
     }
 
     @Test
     public void createStreetPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
         Board board = new Board(this.deckCreator.getPropertyData());
-        ArrayList<StreetPropertyCard> streetPropertyCards = deckCreator.createStreetPropertyCardDeck(board);
+        ArrayList<StreetPropertyCard> streetPropertyCards = this.deckCreator.createStreetPropertyCardDeck(board);
         Assert.assertEquals(22, streetPropertyCards.size());
     }
 
