@@ -20,10 +20,21 @@ public class UtilityPropertyCard extends PropertyCard {
         this.rentMultiplierOnPair = rentMultiplierOnPair;
     }
     
-    public int getRent() {
-        //TODO
-        return 0;
+    /**
+     * @author Zenos Pavlakou
+     * @param diceValue The sum of the dice numbers rolled
+     * @param isSingle True if the utilitiy property is owned by a single player
+     * @param isPair True if both utility properties are owned by the same player
+     * @return The cost of rent
+     */
+    public int getRent(int diceValue, boolean isSingle, boolean isPair) {
+        if(isPair) {
+            return diceValue * this.rentMultiplierOnPair;
+        } else if(isSingle) {
+            return diceValue * this.rentMultiplierOnSingle;
+        } else {
+            return diceValue;
+        }
     }
-
-    
+ 
 }
