@@ -48,6 +48,7 @@ public class AssetCollection {
         this.utilityPropertyCards = new ArrayList<>();
         this.money = money;
     }
+   
 
     /**
      *
