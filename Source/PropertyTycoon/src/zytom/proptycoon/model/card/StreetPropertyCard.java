@@ -37,14 +37,14 @@ public class StreetPropertyCard extends PropertyCard {
      * @return the relevent rent that is needed to be paid for this property.
      */
     public int getRent(StreetPropertyCell cell) {
-        if (cell.getNumberOfHotels() == 1) {
+        if (cell.getNumberOfBuildings() == 5) {
             return rentCost[5];
         }
-        else if (cell.getNumberOfHouses() >=1 ) {
-            return rentCost[cell.getNumberOfHouses()];
+        else if (cell.getNumberOfBuildings() >=1 ) {
+            return rentCost[cell.getNumberOfBuildings()];
         }
         //If condition needs to be done
-        else if (cell.getNumberOfHouses() == 0 )  {
+        else if (cell.getNumberOfBuildings() == 0 )  {
             return rentCost[0]*2;
         }
         else{

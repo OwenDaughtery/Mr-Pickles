@@ -24,6 +24,5 @@ public class StreetPropertyCell extends PropertyCell {
     public int getNumberOfBuildings() {
         return this.numberOfBuildings;
     }
-  
 
 }
