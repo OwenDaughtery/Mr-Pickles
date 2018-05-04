@@ -31,8 +31,9 @@ public class CardAction {
      * 
      * @param action The string action read fromt he CSV of PropertyCells.csv
      * @param value The value associated with the action
+     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException
      */
-    public CardAction(String action, int value){
+    public CardAction(String action, int value) throws InvalidActionException {
         switch(action) {
             case "BANK PAYS PLAYER":
                 this.type = Type.BANK_PAYS_PLAYER;
@@ -58,6 +59,8 @@ public class CardAction {
                 this.type = Type.GET_OUT_OF_JAIL_POT_LUCK;
             case "GET OUT OF JAIL OPP KNOCKS":
                 this.type = Type.GET_OUT_OF_JAIL_OPP_KNOCKS;
+            default:
+                throw new InvalidActionException(action);
 
         }
         
@@ -300,5 +303,29 @@ public class CardAction {
      */
     private void stepBack(Player player, int space, Bank bank){
         player.move(space,bank);
+    }
+    
+    
+    public static class InvalidActionException extends Exception {
+        
+        /**
+         * Generate the exception message.
+         * @param errorMessage
+         */
+        public InvalidActionException(
+                String errorMessage
+        ) {
+            super ("Invalid action " + errorMessage);
+        }
+
+
+        /**
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
     }
 }
