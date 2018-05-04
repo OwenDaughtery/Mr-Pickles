@@ -314,10 +314,4 @@ public class DeckCreator {
         }
     }
     
-    public static void main(String[] args) throws FileNotFoundException, Board.CellNotFoundException {
-        
-        DeckCreator d = new DeckCreator();
-        Board board = new Board(d.getPropertyData());
-        d.createStationPropertyCardDeck(board);
-    }
 } 
