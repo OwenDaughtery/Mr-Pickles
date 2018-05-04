@@ -3,6 +3,8 @@
  */
 package zytom.proptycoon.model.assets;
 
+import zytom.proptycoon.model.card.Card;
+
 /**
  * An entity that can own assets and therefor can
  * take part in transactions.
@@ -37,7 +39,11 @@ public interface AssetOwner {
      */
     public void giveAssetCollection(AssetCollection giving)
             throws CannotAcceptAssetException;
-   
+
+
+    public boolean checkHasAsset(Card card);
+
+    public boolean checkHasAsset(int money);
     /**
      * An exception to be thrown if an asset is trying to be taken
      * but does not exist within the specified asset owner.
@@ -58,6 +64,8 @@ public interface AssetOwner {
                             ": \n" + requested.toString()
             );
         }
+
+
         /**
          * Gets the message containing details of the requested asset
          * contents.
@@ -69,7 +77,8 @@ public interface AssetOwner {
             return super.getMessage();
         }
     }
-    
+
+
     public static class CannotAcceptAssetException extends Exception {
         /**
          * Generate the exception message.

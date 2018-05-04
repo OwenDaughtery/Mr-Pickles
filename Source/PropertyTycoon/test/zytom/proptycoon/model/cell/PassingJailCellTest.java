@@ -8,5 +8,7 @@ public class PassingJailCellTest {
 
     @Test
     public void getTitle() {
+        PassingJailCell passingJailCell = new PassingJailCell();
+        assertTrue("JUST VISITING JAIL".equals(passingJailCell.getTitle()));
     }
 }

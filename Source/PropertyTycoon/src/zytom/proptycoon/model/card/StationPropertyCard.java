@@ -1,5 +1,7 @@
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Dice;
+import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
 
 public class StationPropertyCard extends PropertyCard {
@@ -9,6 +11,17 @@ public class StationPropertyCard extends PropertyCard {
         super(cellRef, title, price);
         this.rentCost = rentCost;
     }
+    
+    public int[] getRentCosts() {
+        return this.rentCost;
+    }
+
+    public int getRent(Dice dice, Player owner) {
+        return rentCost[
+                    owner.getAssetCollection().getStationPropertyCards().size()
+                ];
+    }
+
 
     @Override
     public String toString(){

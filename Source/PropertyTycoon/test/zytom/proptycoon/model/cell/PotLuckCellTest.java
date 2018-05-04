@@ -8,5 +8,7 @@ public class PotLuckCellTest {
 
     @Test
     public void getTitle() {
+        PotLuckCell potLuckCell = new PotLuckCell();
+        assertTrue("POT LUCK".equals(potLuckCell.getTitle()));
     }
 }

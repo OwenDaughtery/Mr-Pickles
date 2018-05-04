@@ -1,5 +1,7 @@
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Dice;
+import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
@@ -12,7 +14,6 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
     private final int buildCost;
-    private final Cell cellRef;
 
     /**
      *
@@ -26,31 +27,21 @@ public class StreetPropertyCard extends PropertyCard {
         super(cellRef, title, price);
         this.rentCost = rentCost;
         this.buildCost = buildCost;
-        this.cellRef = cellRef;
 
     }
 
-    /**
-     * @author Ayman
-     * @author Tom
-     * @param cell
-     * @return the relevent rent that is needed to be paid for this property.
-     */
-    public int getRent(StreetPropertyCell cell) {
-        if (cell.getNumberOfHotels() == 1) {
-            return rentCost[5];
-        }
-        else if (cell.getNumberOfHouses() >=1 ) {
-            return rentCost[cell.getNumberOfHouses()];
+    public int getRent(Dice dice, Player player) {
+        StreetPropertyCell propCell = (StreetPropertyCell)cellRef;
+        if (propCell.getNumberOfBuildings() > 0 ) {
+            return rentCost[propCell.getNumberOfBuildings()];
         }
         //If condition needs to be done
-        else if (cell.getNumberOfHouses() == 0 )  {
+        else if (propCell.getNumberOfBuildings() == 0 )  {
             return rentCost[0]*2;
         }
         else{
             return rentCost[0];
         }
-
     }
 
     public int getBuildCost() {
@@ -62,10 +53,12 @@ public class StreetPropertyCard extends PropertyCard {
     @Override
     public String toString() {
         String info = super.toString();
+        Dice dice = new Dice();
+        Player player = new Player("Temp");
          info += "Cell Referenced" + "\n" +
-                 "Base Rent  : " + this.getRent((StreetPropertyCell) this.cellRef)+"\n"+
+                 "Base Rent  : " + this.rentCost[0]+"\n"+
                  "Build Cost : " + this.buildCost+"\n"+
-                 "Current Rent :" + this.getRent((StreetPropertyCell) this.cellRef) + "\n";
+                 "Current Rent :" + this.getRent(dice,player) + "\n";
         return info;
 
 

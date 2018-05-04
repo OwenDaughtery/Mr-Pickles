@@ -8,5 +8,7 @@ public class IncomeTaxCellTest {
 
     @Test
     public void getTitle() {
+        IncomeTaxCell incomeTaxCell = new IncomeTaxCell();
+        assertTrue("INCOME TAX".equals(incomeTaxCell.getTitle()));
     }
 }

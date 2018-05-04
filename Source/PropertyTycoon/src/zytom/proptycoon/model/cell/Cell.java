@@ -34,4 +34,6 @@ public abstract class Cell {
         String info = "Cell title : " + getTitle() + "\n";
         return info;
     }
+
+
 }

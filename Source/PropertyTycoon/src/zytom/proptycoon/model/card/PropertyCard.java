@@ -1,12 +1,14 @@
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Dice;
+import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
 
 public abstract class PropertyCard extends Card {
-    private final Cell cellRef;
-    private final String title;
-    private final int price;
-    private static final double MORTGAGE_PROPORTION = 0.5;
+    protected final Cell cellRef;
+    protected final String title;
+    protected final int price;
+    protected static final double MORTGAGE_PROPORTION = 0.5;
     
     public PropertyCard(Cell cellRef, String title, int price) {
         this.cellRef = cellRef;
@@ -28,6 +30,9 @@ public abstract class PropertyCard extends Card {
     public int getPrice() {
         return this.price;
     }
+
+    public abstract int getRent(Dice dice, Player owner);
+
 
     @Override
     public String toString(){

@@ -46,8 +46,9 @@ public class AssetCollection {
         this.streetPropertyCards = new ArrayList<>();
         this.stationPropertyCards = new ArrayList<>();
         this.utilityPropertyCards = new ArrayList<>();
-        this.money = 0;
+        this.money = money;
     }
+   
 
     /**
      *
@@ -86,7 +87,7 @@ public class AssetCollection {
         for (StreetPropertyCard s:streetPropertyCards) {
             value +=  s.getPrice();
             StreetPropertyCell cell = (StreetPropertyCell) s.getCellRef();
-            value += cell.getNumberOfHouses()*s.getBuildCost();
+            value += cell.getNumberOfBuildings()*s.getBuildCost();
         }
         return value;
     }

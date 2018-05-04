@@ -10,5 +10,17 @@ public class UtilityPropertyCell extends PropertyCell {
     public UtilityPropertyCell(String titleOfUtilityProperty) {
         super(titleOfUtilityProperty);
     }
+
+//    UtilityPropertyCell() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    UtilityPropertyCell() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    UtilityPropertyCell() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
 }

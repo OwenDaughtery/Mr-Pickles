@@ -9,6 +9,6 @@ package zytom.proptycoon.model.cell;
  */
 public class OpportunityKnocksCell extends Cell {
     public OpportunityKnocksCell() {
-        super("Opportunity Knocks");
+        super("OPPORTUNITY KNOCKS");
     }
 }

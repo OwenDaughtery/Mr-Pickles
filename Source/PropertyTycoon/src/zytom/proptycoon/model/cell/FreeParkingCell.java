@@ -6,6 +6,6 @@ public class FreeParkingCell extends Cell {
      * @author Zenos Pavlakou
      */
     public FreeParkingCell() {
-        super("Free Parking");
+        super("FREE PARKING");
     }
 }

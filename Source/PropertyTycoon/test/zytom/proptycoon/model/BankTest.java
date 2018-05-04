@@ -28,8 +28,7 @@ public class BankTest {
         qt[3] =8;
 
         StreetPropertyCard streetPropertyCard = null;
-
-         streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40);
+        streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40);
         streetPropertyCell.setAssociatedCard(streetPropertyCard);
         c.add(0,streetPropertyCard);
         ArrayList<StationPropertyCard> d = new ArrayList<>() ;
@@ -37,9 +36,22 @@ public class BankTest {
         Bank bank = new Bank(a,b,c,d,e);
 
         System.out.print(bank.toString());
+    }
 
+    @Test
+    public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
+        ArrayList<Player> players = new ArrayList<>();
+        Player player1 = new Player("zenos");
+        Player player2 = new Player("Tom");
+        Player player3 = new Player("Max");
+        Player player4 = new Player("Ayman");
+        players.add(player1);
+        players.add(player2);
+        players.add(player3);
+        players.add(player4);
 
-
+        Game game = new Game(players,players.get(0));
+        System.out.print(game.getBank().toString());
     }
 
     @Test
