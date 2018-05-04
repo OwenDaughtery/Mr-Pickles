@@ -3,7 +3,11 @@
  */
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Dice;
+import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -19,10 +23,16 @@ public class UtilityPropertyCard extends PropertyCard {
         this.rentMultiplierOnSingle = rentMultiplierOnSingle;
         this.rentMultiplierOnPair = rentMultiplierOnPair;
     }
-    
-    public int getRent() {
-        //TODO
-        return 0;
+
+    @Override
+    public int getRent(Dice dice, Player owner) {
+        return
+                (dice.getFirstValue() + dice.getSecondValue()) *
+                    (
+                        (owner.getAssetCollection().getUtilityPropertyCards().size() == 2) ?
+                            rentMultiplierOnPair : rentMultiplierOnSingle
+                    )
+        ;
     }
 
     

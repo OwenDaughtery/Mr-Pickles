@@ -4,7 +4,11 @@ package zytom.proptycoon.model;
 import java.io.FileNotFoundException;
 import zytom.proptycoon.model.cell.Cell;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import zytom.proptycoon.model.cell.FreeParkingCell;
 import zytom.proptycoon.model.cell.GoCell;
 import zytom.proptycoon.model.cell.GoToJailCell;
@@ -95,7 +99,41 @@ public final class Board {
         return this.cells.get(0);
     }
 
-   
+    public enum CellType {
+        GO, FREE_PARKING, GO_TO_JAIL, TAX, STREET_PROPERTY,
+        STATION_PROPERTY, UTILITY_PROPERTY, POT_LUCK,
+        OPPORTUNITY_KNOCKS, JAIL, JUST_VISITING
+    }
+
+    public CellType getCellClass(Cell cell) {
+        int index = this.cells.indexOf(cell);
+        ArrayList<Integer> streetIndices = new ArrayList(
+                Arrays.asList(new int[] {
+                        1, 3, 6, 8, 9, 11, 13, 14, 16, 18, 19, 21,
+                        23, 24, 26, 27, 29, 31, 32, 34, 37, 39
+                })
+        );
+        ArrayList<Integer> stationIndices = new ArrayList(
+                Arrays.asList(new int[] {
+                        5, 15, 25, 35
+                })
+        );
+        //Jail cell is 40
+        return (index == 0) ? CellType.GO :
+                (streetIndices.contains(index)) ? CellType.STREET_PROPERTY :
+                        (stationIndices.contains(index)) ? CellType.STATION_PROPERTY :
+                                (index == 4 || index == 38) ? CellType.TAX :
+                                        (index == 20) ? CellType.FREE_PARKING :
+                                                (index == 30) ? CellType.GO_TO_JAIL :
+                                                        (index == 12 || index == 28) ? CellType.UTILITY_PROPERTY :
+                                                                (index == 2 || index == 17) ? CellType.POT_LUCK :
+                                                                        (index == 7 || index == 36) ? CellType.OPPORTUNITY_KNOCKS :
+                                                                                (index == 40) ? CellType.JAIL :
+                                                                                        (index == 10) ? CellType.JUST_VISITING : null;
+
+
+    }
+
 
     public static class CellNotFoundException extends Exception {
         /**

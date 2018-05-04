@@ -208,7 +208,7 @@ public class StartGame {
         Cell currentCell = game.getBoard().getCell(cellNumber);
         //Property Cell Decision
         if(currentCell instanceof PropertyCell){
-            PropertyCellLanded((PropertyCell)currentCell);
+            PropertyCellLanded((PropertyCell) currentCell);
         }
         // Go cell Desision
         else if(currentCell instanceof GoCell) {
@@ -284,9 +284,50 @@ public class StartGame {
      * Does relevent steps which happends when you land on a property
      * @param currentCell
      */
-    public void PropertyCellLanded(PropertyCell currentCell){
+    public void PropertyCellLanded(
+            PropertyCell currentCell,
+            Dice dice,
+            Player currentPlayer,
+            Bank bank,
+            ArrayList<Player> players
+    ){
         PropertyCard card = currentCell.getAssociatedCard();
         //TODO do actions based on card
+        //check if current player owns the card
+        if (currentPlayer.checkHasAsset(card)) {
+            //do nothing you own dis !
+
+        } else if (bank.checkHasAsset(card)){//check if bank has card
+            //option to buy or auction
+
+            
+        } else {
+            //Find player that owns property.
+            for (Player player : players) {
+                if (player.checkHasAsset(card)) {
+                    Player owner = player;
+                    //Found player that owns property.
+                    //Need to pay them
+                    //Work out rent due.
+                    int rentCost = card.getRent(dice, owner);
+                    //Set up a transaction for the player to pay the rent.
+                    Transaction transaction = new Transaction(
+                            currentPlayer,
+                            owner,
+                            new AssetCollection(rentCost),
+                            new AssetCollection(0)
+                    );
+                    try {
+                        //Attempt to pay rent.
+                        transaction.settleTransaction();
+                    } catch (AssetOwner.AssetNotFoundException ex) {
+                        //If cannot pay, commence asset selling stage.
+
+                    }
+                }
+            }
+        }
+
     }
 
     /**
