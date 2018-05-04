@@ -81,22 +81,31 @@ public class CardAction {
         switch(this.type) {
             case BANK_PAYS_PLAYER:
                 bankPayPlayer(bank, player, this.value);
+                break;
             case PLAYER_PAYS_BANK:
                 playerPayBank(bank, player, this.value);
+                break;
             case PAY_FREE_PARKING:
                 payFreeParking(freeParking, player, this.value);
+                break;
             case MOVE_FORWARD:
                 moveForward(player, this.value, bank);
+                break;
             case MOVE_BACKWARD:
                 moveBackward(player, this.value, bank);
+                break;
             case GO_TO_JAIL:
                 moveToJail(player, bank);
+                break;
             case COLLECT_FROM_ALL:
                 collectFromAll(players, player, value);
+                break;
             case GET_OUT_OF_JAIL_POT_LUCK:
                 giveJailFreeCardFromPotLuck(bank, player, (PotLuckCard) card);
+                break;
             case GET_OUT_OF_JAIL_OPP_KNOCKS:
                 giveJailFreeCardFromOppKnocks(bank, player, (OpportunityKnocksCard) card);
+                break;
         }  
     }
     
