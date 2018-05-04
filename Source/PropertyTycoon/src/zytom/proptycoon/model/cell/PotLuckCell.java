@@ -10,6 +10,6 @@ package zytom.proptycoon.model.cell;
 public class PotLuckCell extends Cell {
     
     public PotLuckCell() {
-        super("Pot Luck");
+        super("POT LUCK");
     }
 }

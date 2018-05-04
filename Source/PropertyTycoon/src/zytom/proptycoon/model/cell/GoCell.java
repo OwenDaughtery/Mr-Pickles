@@ -6,6 +6,6 @@ public class GoCell extends Cell {
      * @author Zenos Pavlakou
      */
     public GoCell() {
-        super("Go");
+        super("GO");
     }
 }

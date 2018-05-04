@@ -6,7 +6,7 @@ public class GoToJailCell extends Cell{
      * @author Zenos Pavlakou
      */
     public GoToJailCell() {
-        super("Go To Jail");
+        super("GO TO JAIL");
     }
     
 }

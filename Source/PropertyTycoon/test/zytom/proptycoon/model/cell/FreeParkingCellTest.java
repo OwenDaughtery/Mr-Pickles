@@ -8,7 +8,7 @@ public class FreeParkingCellTest {
 
     @Test
     public void getTitle() {
-        FreeParkingCell fpCell = new FreeParkingCell();
-        assertTrue(fpCell.getTitle() == "Free Parking");
+        FreeParkingCell freeParkingCell = new FreeParkingCell();
+        assertTrue("FREE PARKING".equals(freeParkingCell.getTitle()));
     }
 }

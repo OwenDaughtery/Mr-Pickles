@@ -9,6 +9,6 @@ package zytom.proptycoon.model.cell;
  */
 public class IncomeTaxCell extends Cell {
     public IncomeTaxCell() {
-        super("Income Tax");
+        super("INCOME TAX");
     }
 }

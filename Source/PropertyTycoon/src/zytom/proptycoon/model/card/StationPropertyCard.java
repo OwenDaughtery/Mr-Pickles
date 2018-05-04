@@ -11,6 +11,10 @@ public class StationPropertyCard extends PropertyCard {
         super(cellRef, title, price);
         this.rentCost = rentCost;
     }
+    
+    public int[] getRentCosts() {
+        return this.rentCost;
+    }
 
     public int getRent(Dice dice, Player owner) {
         return rentCost[
