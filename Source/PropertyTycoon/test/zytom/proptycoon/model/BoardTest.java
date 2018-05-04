@@ -29,12 +29,14 @@ public class BoardTest {
         Assert.assertEquals("TURING HEIGHTS", board.getCell(39).getTitle());
     }
 
+    
     @Test
     public void getGoCell() throws FileNotFoundException, Board.CellNotFoundException {
         DeckCreator deckCreator = new DeckCreator();
         Board board = new Board(deckCreator.getPropertyData());
         Assert.assertEquals("GO", board.getCell(0).getTitle());
     }
+    
     
     @Test
     public void checkAllCells() throws FileNotFoundException, Board.CellNotFoundException {
