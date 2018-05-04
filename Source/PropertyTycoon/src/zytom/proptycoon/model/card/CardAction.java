@@ -246,7 +246,7 @@ public class CardAction {
     private void collectFromAll(Player[] players, Player recipient, int value) throws AssetNotFoundException{
         for(Player player : players) {
             if(!player.equals(recipient)) {
-                playerPayPlayer(player, recipient, value);
+                playerPayPlayer(recipient, player, value);
             }
         }
     }
