@@ -11,13 +11,11 @@ import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
 
 public class PurchasePropertyOption {
-    private Player player;
-    private Bank bank ;
-    public PurchasePropertyOption(Player player, Bank bank ){
-
-        this.bank = bank ;
-        this.player =player;
-
+    private Bank bank;
+    private LeadController leadController;
+    public PurchasePropertyOption (Bank bank,LeadController leadController){
+        this.bank = bank;
+        this.leadController = leadController;
 
 
 
@@ -30,7 +28,7 @@ public class PurchasePropertyOption {
 
     }
 
-    public void purchaseProperty(StreetPropertyCard card){
+    public void purchaseProperty(StreetPropertyCard card,Player player){
         try{
 
             Transaction transaction = new Transaction(
@@ -46,7 +44,7 @@ public class PurchasePropertyOption {
         }
     }
 
-    public void purchaseProperty(StationPropertyCard card){
+    public void purchaseProperty(StationPropertyCard card,Player player){
         try{
 
             Transaction transaction = new Transaction(
@@ -61,7 +59,7 @@ public class PurchasePropertyOption {
 
         }
     }
-    public void purchaseProperty(UtilityPropertyCard card){
+    public void purchaseProperty(UtilityPropertyCard card,Player player){
         try{
 
             Transaction transaction = new Transaction(

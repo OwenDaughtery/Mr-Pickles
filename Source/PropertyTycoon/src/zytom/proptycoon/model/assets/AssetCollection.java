@@ -116,6 +116,12 @@ public class AssetCollection {
             StreetPropertyCell cell = (StreetPropertyCell) s.getCellRef();
             value += cell.getNumberOfBuildings()*s.getBuildCost();
         }
+        for(UtilityPropertyCard u: utilityPropertyCards){
+            value +=  u.getPrice();
+        }
+        for(StationPropertyCard st: stationPropertyCards){
+            value +=  st.getPrice();
+        }
         return value;
     }
 

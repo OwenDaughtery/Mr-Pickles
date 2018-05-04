@@ -17,7 +17,7 @@ import zytom.proptycoon.model.cell.GoCell;
 public class Player implements AssetOwner {
     public static final int INITIAL_BALANCE = 1500;
     private boolean hasPassedGo;
-
+    private int doublesRolled = 0;
     private int turnsInJail = 0;
     private final String name;
     private int position;
@@ -182,6 +182,14 @@ public class Player implements AssetOwner {
         return requested;
     }
 
+    public int getDoublesRolled() {
+        return doublesRolled;
+    }
+
+    public void setDoublesRolled(int doublesRolled) {
+        this.doublesRolled = doublesRolled;
+    }
+
     /**
      * Append the contents of the specified asset collection to the asset
      * owner's asset collection.
@@ -209,6 +217,7 @@ public class Player implements AssetOwner {
                 this.assetCollection.getMoney() + giving.getMoney()
         );
     }
+
 
     @Override
     public boolean checkHasAsset(Card asset) {

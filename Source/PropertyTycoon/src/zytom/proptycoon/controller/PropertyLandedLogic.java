@@ -8,6 +8,7 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.PropertyCard;
+import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.PropertyCell;
 
@@ -17,18 +18,19 @@ public class PropertyLandedLogic {
 
     private ArrayList<Player> players;
     private Bank bank;
-    public PropertyLandedLogic( ArrayList<Player> players,Bank bank){
+    private LeadController leadController;
+    public PropertyLandedLogic( ArrayList<Player> players,Bank bank, LeadController leadController){
         this.players = players;
         this.bank = bank;
+        this.leadController = leadController;
     }
 
     public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice){
         PropertyCard card = cell.getAssociatedCard();
         if(currentPlayer.checkHasAsset(card)){
-            //do shit
+            //do nothing
         }else if(bank.checkHasAsset(card)){
-            //
-
+            //do shit
         }else{//paying player
             boolean cardFound=false;
             int x = 0;
@@ -38,7 +40,7 @@ public class PropertyLandedLogic {
                 }
                 x++;
             }
-            if(!cardFound){
+            if(!cardFound) {
 
             }else {
                 try{
@@ -50,16 +52,14 @@ public class PropertyLandedLogic {
                             new AssetCollection(0));
                     transaction.settleTransaction();
                 }catch (AssetOwner.AssetNotFoundException ex){
-                    //TODO
-                    // Asset manager will be passed an int of how much is outstanding
 
                 }
 
-                players.get(x);
             }
         }
 
     }
+
 
     public static class CardNotFoundException extends Exception {
         public CardNotFoundException(Card card){

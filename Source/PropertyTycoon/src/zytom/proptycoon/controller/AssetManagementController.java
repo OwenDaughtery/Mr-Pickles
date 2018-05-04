@@ -14,12 +14,12 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 public class AssetManagementController {
     Player player;
     Bank bank;
-
-    public AssetManagementController(Player player, Bank bank){
+    LeadController leadController
+    public AssetManagementController(Player player, Bank bank, LeadController leadController){
 
     this.player = player;
     this.bank = bank;
-
+    this.leadController = leadController;
 
     }
 
