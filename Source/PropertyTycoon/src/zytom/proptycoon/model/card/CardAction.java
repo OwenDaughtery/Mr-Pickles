@@ -38,7 +38,7 @@ public class CardAction {
             case "BANK PAYS PLAYER":
                 this.type = Type.BANK_PAYS_PLAYER;
                 break;
-            case "PLAYER_PAYS_BANK":
+            case "PLAYER PAYS BANK":
                 this.type = Type.PLAYER_PAYS_BANK;
                 break;
             case "PAY FREE PARKING":
@@ -57,11 +57,15 @@ public class CardAction {
                 break;
             case "GET OUT OF JAIL POT LUCK":
                 this.type = Type.GET_OUT_OF_JAIL_POT_LUCK;
+                break;
             case "GET OUT OF JAIL OPP KNOCKS":
                 this.type = Type.GET_OUT_OF_JAIL_OPP_KNOCKS;
-            default:
-                throw new InvalidActionException(action);
+                break;
 
+        }
+        
+        if(this.type == null) {
+            throw new InvalidActionException(action);
         }
         
         this.value = value;
