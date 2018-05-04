@@ -32,14 +32,11 @@ public class StreetPropertyCard extends PropertyCard {
 
     public int getRent(Dice dice, Player player) {
         StreetPropertyCell propCell = (StreetPropertyCell)cellRef;
-        if (propCell.getNumberOfHotels() == 1) {
-            return rentCost[5];
-        }
-        else if (propCell.getNumberOfHouses() >=1 ) {
-            return rentCost[propCell.getNumberOfHouses()];
+        if (propCell.getNumberOfBuildings() > 0 ) {
+            return rentCost[propCell.getNumberOfBuildings()];
         }
         //If condition needs to be done
-        else if (propCell.getNumberOfHouses() == 0 )  {
+        else if (propCell.getNumberOfBuildings() == 0 )  {
             return rentCost[0]*2;
         }
         else{
