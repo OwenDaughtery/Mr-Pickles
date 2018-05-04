@@ -100,16 +100,16 @@ package zytom.proptycoon.controller;
 //}
 
 public class PlayerController {
-    Player currentPlayer;
     Game game;
-    public PlayerController(Player player , Game game){
+    Player currentPlayer;
 
-        this.currentPlayer = player;
+    public PlayerController(Game game){
         this.game = game;
+        currentPlayer = game.getCurrentPlayer();
 
     }
 
-    public void hasLanded(Cell cell, Board board){
+    public void hasLanded(Cell cell,Board board) throws CellNotFoundException, LandedOnJailException {
 
         Board.CellType cellType = board.getCellClass(cell);
 
@@ -149,9 +149,7 @@ public class PlayerController {
                 }
                 break;
             case JAIL:
-
-                //TODO
-                break;
+                throw new LandedOnJailException();
             case POT_LUCK:
 
                 //draw a potluck card
@@ -161,6 +159,7 @@ public class PlayerController {
                 //move player to jail
                 break;
             case FREE_PARKING:
+                //player receives free parking
                 FreeParking freeParking = game.getFreeParking();
                 try {
                     Transaction transaction = new Transaction(
@@ -171,26 +170,58 @@ public class PlayerController {
                     );
                     transaction.settleTransaction();
                 } catch (AssetOwner.AssetNotFoundException ex) {
-
                 }
-                //player receives free parking
                 break;
             case JUST_VISITING:
                 //Do nothing
                 break;
             case STREET_PROPERTY:
-
                 break;
             case STATION_PROPERTY:
-
                 break;
-            case UTILITY_PROPERTY:break;
+            case UTILITY_PROPERTY:
+                break;
             case OPPORTUNITY_KNOCKS:break;
 
-            default: throw new Board.CellNotFoundException();
+            default: throw new CellNotFoundException();
 
 
         }
 
 }
+    public static class CellNotFoundException extends Exception {
+        public CellNotFoundException(
+        ) {
+            super (
+                    "Cell not Found"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
+
+    public static class LandedOnJailException extends Exception {
+        public LandedOnJailException(
+        ) {
+            super (
+                    "Landed on jail cell"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
 }

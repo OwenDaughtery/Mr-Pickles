@@ -43,7 +43,7 @@ public class TransactionTest {
     }
     
     @Test
-    public void BankGivePotLuckCardToPlayer() throws AssetOwner.AssetNotFoundException {
+    public void bankGivePotLuckCardToPlayer() throws AssetOwner.AssetNotFoundException {
         
         //ARGUMENTS FOR ASSET COLLECTION
         ArrayList<UtilityPropertyCard> utilityCards = new ArrayList<>();
@@ -55,6 +55,9 @@ public class TransactionTest {
         //GET TARGET CARD
         PotLuckCard targetCard = this.bank.getAssetCollection().getPotLuckCards().get(0);
         potLuckCards.add(targetCard);
+        
+        //CHECK THAT PLAYER DOES NOT HAVE THE TARGET CARD
+        assertFalse(zenos.getAssetCollection().getPotLuckCards().contains(targetCard));
         
         //CREATE TEMP ASSET COLLECTION TO TAKE FROM BANK
         AssetCollection fromBank = new AssetCollection(potLuckCards, oppKnocksCards, streetCards, stationCards, utilityCards);
@@ -70,9 +73,47 @@ public class TransactionTest {
         tx.settleTransaction();
         
         //CHECK THAT PLAYER NOW HAS THE CARD
-        assertTrue(zenos.getAssetCollection().getPotLuckCards().get(0) == targetCard);
+        assertEquals(zenos.getAssetCollection().getPotLuckCards().get(0), targetCard);
         
         //CHECK THAT THE BANK NO LONGER HAS THE CARD
         assertFalse(bank.getAssetCollection().getPotLuckCards().contains(targetCard));
+    }
+    
+    
+    @Test
+    public void bankGiveOpportunityKnocksCardToPlayer() throws AssetOwner.AssetNotFoundException {
+        
+        //ARGUMENTS FOR ASSET COLLECTION
+        ArrayList<UtilityPropertyCard> utilityCards = new ArrayList<>();
+        ArrayList<StationPropertyCard> stationCards = new ArrayList<>();
+        ArrayList<StreetPropertyCard> streetCards = new ArrayList<>();
+        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
+        ArrayList<OpportunityKnocksCard> oppKnocksCards = new ArrayList<>();
+        
+        //GET TARGET CARD
+        OpportunityKnocksCard targetCard = this.bank.getAssetCollection().getOpportunityKnocksCards().get(0);
+        oppKnocksCards.add(targetCard);
+        
+        //CHECK THAT PLAYER DOES NOT HAVE THE TARGET CARD
+        assertFalse(zenos.getAssetCollection().getOpportunityKnocksCards().contains(targetCard));
+        
+        //CREATE TEMP ASSET COLLECTION TO TAKE FROM BANK
+        AssetCollection fromBank = new AssetCollection(potLuckCards, oppKnocksCards, streetCards, stationCards, utilityCards);
+        
+        //CREATE TEMP ASSET COLLECTION TO TAKE FROM PLAYER OF £0.00
+        AssetCollection toZenos = new AssetCollection(0);
+        
+        //CHECK THAT THE BANK HAS THE OPPORTUNITY KNOCKS CARD
+        assertTrue(bank.getAssetCollection().getOpportunityKnocksCards().contains(targetCard));
+        
+        //CREATE TRANSACTION AND SETTLE IT
+        Transaction tx = new Transaction(bank, zenos, fromBank, toZenos);
+        tx.settleTransaction();
+        
+        //CHECK THAT PLAYER NOW HAS THE CARD
+        assertEquals(zenos.getAssetCollection().getOpportunityKnocksCards().get(0), targetCard);
+        
+        //CHECK THAT THE BANK NO LONGER HAS THE CARD
+        assertFalse(bank.getAssetCollection().getOpportunityKnocksCards().contains(targetCard));
     }
 }
