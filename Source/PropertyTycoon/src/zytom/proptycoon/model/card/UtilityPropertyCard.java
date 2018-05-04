@@ -42,7 +42,7 @@ public class UtilityPropertyCard extends PropertyCard {
             }
             return diceValue * this.rentMultiplierOnSingle;
         }
-        return diceValue;
+        return diceValue; //should this return 0??
         
     }
  
