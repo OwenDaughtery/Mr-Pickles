@@ -8,6 +8,12 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
 import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel;
 import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenLabel;
 import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel;
@@ -17,14 +23,15 @@ import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel;
  * @author utopia
  */
 public class ChoosePlayersPanel extends javax.swing.JPanel {
-    
+
     private TokenLabel[] tokenLabels;
-    
+
     /**
      * Creates new form ChoosePlayersPanel
      */
     public ChoosePlayersPanel() {
         initComponents();
+
         try {
             tokenLabels = new TokenLabel[6];
             tokenLabels[0] = new TokenLabel(TokenLabel.TokenType.BOOT);
@@ -37,13 +44,14 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
                 tokenPanel1, tokenPanel2, tokenPanel3,
                 tokenPanel4, tokenPanel5, tokenPanel6
             };
-            for (int i=0; i<6; i++) {
-                tokenPanels[i].add(tokenLabels[i]);
-                tokenLabels[i].setVisible(true);
+            for (int i = 0; i < 6; i++) {
+                JLabel label  = new JLabel("hw", JLabel.LEFT);     
+                tokenPanels[i].setBackground(Color.red);
+                tokenPanels[i].add(new JButton());
             }
         } catch (IOException ex) {
             Logger.getLogger(ChoosePlayersPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
 
     /**
@@ -55,7 +63,7 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ChoosePLayersLabel = new javax.swing.JLabel();
+        ChoosePlayersLabel = new javax.swing.JLabel();
         chosenTokenPanel1 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
         chosenTokenPanel2 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
         chosenTokenPanel3 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
@@ -69,12 +77,9 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
         tokenPanel5 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
         tokenPanel6 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
 
-        ChoosePLayersLabel.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
-        ChoosePLayersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChoosePLayersLabel.setText("Choose Players...");
-
-        tokenPanel1.setMinimumSize(new java.awt.Dimension(64, 64));
-        tokenPanel1.setPreferredSize(new java.awt.Dimension(64, 64));
+        ChoosePlayersLabel.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        ChoosePlayersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChoosePlayersLabel.setText("Choose Players...");
 
         javax.swing.GroupLayout tokenPanel1Layout = new javax.swing.GroupLayout(tokenPanel1);
         tokenPanel1.setLayout(tokenPanel1Layout);
@@ -86,9 +91,6 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
             tokenPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
-
-        tokenPanel2.setMinimumSize(new java.awt.Dimension(64, 64));
-        tokenPanel2.setPreferredSize(new java.awt.Dimension(64, 64));
 
         javax.swing.GroupLayout tokenPanel2Layout = new javax.swing.GroupLayout(tokenPanel2);
         tokenPanel2.setLayout(tokenPanel2Layout);
@@ -157,7 +159,7 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(ChoosePLayersLabel))
+                        .addComponent(ChoosePlayersLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +191,7 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(ChoosePLayersLabel)
+                .addComponent(ChoosePlayersLabel)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chosenTokenPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,7 +214,7 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ChoosePLayersLabel;
+    private javax.swing.JLabel ChoosePlayersLabel;
     private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel1;
     private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel2;
     private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel3;

@@ -25,7 +25,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="ChoosePLayersLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChoosePlayersLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -68,7 +68,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="ChoosePLayersLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="ChoosePlayersLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="chosenTokenPanel1" min="-2" max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="ChoosePLayersLabel">
+    <Component class="javax.swing.JLabel" name="ChoosePlayersLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="36" style="0"/>
@@ -115,6 +115,9 @@
     <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel6">
     </Component>
     <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="ChoosePlayersPanel_tokenPanel1"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">

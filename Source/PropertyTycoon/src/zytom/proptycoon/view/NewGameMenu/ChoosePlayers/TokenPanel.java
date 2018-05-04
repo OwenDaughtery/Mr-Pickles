@@ -3,6 +3,8 @@
  */
 package zytom.proptycoon.view.NewGameMenu.ChoosePlayers;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author utopia
@@ -14,6 +16,7 @@ public class TokenPanel extends javax.swing.JPanel {
      */
     public TokenPanel() {
         initComponents();
+        this.add(new JButton());
     }
 
     /**
@@ -28,17 +31,7 @@ public class TokenPanel extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(64, 64));
         setMinimumSize(new java.awt.Dimension(64, 64));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
+        setLayout(new java.awt.BorderLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -3,6 +3,7 @@
  */
 package zytom.proptycoon.view.NewGameMenu.ChoosePlayers;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
@@ -24,6 +25,8 @@ public class TokenLabel extends JLabel {
 
     public TokenLabel(TokenType tokenType) throws IOException {
         super("A Label");
+        this.setText("Label");
+        this.setForeground(Color.WHITE);
     }
 
     public static ImageIcon getImageIcon(TokenType tokenType) throws IOException {

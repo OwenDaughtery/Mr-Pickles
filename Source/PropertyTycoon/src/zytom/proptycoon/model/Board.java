@@ -95,6 +95,8 @@ public final class Board {
         return this.cells.get(0);
     }
 
+    
+    public Class getCellClass(CEll cell)
    
 
     public static class CellNotFoundException extends Exception {
