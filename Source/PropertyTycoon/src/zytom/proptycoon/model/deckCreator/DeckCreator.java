@@ -37,7 +37,7 @@ public class DeckCreator {
      * @return An ArrayList representation of the PotLuckCard deck.
      * @throws FileNotFoundException 
      */
-    public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
+    public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         PotLuckDeck deck = new PotLuckDeck(this.potLuckDeckData);
         return deck.getCards();
     }
@@ -47,7 +47,7 @@ public class DeckCreator {
      * @return An ArrayList representation of the OpportunityKnocksCard deck.
      * @throws FileNotFoundException 
      */
-    public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
+    public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(this.opportunityKnocksDeckData);
         return deck.getCards();
     }
@@ -140,7 +140,7 @@ public class DeckCreator {
         /**
          * @param deckData The parsed csv data
          */
-        private PotLuckDeck(ArrayList<String[]> deckData) {
+        private PotLuckDeck(ArrayList<String[]> deckData) throws CardAction.InvalidActionException {
             this.potLuckDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 CardAction currentCardAction = new CardAction(data[1], Integer.parseInt(data[2]));
@@ -171,7 +171,7 @@ public class DeckCreator {
         /**
          * @param deckData The parsed csv data
          */
-        private OpportunityKnocksDeck(ArrayList<String[]> deckData) {       
+        private OpportunityKnocksDeck(ArrayList<String[]> deckData) throws CardAction.InvalidActionException {       
             this.opportunityKnocksDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 CardAction currentCardAction = new CardAction(data[1], Integer.parseInt(data[2]));
