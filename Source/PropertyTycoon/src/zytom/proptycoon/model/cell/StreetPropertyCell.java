@@ -1,5 +1,7 @@
 package zytom.proptycoon.model.cell;
 
+import zytom.proptycoon.model.card.StreetPropertyCard;
+
 public class StreetPropertyCell extends PropertyCell {
 
     private int numberOfBuildings;
@@ -13,7 +15,6 @@ public class StreetPropertyCell extends PropertyCell {
     public StreetPropertyCell(String titleOfStreetProperty) {
         super(titleOfStreetProperty);
         this.numberOfBuildings = 0;
-
     }
     
     /**
@@ -24,5 +25,40 @@ public class StreetPropertyCell extends PropertyCell {
     public int getNumberOfBuildings() {
         return this.numberOfBuildings;
     }
+
+    public void addBuilding() throws ConstructionError {
+        if (this.getNumberOfBuildings() < 5){
+            this.numberOfBuildings += 1;
+        }else {
+            throw new ConstructionError(this.getNumberOfBuildings());
+        }
+    }
+    public void removeBuilding() throws ConstructionError {
+        if (this.getNumberOfBuildings()>0){
+            this.numberOfBuildings -= 1;
+        }else {
+            throw new ConstructionError(this.getNumberOfBuildings());
+        }
+
+
+    }
+    public static class ConstructionError extends Exception {
+        public ConstructionError(int numberOfBuildings){
+            super (
+                    numberOfBuildings+" number of Buildings . there was a construction error"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
+
+
 
 }
