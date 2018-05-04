@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fea8b931-803f-4e9a-9dc4-b9f263a9537e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/resources/PropertyCards.csv" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/resources/PropertyCards.csv" />
       <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/PlayerController.java" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/PlayerController.java" />
-      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Board.java" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Board.java" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,14 +74,24 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PlayerController.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PlayerController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/PlayerController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1375">
-                  <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+                <state relative-caret-position="-562">
+                  <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Dice.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="465">
+                  <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -160,7 +169,6 @@
       <list>
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/DeckCreator/DeckCreator.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Game.java" />
-        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/test/zytom/proptycoon/model/assets/TransactionTest.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/test/zytom/proptycoon/model/card/ActionCardTest.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/test/zytom/proptycoon/model/card/CardTest.java" />
@@ -209,10 +217,11 @@
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/cell/Cell.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Board.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/PlayerController.java" />
+        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="37" />
     <option name="width" value="1381" />
     <option name="height" value="815" />
@@ -612,7 +621,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="37" width="1381" height="815" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -759,14 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1094,11 +1095,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/PlayerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1375">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="-562">
+          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/model/Dice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -109,7 +109,7 @@ public class PlayerController {
 
     }
 
-    public void hasLanded(Cell cell,Board board){
+    public void hasLanded(Cell cell, Board board){
 
         Board.CellType cellType = board.getCellClass(cell);
 
