@@ -31,14 +31,14 @@ public class DeckCreatorTest {
     }
 
     @Test
-    public void createPotLuckDeck() throws FileNotFoundException {
+    public void createPotLuckDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         ArrayList<PotLuckCard> potLuckCards = this.deckCreator.createPotLuckDeck();
         Assert.assertEquals(16, potLuckCards.size());
 
     }
 
     @Test
-    public void createOpportunityKnocksDeck() throws FileNotFoundException {
+    public void createOpportunityKnocksDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         ArrayList<OpportunityKnocksCard> opportunityKnocksCards = this.deckCreator.createOpportunityKnocksDeck();
         Assert.assertEquals(16, opportunityKnocksCards.size());
     }
