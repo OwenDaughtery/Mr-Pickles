@@ -8,5 +8,7 @@ public class SuperTaxCellTest {
 
     @Test
     public void getTitle() {
+        SuperTaxCell superTaxCell = new SuperTaxCell();
+        assertTrue("SUPER TAX".equals(superTaxCell.getTitle()));
     }
 }
