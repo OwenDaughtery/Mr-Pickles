@@ -12,7 +12,7 @@ public class ActionCardTest {
     ActionCard opportunityKnocksCard;
     
     @Before
-    public void init() {
+    public void init() throws CardAction.InvalidActionException {
         descriptionOfOpportunityKnocks = "COLLECT £200";
         cardActionOfOpportunityKnocks = new CardAction("GAIN", 200);
         opportunityKnocksCard = new OpportunityKnocksCard(descriptionOfOpportunityKnocks, cardActionOfOpportunityKnocks);
