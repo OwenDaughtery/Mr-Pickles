@@ -14,8 +14,10 @@ public class StationPropertyCardTest {
     
     @Before
     public void init() {
+        
         int[] rentCosts;
         rentCosts = new int[6];
+        
         rentCosts[0] = 50;  // 0 houses
         rentCosts[1] = 100; // 1 house
         rentCosts[2] = 150; // 2 houses
