@@ -16,6 +16,7 @@ import zytom.proptycoon.model.cell.GoCell;
  */
 public class Player implements AssetOwner {
     public static final int INITIAL_BALANCE = 1500;
+    private boolean hasPassedGo;
 
     private int turnsInJail = 0;
     private final String name;
@@ -30,6 +31,7 @@ public class Player implements AssetOwner {
         this.name = name;
         this.position = 0;
         this.assetCollection = new AssetCollection(INITIAL_BALANCE);
+        this.hasPassedGo =false;
     }
 
     /**
@@ -88,6 +90,7 @@ public class Player implements AssetOwner {
                     new AssetCollection(0)
             );
             transaction.settleTransaction();
+            playerPassedGo();
         } catch (AssetNotFoundException ex) {
             //There will be no exception.
             //So do nothing.
@@ -229,6 +232,13 @@ public class Player implements AssetOwner {
         }else {
             return false;
         }
+    }
+
+    public boolean hasPlayerPassedGo(){
+        return this.hasPassedGo;
+    }
+    public void playerPassedGo(){
+        this.hasPassedGo = true;
     }
 
     @Override

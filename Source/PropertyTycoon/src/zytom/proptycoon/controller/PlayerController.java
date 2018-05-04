@@ -1,14 +1,14 @@
 package zytom.proptycoon.controller;
 
-//import zytom.proptycoon.model.Board;
-//import zytom.proptycoon.model.FreeParking;
-//import zytom.proptycoon.model.Game;
-//import zytom.proptycoon.model.Player;
-//import zytom.proptycoon.model.assets.AssetCollection;
-//import zytom.proptycoon.model.assets.AssetOwner;
-//import zytom.proptycoon.model.assets.Transaction;
-//import zytom.proptycoon.model.cell.*;
-//
+import zytom.proptycoon.model.Board;
+import zytom.proptycoon.model.FreeParking;
+import zytom.proptycoon.model.Game;
+import zytom.proptycoon.model.Player;
+import zytom.proptycoon.model.assets.AssetCollection;
+import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.assets.Transaction;
+import zytom.proptycoon.model.cell.*;
+
 //public class PlayerController {
 //
 //    private Game game;
@@ -176,6 +176,7 @@ public class PlayerController {
                 //Do nothing
                 break;
             case STREET_PROPERTY:
+
                 break;
             case STATION_PROPERTY:
                 break;
