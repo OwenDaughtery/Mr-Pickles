@@ -9,11 +9,13 @@ public abstract class PropertyCard extends Card {
     protected final String title;
     protected final int price;
     protected static final double MORTGAGE_PROPORTION = 0.5;
+    public boolean isMortaged;
     
     public PropertyCard(Cell cellRef, String title, int price) {
         this.cellRef = cellRef;
         this.title = title;
         this.price = price;
+        this.isMortaged = false;
     }
 
     public String getTitle(){
@@ -33,7 +35,12 @@ public abstract class PropertyCard extends Card {
 
     public abstract int getRent(Dice dice, Player owner);
 
-
+    public void mortagage(){
+        this.isMortaged = true;
+    }
+    public void unmortagage(){
+        this.isMortaged =false;
+    }
     @Override
     public String toString(){
         String info = "Card Title : "+ this.title + "\n"+
