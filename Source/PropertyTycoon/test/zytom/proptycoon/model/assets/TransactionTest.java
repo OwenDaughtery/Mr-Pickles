@@ -16,11 +16,18 @@ import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
 
+
 public class TransactionTest {
     
     private  Bank bank;
     private  Player zenos;
     private  Board board;
+    
+    private ArrayList<UtilityPropertyCard> utilityCards;
+    private ArrayList<StationPropertyCard> stationCards;
+    private ArrayList<StreetPropertyCard> streetCards;
+    private ArrayList<OpportunityKnocksCard> oppKnocksCards;
+    private ArrayList<PotLuckCard> potLuckCards;
     
     @Before
     public void init() throws FileNotFoundException, Board.CellNotFoundException {
@@ -30,9 +37,17 @@ public class TransactionTest {
                              dc.createStreetPropertyCardDeck(board), dc.createStationPropertyCardDeck(board),
                              dc.createUtilityPropertyCardDeck(board));
         
-        zenos = new Player("Zenos");
+        this.zenos = new Player("Zenos");
+        
+        this.utilityCards = new ArrayList<>();
+        this.stationCards = new ArrayList<>();
+        this.streetCards = new ArrayList<>();
+        this.oppKnocksCards = new ArrayList<>();
+        this.potLuckCards = new ArrayList<>();
     }
 
+    
+    
     @Test
     public void cashBankToPlayer() throws AssetOwner.AssetNotFoundException {
         AssetCollection fromBank = new AssetCollection(100);
@@ -42,18 +57,14 @@ public class TransactionTest {
         assertEquals(1600, zenos.getAssetCollection().getMoney());
     }
     
+    
+    
     @Test
     public void bankGivePotLuckCardToPlayer() throws AssetOwner.AssetNotFoundException {
-        
-        //ARGUMENTS FOR ASSET COLLECTION
-        ArrayList<UtilityPropertyCard> utilityCards = new ArrayList<>();
-        ArrayList<StationPropertyCard> stationCards = new ArrayList<>();
-        ArrayList<StreetPropertyCard> streetCards = new ArrayList<>();
-        ArrayList<OpportunityKnocksCard> oppKnocksCards = new ArrayList<>();
-        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
+
         
         //GET TARGET CARD
-        PotLuckCard targetCard = this.bank.getAssetCollection().getPotLuckCards().get(0);
+        PotLuckCard targetCard = bank.getAssetCollection().getPotLuckCards().get(0);
         potLuckCards.add(targetCard);
         
         //CHECK THAT PLAYER DOES NOT HAVE THE TARGET CARD
@@ -80,18 +91,12 @@ public class TransactionTest {
     }
     
     
+    
     @Test
     public void bankGiveOpportunityKnocksCardToPlayer() throws AssetOwner.AssetNotFoundException {
         
-        //ARGUMENTS FOR ASSET COLLECTION
-        ArrayList<UtilityPropertyCard> utilityCards = new ArrayList<>();
-        ArrayList<StationPropertyCard> stationCards = new ArrayList<>();
-        ArrayList<StreetPropertyCard> streetCards = new ArrayList<>();
-        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
-        ArrayList<OpportunityKnocksCard> oppKnocksCards = new ArrayList<>();
-        
         //GET TARGET CARD
-        OpportunityKnocksCard targetCard = this.bank.getAssetCollection().getOpportunityKnocksCards().get(0);
+        OpportunityKnocksCard targetCard = bank.getAssetCollection().getOpportunityKnocksCards().get(0);
         oppKnocksCards.add(targetCard);
         
         //CHECK THAT PLAYER DOES NOT HAVE THE TARGET CARD
@@ -116,4 +121,12 @@ public class TransactionTest {
         //CHECK THAT THE BANK NO LONGER HAS THE CARD
         assertFalse(bank.getAssetCollection().getOpportunityKnocksCards().contains(targetCard));
     }
+    
+    
+    
+    @Test
+    public void playerBuysStreetPropertyFromBank() {
+        
+    }
+    
 }

@@ -3,6 +3,7 @@
  */
 package zytom.proptycoon.model.card;
 
+import java.util.ArrayList;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.FreeParking;
 import zytom.proptycoon.model.Player;
@@ -19,40 +20,150 @@ import static zytom.proptycoon.model.assets.AssetOwner.*;
  * Execute will call relevent methods to implement
  */
 public class CardAction {
-    enum Type{GAIN,PAY,FORWARD,BACKWARD,STEP,CALCULATE,MULTI,CHOOSE};
+    enum Type{BANK_PAYS_PLAYER, PLAYER_PAYS_BANK, PAY_FREE_PARKING, 
+              MOVE_FORWARD, MOVE_BACKWARD, GO_TO_JAIL, GET_OUT_OF_JAIL_POT_LUCK, 
+              GET_OUT_OF_JAIL_OPP_KNOCKS, COLLECT_FROM_ALL, MOVE_FORWARD_TO};
     Type type;
     int value;
 
+    
+    /**
+     * 
+     * @param action The string action read fromt he CSV of PropertyCells.csv
+     * @param value The value associated with the action
+     */
     public CardAction(String action, int value){
-        
         switch(action) {
-            case "GAIN":
-                this.type = Type.GAIN;
+            case "BANK PAYS PLAYER":
+                this.type = Type.BANK_PAYS_PLAYER;
                 break;
-            case "PAY":
-                this.type = Type.PAY;
+            case "PLAYER_PAYS_BANK":
+                this.type = Type.PLAYER_PAYS_BANK;
                 break;
-            case "FORWARD":
-                this.type = Type.FORWARD;
+            case "PAY FREE PARKING":
+                this.type = Type.PAY_FREE_PARKING;
                 break;
-            case "BACKWARD":
-                this.type = Type.BACKWARD;
-            case "STEP":
-                this.type = Type.STEP;
+            case "MOVE FORWARD":
+                this.type = Type.MOVE_FORWARD;
+            case "MOVE BACKWARD":
+                this.type = Type.MOVE_BACKWARD;
                 break;
-            case "CALCULATE":
-                this.type = Type.CALCULATE;
+            case "GO TO JAIL":
+                this.type = Type.GO_TO_JAIL;
                 break;
-            case "MULTI":
-                this.type = Type.MULTI;
+            case "COLLECT FROM ALL":
+                this.type = Type.COLLECT_FROM_ALL;
                 break;
-            case "CHOOSE":
-                this.type = Type.CHOOSE;
-                break;
+            case "GET OUT OF JAIL POT LUCK":
+                this.type = Type.GET_OUT_OF_JAIL_POT_LUCK;
+            case "GET OUT OF JAIL OPP KNOCKS":
+                this.type = Type.GET_OUT_OF_JAIL_OPP_KNOCKS;
+
         }
         
         this.value = value;
     }
+    
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * Performs the action of the card
+     * 
+     * @param freeParking The instance of FreeParking (incase it is necessary to pay free parking)
+     * @param bank The instance of the bank
+     * @param player The player who picked up the card
+     * @param players The array of players (incase it is necessary to collect fund from all)
+     * @param card The instance of the ActionCard
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
+     */
+    public void performAction(FreeParking freeParking, Bank bank, Player player, Player[] players, ActionCard card) throws AssetNotFoundException{
+        switch(this.type) {
+            case BANK_PAYS_PLAYER:
+                bankPayPlayer(bank, player, this.value);
+                break;
+            case PLAYER_PAYS_BANK:
+                playerPayBank(bank, player, this.value);
+                break;
+            case PAY_FREE_PARKING:
+                payFreeParking(freeParking, player, this.value);
+                break;
+            case MOVE_FORWARD:
+                moveForward(player, this.value, bank);
+                break;
+            case MOVE_BACKWARD:
+                moveBackward(player, this.value, bank);
+                break;
+            case GO_TO_JAIL:
+                moveToJail(player, bank);
+                break;
+            case COLLECT_FROM_ALL:
+                collectFromAll(players, player, value);
+                break;
+            case GET_OUT_OF_JAIL_POT_LUCK:
+                giveJailFreeCardFromPotLuck(bank, player, (PotLuckCard) card);
+                break;
+            case GET_OUT_OF_JAIL_OPP_KNOCKS:
+                giveJailFreeCardFromOppKnocks(bank, player, (OpportunityKnocksCard) card);
+                break;
+        }  
+    }
+    
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * Gives player GET OUT OF JAIL FREE card from potLuck deck in bank
+     * 
+     * @param bank The bank
+     * @param player The player receiving the card
+     * @param getOutOfJailFreeCard The instance of the card
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
+     */
+    public void giveJailFreeCardFromPotLuck(Bank bank, Player player, PotLuckCard getOutOfJailFreeCard) throws AssetNotFoundException {
+        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
+        ArrayList<OpportunityKnocksCard> opKnocksCards = new ArrayList<>();
+        ArrayList<StreetPropertyCard> streetPropertyCards = new ArrayList<>();
+        ArrayList<StationPropertyCard> stationPropertyCards = new ArrayList<>();
+        ArrayList<UtilityPropertyCard> utilityPropertyCards = new ArrayList<>();
+        
+        potLuckCards.add(getOutOfJailFreeCard);
+        
+        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards);
+        AssetCollection fromPlayer = new AssetCollection(0);
+        
+        Transaction tx = new Transaction(bank, player, fromBank, fromPlayer);
+        tx.settleTransaction();
+    }
+    
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * Gives player GET OUT OF JAIL FREE card from opportunityKnocks deck in bank
+     * 
+     * @param bank The bank
+     * @param player The player receiving the card
+     * @param getOutOfJailFreeCard The instance of the card
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
+     */
+    public void giveJailFreeCardFromOppKnocks(Bank bank, Player player, OpportunityKnocksCard getOutOfJailFreeCard) throws AssetNotFoundException {
+        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
+        ArrayList<OpportunityKnocksCard> opKnocksCards = new ArrayList<>();
+        ArrayList<StreetPropertyCard> streetPropertyCards = new ArrayList<>();
+        ArrayList<StationPropertyCard> stationPropertyCards = new ArrayList<>();
+        ArrayList<UtilityPropertyCard> utilityPropertyCards = new ArrayList<>();
+        
+        opKnocksCards.add(getOutOfJailFreeCard);
+        
+        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards);
+        AssetCollection fromPlayer = new AssetCollection(0);
+        
+        Transaction tx = new Transaction(bank, player, fromBank, fromPlayer);
+        tx.settleTransaction(); 
+    }
+    
+    
 
     /**
      * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
@@ -61,7 +172,7 @@ public class CardAction {
      * @param player
      * @param value
      */    
-    private void payPlayer(Bank bank , Player player , int value){
+    private void bankPayPlayer(Bank bank , Player player , int value){
         try {
             (new Transaction(bank,player,new AssetCollection(value),
                    new AssetCollection(0))).settleTransaction();
@@ -78,7 +189,7 @@ public class CardAction {
      * @param player
      * @param value
      */
-    private void payBank(Bank bank , Player player , int value) throws AssetNotFoundException{
+    private void playerPayBank(Bank bank , Player player , int value) throws AssetNotFoundException{
         AssetCollection bankAsset = new AssetCollection(0);
         AssetCollection playerAsset = new AssetCollection(value);
         try {
@@ -89,6 +200,7 @@ public class CardAction {
         }
     }
 
+    
 
     /**
      * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
@@ -108,6 +220,8 @@ public class CardAction {
         }
     }
 
+    
+    
     /**
      * @author Ayman Free, Zenos Pavlakou (Ayman did most the work here!)
      * Player1 pays player 2.
@@ -126,6 +240,27 @@ public class CardAction {
             throw new AssetNotFoundException(player2,player2Asset);
         }
     }
+    
+    
+    /**
+     * @author Zenos Pavlakou
+     * 
+     * Collects funds from all players
+     * 
+     * @param players The array of players currently playing the game
+     * @param recipient The player who will receive the funds
+     * @param value The amount of money to collect from each player
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
+     */
+    private void collectFromAll(Player[] players, Player recipient, int value) throws AssetNotFoundException{
+        for(Player player : players) {
+            if(!player.equals(recipient)) {
+                playerPayPlayer(recipient, player, value);
+            }
+        }
+    }
+    
+    
 
     /**
      * @author Ayman Free
@@ -136,6 +271,8 @@ public class CardAction {
     private void moveForward(Player player, int space, Bank bank) throws AssetNotFoundException {
         player.moveTo(space,true,bank);
     }
+    
+    
 
     /**
      * @author Ayman Free
@@ -143,9 +280,17 @@ public class CardAction {
      * @param player
      * @param space
      */
-    private void moveBackwards(Player player, int space, Bank bank) throws AssetNotFoundException {
+    private void moveBackward(Player player, int space, Bank bank) throws AssetNotFoundException {
         player.moveTo(space,false,bank);
     }
+    
+    
+    
+    private void moveToJail(Player player, Bank bank) {
+        player.moveTo(40, false, bank);
+    }
+    
+    
 
     /**
      * @author Ayman Free
@@ -155,10 +300,5 @@ public class CardAction {
      */
     private void stepBack(Player player, int space, Bank bank){
         player.move(space,bank);
-    }
-
-    public void execute(){
-
-        
     }
 }

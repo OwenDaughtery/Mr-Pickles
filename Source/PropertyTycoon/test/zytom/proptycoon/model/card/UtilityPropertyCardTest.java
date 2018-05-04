@@ -17,9 +17,6 @@ public class UtilityPropertyCardTest {
         this.utilityPropertyCard = new UtilityPropertyCard(this.utilityPropertyCell, "UTILITY", 20, 4, 10);
     }
     
-//        public UtilityPropertyCard(Cell cellRef, String title, int price, int rentMultiplierOnSingle,
-//                               int rentMultiplierOnPair)
-
     @Test
     public void getRent() {
         //assertEquals()

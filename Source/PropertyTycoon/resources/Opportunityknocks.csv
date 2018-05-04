@@ -1,16 +1,16 @@
-Bank pays you divided of £50>GAIN>50>
-You have won a lip sync battle. Collect £100>GAIN>100>
-Advance to Turing Heights>MOVE>39>
-Advance to Han Xin Gardens. If you pass GO, collect £200>MOVE>24>
-Fined £15 for speeding>PAY>15>
-Pay university fees of £150>PAY>150>
-Take a trip to Hove station. If you pass GO collect £200>MOVE>15>
-Loan matures, collect £150>GAIN>150>
-You are assessed for repairs, £40/house, £115/hotel>PAY>0>
-Advance to GO>MOVE>0>
-You are assessed for repairs, £25/house, £100/hotel>PAY>0>
-Go back 3 spaces>MOVE>0>
-Advance to Skywalker Drive. If you pass GO collect £200>MOVE>11>
-Go to jail. Do not pass GO, do not collect £200>JAIL>0>
-Drunk in charge of a skateboard. Fine £20>PAY>20>
-Get out of jail free>FREE>0>
+Bank pays you divided of £50>BANK PAYS PLAYER>50>
+You have won a lip sync battle. Collect £100>BANK PAYS PLAYER>100>
+Advance to Turing Heights>MOVE FORWARD>39>
+Advance to Han Xin Gardens. If you pass GO, collect £200>MOVE FORWARD>24>
+Fined £15 for speeding>PAY FREE PARKING>15>
+Pay university fees of £150>PLAYER PAYS BANK>150>
+Take a trip to Hove station. If you pass GO collect £200>MOVE FORWARD>15>
+Loan matures, collect £150>BANK PAY PLAYER>150>
+You are assessed for repairs, £40/house, £115/hotel>PLAYER PAYS BANK>0>
+Advance to GO>MOVE FORWARD>0>
+You are assessed for repairs, £25/house, £100/hotel>PLAYER PAYS BANK>0>
+Go back 3 spaces>MOVE BACKWARD>3>
+Advance to Skywalker Drive. If you pass GO collect £200>MOVE FORWARD>11>
+Go to jail. Do not pass GO, do not collect £200>GO TO JAIL>0>
+Drunk in charge of a skateboard. Fine £20>PAY FREE PARKING>20>
+Get out of jail free>GET OUT OF JAIL OPP KNOCKS>0>
