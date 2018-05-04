@@ -52,7 +52,8 @@ public class PlayerTest {
     
     @Test
     public void moveTo() {
-
+        player.moveTo(4, true, bank);
+        assertEquals(4, player.getPosition());
     }
 
     @Test
@@ -64,16 +65,17 @@ public class PlayerTest {
     
     @Test
     public void getAssetCollection() {
+        assertTrue(player.getAssetCollection() instanceof AssetCollection);
     }
 
     
     @Test
-    public void getTurnsInJail() {
-    }
-
-    
-    @Test
-    public void setTurnsInJail() {
+    public void getAndSetTurnsInJail() {
+        assertEquals(0, player.getTurnsInJail());
+        player.setTurnsInJail(1);
+        assertEquals(1, player.getTurnsInJail());
+        player.setTurnsInJail(2);
+        assertEquals(2, player.getTurnsInJail());
     }
 
     
@@ -91,13 +93,17 @@ public class PlayerTest {
     }
     
     @Test
-    public void takeAssetCollection() {
-        
+    public void takeMoneyAsset() throws AssetOwner.AssetNotFoundException {
+        AssetCollection money = new AssetCollection(100);
+        player.takeAssetCollection(money);
+        assertEquals(1400, player.getAssetCollection().getMoney());
     }
     
     @Test
-    public void giveAssetCollection() {
-
+    public void giveMoneyAsset() {
+        AssetCollection money = new AssetCollection(100);
+        player.giveAssetCollection(money);
+        assertEquals(1600, player.getAssetCollection().getMoney());
     }
     
     @Test
