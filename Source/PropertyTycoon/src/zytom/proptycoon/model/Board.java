@@ -101,7 +101,7 @@ public final class Board {
     }
 
     public enum CellType {
-        GO, FREE_PARKING, GO_TO_JAIL, TAX, STREET_PROPERTY,
+        GO, FREE_PARKING, GO_TO_JAIL, INCOME_TAX,SUPER_TAX, STREET_PROPERTY,
         STATION_PROPERTY, UTILITY_PROPERTY, POT_LUCK,
         OPPORTUNITY_KNOCKS, JAIL, JUST_VISITING
     }
@@ -123,7 +123,8 @@ public final class Board {
         return (index == 0) ? CellType.GO :
                 (streetIndices.contains(index)) ? CellType.STREET_PROPERTY :
                         (stationIndices.contains(index)) ? CellType.STATION_PROPERTY :
-                                (index == 4 || index == 38) ? CellType.TAX :
+                                (index == 4) ? CellType.INCOME_TAX :
+                                        (index == 38) ? CellType.SUPER_TAX :
                                         (index == 20) ? CellType.FREE_PARKING :
                                                 (index == 30) ? CellType.GO_TO_JAIL :
                                                         (index == 12 || index == 28) ? CellType.UTILITY_PROPERTY :
