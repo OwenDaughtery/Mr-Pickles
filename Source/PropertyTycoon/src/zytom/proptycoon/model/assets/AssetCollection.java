@@ -29,7 +29,8 @@ public class AssetCollection {
             ArrayList<OpportunityKnocksCard> opportunityKnocksCards,
             ArrayList<StreetPropertyCard> streetPropertyCards,
             ArrayList<StationPropertyCard> stationPropertyCards,
-            ArrayList<UtilityPropertyCard> utilityPropertyCards
+            ArrayList<UtilityPropertyCard> utilityPropertyCards,
+            int money
         ) 
     {
         this.potLuckCards = potLuckCards;
@@ -37,7 +38,7 @@ public class AssetCollection {
         this.streetPropertyCards = streetPropertyCards;
         this.stationPropertyCards = stationPropertyCards;
         this.utilityPropertyCards = utilityPropertyCards;
-        this.money = 0;
+        this.money = money;
     }
 
     public AssetCollection (StreetPropertyCard streetPropertyCard) {

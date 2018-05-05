@@ -8,20 +8,34 @@ import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
+/**
+ * Settles Buying and selling houses, morgaging and selling propertys.
+ * @author ayman and maxxx
+ */
 public class AssetManagementController {
-    Player player;
     Bank bank;
     LeadController leadController;
-    public AssetManagementController(Player player, Bank bank, LeadController leadController){
 
-    this.player = player;
+    /**
+     *
+     * @param bank
+     * @param leadController
+     */
+    public AssetManagementController(Bank bank, LeadController leadController){
     this.bank = bank;
     this.leadController = leadController;
 
     }
 
 
-    public void buyHouse(StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
+    /**
+     * buys a house on given property
+     * TODO check player owns all prop of same colour
+     * @param player
+     * @param streetPropertyCard
+     * @throws StreetPropertyCell.ConstructionError
+     */
+    public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
 
         int houseCost = streetPropertyCard.getBuildCost();
         StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
@@ -41,7 +55,13 @@ public class AssetManagementController {
 
     }
 
-    public void sellHouse(StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
+    /**
+     * sells a house on a given property
+     * @param player
+     * @param streetPropertyCard
+     * @throws StreetPropertyCell.ConstructionError
+     */
+    public void sellHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
         int houseCost = streetPropertyCard.getBuildCost();
         StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
 
@@ -62,10 +82,10 @@ public class AssetManagementController {
 
 
     /**
-     * Method calls for a property to be mortaged and handles transactions ;
+     * morgages a property and handles transactions ;
      * @param streetPropertyCard
      */
-    public void mortagageProperty(StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void mortagageProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
 
         StreetPropertyCell propertyCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
         int numBuildings= propertyCell.getNumberOfBuildings();
@@ -91,7 +111,13 @@ public class AssetManagementController {
 
     }
 
-    public void unmortagageProperty(StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    /**
+     *  unmorgages a property and handles transactions ;
+     * @param player
+     * @param streetPropertyCard
+     * @throws MortagagingError
+     */
+    public void unmortagageProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
         //change property card from morgage to unmorgaged and pay the bank money
         int value = streetPropertyCard.getMortgageValue();
         if(streetPropertyCard.isMortaged){
@@ -115,7 +141,13 @@ public class AssetManagementController {
 
     }
 
-    public void sellProperty(StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    /**
+     *  sells a property back to the bank and handles transactions ;
+     * @param player
+     * @param streetPropertyCard
+     * @throws MortagagingError
+     */
+    public void sellProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
         StreetPropertyCell propertyCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
         int numBuildings = propertyCell.getNumberOfBuildings();
        //if no buildings and not mortaged
@@ -157,8 +189,4 @@ public class AssetManagementController {
         }
     }
 
-
-    // purchase house on owned property
-    // sell house on owned property
-    //mortgage a property that the player owns
 }

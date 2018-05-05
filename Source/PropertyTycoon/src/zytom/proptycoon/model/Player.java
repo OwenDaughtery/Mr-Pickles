@@ -29,7 +29,7 @@ public class Player implements AssetOwner {
 
     public enum TokenType {
         BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
-    };
+    }
     TokenType tokenType;
 
     /**

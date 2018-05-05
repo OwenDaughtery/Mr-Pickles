@@ -3,11 +3,11 @@
  */
 package zytom.proptycoon.model;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
 import zytom.proptycoon.model.card.CardAction;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +15,7 @@ import zytom.proptycoon.model.deckCreator.DeckCreator;
  *
  * Creates instaces of all players, board and dice. Stores current players turn.
  */
-public class Game {
+public class Game{
 
     private ArrayList<Player> players;
     private Player currentPlayer;
@@ -32,8 +32,6 @@ public class Game {
      * @param startingPlayer
      * @throws PlayerNumberException
      * @throws java.io.FileNotFoundException
-     * @throws zytom.proptycoon.model.Board.CellNotFoundException
-     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException
      */
     public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
         //Check number of players is valid.
@@ -42,16 +40,9 @@ public class Game {
         } else {
             this.players = players;
         }
-        
         currentPlayer = startingPlayer;
-        
-        
         DeckCreator deckCreator = new DeckCreator();
-        
-
         board = new Board(deckCreator.getPropertyData());
-        
-
         bank = new Bank(
                 deckCreator.createPotLuckDeck(),
                 deckCreator.createOpportunityKnocksDeck(),
@@ -59,9 +50,7 @@ public class Game {
                 deckCreator.createStationPropertyCardDeck(this.board),
                 deckCreator.createUtilityPropertyCardDeck(this.board)
         );
-        
         freeParking = new FreeParking();
-        //Initialise dice.
         dice = new Dice();
     }
 
