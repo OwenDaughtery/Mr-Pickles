@@ -14,7 +14,7 @@ public class TurnOrderDecider {
     Player firstPlayer;
     int diceMax = 0;
     Dice dice;
-
+    int rollDiceTurn = 0;
     /**
      * @param players
      */
@@ -27,15 +27,19 @@ public class TurnOrderDecider {
 
     /**
      * rolls the dice if its the highest value, set player to first player.
-     * @param currentPlayer
      */
-    public void rollDice(Player currentPlayer) {
+    public void rollDice() throws EveryPlayerHasRolledException {
+        if(rollDiceTurn>players.size()-2){
+            throw new EveryPlayerHasRolledException();
+        }
+        Player currentPlayer = players.get(rollDiceTurn);
         dice.roll();
         int diceValue = dice.getFirstValue()+dice.getSecondValue();
         if(diceValue>diceMax){
             diceMax = diceValue;
             firstPlayer = currentPlayer;
         }
+        rollDiceTurn = rollDiceTurn+1;
     }
 
     /**
@@ -46,7 +50,20 @@ public class TurnOrderDecider {
         return firstPlayer;
     }
 
-
-
-
+    public static class EveryPlayerHasRolledException extends Exception {
+        public EveryPlayerHasRolledException(){
+            super (
+                    "Every Player Has Rolled the dice, start the game!"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
 }

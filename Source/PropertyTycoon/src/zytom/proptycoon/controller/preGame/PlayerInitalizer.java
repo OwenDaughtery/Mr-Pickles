@@ -4,31 +4,72 @@ import zytom.proptycoon.model.Player;
 
 import java.util.ArrayList;
 
-
 public class PlayerInitalizer {
 
     private ArrayList<Player> players;
-    private ArrayList<Player.TokenType> takenTokens;
-    private int numOfPlayers;
-    
+    private ArrayList<Player.TokenType> tokens;
+
 
     public PlayerInitalizer(){
         players = new ArrayList<>();
-        takenTokens = new ArrayList<>();
-        numOfPlayers = 0;
+        tokens = new ArrayList<>();
+        tokens.add(Player.TokenType.BOOT);
+        tokens.add(Player.TokenType.CAT);
+        tokens.add(Player.TokenType.GOBLET);
+        tokens.add(Player.TokenType.HATSTAND);
+        tokens.add(Player.TokenType.SMARTPHONE);
+        tokens.add(Player.TokenType.SPOON);
     }
-
-    public void createPlayer(String name, Player.TokenType tokenType){
-        if(numOfPlayers < 6 && !takenTokens.contains(tokenType)) {
-            Player player = new Player(name,tokenType);
-            this.players.add(player);
-            numOfPlayers++;
-            takenTokens.add(tokenType);
-        }
-    }
-
     public ArrayList<Player> getPlayers(){
         return players;
     }
-    
+
+    public void createPlayer(String name, Player.TokenType tokenType) throws ToManyPlayersException, TokenNotFoundException {
+        if(players.size() < 7 ) {
+            if(tokens.contains(tokenType)) {
+                Player player = new Player(name, tokenType);
+                this.players.add(player);
+                tokens.remove(tokenType);
+            }else{
+                throw new TokenNotFoundException();
+            }
+        }else{
+            throw new ToManyPlayersException();
+        }
+    }
+
+    public static class ToManyPlayersException extends Exception {
+        public ToManyPlayersException(){
+            super (
+                    "To Many Players!"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
+
+    public static class TokenNotFoundException extends Exception {
+        public TokenNotFoundException(){
+            super (
+                    "Token Taken!"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
 }
+
