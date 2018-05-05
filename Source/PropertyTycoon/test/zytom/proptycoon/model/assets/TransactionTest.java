@@ -29,8 +29,10 @@ public class TransactionTest {
     public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
         DeckCreator dc = new DeckCreator();
         this.board = new Board(dc.getPropertyData());
-        this.bank = new Bank(dc.createPotLuckDeck(), dc.createOpportunityKnocksDeck(), 
-                             dc.createStreetPropertyCardDeck(board), dc.createStationPropertyCardDeck(board),
+        this.bank = new Bank(dc.createPotLuckDeck(), 
+                             dc.createOpportunityKnocksDeck(), 
+                             dc.createStreetPropertyCardDeck(board), 
+                             dc.createStationPropertyCardDeck(board),
                              dc.createUtilityPropertyCardDeck(board));
         
         this.zenos = new Player("Zenos");
@@ -121,8 +123,43 @@ public class TransactionTest {
     
     
     @Test
-    public void playerBuysStreetPropertyFromBank() {
-        
+    public void playerBuysStreetPropertyFromBank() throws AssetOwner.AssetNotFoundException {
+        StreetPropertyCard card = bank.getAssetCollection().getStreetPropertyCards().get(0);
+        int price = card.getPrice();
+        AssetCollection propertyFromBank = new AssetCollection(card);
+        AssetCollection moneyFromPlayer = new AssetCollection(price);
+        Transaction tx = new Transaction(bank, zenos, propertyFromBank, moneyFromPlayer);
+        tx.settleTransaction();
+        assertTrue((1500 - price) == zenos.getAssetCollection().getMoney());
+        assertTrue(card.equals(zenos.getAssetCollection().getStreetPropertyCards().get(0)));
+        assertFalse(bank.getAssetCollection().getStreetPropertyCards().contains(card));
+    }
+    
+    
+    @Test
+    public void playerBuysStationFromBank() throws AssetOwner.AssetNotFoundException {
+        StationPropertyCard card = bank.getAssetCollection().getStationPropertyCards().get(0);
+        int price = card.getPrice();
+        AssetCollection propertyFromBank = new AssetCollection(card);
+        AssetCollection moneyFromPlayer = new AssetCollection(price);
+        Transaction tx = new Transaction(bank, zenos, propertyFromBank, moneyFromPlayer);
+        tx.settleTransaction();
+        assertTrue((1500 - price) == zenos.getAssetCollection().getMoney());
+        assertTrue(card.equals(zenos.getAssetCollection().getStationPropertyCards().get(0)));
+        assertFalse(bank.getAssetCollection().getStationPropertyCards().contains(card));
+    }
+    
+    @Test
+    public void playerBuysUtilityFromBank() throws AssetOwner.AssetNotFoundException {
+        UtilityPropertyCard card = bank.getAssetCollection().getUtilityPropertyCards().get(0);
+        int price = card.getPrice();
+        AssetCollection propertyFromBank = new AssetCollection(card);
+        AssetCollection moneyFromPlayer = new AssetCollection(price);
+        Transaction tx = new Transaction(bank, zenos, propertyFromBank, moneyFromPlayer);
+        tx.settleTransaction();
+        assertTrue((1500 - price) == zenos.getAssetCollection().getMoney());
+        assertTrue(card.equals(zenos.getAssetCollection().getUtilityPropertyCards().get(0)));
+        assertFalse(bank.getAssetCollection().getUtilityPropertyCards().contains(card));
     }
     
 }
