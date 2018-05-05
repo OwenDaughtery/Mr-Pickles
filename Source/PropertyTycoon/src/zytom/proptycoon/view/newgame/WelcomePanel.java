@@ -1,7 +1,7 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.view.NewGameMenu;
+package zytom.proptycoon.view.newgame;
 
 /**
  *

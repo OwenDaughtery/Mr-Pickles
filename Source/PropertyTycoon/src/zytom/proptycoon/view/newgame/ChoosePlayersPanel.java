@@ -1,7 +1,7 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.view.NewGameMenu;
+package zytom.proptycoon.view.newgame;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -12,10 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel;
-import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenLabel;
-import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenLabel.TokenType;
-import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel;
+import zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel;
+import zytom.proptycoon.view.newgame.chooseplayers.TokenLabel;
+import zytom.proptycoon.view.newgame.chooseplayers.TokenLabel.TokenType;
+import zytom.proptycoon.view.newgame.chooseplayers.TokenPanel;
 
 /**
  *
@@ -63,7 +63,7 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
     private final ChosenTokenPanel[] chosenPanels;
     //Token labels that move around.
     private final TokenLabel[] tokenLabels;
-
+    
     
     //ViewModels
     private final TokenPanelModel[] tokenPanelModels;
@@ -358,18 +358,18 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         ChoosePlayersLabel = new javax.swing.JLabel();
-        chosenTokenPanel1 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
-        chosenTokenPanel2 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
-        chosenTokenPanel3 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
-        chosenTokenPanel4 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
-        chosenTokenPanel5 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
-        chosenTokenPanel6 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel();
-        tokenPanel1 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
-        tokenPanel2 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
-        tokenPanel3 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
-        tokenPanel4 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
-        tokenPanel5 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
-        tokenPanel6 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        chosenTokenPanel1 = new zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel();
+        chosenTokenPanel2 = new zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel();
+        chosenTokenPanel3 = new zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel();
+        chosenTokenPanel4 = new zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel();
+        chosenTokenPanel5 = new zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel();
+        chosenTokenPanel6 = new zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel();
+        tokenPanel1 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
+        tokenPanel2 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
+        tokenPanel3 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
+        tokenPanel4 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
+        tokenPanel5 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
+        tokenPanel6 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
         nextButton = new javax.swing.JButton();
 
         ChoosePlayersLabel.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
@@ -448,18 +448,18 @@ public class ChoosePlayersPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ChoosePlayersLabel;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel1;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel2;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel3;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel4;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel5;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel chosenTokenPanel6;
+    private zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel chosenTokenPanel1;
+    private zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel chosenTokenPanel2;
+    private zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel chosenTokenPanel3;
+    private zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel chosenTokenPanel4;
+    private zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel chosenTokenPanel5;
+    private zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel chosenTokenPanel6;
     private javax.swing.JButton nextButton;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel1;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel2;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel3;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel4;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel5;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel6;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel1;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel2;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel3;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel4;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel5;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel6;
     // End of variables declaration//GEN-END:variables
 }

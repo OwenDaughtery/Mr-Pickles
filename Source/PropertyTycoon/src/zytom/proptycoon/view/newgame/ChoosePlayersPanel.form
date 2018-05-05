@@ -102,39 +102,39 @@
         <Property name="text" type="java.lang.String" value="Choose Players..."/>
       </Properties>
     </Component>
-    <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel1">
+    <Component class="zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel" name="chosenTokenPanel1">
     </Component>
-    <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel2">
+    <Component class="zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel" name="chosenTokenPanel2">
     </Component>
-    <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel3">
+    <Component class="zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel" name="chosenTokenPanel3">
     </Component>
-    <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel4">
+    <Component class="zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel" name="chosenTokenPanel4">
     </Component>
-    <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel5">
+    <Component class="zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel" name="chosenTokenPanel5">
     </Component>
-    <Component class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.ChosenTokenPanel" name="chosenTokenPanel6">
+    <Component class="zytom.proptycoon.view.newgame.chooseplayers.ChosenTokenPanel" name="chosenTokenPanel6">
     </Component>
-    <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel1">
+    <Container class="zytom.proptycoon.view.newgame.chooseplayers.TokenPanel" name="tokenPanel1">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
-    <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel2">
+    <Container class="zytom.proptycoon.view.newgame.chooseplayers.TokenPanel" name="tokenPanel2">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
-    <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel3">
+    <Container class="zytom.proptycoon.view.newgame.chooseplayers.TokenPanel" name="tokenPanel3">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
-    <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel4">
+    <Container class="zytom.proptycoon.view.newgame.chooseplayers.TokenPanel" name="tokenPanel4">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
-    <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel5">
+    <Container class="zytom.proptycoon.view.newgame.chooseplayers.TokenPanel" name="tokenPanel5">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
-    <Container class="zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel" name="tokenPanel6">
+    <Container class="zytom.proptycoon.view.newgame.chooseplayers.TokenPanel" name="tokenPanel6">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>

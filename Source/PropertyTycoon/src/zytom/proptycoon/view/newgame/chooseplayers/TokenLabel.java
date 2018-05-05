@@ -1,7 +1,7 @@
 /*
  * PropertyTycoon Application by Zytom
  */
-package zytom.proptycoon.view.NewGameMenu.ChoosePlayers;
+package zytom.proptycoon.view.newgame.chooseplayers;
 
 import java.awt.Color;
 import java.awt.Dimension;
