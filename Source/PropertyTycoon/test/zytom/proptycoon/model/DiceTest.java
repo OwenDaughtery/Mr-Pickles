@@ -13,7 +13,7 @@ public class DiceTest {
 
    @Test
     public void getFirstValue() {
-       Dice dice  = null;
+       Dice dice  = new Dice();
        int value =  dice.getFirstValue();
        assertEquals(0,value);
     }
@@ -25,12 +25,21 @@ public class DiceTest {
        assertEquals(0,value);
     }
 
+    /**
+     *
+     */
     @Test
     public void roll() {
        Dice dice =  new Dice();
        dice.roll();
        assertTrue(dice.getFirstValue() != 0);
        assertTrue(dice.getSecondValue() != 0 );
+    }
+
+    @Test
+    public void wasDoubleRolled(){
+        Dice dice = new Dice();
+
     }
 
 

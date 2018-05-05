@@ -1,5 +1,5 @@
-package zytom.proptycoon.controller;
-import zytom.proptycoon.controller.game.LeadController;
+package zytom.proptycoon.controller.game;
+
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.assets.AssetCollection;
@@ -9,26 +9,33 @@ import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 /**
- * Class AssetManagementController is the controller class for the management of a players associated assets.
+ * Settles Buying and selling houses, morgaging and selling propertys.
+ * @author ayman and maxxx
  */
 public class AssetManagementController {
-    Player player;
     Bank bank;
     LeadController leadController;
-    public AssetManagementController(Player player, Bank bank, LeadController leadController){
 
-    this.player = player;
+    /**
+     *
+     * @param bank
+     * @param leadController
+     */
+    public AssetManagementController(Bank bank, LeadController leadController){
     this.bank = bank;
     this.leadController = leadController;
 
     }
 
+
     /**
-     * Method buyHouse allows the purchase of houses on properties owned by the player
+     * buys a house on given property
+     * TODO check player owns all prop of same colour
+     * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
      */
-    public void buyHouse(StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
+    public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
 
         int houseCost = streetPropertyCard.getBuildCost();
         StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
@@ -49,11 +56,12 @@ public class AssetManagementController {
     }
 
     /**
-     * Method sellhouse allows the removal and refund of a house previously build on a player owned property
+     * sells a house on a given property
+     * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
      */
-    public void sellHouse(StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
+    public void sellHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
         int houseCost = streetPropertyCard.getBuildCost();
         StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
 
@@ -74,10 +82,10 @@ public class AssetManagementController {
 
 
     /**
-     * Method calls for a property to be mortaged and handles transactions between the player and the bank ;
+     * morgages a property and handles transactions ;
      * @param streetPropertyCard
      */
-    public void mortagageProperty(StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void mortagageProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
 
         StreetPropertyCell propertyCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
         int numBuildings= propertyCell.getNumberOfBuildings();
@@ -104,11 +112,12 @@ public class AssetManagementController {
     }
 
     /**
-     * Method unmortagageProperty calls for a player owned property that is mortagaged to become unmortaged
+     *  unmorgages a property and handles transactions ;
+     * @param player
      * @param streetPropertyCard
      * @throws MortagagingError
      */
-    public void unmortagageProperty(StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void unmortagageProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
         //change property card from morgage to unmorgaged and pay the bank money
         int value = streetPropertyCard.getMortgageValue();
         if(streetPropertyCard.isMortaged){
@@ -133,11 +142,12 @@ public class AssetManagementController {
     }
 
     /**
-     * Method sellProperty facilitates the sale of a player owned asset to the bank
+     *  sells a property back to the bank and handles transactions ;
+     * @param player
      * @param streetPropertyCard
      * @throws MortagagingError
      */
-    public void sellProperty(StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void sellProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
         StreetPropertyCell propertyCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
         int numBuildings = propertyCell.getNumberOfBuildings();
        //if no buildings and not mortaged
@@ -162,11 +172,10 @@ public class AssetManagementController {
 
     }
 
-
     public static class MortagagingError extends Exception {
         public MortagagingError(StreetPropertyCard streetPropertyCard){
             super (
-                    streetPropertyCard.toString() +" :   ERROR : Banks are dicks  "
+                    streetPropertyCard.toString() +" :   ERROR :Mortagaging "
             );
         }
         /**
@@ -180,8 +189,4 @@ public class AssetManagementController {
         }
     }
 
-
-    // purchase house on owned property
-    // sell house on owned property
-    //mortgage a property that the player owns
 }

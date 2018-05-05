@@ -35,5 +35,9 @@ public class Dice {
         this.secondValue = r.nextInt(HIGH - LOW) + LOW;
     }
 
+    public boolean wasDoubleRolled(){
+        return this.getFirstValue() == this.getSecondValue();
+    }
+
 
 }

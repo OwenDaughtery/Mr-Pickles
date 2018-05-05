@@ -36,8 +36,9 @@ public class DeckCreator {
     /**
      * @return An ArrayList representation of the PotLuckCard deck.
      * @throws FileNotFoundException 
+     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException 
      */
-    public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException {
+    public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         PotLuckDeck deck = new PotLuckDeck(this.potLuckDeckData);
         return deck.getCards();
     }
@@ -46,8 +47,9 @@ public class DeckCreator {
     /**
      * @return An ArrayList representation of the OpportunityKnocksCard deck.
      * @throws FileNotFoundException 
+     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException 
      */
-    public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException {
+    public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(this.opportunityKnocksDeckData);
         return deck.getCards();
     }
@@ -102,7 +104,7 @@ public class DeckCreator {
         ArrayList<String[]> data = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
-        
+
         String path = "./resources/" + nameOfCSV; //path may need fixing
         File file = new File(path);
         Scanner inputStream = new Scanner(file);
@@ -135,12 +137,12 @@ public class DeckCreator {
      */
     private class PotLuckDeck {
 
-        private ArrayList<PotLuckCard> potLuckDeck;
+        private final ArrayList<PotLuckCard> potLuckDeck;
         
         /**
          * @param deckData The parsed csv data
          */
-        private PotLuckDeck(ArrayList<String[]> deckData) {
+        private PotLuckDeck(ArrayList<String[]> deckData) throws CardAction.InvalidActionException {
             this.potLuckDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 CardAction currentCardAction = new CardAction(data[1], Integer.parseInt(data[2]));
@@ -171,7 +173,7 @@ public class DeckCreator {
         /**
          * @param deckData The parsed csv data
          */
-        private OpportunityKnocksDeck(ArrayList<String[]> deckData) {       
+        private OpportunityKnocksDeck(ArrayList<String[]> deckData) throws CardAction.InvalidActionException {       
             this.opportunityKnocksDeck = new ArrayList<>();
             for(String[] data : deckData) {
                 CardAction currentCardAction = new CardAction(data[1], Integer.parseInt(data[2]));
@@ -298,7 +300,7 @@ public class DeckCreator {
                     this.rentPrices[3] = Integer.parseInt(data[7]); //3 houses
                     this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses
                     this.rentPrices[5] = Integer.parseInt(data[9]); //hotel
-                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice);
+                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice, colour);
                     cellRef.setAssociatedCard(streetPropertyCard);
                     this.streetPropertyCardDeck.add(streetPropertyCard);
                 }

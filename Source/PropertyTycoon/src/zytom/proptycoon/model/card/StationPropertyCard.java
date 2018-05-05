@@ -1,5 +1,6 @@
 package zytom.proptycoon.model.card;
 
+import java.util.Arrays;
 import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
@@ -26,7 +27,7 @@ public class StationPropertyCard extends PropertyCard {
     @Override
     public String toString(){
         String info = super.toString();
-        info+= "Rent Costs: "+ rentCost.toString() + "\n" ;
+        info+= "Rent Costs: "+ Arrays.toString(rentCost) + "\n" ;
         return info;
     }
 
