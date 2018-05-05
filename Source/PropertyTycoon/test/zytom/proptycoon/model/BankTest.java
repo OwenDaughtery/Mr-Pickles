@@ -27,7 +27,7 @@ public class BankTest {
         qt[2]= 7;
         qt[3] =8;
 
-        //StreetPropertyCard streetPropertyCard = null;
+
         StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40);
         streetPropertyCell.setAssociatedCard(streetPropertyCard);
         c.add(0,streetPropertyCard);

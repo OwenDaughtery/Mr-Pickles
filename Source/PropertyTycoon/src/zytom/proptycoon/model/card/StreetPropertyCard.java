@@ -54,7 +54,7 @@ public class StreetPropertyCard extends PropertyCard {
     public String toString() {
         String info = super.toString();
         Dice dice = new Dice();
-        Player player = new Player("Temp");
+        Player player = new Player("Temp", Player.TokenType.GOBLET);
          info += "Cell Referenced" + "\n" +
                  "Base Rent  : " + this.rentCost[0]+"\n"+
                  "Build Cost : " + this.buildCost+"\n"+
