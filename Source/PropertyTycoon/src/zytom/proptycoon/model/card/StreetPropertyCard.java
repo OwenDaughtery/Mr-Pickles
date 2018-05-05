@@ -1,9 +1,12 @@
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
+
+import java.util.ArrayList;
 
 /**
  * 
@@ -34,17 +37,29 @@ public class StreetPropertyCard extends PropertyCard {
         this.colour = colour;
     }
 
-    public int getRent(Dice dice, Player player) {
+    public int getRent(Dice dice, Player player, Bank bank) throws ToManyDaymHousesException {
         StreetPropertyCell propCell = (StreetPropertyCell)cellRef;
-        if (propCell.getNumberOfBuildings() > 0 ) {
+        if (propCell.getNumberOfBuildings() > 0 && propCell.getNumberOfBuildings() < 6 ) {
             return rentCost[propCell.getNumberOfBuildings()];
         }
         //If condition needs to be done
-        else if (propCell.getNumberOfBuildings() == 0 )  {
-            return rentCost[0]*2;
-        }
-        else{
-            return rentCost[0];
+        else if(propCell.getNumberOfBuildings() == 0 )  {
+            ArrayList<StreetPropertyCard> propOfSameColour = bank.getGroupOfStreetProperties(colour);
+            Boolean ownsAllProperly = true;
+            for (StreetPropertyCard p: propOfSameColour
+                    ) {
+                if(!player.checkHasAsset(p)){
+                    ownsAllProperly = false;
+                }
+
+            }
+            if (ownsAllProperly){
+                return rentCost[0]*2;
+            } else {
+                return rentCost[0];
+            }
+        }else{
+            throw new ToManyDaymHousesException(propCell.getNumberOfBuildings());
         }
     }
 
@@ -62,12 +77,10 @@ public class StreetPropertyCard extends PropertyCard {
     @Override
     public String toString() {
         String info = super.toString();
-        Dice dice = new Dice();
-        Player player = new Player("Temp", Player.TokenType.GOBLET);
          info += "Cell Referenced" + "\n" +
                  "Base Rent  : " + this.rentCost[0]+"\n"+
-                 "Build Cost : " + this.buildCost+"\n"+
-                 "Current Rent :" + this.getRent(dice,player) + "\n";
+                 "Build Cost : " + this.buildCost+"\n";
         return info;
     }
+
 }

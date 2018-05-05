@@ -1,5 +1,6 @@
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
@@ -33,7 +34,7 @@ public abstract class PropertyCard extends Card {
         return this.price;
     }
 
-    public abstract int getRent(Dice dice, Player owner);
+    public abstract int getRent(Dice dice, Player owner,Bank bank)throws ToManyDaymHousesException;
 
     public void mortagage(){
         this.isMortaged = true;
@@ -48,5 +49,23 @@ public abstract class PropertyCard extends Card {
                 "Property Price : "+ this.price + "\n"+
                 "Morgage Value : " + this.getMortgageValue() + "\n";
         return info;
+    }
+
+
+    public static class ToManyDaymHousesException extends Exception {
+        public ToManyDaymHousesException(int numberOfHouses){
+            super (
+                    "Can't have "+String.valueOf(numberOfHouses) +"houses on property"
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
     }
 }
