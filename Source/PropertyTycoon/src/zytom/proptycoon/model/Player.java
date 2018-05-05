@@ -7,7 +7,11 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.Card;
+import zytom.proptycoon.model.card.OpportunityKnocksCard;
+import zytom.proptycoon.model.card.PotLuckCard;
+import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
+import zytom.proptycoon.model.card.UtilityPropertyCard;
 import zytom.proptycoon.model.cell.GoCell;
 
 
@@ -230,15 +234,15 @@ public class Player implements AssetOwner {
 
     @Override
     public boolean checkHasAsset(Card asset) {
-        if(this.getAssetCollection().getStreetPropertyCards().contains(asset)){
+        if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
 
-        }else if (this.getAssetCollection().getUtilityPropertyCards().contains(asset)){
+        }else if (this.getAssetCollection().getUtilityPropertyCards().contains((UtilityPropertyCard)asset)){
             return true;
-        }else if (this.getAssetCollection().getStationPropertyCards().contains(asset)){
+        }else if (this.getAssetCollection().getStationPropertyCards().contains((StationPropertyCard)asset)){
             return true;
-        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains(asset)){
+        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains((OpportunityKnocksCard)asset)){
             return true;
-        }else if (this.getAssetCollection().getPotLuckCards().contains(asset)){
+        }else if (this.getAssetCollection().getPotLuckCards().contains((PotLuckCard)asset)){
             return true;
         }
         return false;
