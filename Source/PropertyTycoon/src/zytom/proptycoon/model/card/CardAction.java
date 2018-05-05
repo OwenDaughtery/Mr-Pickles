@@ -4,6 +4,7 @@
 package zytom.proptycoon.model.card;
 
 import java.util.ArrayList;
+import java.util.Queue;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.FreeParking;
 import zytom.proptycoon.model.Player;
@@ -84,28 +85,35 @@ public class CardAction {
      * @param card The instance of the ActionCard
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
      */
-    public void performAction(FreeParking freeParking, Bank bank, Player player, Player[] players, ActionCard card) throws AssetNotFoundException{
+    public void performAction(FreeParking freeParking, Bank bank, Player player, ArrayList<Player> players, ActionCard card) throws AssetNotFoundException{
         switch(this.type) {
             case BANK_PAYS_PLAYER:
                 bankPayPlayer(bank, player, this.value);
+                giveCardBackToBank(bank, player, card);
                 break;
             case PLAYER_PAYS_BANK:
                 playerPayBank(bank, player, this.value);
+                giveCardBackToBank(bank, player, card);
                 break;
             case PAY_FREE_PARKING:
                 payFreeParking(freeParking, player, this.value);
+                giveCardBackToBank(bank, player, card);
                 break;
             case MOVE_FORWARD:
                 moveForward(player, this.value, bank);
+                giveCardBackToBank(bank, player, card);
                 break;
             case MOVE_BACKWARD:
                 moveBackward(player, this.value, bank);
+                giveCardBackToBank(bank, player, card);
                 break;
             case GO_TO_JAIL:
                 moveToJail(player, bank);
+                giveCardBackToBank(bank, player, card);
                 break;
             case COLLECT_FROM_ALL:
                 collectFromAll(players, player, value);
+                giveCardBackToBank(bank, player, card);
                 break;
             case GET_OUT_OF_JAIL_POT_LUCK:
                 giveJailFreeCardFromPotLuck(bank, player, (PotLuckCard) card);
@@ -116,6 +124,15 @@ public class CardAction {
         }  
     }
     
+    private void giveCardBackToBank(Bank bank, Player player, ActionCard card) {
+        if(card instanceof PotLuckCard) {
+            player.getAssetCollection().getPotLuckCards().remove((PotLuckCard)card);
+            bank.getAssetCollection().getPotLuckCards().add((PotLuckCard)card);
+        } else if(card instanceof OpportunityKnocksCard) {
+            player.getAssetCollection().getOpportunityKnocksCards().remove((OpportunityKnocksCard)card);
+            bank.getAssetCollection().getOpportunityKnocksCards().add((OpportunityKnocksCard)card);
+        }
+    }
     
     /**
      * @author Zenos Pavlakou
@@ -259,7 +276,7 @@ public class CardAction {
      * @param value The amount of money to collect from each player
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
      */
-    private void collectFromAll(Player[] players, Player recipient, int value) throws AssetNotFoundException{
+    private void collectFromAll(ArrayList<Player> players, Player recipient, int value) throws AssetNotFoundException{
         for(Player player : players) {
             if(!player.equals(recipient)) {
                 playerPayPlayer(recipient, player, value);
@@ -296,7 +313,6 @@ public class CardAction {
     private void moveToJail(Player player, Bank bank) {
         player.moveTo(40, false, bank);
     }
-    
     
 
     /**

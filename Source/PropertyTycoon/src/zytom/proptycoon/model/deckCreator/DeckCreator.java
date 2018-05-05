@@ -36,6 +36,7 @@ public class DeckCreator {
     /**
      * @return An ArrayList representation of the PotLuckCard deck.
      * @throws FileNotFoundException 
+     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException 
      */
     public ArrayList<PotLuckCard> createPotLuckDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         PotLuckDeck deck = new PotLuckDeck(this.potLuckDeckData);
@@ -46,6 +47,7 @@ public class DeckCreator {
     /**
      * @return An ArrayList representation of the OpportunityKnocksCard deck.
      * @throws FileNotFoundException 
+     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException 
      */
     public ArrayList<OpportunityKnocksCard> createOpportunityKnocksDeck() throws FileNotFoundException, CardAction.InvalidActionException {
         OpportunityKnocksDeck deck = new OpportunityKnocksDeck(this.opportunityKnocksDeckData);
@@ -102,8 +104,8 @@ public class DeckCreator {
         ArrayList<String[]> data = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
-        
-        String path = "./resources/" + nameOfCSV; //path may need fixing
+
+        String path = "Source/PropertyTycoon/resources/" + nameOfCSV; //path may need fixing
         File file = new File(path);
         Scanner inputStream = new Scanner(file);
         inputStream.useDelimiter(">");
@@ -135,7 +137,7 @@ public class DeckCreator {
      */
     private class PotLuckDeck {
 
-        private ArrayList<PotLuckCard> potLuckDeck;
+        private final ArrayList<PotLuckCard> potLuckDeck;
         
         /**
          * @param deckData The parsed csv data

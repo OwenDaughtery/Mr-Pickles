@@ -33,6 +33,7 @@ public class Game {
      * @throws PlayerNumberException
      * @throws java.io.FileNotFoundException
      * @throws zytom.proptycoon.model.Board.CellNotFoundException
+     * @throws zytom.proptycoon.model.card.CardAction.InvalidActionException
      */
     public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
         //Check number of players is valid.

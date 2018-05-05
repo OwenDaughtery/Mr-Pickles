@@ -36,10 +36,7 @@ public class Dice {
     }
 
     public boolean wasDoubleRolled(){
-        if (this.getFirstValue() == this.getSecondValue()){
-            return true;
-        }
-        else return false;
+        return this.getFirstValue() == this.getSecondValue();
     }
 
 

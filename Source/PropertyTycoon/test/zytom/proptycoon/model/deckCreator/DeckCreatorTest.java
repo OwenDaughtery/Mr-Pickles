@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import org.junit.Before;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.card.CardAction;

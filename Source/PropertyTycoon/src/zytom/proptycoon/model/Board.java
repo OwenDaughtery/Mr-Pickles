@@ -141,6 +141,7 @@ public final class Board {
         /**
          * Generate the exception message.
          *
+         * @param index
          */
         public CellNotFoundException(int index) {
             super(
