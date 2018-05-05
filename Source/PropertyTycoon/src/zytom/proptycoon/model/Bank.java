@@ -140,15 +140,15 @@ public class Bank implements AssetOwner {
 
     @Override
     public boolean checkHasAsset(Card asset) {
-        if(this.getAssetCollection().getStreetPropertyCards().contains(asset)){
+        if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
 
-        }else if (this.getAssetCollection().getUtilityPropertyCards().contains(asset)){
+        }else if (this.getAssetCollection().getUtilityPropertyCards().contains((UtilityPropertyCard)asset)){
             return true;
-        }else if (this.getAssetCollection().getStationPropertyCards().contains(asset)){
+        }else if (this.getAssetCollection().getStationPropertyCards().contains((StationPropertyCard)asset)){
             return true;
-        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains(asset)){
+        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains((OpportunityKnocksCard)asset)){
             return true;
-        }else if (this.getAssetCollection().getPotLuckCards().contains(asset)){
+        }else if (this.getAssetCollection().getPotLuckCards().contains((PotLuckCard)asset)){
             return true;
         }
         return false;
