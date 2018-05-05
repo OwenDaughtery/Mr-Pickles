@@ -27,11 +27,14 @@ public final class Bank implements AssetOwner {
 
     /**
      * @author Zenos Pavlakou
-     * @param potLuckCards
-     * @param opportunityKnocksCards
-     * @param streetPropertyCards
-     * @param stationPropertyCards
-     * @param utilityPropertyCards
+     * 
+     * The contstructor assigns all Card objects to the bank. 
+     * 
+     * @param potLuckCards The deck of pot luck cards
+     * @param opportunityKnocksCards The deck of opportunity knocks cards
+     * @param streetPropertyCards The deck of street property cards
+     * @param stationPropertyCards The deck of station property cards
+     * @param utilityPropertyCards The deck of utility property cards
      * 
      */
     public Bank (
@@ -164,27 +167,14 @@ public final class Bank implements AssetOwner {
             throw new AssetOwner.AssetNotFoundException(this, requested);
         }
 
-        //Bank never gains or loses money.
-        /*
-        //Remove requested money. (Throw exception if not found).
-        if (this.assetCollection.getMoney() >= requested.getMoney()) {
-            this.assetCollection.setMoney(
-                    this.assetCollection.getMoney() - requested.getMoney()
-            );
-        } else {
-            throw new AssetOwner.AssetNotFoundException(this, requested);
-        }
-        */
-
-        //Return the requested AssetCollection.
         return requested;
     }
 
     /**
      * Append the contents of the specified asset collection to the asset
-     * owner's asset collection.
+     * bank's asset collection.
      *
-     * @param giving
+     * @param giving The asset which is being given to the bank
      */
     @Override
     public void giveAssetCollection(AssetCollection giving) {
@@ -209,6 +199,11 @@ public final class Bank implements AssetOwner {
         );*/
     }
 
+    /**
+     * Method checks if the bank has a certain asset
+     * @param asset The asset being queried 
+     * @return True if bank has asset, false otherwise
+     */
     @Override
     public boolean checkHasAsset(Card asset) {
         if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){

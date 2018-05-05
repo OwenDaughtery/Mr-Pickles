@@ -147,6 +147,11 @@ public class Auction {
         return 5000;
     }
 
+    /**
+     * 
+     * @param bids
+     * @return 
+     */
     public int[] getWinner(ArrayList<Integer>bids){
         int maxBid = 0;
         int indexOfWinner = 0;

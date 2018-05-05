@@ -15,26 +15,38 @@ public class Dice {
     private static final int HIGH = 6;
     private static final int LOW = 1;
 
+
     public Dice() {
-        //assert that values are between 1-6
         this.firstValue = 0;
         this.secondValue = 0;
     }
 
+    /**
+     * @return The value of the first die
+     */
     public int getFirstValue() {
         return this.firstValue;
     }
-
+    
+    /**
+     * @return The value of the second die
+     */
     public int getSecondValue() {
         return this.secondValue;
     }
 
+    /**
+     * Method rolls the dice and updates firstValue and secondValue
+     */
     public void roll() {
         Random r = new Random();
         this.firstValue = r.nextInt(HIGH - LOW) + LOW;
         this.secondValue = r.nextInt(HIGH - LOW) + LOW;
     }
 
+    /**
+     * @return True if firstValue is the same as secondValue, false otherwise
+     */
     public boolean wasDoubleRolled(){
         return this.getFirstValue() == this.getSecondValue();
     }

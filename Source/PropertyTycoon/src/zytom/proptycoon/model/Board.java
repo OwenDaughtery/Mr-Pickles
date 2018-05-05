@@ -1,11 +1,7 @@
 package zytom.proptycoon.model;
 
-
 import java.io.FileNotFoundException;
 import zytom.proptycoon.model.cell.Cell;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,14 +21,18 @@ import zytom.proptycoon.model.cell.UtilityPropertyCell;
 public final class Board {
     ArrayList<Cell> cells = new ArrayList<>();
 
+    /**
+     * @param propertyData An ArrayList of String arrays which contain the title of all cells
+     * @throws FileNotFoundException 
+     */
     public Board(ArrayList<String[]> propertyData) throws FileNotFoundException {
         this.cells = initCells(propertyData);
     }
 
     /**
      * @author Zenos Pavlakou
-     * @param cellTitles
-     * @return
+     * @param cellTitles An ArrayList of String arrays which contain the title of all cells
+     * @return An ArrayList of cells representing the board
      */
     private ArrayList<Cell> initCells(ArrayList<String[]> cellTitles) {
         ArrayList<Cell> boardCells = new ArrayList<>();
@@ -82,6 +82,12 @@ public final class Board {
         return boardCells;
     }
 
+    /**
+     * Method queries cells based on their idex on the board
+     * @param index The index of the board of which the cell is being queried
+     * @return The cell at the given index
+     * @throws zytom.proptycoon.model.Board.CellNotFoundException 
+     */
     public Cell getCell(int index) throws CellNotFoundException {
         try {
             return this.cells.get(index);
@@ -106,6 +112,10 @@ public final class Board {
         OPPORTUNITY_KNOCKS, JAIL, JUST_VISITING
     }
 
+    /**
+     * @param cell The cell instance being queried
+     * @return The type of cell represented as an enum of CellType
+     */
     public CellType getCellClass(Cell cell) {
         int index = this.cells.indexOf(cell);
         ArrayList<Integer> streetIndices = new ArrayList(
@@ -137,6 +147,9 @@ public final class Board {
     }
 
 
+    /**
+     * Exception is thrown if a cell is queried and does not exist
+     */
     public static class CellNotFoundException extends Exception {
         /**
          * Generate the exception message.

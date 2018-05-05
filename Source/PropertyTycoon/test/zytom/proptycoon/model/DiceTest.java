@@ -10,7 +10,6 @@ import org.junit.Test;
 public class DiceTest {
 
 
-
    @Test
     public void getFirstValue() {
        Dice dice  = new Dice();
@@ -49,6 +48,4 @@ public class DiceTest {
         assertTrue(dice.wasDoubleRolled());
 
     }
-
-
 }

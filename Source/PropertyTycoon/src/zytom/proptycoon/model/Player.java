@@ -194,11 +194,18 @@ public class Player implements AssetOwner {
     }
 
     
+    /**
+     * @return The amount of times the player rolled a double
+     */
     public int getDoublesRolled() {
         return doublesRolled;
     }
     
 
+    /**
+     * Invoked everytime a player rolls a double
+     * @param doublesRolled The number of times the player rolled a double 
+     */
     public void setDoublesRolled(int doublesRolled) {
         this.doublesRolled = doublesRolled;
     }
@@ -233,6 +240,11 @@ public class Player implements AssetOwner {
     }
 
 
+    /**
+     * Checks if the player has a certain card
+     * @param asset The card being queried
+     * @return True if the player has the card, false otherwise
+     */
     @Override
     public boolean checkHasAsset(Card asset) {
         if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
@@ -249,15 +261,26 @@ public class Player implements AssetOwner {
         return false;
     }
     
+    /**
+     * Checks if the player has enough money
+     * @param money The amount of money 
+     * @return  True if the player has enough money, false otherwise. 
+     */
     @Override
     public boolean checkHasAsset(int money){
         return this.getAssetCollection().getMoney() > money;
     }
 
+    /**
+     * @return True if player has passed the Go cell, false otherwise
+     */
     public boolean hasPlayerPassedGo(){
         return this.hasPassedGo;
     }
     
+    /**
+     * hasPassedGo set to true once the player goes round the board once
+     */
     public void playerPassedGo(){
         this.hasPassedGo = true;
     }
@@ -267,7 +290,6 @@ public class Player implements AssetOwner {
         String info = "Player Name : " + this.name + "\n" +
                 "PLayer Position : " + this.position + "\n" +
                 "Players Current Assets : " + this.getAssetCollection().toString() + "\n";
-
 
         return info;
 
