@@ -2,14 +2,22 @@ package zytom.proptycoon.model.card;
 
 import org.junit.Before;
 import org.junit.Test;
+import zytom.proptycoon.model.Dice;
+import zytom.proptycoon.model.Player;
+import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StationPropertyCell;
+import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 import static org.junit.Assert.*;
 
 public class StreetPropertyCardTest {
 
 
-    StreetPropertyCard StreetPropertyCard;
+    StreetPropertyCard streetPropertyCard;
+    StreetPropertyCell streetPropertyCell;
+    Player player ;
+    Dice dice;
+
 
     @Before
     public void init() {
@@ -23,44 +31,70 @@ public class StreetPropertyCardTest {
         rentCosts[3] = 200; // 3 houses
         rentCosts[4] = 250; // 4 houses
         rentCosts[5] = 300; // 1 hotel
-//
-//        this.stationPropertyCell = new StationPropertyCell("BRIGHTON STATION");
-//        this.stationPropertyCard = new StationPropertyCard(this.stationPropertyCell, "BRIGHTON STATION", 200,rentCosts);
+
+        this.streetPropertyCell = new StreetPropertyCell("BRIGHTON ROAD");
+        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50);
+        this.player =  new Player("zenos", Player.TokenType.BOOT);
+        this.dice = new Dice();
     }
-//    @Test
-//    public void getRent() {
-//        StreetPropertyCard streetPropertyCard = new StreetPropertyCard();
-//    }
+    @Test
+    public void getRent() throws StreetPropertyCell.ConstructionError {
+        Dice dice = new Dice();
+        Player player = new Player("zenos", Player.TokenType.BOOT);
+        this.streetPropertyCell.addBuilding();
+        int numberOfBuildings = this.streetPropertyCell.getNumberOfBuildings();
+       int rent = this.streetPropertyCard.getRent(dice,player);
+        assertTrue(100 == rent);
+        assertTrue(numberOfBuildings == 1);
+        this.streetPropertyCell.addBuilding();
+         numberOfBuildings= this.streetPropertyCell.getNumberOfBuildings();
+         rent= this.streetPropertyCard.getRent(dice,player);
+        assertTrue(150 == rent);
+        assertTrue(numberOfBuildings == 2);
+    }
 
     @Test
     public void getBuildCost() {
+        int buildcost =streetPropertyCard.getBuildCost();
+        assertTrue(buildcost == 50);
     }
 
     @Test
     public void getTitle() {
+        String title = streetPropertyCard.getTitle();
+        assertTrue(title.equals("BRIGHTON ROAD"));
     }
 
     @Test
     public void getCellRef() {
+        Cell cell = streetPropertyCard.getCellRef();
+        assertTrue(cell.getTitle() == "BRIGHTON ROAD");
     }
 
     @Test
     public void getMortgageValue() {
+        int mortgagevalue = streetPropertyCard.getMortgageValue();
+        assertTrue(mortgagevalue == (streetPropertyCard.getPrice()/2));
     }
 
     @Test
     public void getPrice() {
+        int price = streetPropertyCard.getPrice();
+        assertTrue(price == 200);
     }
 
-    @Test
-    public void getRent1() {
-    }
 
     @Test
     public void mortagage() {
+        streetPropertyCard.mortagage();
+        assertTrue(streetPropertyCard.isMortaged);
     }
 
     @Test
     public void unmortagage() {
+        streetPropertyCard.mortagage();
+        assertTrue(streetPropertyCard.isMortaged);
+        streetPropertyCard.unmortagage();
+        assertTrue(!streetPropertyCard.isMortaged);
     }
 }
