@@ -1,22 +1,22 @@
-package zytom.proptycoon.controller;
+package zytom.proptycoon.controller.game;
 
 import zytom.proptycoon.model.*;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
-import zytom.proptycoon.model.card.UtilityPropertyCard;
 import zytom.proptycoon.model.cell.*;
 
+/**
+ *
+ */
 public class PlayerController {
     private Game game;
-    private Player currentPlayer;
     private LeadController leadController;
     public PlayerController(Game game,LeadController leadController) {
         this.game = game;
-        this.currentPlayer = game.getCurrentPlayer();
         this.leadController = leadController;
     }
-    public void hasLanded(Cell cell, Board board, Dice dice) throws CellNotFoundException, LandedOnJailException {
+    public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException {
 
         Board.CellType cellType = board.getCellClass(cell);
 
