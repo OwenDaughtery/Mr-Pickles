@@ -15,6 +15,7 @@ public class TurnOrderDecider {
     int diceMax = 0;
     Dice dice;
     int rollDiceTurn = 0;
+    
     /**
      * @param players
      */
@@ -27,6 +28,7 @@ public class TurnOrderDecider {
 
     /**
      * rolls the dice if its the highest value, set player to first player.
+     * @throws zytom.proptycoon.controller.preGame.TurnOrderDecider.EveryPlayerHasRolledException
      */
     public void rollDice() throws EveryPlayerHasRolledException {
         if(rollDiceTurn>players.size()-2){
