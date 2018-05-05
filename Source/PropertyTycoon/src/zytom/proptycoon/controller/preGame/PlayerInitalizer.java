@@ -14,6 +14,7 @@ public class PlayerInitalizer {
 
     public PlayerInitalizer(){
         players = new ArrayList<>();
+        takenTokens = new ArrayList<>();
         numOfPlayers = 0;
     }
 
@@ -29,4 +30,5 @@ public class PlayerInitalizer {
     public ArrayList<Player> getPlayers(){
         return players;
     }
+    
 }
