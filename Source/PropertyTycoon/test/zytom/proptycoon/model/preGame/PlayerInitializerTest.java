@@ -15,7 +15,7 @@ import zytom.proptycoon.model.Player;
 public class PlayerInitializerTest {
     
     @Test 
-    public void createPlayer() {
+    public void createPlayer() throws PlayerInitalizer.ToManyPlayersException, PlayerInitalizer.TokenNotFoundException {
         PlayerInitalizer playerInit = new PlayerInitalizer();
         playerInit.createPlayer("Zenos", Player.TokenType.BOOT);
         assertTrue(playerInit.getPlayers().size() == 1);
@@ -23,7 +23,7 @@ public class PlayerInitializerTest {
     }
     
     @Test
-    public void noMoreThanSixPlayers() {
+    public void noMoreThanSixPlayers() throws PlayerInitalizer.ToManyPlayersException, PlayerInitalizer.TokenNotFoundException {
         PlayerInitalizer playerInit = new PlayerInitalizer();
         playerInit.createPlayer("Zenos", Player.TokenType.BOOT);
         playerInit.createPlayer("Max", Player.TokenType.CAT);
@@ -36,7 +36,7 @@ public class PlayerInitializerTest {
     }
     
     @Test
-    public void noDuplicateTokens() {
+    public void noDuplicateTokens() throws PlayerInitalizer.ToManyPlayersException, PlayerInitalizer.TokenNotFoundException {
         PlayerInitalizer playerInit = new PlayerInitalizer();
         playerInit.createPlayer("Zenos", Player.TokenType.BOOT);
         playerInit.createPlayer("Tom", Player.TokenType.BOOT);

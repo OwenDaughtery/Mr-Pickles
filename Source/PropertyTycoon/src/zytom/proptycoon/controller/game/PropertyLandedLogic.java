@@ -22,7 +22,7 @@ public class PropertyLandedLogic {
         this.leadController = leadController;
     }
 
-    public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice){
+    public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.ToManyDaymHousesException{
         PropertyCard card = cell.getAssociatedCard();
         if(currentPlayer.checkHasAsset(card)){
             //do nothing
@@ -45,7 +45,7 @@ public class PropertyLandedLogic {
                     Transaction transaction = new Transaction(
                             currentPlayer,
                             receiverOfRent,
-                            new AssetCollection(card.getRent(dice ,receiverOfRent)),
+                            new AssetCollection(card.getRent(dice ,receiverOfRent,bank)),
                             new AssetCollection(0));
                     transaction.settleTransaction();
                 }catch (AssetOwner.AssetNotFoundException ex){
