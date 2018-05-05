@@ -22,16 +22,21 @@ public class Player implements AssetOwner {
     private final String name;
     private int position;
     private final AssetCollection assetCollection;
+    public enum TokenType {
+        BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
+    };
+    TokenType tokenType;
 
     /**
      * 
      * @param name
      */
-    public Player(String name){
+    public Player(String name,TokenType tokenType){
         this.name = name;
         this.position = 0;
         this.assetCollection = new AssetCollection(INITIAL_BALANCE);
         this.hasPassedGo =false;
+        this.tokenType = tokenType;
     }
 
     /**
