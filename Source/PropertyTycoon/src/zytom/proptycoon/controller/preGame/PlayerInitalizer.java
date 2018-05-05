@@ -9,11 +9,12 @@ public class PlayerInitalizer {
     private ArrayList<Player> players;
 
     public PlayerInitalizer(){
+        players = new ArrayList<>();
     }
 
     public void createPlayer(String name, Player.TokenType tokenType){
         Player player = new Player(name,tokenType);
-        players.add(player);
+        this.players.add(player);
     }
 
     public ArrayList<Player> getPlayers(){
