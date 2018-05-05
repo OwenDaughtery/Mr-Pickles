@@ -14,6 +14,7 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
     private final int buildCost;
+    private final String colour;
 
     /**
      *
@@ -22,12 +23,13 @@ public class StreetPropertyCard extends PropertyCard {
      * @param price
      * @param cellRef
      * @param buildCost
+     * @param colour
      */
-    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost) {
+    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, String colour) {
         super(cellRef, title, price);
         this.rentCost = rentCost;
         this.buildCost = buildCost;
-
+        this.colour = colour;
     }
 
     public int getRent(Dice dice, Player player) {
@@ -44,10 +46,15 @@ public class StreetPropertyCard extends PropertyCard {
         }
     }
 
+    
     public int getBuildCost() {
         return this.buildCost;
     }
     
+    
+    public String getColour() {
+        return this.colour;
+    } 
  
 
     @Override
@@ -60,7 +67,5 @@ public class StreetPropertyCard extends PropertyCard {
                  "Build Cost : " + this.buildCost+"\n"+
                  "Current Rent :" + this.getRent(dice,player) + "\n";
         return info;
-
-
     }
 }

@@ -46,7 +46,7 @@ public class BankTest {
         qt[3] =8;
 
 
-        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40);
+        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40,"GREEN");
         streetPropertyCell.setAssociatedCard(streetPropertyCard);
         c.add(0,streetPropertyCard);
         ArrayList<StationPropertyCard> d = new ArrayList<>() ;

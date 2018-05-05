@@ -1,6 +1,7 @@
 package zytom.proptycoon.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.*;
@@ -8,10 +9,21 @@ import zytom.proptycoon.model.card.*;
 /**
  * @author Max Pattman
  */
-public class Bank implements AssetOwner {
+public final class Bank implements AssetOwner {
 
     public static final int INITIAL_BALANCE = 50000;
     private final AssetCollection assetCollection;
+    
+    private HashMap<String, ArrayList<StreetPropertyCard>> streetPropertyByColourGroup;
+    
+    private ArrayList<StreetPropertyCard> brownGroup;
+    private ArrayList<StreetPropertyCard> blueGroup;
+    private ArrayList<StreetPropertyCard> purpleGroup;
+    private ArrayList<StreetPropertyCard> orangeGroup;
+    private ArrayList<StreetPropertyCard> redGroup;
+    private ArrayList<StreetPropertyCard> yellowGroup;
+    private ArrayList<StreetPropertyCard> greenGroup;
+    private ArrayList<StreetPropertyCard> deepBlueGroup;
 
     /**
      * @author Zenos Pavlakou
@@ -37,8 +49,67 @@ public class Bank implements AssetOwner {
                 utilityPropertyCards
         );
         this.assetCollection.setMoney(INITIAL_BALANCE);
+        
+        
+        this.brownGroup = new ArrayList<>();
+        this.blueGroup = new ArrayList<>();
+        this.purpleGroup = new ArrayList<>();
+        this.orangeGroup = new ArrayList<>();
+        this.redGroup = new ArrayList<>();
+        this.yellowGroup = new ArrayList<>();
+        this.greenGroup = new ArrayList<>();
+        this.deepBlueGroup = new ArrayList<>();
+        
+        this.streetPropertyByColourGroup = new HashMap<>();
+        
+        for(StreetPropertyCard card : streetPropertyCards) {
+            switch(card.getColour()) {
+                case "BROWN":
+                    brownGroup.add(card);
+                    break;
+                case "BLUE":
+                    blueGroup.add(card);
+                    break;
+                case "PURPLE":
+                    purpleGroup.add(card);
+                    break;
+                case "ORANGE":
+                    orangeGroup.add(card);
+                    break;
+                case "RED":
+                    redGroup.add(card);
+                    break;
+                case "YELLOW":
+                    yellowGroup.add(card);
+                    break;
+                case "GREEN":
+                    greenGroup.add(card);
+                    break;
+                case "DEEP BLUE":
+                    deepBlueGroup.add(card);
+                    break;
+            }
+        }
+        
+        this.streetPropertyByColourGroup.put("BROWN", brownGroup);
+        this.streetPropertyByColourGroup.put("BLUE", blueGroup);
+        this.streetPropertyByColourGroup.put("PURPLE", purpleGroup);
+        this.streetPropertyByColourGroup.put("ORANGE", orangeGroup);
+        this.streetPropertyByColourGroup.put("RED", redGroup);
+        this.streetPropertyByColourGroup.put("YELLOW", yellowGroup);
+        this.streetPropertyByColourGroup.put("GREEN", greenGroup);
+        this.streetPropertyByColourGroup.put("DEEP BLUE", deepBlueGroup);
     }
 
+    /**
+     * 
+     * @param groupColour
+     * @return 
+     */
+    public ArrayList<StreetPropertyCard> getGroupOfStreetProperties(String groupColour) {
+        return this.streetPropertyByColourGroup.get(groupColour);
+    }
+    
     /**
      * @return All the assets that this asset owner is in possesion of.
      */

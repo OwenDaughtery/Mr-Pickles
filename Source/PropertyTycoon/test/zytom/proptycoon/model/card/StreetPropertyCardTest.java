@@ -10,7 +10,6 @@ public class StreetPropertyCardTest {
 
 
     StreetPropertyCard StreetPropertyCard;
-StreetProper;
 
     @Before
     public void init() {
@@ -24,14 +23,14 @@ StreetProper;
         rentCosts[3] = 200; // 3 houses
         rentCosts[4] = 250; // 4 houses
         rentCosts[5] = 300; // 1 hotel
-
-        this.stationPropertyCell = new StationPropertyCell("BRIGHTON STATION");
-        this.stationPropertyCard = new StationPropertyCard(this.stationPropertyCell, "BRIGHTON STATION", 200,rentCosts);
+//
+//        this.stationPropertyCell = new StationPropertyCell("BRIGHTON STATION");
+//        this.stationPropertyCard = new StationPropertyCard(this.stationPropertyCell, "BRIGHTON STATION", 200,rentCosts);
     }
-    @Test
-    public void getRent() {
-        StreetPropertyCard streetPropertyCard = new StreetPropertyCard()
-    }
+//    @Test
+//    public void getRent() {
+//        StreetPropertyCard streetPropertyCard = new StreetPropertyCard();
+//    }
 
     @Test
     public void getBuildCost() {
