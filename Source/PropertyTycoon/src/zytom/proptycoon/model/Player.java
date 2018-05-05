@@ -26,6 +26,7 @@ public class Player implements AssetOwner {
     private final String name;
     private int position;
     private final AssetCollection assetCollection;
+
     public enum TokenType {
         BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
     };

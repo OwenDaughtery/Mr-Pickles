@@ -10,12 +10,24 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
+import zytom.proptycoon.model.assets.AssetCollection;
+import zytom.proptycoon.model.assets.AssetOwner;
 
 public class BankTest {
     
+    private DeckCreator dc;
+    private Board board;
+    private Bank bank;
+    
     @Before
-    public void init() {
-        
+    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
+        this.dc = new DeckCreator();
+        this.board = new Board(dc.getPropertyData());
+        this.bank = new Bank(dc.createPotLuckDeck(), 
+                             dc.createOpportunityKnocksDeck(),
+                             dc.createStreetPropertyCardDeck(board),
+                             dc.createStationPropertyCardDeck(board),
+                             dc.createUtilityPropertyCardDeck(board));
     }
 
     @Test
@@ -61,10 +73,20 @@ public class BankTest {
     }
 
     @Test
-    public void takeAssetCollection() {
+    public void takeAssetCollection() throws AssetOwner.AssetNotFoundException {
+        PotLuckCard card = bank.getAssetCollection().getPotLuckCards().get(0);
+        AssetCollection asset = new AssetCollection(card);
+        bank.takeAssetCollection(asset);
+        assertFalse(bank.getAssetCollection().getPotLuckCards().contains(asset));
     }
 
     @Test
-    public void giveAssetCollection() {
+    public void giveAssetCollection() throws AssetOwner.AssetNotFoundException {
+        PotLuckCard card = bank.getAssetCollection().getPotLuckCards().get(0);
+        AssetCollection asset = new AssetCollection(card);
+        bank.takeAssetCollection(asset);
+        assertFalse(bank.getAssetCollection().getPotLuckCards().contains(asset));
+        bank.giveAssetCollection(asset);
+        assertTrue(bank.getAssetCollection().getPotLuckCards().contains(card));
     }
 }
