@@ -20,6 +20,7 @@ public class StreetPropertyCard extends PropertyCard {
 
     private final Colour colour;
 
+
     public enum Colour{BROWN,BLUE,PURPLE,ORANGE,RED,YELLOW,GREEN,DEEPBLUE}
     /**
      *
