@@ -1,4 +1,4 @@
-package zytom.proptycoon.controller;
+package zytom.proptycoon.controller.game;
 
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Dice;
@@ -8,10 +8,7 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.Card;
 import zytom.proptycoon.model.card.PropertyCard;
-import zytom.proptycoon.model.card.StationPropertyCard;
-import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.PropertyCell;
-
 import java.util.ArrayList;
 
 public class PropertyLandedLogic {
