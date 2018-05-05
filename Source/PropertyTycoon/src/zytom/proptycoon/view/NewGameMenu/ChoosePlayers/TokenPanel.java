@@ -10,13 +10,11 @@ import javax.swing.JButton;
  * @author utopia
  */
 public class TokenPanel extends javax.swing.JPanel {
-
     /**
      * Creates new form TokenPanel
      */
     public TokenPanel() {
         initComponents();
-        this.add(new JButton());
     }
 
     /**
@@ -31,6 +29,7 @@ public class TokenPanel extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(64, 64));
         setMinimumSize(new java.awt.Dimension(64, 64));
+        setPreferredSize(new java.awt.Dimension(64, 64));
         setLayout(new java.awt.BorderLayout());
     }// </editor-fold>//GEN-END:initComponents
 

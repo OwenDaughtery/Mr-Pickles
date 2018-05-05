@@ -27,22 +27,20 @@ public class ChosenTokenPanel extends javax.swing.JPanel {
 
         aiLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(240, 240, 242));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setMaximumSize(new java.awt.Dimension(64, 64));
+        setMinimumSize(new java.awt.Dimension(62, 62));
+        setPreferredSize(new java.awt.Dimension(64, 64));
+        setLayout(new javax.swing.OverlayLayout(this));
 
         aiLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         aiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         aiLabel.setText("AI");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(aiLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(aiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
+        aiLabel.setMaximumSize(new java.awt.Dimension(64, 64));
+        aiLabel.setMinimumSize(new java.awt.Dimension(64, 64));
+        aiLabel.setPreferredSize(new java.awt.Dimension(64, 64));
+        add(aiLabel);
     }// </editor-fold>//GEN-END:initComponents
 
 

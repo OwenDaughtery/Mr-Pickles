@@ -4,6 +4,7 @@
 package zytom.proptycoon.view.NewGameMenu.ChoosePlayers;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
@@ -22,21 +23,24 @@ public class TokenLabel extends JLabel {
     public enum TokenType {
         BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
     };
+    
+    TokenType tokenType;
 
     public TokenLabel(TokenType tokenType) throws IOException {
-        super("A Label");
-        this.setText("Label");
-        this.setForeground(Color.WHITE);
+        super(getImageIcon(tokenType));
+        this.tokenType = tokenType;
+        this.setMaximumSize(new Dimension(64, 64));
+        this.setSize(64, 64);
     }
 
     public static ImageIcon getImageIcon(TokenType tokenType) throws IOException {
         EnumMap<TokenType, String> iconMap = new EnumMap(TokenType.class);
-        iconMap.put(TokenType.BOOT, "boot.png");
-        iconMap.put(TokenType.SMARTPHONE, "smartphone.png");
-        iconMap.put(TokenType.GOBLET, "goblet.png");
-        iconMap.put(TokenType.HATSTAND, "hatstand.png");
-        iconMap.put(TokenType.CAT, "cat.png");
-        iconMap.put(TokenType.SPOON, "spoon.png");
+        iconMap.put(TokenType.BOOT, "boot.jpg");
+        iconMap.put(TokenType.SMARTPHONE, "smartphone.jpg");
+        iconMap.put(TokenType.GOBLET, "goblet.jpg");
+        iconMap.put(TokenType.HATSTAND, "hatstand.jpg");
+        iconMap.put(TokenType.CAT, "cat.jpg");
+        iconMap.put(TokenType.SPOON, "spoon.jpg");
         try {
             String filepath = TOKEN_ICONS_PATH + iconMap.get(tokenType);
             return new ImageIcon(ImageIO.read(new File(filepath)));
