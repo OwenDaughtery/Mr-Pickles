@@ -289,7 +289,7 @@ public class DeckCreator {
                 if("BROWN".equals(colour) || "BLUE".equals(colour) ||
                         "PURPLE".equals(colour) || "ORANGE".equals(colour) ||
                         "RED".equals(colour) || "YELLOW".equals(colour) ||
-                        "GREEN".equals(colour) || "DEEP BLUE".equals(colour)) {
+                        "GREEN".equals(colour) || "DEEPBLUE".equals(colour)) {
                     StreetPropertyCell cellRef = (StreetPropertyCell) board.getCell(index);
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
