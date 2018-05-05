@@ -24,8 +24,6 @@ public class CardActionTest {
     @Before
     public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
         this.freeParking = new FreeParking();
-        
-        
         DeckCreator deckCreator = new DeckCreator();
         Board board = new Board(deckCreator.getPropertyData());
         ArrayList<PotLuckCard> potLuckDeck = deckCreator.createPotLuckDeck();
@@ -34,22 +32,21 @@ public class CardActionTest {
         ArrayList<StationPropertyCard> stationDeck = deckCreator.createStationPropertyCardDeck(board);
         ArrayList<UtilityPropertyCard> utilityDeck = deckCreator.createUtilityPropertyCardDeck(board);
         this.bank = new Bank(potLuckDeck, oppKnocksDeck, streetDeck, stationDeck, utilityDeck);
-        
         this.player = new Player("Zenos", Player.TokenType.BOOT);
-        
         this.players = new ArrayList<>();
         this.players.add(player);
-
-    }
-
-    @Test
-    public void bankPaysPlayer() throws CardAction.InvalidActionException, AssetOwner.AssetNotFoundException {
-        OpportunityKnocksCard oppCard = bank.getAssetCollection().getOpportunityKnocksCards().get(0); //Bank pays player £50
-        oppCard.getCardAction().performAction(freeParking, bank, player, players, oppCard);
-        assertTrue(this.player.getAssetCollection().getMoney() == 1550);      
     }
     
+
     @Test
-    public void execute() {
+    public void bankPaysPlayerAndCardHandedBackToBankCorrectly() throws CardAction.InvalidActionException, AssetOwner.AssetNotFoundException {
+        OpportunityKnocksCard oppCard = bank.getAssetCollection().getOpportunityKnocksCards().remove(0); //Bank pays player £50
+        oppCard.getCardAction().performAction(freeParking, bank, player, players, oppCard);
+        assertTrue(this.player.getAssetCollection().getMoney() == 1550);     
+        assertFalse(this.bank.getAssetCollection().getOpportunityKnocksCards().get(0).equals(oppCard));
+        assertTrue(this.bank.getAssetCollection().getOpportunityKnocksCards().get(this.bank.getAssetCollection()
+                                                                                           .getOpportunityKnocksCards()
+                                                                                           .size() - 1).equals(oppCard));
     }
+    
 }

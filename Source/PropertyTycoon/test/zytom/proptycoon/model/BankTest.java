@@ -9,8 +9,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 public class BankTest {
+    
+    @Before
+    public void init() {
+        
+    }
 
     @Test
     public void getAssetCollection() throws FileNotFoundException {
