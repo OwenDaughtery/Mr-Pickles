@@ -3,6 +3,7 @@
  */
 package zytom.proptycoon.model.card;
 
+import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
@@ -32,7 +33,7 @@ public class UtilityPropertyCard extends PropertyCard {
     }
 
     @Override
-    public int getRent(Dice dice, Player owner) {
+    public int getRent(Dice dice, Player owner, Bank bank) {
         return
                 (dice.getFirstValue() + dice.getSecondValue()) *
                     (

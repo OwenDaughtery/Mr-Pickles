@@ -8,6 +8,8 @@ import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
+import java.util.ArrayList;
+
 /**
  * Settles Buying and selling houses, morgaging and selling propertys.
  * @author ayman and maxxx
@@ -30,29 +32,41 @@ public class AssetManagementController {
 
     /**
      * buys a house on given property
-     * TODO check player owns all prop of same colour
      * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
      */
-    public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
+    public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError, PlanningPermitionError {
 
-        int houseCost = streetPropertyCard.getBuildCost();
-        StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
-
-        try {
-            Transaction transaction = new Transaction(
-                    player,
-                    bank,
-                    new AssetCollection(houseCost),
-                    new AssetCollection(0)
-            );
-            transaction.settleTransaction();
-        } catch (AssetOwner.AssetNotFoundException ex) {
+        StreetPropertyCard.Colour colour = streetPropertyCard.getColour();
+        ArrayList<StreetPropertyCard> propOfSameColour = bank.getGroupOfStreetProperties(colour);
+        Boolean ownsAllProperly = true;
+        for (StreetPropertyCard p: propOfSameColour
+             ) {
+            if(!player.checkHasAsset(p)){
+                ownsAllProperly = false;
+            }
 
         }
-        propCell.addBuilding();
+        if(ownsAllProperly = true) {
+            int houseCost = streetPropertyCard.getBuildCost();
+            StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
 
+            try {
+                Transaction transaction = new Transaction(
+                        player,
+                        bank,
+                        new AssetCollection(houseCost),
+                        new AssetCollection(0)
+                );
+                transaction.settleTransaction();
+            } catch (AssetOwner.AssetNotFoundException ex) {
+
+            }
+            propCell.addBuilding();
+        }else{
+            throw new PlanningPermitionError();
+        }
     }
 
     /**
@@ -176,6 +190,23 @@ public class AssetManagementController {
         public MortagagingError(StreetPropertyCard streetPropertyCard){
             super (
                     streetPropertyCard.toString() +" :   ERROR :Mortagaging "
+            );
+        }
+        /**
+         * Gets the message
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
+    }
+
+    public static class PlanningPermitionError extends Exception {
+        public PlanningPermitionError(){
+            super (
+                    " Don't own all cards of that colour"
             );
         }
         /**
