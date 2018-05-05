@@ -297,7 +297,6 @@ public class CardAction {
         player.moveTo(40, false, bank);
     }
     
-    
 
     /**
      * @author Ayman Free
