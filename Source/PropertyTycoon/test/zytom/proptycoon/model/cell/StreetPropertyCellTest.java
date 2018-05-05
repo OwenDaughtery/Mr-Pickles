@@ -25,7 +25,7 @@ public class StreetPropertyCellTest {
     public void setAndGetAssociatedCard() {
         int[] rentCosts = new int[4];
         StreetPropertyCard streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "CRAPPER STREET",
-                                                                        100, rentCosts, 500);
+                                                                        100, rentCosts, 500, "GREEN");
         this.streetPropertyCell.setAssociatedCard(streetPropertyCard);
         assertEquals("CRAPPER STREET", this.streetPropertyCell.getAssociatedCard().getTitle());
     }

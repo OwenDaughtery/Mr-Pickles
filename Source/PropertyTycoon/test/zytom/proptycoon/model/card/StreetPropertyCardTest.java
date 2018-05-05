@@ -5,7 +5,6 @@ import org.junit.Test;
 import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
-import zytom.proptycoon.model.cell.StationPropertyCell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 import static org.junit.Assert.*;
@@ -33,7 +32,7 @@ public class StreetPropertyCardTest {
         rentCosts[5] = 300; // 1 hotel
 
         this.streetPropertyCell = new StreetPropertyCell("BRIGHTON ROAD");
-        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50);
+        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, "RED");
         this.player =  new Player("zenos", Player.TokenType.BOOT);
         this.dice = new Dice();
     }
@@ -68,7 +67,7 @@ public class StreetPropertyCardTest {
     @Test
     public void getCellRef() {
         Cell cell = streetPropertyCard.getCellRef();
-        assertTrue(cell.getTitle() == "BRIGHTON ROAD");
+        assertTrue("BRIGHTON ROAD".equals(cell.getTitle()));
     }
 
     @Test

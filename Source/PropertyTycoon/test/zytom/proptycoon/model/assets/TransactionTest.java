@@ -69,7 +69,7 @@ public class TransactionTest {
         assertFalse(zenos.getAssetCollection().getPotLuckCards().contains(targetCard));
         
         //CREATE TEMP ASSET COLLECTION TO TAKE FROM BANK
-        AssetCollection fromBank = new AssetCollection(potLuckCards, oppKnocksCards, streetCards, stationCards, utilityCards);
+        AssetCollection fromBank = new AssetCollection(potLuckCards, oppKnocksCards, streetCards, stationCards, utilityCards, 0);
         
         //CREATE TEMP ASSET COLLECTION TO TAKE FROM PLAYER OF £0.00
         AssetCollection toZenos = new AssetCollection(0);
@@ -101,7 +101,7 @@ public class TransactionTest {
         assertFalse(zenos.getAssetCollection().getOpportunityKnocksCards().contains(targetCard));
         
         //CREATE TEMP ASSET COLLECTION TO TAKE FROM BANK
-        AssetCollection fromBank = new AssetCollection(potLuckCards, oppKnocksCards, streetCards, stationCards, utilityCards);
+        AssetCollection fromBank = new AssetCollection(potLuckCards, oppKnocksCards, streetCards, stationCards, utilityCards, 0);
         
         //CREATE TEMP ASSET COLLECTION TO TAKE FROM PLAYER OF £0.00
         AssetCollection toZenos = new AssetCollection(0);

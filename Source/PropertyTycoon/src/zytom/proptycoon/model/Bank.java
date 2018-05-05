@@ -46,9 +46,9 @@ public final class Bank implements AssetOwner {
                 opportunityKnocksCards,
                 streetPropertyCards,
                 stationPropertyCards,
-                utilityPropertyCards
+                utilityPropertyCards,
+                INITIAL_BALANCE
         );
-        this.assetCollection.setMoney(INITIAL_BALANCE);
         
         
         this.brownGroup = new ArrayList<>();
@@ -212,7 +212,6 @@ public final class Bank implements AssetOwner {
     @Override
     public boolean checkHasAsset(Card asset) {
         if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
-
         }else if (this.getAssetCollection().getUtilityPropertyCards().contains((UtilityPropertyCard)asset)){
             return true;
         }else if (this.getAssetCollection().getStationPropertyCards().contains((StationPropertyCard)asset)){

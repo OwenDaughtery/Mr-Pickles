@@ -4,7 +4,6 @@
 package zytom.proptycoon.model.card;
 
 import java.util.ArrayList;
-import java.util.Queue;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.FreeParking;
 import zytom.proptycoon.model.Player;
@@ -153,7 +152,7 @@ public class CardAction {
         
         potLuckCards.add(getOutOfJailFreeCard);
         
-        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards);
+        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards, 0);
         AssetCollection fromPlayer = new AssetCollection(0);
         
         Transaction tx = new Transaction(bank, player, fromBank, fromPlayer);
@@ -180,7 +179,7 @@ public class CardAction {
         
         opKnocksCards.add(getOutOfJailFreeCard);
         
-        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards);
+        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards, 0);
         AssetCollection fromPlayer = new AssetCollection(0);
         
         Transaction tx = new Transaction(bank, player, fromBank, fromPlayer);
