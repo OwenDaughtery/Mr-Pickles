@@ -34,4 +34,13 @@ public class PlayerInitializerTest {
         playerInit.createPlayer("Mr Pickles", Player.TokenType.SPOON);
         assertTrue(playerInit.getPlayers().size() == 6);
     }
+    
+    @Test
+    public void noDuplicateTokens() {
+        PlayerInitalizer playerInit = new PlayerInitalizer();
+        playerInit.createPlayer("Zenos", Player.TokenType.BOOT);
+        playerInit.createPlayer("Tom", Player.TokenType.BOOT);
+        assertTrue(playerInit.getPlayers().size() == 1);
+        assertTrue("Zenos".equals(playerInit.getPlayers().get(0).getName()));
+    }
 }
