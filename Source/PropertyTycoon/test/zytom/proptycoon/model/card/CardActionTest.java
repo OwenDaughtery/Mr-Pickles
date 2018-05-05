@@ -24,14 +24,12 @@ public class CardActionTest {
     @Before
     public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
         this.freeParking = new FreeParking();
-        DeckCreator deckCreator = new DeckCreator();
-        Board board = new Board(deckCreator.getPropertyData());
-        ArrayList<PotLuckCard> potLuckDeck = deckCreator.createPotLuckDeck();
-        ArrayList<OpportunityKnocksCard> oppKnocksDeck = deckCreator.createOpportunityKnocksDeck();
-        ArrayList<StreetPropertyCard> streetDeck = deckCreator.createStreetPropertyCardDeck(board);
-        ArrayList<StationPropertyCard> stationDeck = deckCreator.createStationPropertyCardDeck(board);
-        ArrayList<UtilityPropertyCard> utilityDeck = deckCreator.createUtilityPropertyCardDeck(board);
-        this.bank = new Bank(potLuckDeck, oppKnocksDeck, streetDeck, stationDeck, utilityDeck);
+        DeckCreator dc = new DeckCreator();
+        Board board = new Board(dc.getPropertyData());
+        ArrayList<StreetPropertyCard> streetDeck = dc.createStreetPropertyCardDeck(board);
+        ArrayList<StationPropertyCard> stationDeck = dc.createStationPropertyCardDeck(board);
+        ArrayList<UtilityPropertyCard> utilityDeck = dc.createUtilityPropertyCardDeck(board);
+        this.bank = new Bank(dc.createPotLuckDeck(), dc.createOpportunityKnocksDeck(), streetDeck, stationDeck, utilityDeck);
         this.player = new Player("Zenos", Player.TokenType.BOOT);
         this.players = new ArrayList<>();
         this.players.add(player);
@@ -47,6 +45,28 @@ public class CardActionTest {
         assertTrue(this.bank.getAssetCollection().getOpportunityKnocksCards().get(this.bank.getAssetCollection()
                                                                                            .getOpportunityKnocksCards()
                                                                                            .size() - 1).equals(oppCard));
+    }
+    
+    @Test
+    public void givePlayerJailFreeCard() throws AssetOwner.AssetNotFoundException {
+        
+        PotLuckCard getOutOfJailCard  = null;
+        
+        for(PotLuckCard card : this.bank.getAssetCollection().getPotLuckCards()) {
+            if(card.getCardAction().type.equals(CardAction.Type.GET_OUT_OF_JAIL_POT_LUCK)) {
+                getOutOfJailCard = card;
+                break;
+            }
+        }
+        
+        assertTrue(bank.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
+        assertFalse(player.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
+        
+        getOutOfJailCard.getCardAction().performAction(freeParking, bank, player, players, getOutOfJailCard);
+        
+        assertTrue(player.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
+        assertFalse(bank.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
+       
     }
     
 }

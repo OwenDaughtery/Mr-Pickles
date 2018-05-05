@@ -14,7 +14,7 @@ public final class Bank implements AssetOwner {
     public static final int INITIAL_BALANCE = 50000;
     private final AssetCollection assetCollection;
     
-    private HashMap<String, ArrayList<StreetPropertyCard>> streetPropertyByColourGroup;
+    private HashMap<StreetPropertyCard.Colour, ArrayList<StreetPropertyCard>> streetPropertyByColourGroup;
     
     private ArrayList<StreetPropertyCard> brownGroup;
     private ArrayList<StreetPropertyCard> blueGroup;
@@ -27,11 +27,14 @@ public final class Bank implements AssetOwner {
 
     /**
      * @author Zenos Pavlakou
-     * @param potLuckCards
-     * @param opportunityKnocksCards
-     * @param streetPropertyCards
-     * @param stationPropertyCards
-     * @param utilityPropertyCards
+     * 
+     * The contstructor assigns all Card objects to the bank. 
+     * 
+     * @param potLuckCards The deck of pot luck cards
+     * @param opportunityKnocksCards The deck of opportunity knocks cards
+     * @param streetPropertyCards The deck of street property cards
+     * @param stationPropertyCards The deck of station property cards
+     * @param utilityPropertyCards The deck of utility property cards
      * 
      */
     public Bank (
@@ -46,9 +49,9 @@ public final class Bank implements AssetOwner {
                 opportunityKnocksCards,
                 streetPropertyCards,
                 stationPropertyCards,
-                utilityPropertyCards
+                utilityPropertyCards,
+                INITIAL_BALANCE
         );
-        this.assetCollection.setMoney(INITIAL_BALANCE);
         
         
         this.brownGroup = new ArrayList<>();
@@ -64,41 +67,41 @@ public final class Bank implements AssetOwner {
         
         for(StreetPropertyCard card : streetPropertyCards) {
             switch(card.getColour()) {
-                case "BROWN":
+                case BROWN:
                     brownGroup.add(card);
                     break;
-                case "BLUE":
+                case BLUE:
                     blueGroup.add(card);
                     break;
-                case "PURPLE":
+                case PURPLE:
                     purpleGroup.add(card);
                     break;
-                case "ORANGE":
+                case ORANGE:
                     orangeGroup.add(card);
                     break;
-                case "RED":
+                case RED:
                     redGroup.add(card);
                     break;
-                case "YELLOW":
+                case YELLOW:
                     yellowGroup.add(card);
                     break;
-                case "GREEN":
+                case GREEN:
                     greenGroup.add(card);
                     break;
-                case "DEEP BLUE":
+                case DEEPBLUE:
                     deepBlueGroup.add(card);
                     break;
             }
         }
         
-        this.streetPropertyByColourGroup.put("BROWN", brownGroup);
-        this.streetPropertyByColourGroup.put("BLUE", blueGroup);
-        this.streetPropertyByColourGroup.put("PURPLE", purpleGroup);
-        this.streetPropertyByColourGroup.put("ORANGE", orangeGroup);
-        this.streetPropertyByColourGroup.put("RED", redGroup);
-        this.streetPropertyByColourGroup.put("YELLOW", yellowGroup);
-        this.streetPropertyByColourGroup.put("GREEN", greenGroup);
-        this.streetPropertyByColourGroup.put("DEEP BLUE", deepBlueGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.BROWN, brownGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.BLUE, blueGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.PURPLE, purpleGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.ORANGE, orangeGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.RED, redGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.YELLOW, yellowGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.GREEN, greenGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.DEEPBLUE, deepBlueGroup);
     }
 
     /**
@@ -106,7 +109,7 @@ public final class Bank implements AssetOwner {
      * @param groupColour
      * @return 
      */
-    public ArrayList<StreetPropertyCard> getGroupOfStreetProperties(String groupColour) {
+    public ArrayList<StreetPropertyCard> getGroupOfStreetProperties(StreetPropertyCard.Colour groupColour) {
         return this.streetPropertyByColourGroup.get(groupColour);
     }
     
@@ -164,27 +167,14 @@ public final class Bank implements AssetOwner {
             throw new AssetOwner.AssetNotFoundException(this, requested);
         }
 
-        //Bank never gains or loses money.
-        /*
-        //Remove requested money. (Throw exception if not found).
-        if (this.assetCollection.getMoney() >= requested.getMoney()) {
-            this.assetCollection.setMoney(
-                    this.assetCollection.getMoney() - requested.getMoney()
-            );
-        } else {
-            throw new AssetOwner.AssetNotFoundException(this, requested);
-        }
-        */
-
-        //Return the requested AssetCollection.
         return requested;
     }
 
     /**
      * Append the contents of the specified asset collection to the asset
-     * owner's asset collection.
+     * bank's asset collection.
      *
-     * @param giving
+     * @param giving The asset which is being given to the bank
      */
     @Override
     public void giveAssetCollection(AssetCollection giving) {
@@ -209,10 +199,14 @@ public final class Bank implements AssetOwner {
         );*/
     }
 
+    /**
+     * Method checks if the bank has a certain asset
+     * @param asset The asset being queried 
+     * @return True if bank has asset, false otherwise
+     */
     @Override
     public boolean checkHasAsset(Card asset) {
         if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
-
         }else if (this.getAssetCollection().getUtilityPropertyCards().contains((UtilityPropertyCard)asset)){
             return true;
         }else if (this.getAssetCollection().getStationPropertyCards().contains((StationPropertyCard)asset)){

@@ -108,26 +108,46 @@ public class AssetCollection {
         return opportunityKnocksCards;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<StreetPropertyCard> getStreetPropertyCards() {
         return streetPropertyCards;
     }
     
+    /**
+     * @return All the station properties the asset owner owns
+     */
     public ArrayList<StationPropertyCard> getStationPropertyCards() {
         return stationPropertyCards;
     }
     
+    /**
+     * @return All the utility properties the asset owner owns.
+     */
     public ArrayList<UtilityPropertyCard> getUtilityPropertyCards() {
         return utilityPropertyCards;
     }
     
+    /**
+     * @return The amount of money the asset owner owns
+     */
     public int getMoney() {
         return money;
     }
     
+    /**
+     * Sets the amount of money the asset owner has
+     * @param value the amount of money being set
+     */
     public void setMoney(int value) {
         this.money = value;
     }
 
+    /**
+     * @return The sum of the value of all properties and money the asset owner owns.
+     */
     public int calculateValue(){
         int value = money;
         for (StreetPropertyCard s:streetPropertyCards) {

@@ -289,7 +289,7 @@ public class DeckCreator {
                 if("BROWN".equals(colour) || "BLUE".equals(colour) ||
                         "PURPLE".equals(colour) || "ORANGE".equals(colour) ||
                         "RED".equals(colour) || "YELLOW".equals(colour) ||
-                        "GREEN".equals(colour) || "DEEP BLUE".equals(colour)) {
+                        "GREEN".equals(colour) || "DEEPBLUE".equals(colour)) {
                     StreetPropertyCell cellRef = (StreetPropertyCell) board.getCell(index);
                     String title = data[2];
                     int buyPrice = Integer.parseInt(data[3]);
@@ -300,7 +300,7 @@ public class DeckCreator {
                     this.rentPrices[3] = Integer.parseInt(data[7]); //3 houses
                     this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses
                     this.rentPrices[5] = Integer.parseInt(data[9]); //hotel
-                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice, colour);
+                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice, StreetPropertyCard.Colour.valueOf(colour));
                     cellRef.setAssociatedCard(streetPropertyCard);
                     this.streetPropertyCardDeck.add(streetPropertyCard);
                 }

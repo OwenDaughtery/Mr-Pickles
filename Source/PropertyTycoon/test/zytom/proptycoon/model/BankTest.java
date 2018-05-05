@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
+import zytom.proptycoon.model.card.StreetPropertyCard.Colour;
 
 public class BankTest {
     
@@ -46,7 +47,7 @@ public class BankTest {
         qt[3] =8;
 
 
-        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40,"GREEN");
+        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40, Colour.GREEN);
         streetPropertyCell.setAssociatedCard(streetPropertyCard);
         c.add(0,streetPropertyCard);
         ArrayList<StationPropertyCard> d = new ArrayList<>() ;

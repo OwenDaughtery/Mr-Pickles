@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import zytom.proptycoon.model.card.StreetPropertyCard;
+import zytom.proptycoon.model.card.StreetPropertyCard.Colour;
 
 public class StreetPropertyCellTest {
     
@@ -25,7 +26,7 @@ public class StreetPropertyCellTest {
     public void setAndGetAssociatedCard() {
         int[] rentCosts = new int[4];
         StreetPropertyCard streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "CRAPPER STREET",
-                                                                        100, rentCosts, 500);
+                                                                        100, rentCosts, 500, Colour.GREEN);
         this.streetPropertyCell.setAssociatedCard(streetPropertyCard);
         assertEquals("CRAPPER STREET", this.streetPropertyCell.getAssociatedCard().getTitle());
     }

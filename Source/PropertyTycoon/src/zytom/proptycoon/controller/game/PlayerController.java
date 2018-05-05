@@ -4,6 +4,7 @@ import zytom.proptycoon.model.*;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
+import zytom.proptycoon.model.card.PropertyCard;
 import zytom.proptycoon.model.cell.*;
 
 /**
@@ -16,7 +17,7 @@ public class PlayerController {
         this.game = game;
         this.leadController = leadController;
     }
-    public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException {
+    public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException, PropertyCard.ToManyDaymHousesException {
 
         Board.CellType cellType = board.getCellClass(cell);
 

@@ -106,12 +106,11 @@ public class FreeParking implements AssetOwner {
 
     @Override
     public boolean checkHasAsset(Card card) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public boolean checkHasAsset(int money) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
-
 }

@@ -10,7 +10,6 @@ import org.junit.Test;
 public class DiceTest {
 
 
-
    @Test
     public void getFirstValue() {
        Dice dice  = new Dice();
@@ -39,8 +38,14 @@ public class DiceTest {
     @Test
     public void wasDoubleRolled(){
         Dice dice = new Dice();
+        int x = 0;
+        int y = 1;
+        while(x != y) {
+            dice.roll();
+            x = dice.getFirstValue();
+            y = dice.getSecondValue();
+        }
+        assertTrue(dice.wasDoubleRolled());
 
     }
-
-
 }
