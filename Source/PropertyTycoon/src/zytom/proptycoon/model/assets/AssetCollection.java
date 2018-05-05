@@ -66,6 +66,24 @@ public class AssetCollection {
         this.utilityPropertyCards = new ArrayList<>();
         this.utilityPropertyCards.add(utilityPropertyCard);
     }
+
+    public AssetCollection (OpportunityKnocksCard opportunityKnocksCard) {
+        this.potLuckCards = new ArrayList<>();
+        this.opportunityKnocksCards = new ArrayList<>();
+        this.streetPropertyCards = new ArrayList<>();
+        this.stationPropertyCards = new ArrayList<>();
+        this.utilityPropertyCards = new ArrayList<>();
+        this.opportunityKnocksCards.add(opportunityKnocksCard);
+    }
+
+    public AssetCollection (PotLuckCard potLuckCard) {
+        this.potLuckCards = new ArrayList<>();
+        this.opportunityKnocksCards = new ArrayList<>();
+        this.streetPropertyCards = new ArrayList<>();
+        this.stationPropertyCards = new ArrayList<>();
+        this.utilityPropertyCards = new ArrayList<>();
+        this.potLuckCards.add(potLuckCard);
+    }
         
     public AssetCollection (int money) {
         this.potLuckCards = new ArrayList<>();
