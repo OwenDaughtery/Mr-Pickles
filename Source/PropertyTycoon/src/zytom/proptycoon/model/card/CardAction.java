@@ -84,7 +84,7 @@ public class CardAction {
      * @param card The instance of the ActionCard
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
      */
-    public void performAction(FreeParking freeParking, Bank bank, Player player, Player[] players, ActionCard card) throws AssetNotFoundException{
+    public void performAction(FreeParking freeParking, Bank bank, Player player, ArrayList<Player> players, ActionCard card) throws AssetNotFoundException{
         switch(this.type) {
             case BANK_PAYS_PLAYER:
                 bankPayPlayer(bank, player, this.value);
@@ -259,7 +259,7 @@ public class CardAction {
      * @param value The amount of money to collect from each player
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
      */
-    private void collectFromAll(Player[] players, Player recipient, int value) throws AssetNotFoundException{
+    private void collectFromAll(ArrayList<Player> players, Player recipient, int value) throws AssetNotFoundException{
         for(Player player : players) {
             if(!player.equals(recipient)) {
                 playerPayPlayer(recipient, player, value);
