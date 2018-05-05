@@ -20,9 +20,11 @@ import static zytom.proptycoon.model.assets.AssetOwner.*;
  * Execute will call relevent methods to implement
  */
 public class CardAction {
+    
     enum Type{BANK_PAYS_PLAYER, PLAYER_PAYS_BANK, PAY_FREE_PARKING, 
               MOVE_FORWARD, MOVE_BACKWARD, GO_TO_JAIL, GET_OUT_OF_JAIL_POT_LUCK, 
               GET_OUT_OF_JAIL_OPP_KNOCKS, COLLECT_FROM_ALL, MOVE_FORWARD_TO};
+    
     Type type;
     int value;
 
@@ -123,6 +125,7 @@ public class CardAction {
         }  
     }
     
+    
     private void giveCardBackToBank(Bank bank, Player player, ActionCard card) {
         if(card instanceof PotLuckCard) {
             player.getAssetCollection().getPotLuckCards().remove((PotLuckCard)card);
@@ -144,15 +147,8 @@ public class CardAction {
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
      */
     public void giveJailFreeCardFromPotLuck(Bank bank, Player player, PotLuckCard getOutOfJailFreeCard) throws AssetNotFoundException {
-        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
-        ArrayList<OpportunityKnocksCard> opKnocksCards = new ArrayList<>();
-        ArrayList<StreetPropertyCard> streetPropertyCards = new ArrayList<>();
-        ArrayList<StationPropertyCard> stationPropertyCards = new ArrayList<>();
-        ArrayList<UtilityPropertyCard> utilityPropertyCards = new ArrayList<>();
-        
-        potLuckCards.add(getOutOfJailFreeCard);
-        
-        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards, 0);
+
+        AssetCollection fromBank = new AssetCollection(getOutOfJailFreeCard);
         AssetCollection fromPlayer = new AssetCollection(0);
         
         Transaction tx = new Transaction(bank, player, fromBank, fromPlayer);
@@ -171,15 +167,8 @@ public class CardAction {
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException 
      */
     public void giveJailFreeCardFromOppKnocks(Bank bank, Player player, OpportunityKnocksCard getOutOfJailFreeCard) throws AssetNotFoundException {
-        ArrayList<PotLuckCard> potLuckCards = new ArrayList<>();
-        ArrayList<OpportunityKnocksCard> opKnocksCards = new ArrayList<>();
-        ArrayList<StreetPropertyCard> streetPropertyCards = new ArrayList<>();
-        ArrayList<StationPropertyCard> stationPropertyCards = new ArrayList<>();
-        ArrayList<UtilityPropertyCard> utilityPropertyCards = new ArrayList<>();
         
-        opKnocksCards.add(getOutOfJailFreeCard);
-        
-        AssetCollection fromBank = new AssetCollection(potLuckCards, opKnocksCards, streetPropertyCards, stationPropertyCards, utilityPropertyCards, 0);
+        AssetCollection fromBank = new AssetCollection(getOutOfJailFreeCard);
         AssetCollection fromPlayer = new AssetCollection(0);
         
         Transaction tx = new Transaction(bank, player, fromBank, fromPlayer);
