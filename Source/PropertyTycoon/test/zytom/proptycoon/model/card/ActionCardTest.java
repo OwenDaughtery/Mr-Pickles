@@ -14,12 +14,12 @@ public class ActionCardTest {
     @Before
     public void init() throws CardAction.InvalidActionException {
         descriptionOfOpportunityKnocks = "COLLECT £200";
-        cardActionOfOpportunityKnocks = new CardAction("GAIN", 200);
+        cardActionOfOpportunityKnocks = new CardAction("BANK PAYS PLAYER", 200);
         opportunityKnocksCard = new OpportunityKnocksCard(descriptionOfOpportunityKnocks, cardActionOfOpportunityKnocks);
     }
 
     @Test
     public void getDescription() {
-        assertTrue("COLLECT £200".equals(opportunityKnocksCard.getDescription()));
+        assertTrue("COLLECT £200" == opportunityKnocksCard.getDescription());
     }
 }
