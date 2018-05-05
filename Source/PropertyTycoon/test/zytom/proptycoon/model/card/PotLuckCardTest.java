@@ -11,9 +11,5 @@ public class PotLuckCardTest {
     @Test
     public void getDescription() {
 
-
-
-
-
     }
 }

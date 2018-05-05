@@ -27,8 +27,8 @@ public class BankTest {
         qt[2]= 7;
         qt[3] =8;
 
-        StreetPropertyCard streetPropertyCard = null;
-        streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40);
+        //StreetPropertyCard streetPropertyCard = null;
+        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40);
         streetPropertyCell.setAssociatedCard(streetPropertyCard);
         c.add(0,streetPropertyCard);
         ArrayList<StationPropertyCard> d = new ArrayList<>() ;
@@ -41,10 +41,10 @@ public class BankTest {
     @Test
     public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException, CardAction.InvalidActionException {
         ArrayList<Player> players = new ArrayList<>();
-        Player player1 = new Player("zenos");
-        Player player2 = new Player("Tom");
-        Player player3 = new Player("Max");
-        Player player4 = new Player("Ayman");
+        Player player1 = new Player("zenos", Player.TokenType.SMARTPHONE);
+        Player player2 = new Player("Tom", Player.TokenType.BOOT);
+        Player player3 = new Player("Max", Player.TokenType.GOBLET);
+        Player player4 = new Player("Ayman", Player.TokenType.CAT);
         players.add(player1);
         players.add(player2);
         players.add(player3);

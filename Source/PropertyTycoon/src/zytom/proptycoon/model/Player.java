@@ -30,6 +30,7 @@ public class Player implements AssetOwner {
     /**
      * 
      * @param name
+     * @param tokenType
      */
     public Player(String name,TokenType tokenType){
         this.name = name;
@@ -187,13 +188,16 @@ public class Player implements AssetOwner {
         return requested;
     }
 
+    
     public int getDoublesRolled() {
         return doublesRolled;
     }
+    
 
     public void setDoublesRolled(int doublesRolled) {
         this.doublesRolled = doublesRolled;
     }
+    
 
     /**
      * Append the contents of the specified asset collection to the asset
@@ -239,18 +243,16 @@ public class Player implements AssetOwner {
         }
         return false;
     }
+    
     @Override
     public boolean checkHasAsset(int money){
-        if(this.getAssetCollection().getMoney() > money){
-            return true;
-        }else {
-            return false;
-        }
+        return this.getAssetCollection().getMoney() > money;
     }
 
     public boolean hasPlayerPassedGo(){
         return this.hasPassedGo;
     }
+    
     public void playerPassedGo(){
         this.hasPassedGo = true;
     }

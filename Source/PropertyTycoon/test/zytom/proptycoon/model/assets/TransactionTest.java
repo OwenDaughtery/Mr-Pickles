@@ -35,7 +35,7 @@ public class TransactionTest {
                              dc.createStationPropertyCardDeck(board),
                              dc.createUtilityPropertyCardDeck(board));
         
-        this.zenos = new Player("Zenos");
+        this.zenos = new Player("Zenos", Player.TokenType.SMARTPHONE);
         
         this.utilityCards = new ArrayList<>();
         this.stationCards = new ArrayList<>();

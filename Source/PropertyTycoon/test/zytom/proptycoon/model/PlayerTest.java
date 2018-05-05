@@ -20,7 +20,7 @@ public class PlayerTest {
     
     @Before 
     public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
-        this.player = new Player("zenos");
+        this.player = new Player("zenos", Player.TokenType.SMARTPHONE);
         this.deckCreator = new DeckCreator();
         this.board = new Board(deckCreator.getPropertyData());
         this.bank = new Bank(deckCreator.createPotLuckDeck(), deckCreator.createOpportunityKnocksDeck(), deckCreator.createStreetPropertyCardDeck(board),

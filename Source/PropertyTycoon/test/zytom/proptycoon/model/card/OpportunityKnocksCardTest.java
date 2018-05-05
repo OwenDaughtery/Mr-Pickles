@@ -12,7 +12,7 @@ public class OpportunityKnocksCardTest {
         CardAction cardAction = new CardAction("BANK PAYS PLAYER",100);
         OpportunityKnocksCard okc = new OpportunityKnocksCard("ThisIsADescription",cardAction);
 
-        assertTrue(okc.getDescription() == "ThisIsADescription");
+        assertTrue("ThisIsADescription".equals(okc.getDescription()));
         assertTrue(okc.action.type == BANK_PAYS_PLAYER);
     }
 }
