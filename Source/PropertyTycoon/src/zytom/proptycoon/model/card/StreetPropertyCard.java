@@ -14,8 +14,10 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
     private final int buildCost;
-    private final String colour;
 
+    private final Colour colour;
+
+    public enum Colour{BROWN,BLUE,PURPLE,ORANGE,RED,YELLOW,GREEN,DEEPBLUE}
     /**
      *
      * @param rentCost
@@ -25,7 +27,7 @@ public class StreetPropertyCard extends PropertyCard {
      * @param buildCost
      * @param colour
      */
-    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, String colour) {
+    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, Colour colour) {
         super(cellRef, title, price);
         this.rentCost = rentCost;
         this.buildCost = buildCost;
@@ -52,7 +54,7 @@ public class StreetPropertyCard extends PropertyCard {
     }
     
     
-    public String getColour() {
+    public Colour getColour() {
         return this.colour;
     } 
  

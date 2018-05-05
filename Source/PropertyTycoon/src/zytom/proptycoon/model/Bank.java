@@ -14,7 +14,7 @@ public final class Bank implements AssetOwner {
     public static final int INITIAL_BALANCE = 50000;
     private final AssetCollection assetCollection;
     
-    private HashMap<String, ArrayList<StreetPropertyCard>> streetPropertyByColourGroup;
+    private HashMap<StreetPropertyCard.Colour, ArrayList<StreetPropertyCard>> streetPropertyByColourGroup;
     
     private ArrayList<StreetPropertyCard> brownGroup;
     private ArrayList<StreetPropertyCard> blueGroup;
@@ -64,41 +64,41 @@ public final class Bank implements AssetOwner {
         
         for(StreetPropertyCard card : streetPropertyCards) {
             switch(card.getColour()) {
-                case "BROWN":
+                case BROWN:
                     brownGroup.add(card);
                     break;
-                case "BLUE":
+                case BLUE:
                     blueGroup.add(card);
                     break;
-                case "PURPLE":
+                case PURPLE:
                     purpleGroup.add(card);
                     break;
-                case "ORANGE":
+                case ORANGE:
                     orangeGroup.add(card);
                     break;
-                case "RED":
+                case RED:
                     redGroup.add(card);
                     break;
-                case "YELLOW":
+                case YELLOW:
                     yellowGroup.add(card);
                     break;
-                case "GREEN":
+                case GREEN:
                     greenGroup.add(card);
                     break;
-                case "DEEP BLUE":
+                case DEEPBLUE:
                     deepBlueGroup.add(card);
                     break;
             }
         }
         
-        this.streetPropertyByColourGroup.put("BROWN", brownGroup);
-        this.streetPropertyByColourGroup.put("BLUE", blueGroup);
-        this.streetPropertyByColourGroup.put("PURPLE", purpleGroup);
-        this.streetPropertyByColourGroup.put("ORANGE", orangeGroup);
-        this.streetPropertyByColourGroup.put("RED", redGroup);
-        this.streetPropertyByColourGroup.put("YELLOW", yellowGroup);
-        this.streetPropertyByColourGroup.put("GREEN", greenGroup);
-        this.streetPropertyByColourGroup.put("DEEP BLUE", deepBlueGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.BROWN, brownGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.BLUE, blueGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.PURPLE, purpleGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.ORANGE, orangeGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.RED, redGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.YELLOW, yellowGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.GREEN, greenGroup);
+        this.streetPropertyByColourGroup.put(StreetPropertyCard.Colour.DEEPBLUE, deepBlueGroup);
     }
 
     /**
@@ -106,7 +106,7 @@ public final class Bank implements AssetOwner {
      * @param groupColour
      * @return 
      */
-    public ArrayList<StreetPropertyCard> getGroupOfStreetProperties(String groupColour) {
+    public ArrayList<StreetPropertyCard> getGroupOfStreetProperties(StreetPropertyCard.Colour groupColour) {
         return this.streetPropertyByColourGroup.get(groupColour);
     }
     

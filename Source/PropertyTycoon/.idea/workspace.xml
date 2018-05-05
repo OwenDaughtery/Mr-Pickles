@@ -12,64 +12,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Player.java">
+      <file leaf-file-name="Bank.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+            <state relative-caret-position="225">
+              <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssetManagementController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/AssetManagementController.java">
+      <file leaf-file-name="StationPropertyCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/StationPropertyCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2160">
-              <caret line="144" column="42" lean-forward="false" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
+            <state relative-caret-position="105">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1525539021000" expanded="false" signature="5996:6019" ph=" { " />
-                <marker date="1525539021000" expanded="false" signature="6045:6055" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EndTurnController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/EndTurnController.java">
+      <file leaf-file-name="DeckCreator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/deckCreator/DeckCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="33" column="74" lean-forward="false" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
+            <state relative-caret-position="256">
+              <caret line="291" column="60" lean-forward="true" selection-start-line="291" selection-start-column="51" selection-end-line="291" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerInitalizer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/preGame/PlayerInitalizer.java">
+      <file leaf-file-name="StreetPropertyCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/StreetPropertyCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="44" lean-forward="true" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1552#1553#0" expanded="true" />
-                <element signature="e#1601#1602#0" expanded="true" />
-                <element signature="e#1953#1954#0" expanded="true" />
-                <element signature="e#2002#2003#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-989">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="202">
+              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,20 +64,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TurnOrderDecider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/preGame/TurnOrderDecider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-              <folding>
-                <element signature="e#1574#1575#0" expanded="true" />
-                <element signature="e#1623#1624#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LeadController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LeadController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/LeadController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -110,21 +77,9 @@
       <file leaf-file-name="AssetCollection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/assets/AssetCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
+            <state relative-caret-position="483">
               <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartTurn.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/StartTurn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -154,9 +109,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/card/StreetPropertyCard.java" />
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/card/Card.java" />
-        <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/Bank.java" />
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/assets/Transaction.java" />
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/controller/RunGame.java" />
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/Board.java" />
@@ -185,6 +138,9 @@
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/Player.java" />
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/Game.java" />
         <option value="$PROJECT_DIR$/src/zytom/proptycoon/controller/game/LeadController.java" />
+        <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/card/StreetPropertyCard.java" />
+        <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/deckCreator/DeckCreator.java" />
+        <option value="$PROJECT_DIR$/src/zytom/proptycoon/model/Bank.java" />
       </list>
     </option>
   </component>
@@ -312,24 +268,16 @@
               <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="card" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PropertyTycoon" type="b2602c69:ProjectViewProjectNode" />
               <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="NewGameMenu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PropertyTycoon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="NewGameMenu" type="462c0819:PsiDirectoryNode" />
-              <item name="ChoosePlayers" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="deckCreator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -546,20 +494,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/GoToJailCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/deckCreator/DeckCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/OpportunityKnocksCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -602,13 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/StreetPropertyCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/FreeParkingCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -642,14 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/StationPropertyCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,18 +624,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/StreetPropertyCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/PotLuckCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="13" column="60" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -742,22 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -848,7 +744,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -879,23 +775,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/assets/AssetCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/AssetManagementController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
           <caret line="144" column="42" lean-forward="false" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1525539021000" expanded="false" signature="5996:6019" ph=" { " />
-            <marker date="1525539021000" expanded="false" signature="6045:6055" ph=" }" />
+            <marker date="1525541532000" expanded="false" signature="5996:6019" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="6045:6055" ph=" }" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+          <folding>
+            <marker date="1525541532000" expanded="true" signature="955:1017" ph="{...}" />
+            <marker date="1525541532000" expanded="true" signature="1048:1110" ph="/**...*/" />
+            <marker date="1525541532000" expanded="true" signature="1161:1359" ph="{...}" />
+            <marker date="1525541532000" expanded="true" signature="1365:1445" ph="/**...*/" />
+            <marker date="1525541532000" expanded="false" signature="1473:1484" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="1501:1507" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="1513:1596" ph="/**...*/" />
+            <marker date="1525541532000" expanded="false" signature="1625:1636" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="1657:1663" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="1669:1764" ph="/**...*/" />
+            <marker date="1525541532000" expanded="true" signature="1817:2025" ph="{...}" />
+            <marker date="1525541532000" expanded="true" signature="2035:2146" ph="/**...*/" />
+            <marker date="1525541532000" expanded="true" signature="2219:2403" ph="{...}" />
+            <marker date="1525541532000" expanded="true" signature="2413:2452" ph="/**...*/" />
+            <marker date="1525541532000" expanded="true" signature="2493:2956" ph="{...}" />
+            <marker date="1525541532000" expanded="true" signature="2870:2928" ph="//..." />
+            <marker date="1525541532000" expanded="true" signature="2966:3049" ph="/**...*/" />
+            <marker date="1525541532000" expanded="false" signature="3111:3122" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="3150:3156" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="3166:3232" ph="/**...*/" />
+            <marker date="1525541532000" expanded="false" signature="3264:3275" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="3294:3300" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="3306:3364" ph="/**...*/" />
+            <marker date="1525541532000" expanded="false" signature="3412:3423" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="3454:3460" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="3466:3868" ph="/**...*/" />
+            <marker date="1525541532000" expanded="true" signature="3987:6418" ph="{...}" />
+            <marker date="1525541532000" expanded="false" signature="6458:6469" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="6490:6496" ph=" }" />
+            <marker date="1525541532000" expanded="false" signature="6554:6565" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="6600:6606" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="6617:6763" ph="/**...*/" />
+            <marker date="1525541532000" expanded="true" signature="6838:7564" ph="{...}" />
+            <marker date="1525541532000" expanded="true" signature="7626:8290" ph="{...}" />
+            <marker date="1525541532000" expanded="false" signature="8353:8363" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="8415:8421" ph=" }" />
+            <marker date="1525541532000" expanded="false" signature="8461:8471" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="8495:8501" ph=" }" />
+            <marker date="1525541532000" expanded="false" signature="8539:8549" ph=" { " />
+            <marker date="1525541532000" expanded="false" signature="8573:8579" ph=" }" />
+            <marker date="1525541532000" expanded="true" signature="8624:8868" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/LeadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/assets/AssetCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/zytom/proptycoon/model/BankTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/StreetPropertyCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-532">
+          <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/deckCreator/DeckCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="291" column="60" lean-forward="true" selection-start-line="291" selection-start-column="51" selection-end-line="291" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -904,32 +890,6 @@
         <state relative-caret-position="480">
           <caret line="33" column="74" lean-forward="false" selection-start-line="33" selection-start-column="74" selection-end-line="33" selection-end-column="74" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/UtilityPropertyCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-989">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -947,10 +907,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/controller/game/LeadController.java">
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        <state relative-caret-position="-111">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/StationPropertyCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/cell/UtilityPropertyCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/card/StreetPropertyCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zytom/proptycoon/model/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
           <folding />
         </state>
       </provider>
