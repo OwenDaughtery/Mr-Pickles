@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * Class Auction generates an Auction for an unsold property a player has landed on
  */
 public class Auction {
-    private ArrayList<Player> players;
-    private Bank bank;
+    private final ArrayList<Player> players;
+    private final Bank bank;
 
     public Auction(ArrayList<Player> players,Bank bank){
         this.players = players;
@@ -71,7 +71,7 @@ public class Auction {
             }
         }
 
-        if(takingPart.size() == 0){
+        if(takingPart.isEmpty()){
 
         }else if(takingPart.size() == 1){
             // option for that player to purchase
@@ -107,7 +107,7 @@ public class Auction {
             }
         }
 
-        if(takingPart.size() == 0){
+        if(takingPart.isEmpty()){
 
         }else if(takingPart.size() == 1){
             // option for that player to purchase

@@ -155,11 +155,7 @@ public class Bank implements AssetOwner {
     }
     @Override
     public boolean checkHasAsset(int money){
-        if(this.getAssetCollection().getMoney() > money){
-            return true;
-        }else {
-            return false;
-        }
+        return this.getAssetCollection().getMoney() > money;
     }
 
     @Override

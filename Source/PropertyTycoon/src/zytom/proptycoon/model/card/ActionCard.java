@@ -9,8 +9,8 @@ package zytom.proptycoon.model.card;
  */
 public abstract class ActionCard extends Card {
     
-    private CardAction action;
-    private String description;
+    private final CardAction action;
+    private final String description;
     
     public ActionCard(String description , CardAction action){
         this.action = action;

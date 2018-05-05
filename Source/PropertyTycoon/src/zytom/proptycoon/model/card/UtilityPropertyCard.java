@@ -7,7 +7,6 @@ import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.cell.Cell;
 
-import java.util.ArrayList;
 
 /**
  *
