@@ -21,6 +21,6 @@ public class ActionCardTest {
 
     @Test
     public void getDescription() {
-        assertTrue("COLLECT £200".equals(opportunityKnocksCard.getDescription()));
+        assertTrue("COLLECT £200" == opportunityKnocksCard.getDescription());
     }
 }

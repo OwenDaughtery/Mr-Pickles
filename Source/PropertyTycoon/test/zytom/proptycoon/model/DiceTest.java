@@ -36,5 +36,11 @@ public class DiceTest {
        assertTrue(dice.getSecondValue() != 0 );
     }
 
+    @Test
+    public void wasDoubleRolled(){
+        Dice dice = new Dice();
+
+    }
+
 
 }
