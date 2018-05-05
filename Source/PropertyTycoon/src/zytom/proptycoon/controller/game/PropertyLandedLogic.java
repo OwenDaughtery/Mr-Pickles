@@ -22,7 +22,7 @@ public class PropertyLandedLogic {
         this.leadController = leadController;
     }
 
-    public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.ToManyDaymHousesException{
+    public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.ToManyDaymHousesException {
         PropertyCard card = cell.getAssociatedCard();
         if(currentPlayer.checkHasAsset(card)){
             //do nothing

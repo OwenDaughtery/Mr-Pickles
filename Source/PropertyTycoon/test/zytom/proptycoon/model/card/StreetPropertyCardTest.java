@@ -1,6 +1,5 @@
 package zytom.proptycoon.model.card;
 
-import java.io.FileNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import zytom.proptycoon.model.Dice;
@@ -9,10 +8,6 @@ import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 import static org.junit.Assert.*;
-import zytom.proptycoon.model.Bank;
-import zytom.proptycoon.model.Board;
-import zytom.proptycoon.model.card.StreetPropertyCard.Colour;
-import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 public class StreetPropertyCardTest {
 
@@ -21,12 +16,10 @@ public class StreetPropertyCardTest {
     StreetPropertyCell streetPropertyCell;
     Player player ;
     Dice dice;
-    Bank bank;
-    DeckCreator dc;
-    Board board;
+
 
     @Before
-    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
+    public void init() {
 
         int[] rentCosts;
         rentCosts = new int[6];
@@ -37,32 +30,24 @@ public class StreetPropertyCardTest {
         rentCosts[3] = 200; // 3 houses
         rentCosts[4] = 250; // 4 houses
         rentCosts[5] = 300; // 1 hotel
-        
-        this.dc = new DeckCreator();
+
         this.streetPropertyCell = new StreetPropertyCell("BRIGHTON ROAD");
-        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, Colour.RED);
+        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, "RED");
         this.player =  new Player("zenos", Player.TokenType.BOOT);
         this.dice = new Dice();
-        this.board = new Board(dc.getPropertyData());
-        this.bank = new Bank(dc.createPotLuckDeck(), 
-                dc.createOpportunityKnocksDeck(),
-                dc.createStreetPropertyCardDeck(board),
-                dc.createStationPropertyCardDeck(board),
-                dc.createUtilityPropertyCardDeck(board));
     }
-    
     @Test
-    public void getRent() throws StreetPropertyCell.ConstructionError, PropertyCard.ToManyDaymHousesException {
+    public void getRent() throws StreetPropertyCell.ConstructionError {
         Dice dice = new Dice();
         Player player = new Player("zenos", Player.TokenType.BOOT);
         this.streetPropertyCell.addBuilding();
         int numberOfBuildings = this.streetPropertyCell.getNumberOfBuildings();
-        int rent = this.streetPropertyCard.getRent(dice,player,bank);
+       int rent = this.streetPropertyCard.getRent(dice,player);
         assertTrue(100 == rent);
         assertTrue(numberOfBuildings == 1);
         this.streetPropertyCell.addBuilding();
-        numberOfBuildings= this.streetPropertyCell.getNumberOfBuildings();
-        rent= this.streetPropertyCard.getRent(dice,player,bank);
+         numberOfBuildings= this.streetPropertyCell.getNumberOfBuildings();
+         rent= this.streetPropertyCard.getRent(dice,player);
         assertTrue(150 == rent);
         assertTrue(numberOfBuildings == 2);
     }
