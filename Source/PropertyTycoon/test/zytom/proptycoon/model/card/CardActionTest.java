@@ -194,6 +194,29 @@ public class CardActionTest {
         
     }
     
+    
+    
+    @Test
+    public void playerMovesBackward() throws AssetOwner.AssetNotFoundException {
+        PotLuckCard potLuckCard = findPotLuckCard(CardAction.Type.MOVE_BACKWARD);
+        
+        //CHECK THAT THE BANK HAS THE POT LUCK CARD
+        assertTrue(bank.getAssetCollection().getPotLuckCards().contains(potLuckCard));      
+        
+        //REMOVE THE CARD FROM THE POT LUCK DECK IN BANK
+        bank.getAssetCollection().getPotLuckCards().remove(potLuckCard);
+        
+        //POSITION TO MOVE BACK TO 
+        int targetPosition = potLuckCard.getCardAction().value;
+        
+        //PERFORM THE CARD ACTION
+        potLuckCard.getCardAction().performAction(freeParking, bank, player, players, potLuckCard);
+        
+        assertTrue(player.getPosition() == targetPosition);
+    }
+    
+    
+    
     public PotLuckCard findPotLuckCard(CardAction.Type type){
         for(PotLuckCard card : this.bank.getAssetCollection().getPotLuckCards()) {
             if(card.getCardAction().type.equals(type)) {
