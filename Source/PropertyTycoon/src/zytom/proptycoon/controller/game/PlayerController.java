@@ -59,7 +59,7 @@ public class PlayerController {
             case JAIL:
                 throw new LandedOnJailException();
             case POT_LUCK:
-                gameController.potLuckController.pickupCard();
+                gameController.getPotLuckController().pickupCard();
 
                 //draw a potluck card
                 break;
@@ -85,16 +85,16 @@ public class PlayerController {
                 //Do nothing
                 break;
             case STREET_PROPERTY:
-                gameController.propertyLandedLogic.landedOnProperty((StreetPropertyCell)cell,currentPlayer,dice);
+                gameController.getPropertyLandedLogic().landedOnProperty((StreetPropertyCell)cell,currentPlayer,dice);
                 break;
             case STATION_PROPERTY:
-                gameController.propertyLandedLogic.landedOnProperty((StationPropertyCell)cell,currentPlayer,dice);
+                gameController.getPropertyLandedLogic().landedOnProperty((StationPropertyCell)cell,currentPlayer,dice);
                 break;
             case UTILITY_PROPERTY:
-                gameController.propertyLandedLogic.landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
+                gameController.getPropertyLandedLogic().landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
                 break;
             case OPPORTUNITY_KNOCKS:
-                gameController.opportunityKnocksController.pickupCard();
+                gameController.getOpportunityKnocksController().pickupCard();
                 break;
             default:
                 throw new CellNotFoundException();
