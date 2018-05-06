@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Settles Buying and selling houses, morgaging and selling propertys.
+ *
  * @author ayman and maxxx
  */
 public class AssetManagementController {
@@ -19,66 +20,88 @@ public class AssetManagementController {
     LeadController leadController;
 
     /**
-     *
      * @param bank
      * @param leadController
      */
-    public AssetManagementController(Bank bank, LeadController leadController){
-    this.bank = bank;
-    this.leadController = leadController;
+    public AssetManagementController(Bank bank, LeadController leadController) {
+        this.bank = bank;
+        this.leadController = leadController;
 
     }
 
 
     /**
      * buys a house on given property
+     *
      * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
      * @throws zytom.proptycoon.controller.game.AssetManagementController.PlanningPermitionError
      */
-    public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError, PlanningPermitionError {
+    public void buyHouse(Player player, StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError, PlanningPermitionError {
 
         StreetPropertyCard.Colour colour = streetPropertyCard.getColour();
         ArrayList<StreetPropertyCard> propOfSameColour = bank.getGroupOfStreetProperties(colour);
         boolean ownsAllProperly = true;
-        for (StreetPropertyCard p: propOfSameColour
-             ) {
+        boolean eligibleToBuild = false;
+        int lowest = Integer.MAX_VALUE;
+        int highest = 0;
 
-            //int difference = ???????
-            if(!player.checkHasAsset(p)){
+        for (StreetPropertyCard p : propOfSameColour
+                ) {
+            StreetPropertyCell cell = (StreetPropertyCell) p.getCellRef();
+            int buildingNum = cell.getNumberOfBuildings();
+
+            if (!player.checkHasAsset(p)) {
                 ownsAllProperly = false;
             }
-
-        }
-        if(ownsAllProperly = true) {
-            int houseCost = streetPropertyCard.getBuildCost();
-            StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
-
-            try {
-                Transaction transaction = new Transaction(
-                        player,
-                        bank,
-                        new AssetCollection(houseCost),
-                        new AssetCollection(0)
-                );
-                transaction.settleTransaction();
-            } catch (AssetOwner.AssetNotFoundException ex) {
-
+            if (buildingNum <= lowest) {
+                lowest = buildingNum;
             }
-            propCell.addBuilding();
-        }else{
-            throw new PlanningPermitionError();
+            if (buildingNum >= highest) {
+                highest = buildingNum;
+            }
         }
+
+        if (highest - lowest < 2) {
+            eligibleToBuild = true;
+        }
+
+
+        // are we elible to build a house here . boolean
+        if(ownsAllProperly && eligibleToBuild)
+
+    {
+        int houseCost = streetPropertyCard.getBuildCost();
+        StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
+
+        try {
+            Transaction transaction = new Transaction(
+                    player,
+                    bank,
+                    new AssetCollection(houseCost),
+                    new AssetCollection(0)
+            );
+            transaction.settleTransaction();
+        } catch (AssetOwner.AssetNotFoundException ex) {
+
+        }
+        propCell.addBuilding();
+    }else
+
+    {
+        throw new PlanningPermitionError();
     }
+}
 
     /**
      * sells a house on a given property
+     *
      * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
      */
-    public void sellHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
+    public void sellHouse(Player player, StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError {
         int houseCost = streetPropertyCard.getBuildCost();
         StreetPropertyCell propCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
 
@@ -100,13 +123,14 @@ public class AssetManagementController {
 
     /**
      * morgages a property and handles transactions ;
+     *
      * @param streetPropertyCard
      */
-    public void mortagageProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void mortagageProperty(Player player, StreetPropertyCard streetPropertyCard) throws MortagagingError {
 
         StreetPropertyCell propertyCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
-        int numBuildings= propertyCell.getNumberOfBuildings();
-        if(numBuildings == 0){
+        int numBuildings = propertyCell.getNumberOfBuildings();
+        if (numBuildings == 0) {
             int value = streetPropertyCard.getMortgageValue();
             try {
                 Transaction transaction = new Transaction(
@@ -121,7 +145,7 @@ public class AssetManagementController {
             }
             streetPropertyCard.mortagage(); // set card to be mortaged;
 
-        }else {
+        } else {
             throw new MortagagingError(streetPropertyCard);
         }
 
@@ -130,14 +154,15 @@ public class AssetManagementController {
 
     /**
      * unmorgages a property and handles transactions ;
+     *
      * @param player
      * @param streetPropertyCard
      * @throws MortagagingError
      */
-    public void unmortagageProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void unmortagageProperty(Player player, StreetPropertyCard streetPropertyCard) throws MortagagingError {
         //change property card from morgage to unmorgaged and pay the bank money
         int value = streetPropertyCard.getMortgageValue();
-        if(streetPropertyCard.isMortaged){
+        if (streetPropertyCard.isMortaged) {
 
             try {
                 Transaction transaction = new Transaction(
@@ -152,7 +177,7 @@ public class AssetManagementController {
             }
             streetPropertyCard.unmortagage();
 
-        }else {
+        } else {
             throw new MortagagingError(streetPropertyCard);
         }
 
@@ -160,15 +185,16 @@ public class AssetManagementController {
 
     /**
      * sells a property back to the bank and handles transactions ;
+     *
      * @param player
      * @param streetPropertyCard
      * @throws MortagagingError
      */
-    public void sellProperty(Player player,StreetPropertyCard streetPropertyCard) throws MortagagingError {
+    public void sellProperty(Player player, StreetPropertyCard streetPropertyCard) throws MortagagingError {
         StreetPropertyCell propertyCell = (StreetPropertyCell) streetPropertyCard.getCellRef();
         int numBuildings = propertyCell.getNumberOfBuildings();
-       //if no buildings and not mortaged
-        if(numBuildings == 0 && streetPropertyCard.isMortaged == false) {
+        //if no buildings and not mortaged
+        if (numBuildings == 0 && streetPropertyCard.isMortaged == false) {
             try {
                 Transaction transaction = new Transaction(
                         player,
@@ -180,8 +206,7 @@ public class AssetManagementController {
             } catch (AssetOwner.AssetNotFoundException ex) {
 
             }
-        }
-        else {
+        } else {
             throw new MortagagingError(streetPropertyCard);
 
         }
@@ -189,38 +214,40 @@ public class AssetManagementController {
 
     }
 
-    public static class MortagagingError extends Exception {
-        public MortagagingError(StreetPropertyCard streetPropertyCard){
-            super (
-                    streetPropertyCard.toString() +" :   ERROR :Mortagaging "
-            );
-        }
-        /**
-         * Gets the message
-         * @return The exception message.
-         */
-        @Override
-        public String getMessage()
-        {
-            return super.getMessage();
-        }
+public static class MortagagingError extends Exception {
+    public MortagagingError(StreetPropertyCard streetPropertyCard) {
+        super(
+                streetPropertyCard.toString() + " :   ERROR :Mortagaging "
+        );
     }
 
-    public static class PlanningPermitionError extends Exception {
-        public PlanningPermitionError(){
-            super (
-                    " Don't own all cards of that colour"
-            );
-        }
-        /**
-         * Gets the message
-         * @return The exception message.
-         */
-        @Override
-        public String getMessage()
-        {
-            return super.getMessage();
-        }
+    /**
+     * Gets the message
+     *
+     * @return The exception message.
+     */
+    @Override
+    public String getMessage() {
+        return super.getMessage();
     }
+}
+
+public static class PlanningPermitionError extends Exception {
+    public PlanningPermitionError() {
+        super(
+                " Don't own all cards of that colour"
+        );
+    }
+
+    /**
+     * Gets the message
+     *
+     * @return The exception message.
+     */
+    @Override
+    public String getMessage() {
+        return super.getMessage();
+    }
+}
 
 }
