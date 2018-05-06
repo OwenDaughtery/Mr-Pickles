@@ -3,8 +3,7 @@
  */
 package zytom.proptycoon.model.preGame.gUITest;
 
-import com.sun.j3d.utils.applet.JMainFrame;
-import javax.swing.JFrame;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

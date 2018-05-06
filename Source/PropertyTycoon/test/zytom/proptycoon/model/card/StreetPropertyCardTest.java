@@ -11,7 +11,6 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 import static org.junit.Assert.*;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
-import zytom.proptycoon.model.card.StreetPropertyCard.Colour;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 public class StreetPropertyCardTest {
@@ -27,7 +26,7 @@ public class StreetPropertyCardTest {
 
 
     @Before
-    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
+    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {
         
         this.dc = new DeckCreator();
         this.board = new Board(dc.getPropertyData());
