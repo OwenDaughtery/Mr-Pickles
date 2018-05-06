@@ -35,6 +35,7 @@ public class AssetManagementController {
      * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
+     * @throws zytom.proptycoon.controller.game.AssetManagementController.PlanningPermitionError
      */
     public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError, PlanningPermitionError {
 
@@ -44,7 +45,7 @@ public class AssetManagementController {
         for (StreetPropertyCard p: propOfSameColour
              ) {
 
-            int difference =
+            //int difference = ???????
             if(!player.checkHasAsset(p)){
                 ownsAllProperly = false;
             }

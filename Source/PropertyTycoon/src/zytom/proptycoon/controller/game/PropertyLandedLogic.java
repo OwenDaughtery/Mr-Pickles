@@ -13,9 +13,10 @@ import java.util.ArrayList;
 
 public class PropertyLandedLogic {
 
-    private ArrayList<Player> players;
-    private Bank bank;
-    private LeadController leadController;
+    private final ArrayList<Player> players;
+    private final Bank bank;
+    private final LeadController leadController;
+    
     public PropertyLandedLogic( ArrayList<Player> players,Bank bank, LeadController leadController){
         this.players = players;
         this.bank = bank;
