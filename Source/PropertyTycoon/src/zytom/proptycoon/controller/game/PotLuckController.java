@@ -2,17 +2,18 @@ package zytom.proptycoon.controller.game;
 
 import zytom.proptycoon.model.*;
 import zytom.proptycoon.model.assets.AssetOwner;
-import zytom.proptycoon.model.card.OpportunityKnocksCard;
 import zytom.proptycoon.model.card.PotLuckCard;
 
 public class PotLuckController {
-    private Game game;
-    private LeadController leadController;
-    private Board board ;
-    private Dice dice;
-    private Player currentplayer;
-    private Bank bank;
-    private FreeParking freeParking;
+    
+    private final Game game;
+    private final LeadController leadController;
+    private final Board board ;
+    private final Dice dice;
+    private final Player currentplayer;
+    private final Bank bank;
+    private final FreeParking freeParking;
+    
 
     public PotLuckController(Game game , LeadController leadController, Board board,Bank bank, Dice dice, Player currentPlayer){
         this.game = game;
@@ -42,6 +43,4 @@ public class PotLuckController {
         potLuckCard.getCardAction().performAction(freeParking,bank,currentplayer,game.getPlayers(),potLuckCard);
 
     }
-
-
 }

@@ -23,7 +23,7 @@ public class CardAction {
     
     enum Type{BANK_PAYS_PLAYER, PLAYER_PAYS_BANK, PAY_FREE_PARKING, 
               MOVE_FORWARD, MOVE_BACKWARD, GO_TO_JAIL, GET_OUT_OF_JAIL_POT_LUCK, 
-              GET_OUT_OF_JAIL_OPP_KNOCKS, COLLECT_FROM_ALL, MOVE_FORWARD_TO};
+              GET_OUT_OF_JAIL_OPP_KNOCKS, COLLECT_FROM_ALL};
     
     Type type;
     int value;
@@ -48,6 +48,7 @@ public class CardAction {
                 break;
             case "MOVE FORWARD":
                 this.type = Type.MOVE_FORWARD;
+                break;
             case "MOVE BACKWARD":
                 this.type = Type.MOVE_BACKWARD;
                 break;

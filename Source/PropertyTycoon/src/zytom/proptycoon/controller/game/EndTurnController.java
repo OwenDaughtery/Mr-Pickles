@@ -7,8 +7,8 @@ import zytom.proptycoon.model.Player;
  * @author aymanfree
  */
 public class EndTurnController {
-    private Game game;
-    private LeadController leadController;
+    private final Game game;
+    private final LeadController leadController;
 
     /**
      *

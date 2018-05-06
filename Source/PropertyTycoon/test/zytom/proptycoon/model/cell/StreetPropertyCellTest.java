@@ -23,10 +23,10 @@ public class StreetPropertyCellTest {
 
 
     @Test
-    public void setAndGetAssociatedCard() {
+    public void setAndGetAssociatedCard() throws StreetPropertyCard.InvalidColourGroupException {
         int[] rentCosts = new int[4];
         StreetPropertyCard streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "CRAPPER STREET",
-                                                                        100, rentCosts, 500, Colour.GREEN);
+                                                                        100, rentCosts, 500, "GREEN");
         this.streetPropertyCell.setAssociatedCard(streetPropertyCard);
         assertEquals("CRAPPER STREET", this.streetPropertyCell.getAssociatedCard().getTitle());
     }

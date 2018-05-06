@@ -3,12 +3,10 @@ package zytom.proptycoon.model;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
-import zytom.proptycoon.model.card.PropertyCard;
 import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

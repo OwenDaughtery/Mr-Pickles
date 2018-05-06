@@ -85,7 +85,7 @@ public class DeckCreator {
      * @throws FileNotFoundException 
      * @throws zytom.proptycoon.model.Board.CellNotFoundException 
      */
-    public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck(Board board) throws FileNotFoundException, Board.CellNotFoundException  {
+    public ArrayList<StreetPropertyCard> createStreetPropertyCardDeck(Board board) throws FileNotFoundException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException  {
         StreetPropertyCardDeck deck = new StreetPropertyCardDeck(propertyDeckData, board);
         return deck.getCards();
     }
@@ -104,7 +104,7 @@ public class DeckCreator {
         ArrayList<String[]> data = new ArrayList<>();
         String[] currentParams = new String[columnsToRead];
         int index = 0;
-
+       // Mr-Pickles/Source/PropertyTycoon/resources/
         String path = "./resources/" + nameOfCSV; //path may need fixing
         File file = new File(path);
         Scanner inputStream = new Scanner(file);
@@ -281,7 +281,7 @@ public class DeckCreator {
         private final ArrayList<StreetPropertyCard> streetPropertyCardDeck;
         int[] rentPrices = new int[6];
         
-        private StreetPropertyCardDeck(ArrayList<String[]> deckData, Board board) throws Board.CellNotFoundException {
+        private StreetPropertyCardDeck(ArrayList<String[]> deckData, Board board) throws Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {
             streetPropertyCardDeck = new ArrayList<>();
             int index = 0;
             for(String[] data : deckData) {
@@ -300,7 +300,7 @@ public class DeckCreator {
                     this.rentPrices[3] = Integer.parseInt(data[7]); //3 houses
                     this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses
                     this.rentPrices[5] = Integer.parseInt(data[9]); //hotel
-                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice, StreetPropertyCard.Colour.valueOf(colour));
+                    StreetPropertyCard streetPropertyCard = new StreetPropertyCard(cellRef, title, buyPrice, rentPrices, buildPrice, colour);
                     cellRef.setAssociatedCard(streetPropertyCard);
                     this.streetPropertyCardDeck.add(streetPropertyCard);
                 }

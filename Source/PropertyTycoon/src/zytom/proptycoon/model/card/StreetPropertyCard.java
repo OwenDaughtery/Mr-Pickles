@@ -18,7 +18,7 @@ public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
     private final int buildCost;
 
-    private final Colour colour;
+    private Colour colour;
 
 
     public enum Colour{BROWN,BLUE,PURPLE,ORANGE,RED,YELLOW,GREEN,DEEPBLUE}
@@ -31,11 +31,42 @@ public class StreetPropertyCard extends PropertyCard {
      * @param buildCost
      * @param colour
      */
-    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, Colour colour) {
+    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, String colour) throws InvalidColourGroupException {
         super(cellRef, title, price);
         this.rentCost = rentCost;
         this.buildCost = buildCost;
-        this.colour = colour;
+        
+        switch(colour) {
+            case "BROWN":
+                this.colour = Colour.BROWN;
+                break;
+            case "DEEPBLUE":
+                this.colour = Colour.DEEPBLUE;
+                break;
+            case "BLUE":
+                this.colour = Colour.BLUE;
+                break;
+            case "ORANGE":
+                this.colour = Colour.ORANGE;
+                break;
+            case "YELLOW":
+                this.colour = Colour.YELLOW;
+                break;
+            case "PURPLE":
+                this.colour = Colour.PURPLE;
+                break;
+            case "RED":
+                this.colour = Colour.RED;
+                break;
+            case "GREEN":
+                this.colour = Colour.GREEN;
+                break;
+        }
+        
+        if(this.colour == null) {
+            throw new InvalidColourGroupException(colour);
+        }
+
     }
 
     public int getRent(Dice dice, Player player, Bank bank) throws ToManyDaymHousesException {
@@ -82,6 +113,30 @@ public class StreetPropertyCard extends PropertyCard {
                  "Base Rent  : " + this.rentCost[0]+"\n"+
                  "Build Cost : " + this.buildCost+"\n";
         return info;
+    }
+    
+    
+    public static class InvalidColourGroupException extends Exception {
+        
+        /**
+         * Generate the exception message.
+         * @param errorMessage
+         */
+        public InvalidColourGroupException(
+                String errorMessage
+        ) {
+            super ("Invalid group colour: " + errorMessage);
+        }
+
+
+        /**
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
     }
 
 }

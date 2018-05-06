@@ -35,14 +35,17 @@ public class AssetManagementController {
      * @param player
      * @param streetPropertyCard
      * @throws StreetPropertyCell.ConstructionError
+     * @throws zytom.proptycoon.controller.game.AssetManagementController.PlanningPermitionError
      */
     public void buyHouse(Player player,StreetPropertyCard streetPropertyCard) throws StreetPropertyCell.ConstructionError, PlanningPermitionError {
 
         StreetPropertyCard.Colour colour = streetPropertyCard.getColour();
         ArrayList<StreetPropertyCard> propOfSameColour = bank.getGroupOfStreetProperties(colour);
-        Boolean ownsAllProperly = true;
+        boolean ownsAllProperly = true;
         for (StreetPropertyCard p: propOfSameColour
              ) {
+
+            //int difference = ???????
             if(!player.checkHasAsset(p)){
                 ownsAllProperly = false;
             }
@@ -126,7 +129,7 @@ public class AssetManagementController {
     }
 
     /**
-     *  unmorgages a property and handles transactions ;
+     * unmorgages a property and handles transactions ;
      * @param player
      * @param streetPropertyCard
      * @throws MortagagingError
@@ -156,7 +159,7 @@ public class AssetManagementController {
     }
 
     /**
-     *  sells a property back to the bank and handles transactions ;
+     * sells a property back to the bank and handles transactions ;
      * @param player
      * @param streetPropertyCard
      * @throws MortagagingError

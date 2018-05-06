@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.CardAction;
+import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 public class PlayerTest {
@@ -19,7 +20,7 @@ public class PlayerTest {
     Bank bank;
     
     @Before 
-    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
+    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException, StreetPropertyCard.InvalidColourGroupException {
         this.player = new Player("zenos", Player.TokenType.SMARTPHONE);
         this.deckCreator = new DeckCreator();
         this.board = new Board(deckCreator.getPropertyData());

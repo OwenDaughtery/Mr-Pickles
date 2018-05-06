@@ -57,7 +57,7 @@ public class DeckCreatorTest {
     }
 
     @Test
-    public void createStreetPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException {
+    public void createStreetPropertyCardDeck() throws FileNotFoundException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {
         Board board = new Board(this.deckCreator.getPropertyData());
         ArrayList<StreetPropertyCard> streetPropertyCards = this.deckCreator.createStreetPropertyCardDeck(board);
         Assert.assertEquals(22, streetPropertyCards.size());

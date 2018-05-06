@@ -17,7 +17,7 @@ public class PlayerController {
         this.game = game;
         this.leadController = leadController;
     }
-    public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException, PropertyCard.ToManyDaymHousesException {
+    public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException, PropertyCard.ToManyDaymHousesException, Board.CellNotFoundException, AssetOwner.AssetNotFoundException {
 
         Board.CellType cellType = board.getCellClass(cell);
 
@@ -59,6 +59,7 @@ public class PlayerController {
             case JAIL:
                 throw new LandedOnJailException();
             case POT_LUCK:
+                leadController.potLuckController.pickupCard();
 
                 //draw a potluck card
                 break;
@@ -93,6 +94,7 @@ public class PlayerController {
                 leadController.propertyLandedLogic.landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
                 break;
             case OPPORTUNITY_KNOCKS:
+                leadController.opportunityKnocksController.pickupCard();
                 break;
             default:
                 throw new CellNotFoundException();
