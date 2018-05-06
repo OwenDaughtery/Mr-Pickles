@@ -15,7 +15,7 @@ import java.awt.Graphics2D;
 public class UtilityPropertyCell extends InsideCell {
     
     private final String title;
-    private final int price;
+    private final String price;
     
     public UtilityPropertyCell(
             Dimension boardSize, 
@@ -23,7 +23,7 @@ public class UtilityPropertyCell extends InsideCell {
             InsideCell.Side side, 
             int rowIndex,
             String title,
-            int price) {
+            String price) {
         super(boardSize, boardProportion, side, rowIndex);
         this.title = title;
         this.price = price;

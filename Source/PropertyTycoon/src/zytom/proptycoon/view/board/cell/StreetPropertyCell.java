@@ -16,7 +16,7 @@ public class StreetPropertyCell extends InsideCell {
     
     private final Color colour;
     private final String title;
-    private final int price;
+    private final String price;
     
     public StreetPropertyCell(
             Dimension boardSize, 
@@ -25,7 +25,7 @@ public class StreetPropertyCell extends InsideCell {
             int rowIndex,
             Color colour,
             String title,
-            int price) {
+            String price) {
         super(boardSize, boardProportion, side, rowIndex);
         this.colour = colour;
         this.title = title;
