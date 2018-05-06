@@ -47,7 +47,7 @@ public class BankTest {
         qt[3] =8;
 
 
-        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40, Colour.GREEN);
+        StreetPropertyCard streetPropertyCard = new StreetPropertyCard(streetPropertyCell,"Awesome Street",400,qt,40, "GREEN");
         streetPropertyCell.setAssociatedCard(streetPropertyCard);
         c.add(0,streetPropertyCard);
         ArrayList<StationPropertyCard> d = new ArrayList<>() ;
@@ -153,6 +153,12 @@ public class BankTest {
         assertTrue("CRUSHER CREEK".equals(yellowProperties.get(2).getTitle()));  
     }
     
-    // DEEPBLUE DOES NOT WORK!
-
+    @Test
+    public void checkDeepBlueProperties() {
+        ArrayList<StreetPropertyCard> deepBlueProperties = bank.getGroupOfStreetProperties(Colour.DEEPBLUE);
+        System.out.println(deepBlueProperties.size());
+        assertTrue(deepBlueProperties.size() == 2);
+        assertTrue("HAWKING WAY".equals(deepBlueProperties.get(0).getTitle()));
+        assertTrue("TURING HEIGHTS".equals(deepBlueProperties.get(1).getTitle()));
+    }
 }

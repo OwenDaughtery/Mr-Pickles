@@ -4,6 +4,7 @@ import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Player;
+import zytom.proptycoon.model.card.PropertyCard;
 
 public class DiceController {
     private Dice dice;
@@ -25,7 +26,7 @@ public class DiceController {
      * @throws PlayerController.LandedOnJailException
      * @throws PlayerController.CellNotFoundException
      */
-    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, PlayerController.LandedOnJailException, PlayerController.CellNotFoundException {
+    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, PlayerController.LandedOnJailException, PlayerController.CellNotFoundException, PropertyCard.ToManyDaymHousesException {
         dice.roll();
         int dice1 = dice.getFirstValue();
         int dice2 = dice.getSecondValue();
