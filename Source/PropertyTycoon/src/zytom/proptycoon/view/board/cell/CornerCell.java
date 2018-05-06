@@ -13,7 +13,7 @@ import java.awt.Point;
 public abstract class CornerCell extends Cell {
     public enum Corner { TOPLEFT, TOPRIGHT, BOTTOMRIGHT, BOTTOMLEFT };
     
-    private static Dimension calcDimension(
+    public static Dimension calcDimension(
             Dimension boardSize,
             float boardProportion
     ) {
@@ -23,7 +23,7 @@ public abstract class CornerCell extends Cell {
                 );
     }
     
-    private static Point calcPosition(
+    public static Point calcPosition(
             Dimension boardSize,
             float boardProportion,
             Corner corner
@@ -60,7 +60,8 @@ public abstract class CornerCell extends Cell {
             Corner corner) {
         super(
                 calcDimension(boardSize, boardProportion),
-                calcPosition(boardSize, boardProportion, corner)
+                calcPosition(boardSize, boardProportion, corner),
+                Orientation.UP
         );
     }
 }
