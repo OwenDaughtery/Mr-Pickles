@@ -31,7 +31,7 @@ public class StreetPropertyCard extends PropertyCard {
      * @param buildCost
      * @param colour
      */
-    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, String colour) {
+    public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, String colour) throws InvalidColourGroupException {
         super(cellRef, title, price);
         this.rentCost = rentCost;
         this.buildCost = buildCost;
@@ -61,6 +61,10 @@ public class StreetPropertyCard extends PropertyCard {
             case "GREEN":
                 this.colour = Colour.GREEN;
                 break;
+        }
+        
+        if(this.colour == null) {
+            throw new InvalidColourGroupException(colour);
         }
 
     }
@@ -109,6 +113,30 @@ public class StreetPropertyCard extends PropertyCard {
                  "Base Rent  : " + this.rentCost[0]+"\n"+
                  "Build Cost : " + this.buildCost+"\n";
         return info;
+    }
+    
+    
+    public static class InvalidColourGroupException extends Exception {
+        
+        /**
+         * Generate the exception message.
+         * @param errorMessage
+         */
+        public InvalidColourGroupException(
+                String errorMessage
+        ) {
+            super ("Invalid group colour: " + errorMessage);
+        }
+
+
+        /**
+         * @return The exception message.
+         */
+        @Override
+        public String getMessage()
+        {
+            return super.getMessage();
+        }
     }
 
 }

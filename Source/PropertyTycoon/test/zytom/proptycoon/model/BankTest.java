@@ -32,7 +32,7 @@ public class BankTest {
     }
 
     @Test
-    public void getAssetCollection() throws FileNotFoundException {
+    public void getAssetCollection() throws FileNotFoundException, StreetPropertyCard.InvalidColourGroupException {
 
         ArrayList<PotLuckCard> a = new ArrayList<>();
         ArrayList<OpportunityKnocksCard> b = new ArrayList<>() ;
@@ -156,7 +156,6 @@ public class BankTest {
     @Test
     public void checkDeepBlueProperties() {
         ArrayList<StreetPropertyCard> deepBlueProperties = bank.getGroupOfStreetProperties(Colour.DEEPBLUE);
-        System.out.println(deepBlueProperties.size());
         assertTrue(deepBlueProperties.size() == 2);
         assertTrue("HAWKING WAY".equals(deepBlueProperties.get(0).getTitle()));
         assertTrue("TURING HEIGHTS".equals(deepBlueProperties.get(1).getTitle()));
