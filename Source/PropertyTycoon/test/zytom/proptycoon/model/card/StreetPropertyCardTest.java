@@ -20,6 +20,7 @@ public class StreetPropertyCardTest {
     StreetPropertyCell streetPropertyCell;
     Player player ;
     Dice dice;
+<<<<<<< Updated upstream
     DeckCreator dc;
     Bank bank;
     Board board;
@@ -35,6 +36,14 @@ public class StreetPropertyCardTest {
                              dc.createStreetPropertyCardDeck(board),
                              dc.createStationPropertyCardDeck(board),
                              dc.createUtilityPropertyCardDeck(board));
+=======
+    Bank bank;
+    DeckCreator dc;
+    Board board;
+
+    @Before
+    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
+>>>>>>> Stashed changes
 
         int[] rentCosts;
         rentCosts = new int[6];
@@ -45,24 +54,41 @@ public class StreetPropertyCardTest {
         rentCosts[3] = 200; // 3 houses
         rentCosts[4] = 250; // 4 houses
         rentCosts[5] = 300; // 1 hotel
-
+        
+        this.dc = new DeckCreator();
         this.streetPropertyCell = new StreetPropertyCell("BRIGHTON ROAD");
-        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, "RED");
+        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, Colour.RED);
         this.player =  new Player("zenos", Player.TokenType.BOOT);
         this.dice = new Dice();
+        this.board = new Board(dc.getPropertyData());
+        this.bank = new Bank(dc.createPotLuckDeck(), 
+                dc.createOpportunityKnocksDeck(),
+                dc.createStreetPropertyCardDeck(board),
+                dc.createStationPropertyCardDeck(board),
+                dc.createUtilityPropertyCardDeck(board));
     }
+    
     @Test
     public void getRent() throws StreetPropertyCell.ConstructionError, PropertyCard.ToManyDaymHousesException {
         Dice dice = new Dice();
         Player player = new Player("zenos", Player.TokenType.BOOT);
         this.streetPropertyCell.addBuilding();
         int numberOfBuildings = this.streetPropertyCell.getNumberOfBuildings();
+<<<<<<< Updated upstream
        int rent = this.streetPropertyCard.getRent(dice,player, bank);
         assertTrue(100 == rent);
         assertTrue(numberOfBuildings == 1);
         this.streetPropertyCell.addBuilding();
          numberOfBuildings= this.streetPropertyCell.getNumberOfBuildings();
          rent= this.streetPropertyCard.getRent(dice,player, bank);
+=======
+        int rent = this.streetPropertyCard.getRent(dice,player,bank);
+        assertTrue(100 == rent);
+        assertTrue(numberOfBuildings == 1);
+        this.streetPropertyCell.addBuilding();
+        numberOfBuildings= this.streetPropertyCell.getNumberOfBuildings();
+        rent= this.streetPropertyCard.getRent(dice,player,bank);
+>>>>>>> Stashed changes
         assertTrue(150 == rent);
         assertTrue(numberOfBuildings == 2);
     }

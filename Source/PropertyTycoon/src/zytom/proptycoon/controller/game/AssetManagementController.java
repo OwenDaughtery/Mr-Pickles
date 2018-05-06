@@ -43,6 +43,8 @@ public class AssetManagementController {
         Boolean ownsAllProperly = true;
         for (StreetPropertyCard p: propOfSameColour
              ) {
+
+            int difference =
             if(!player.checkHasAsset(p)){
                 ownsAllProperly = false;
             }

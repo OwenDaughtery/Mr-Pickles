@@ -3,7 +3,7 @@
  */
 package zytom.proptycoon.view.WhoStartsMenu;
 
-import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.*;
+ import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.*;
 
 /**
  *
