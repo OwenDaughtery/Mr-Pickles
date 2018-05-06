@@ -8,8 +8,8 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.PropertyCard;
 
 public class DiceController {
-    private Dice dice;
-    private GameController gameController;
+    private final Dice dice;
+    private final GameController gameController;
 
     public DiceController(Dice dice,GameController gameController) {
         this.dice = dice;

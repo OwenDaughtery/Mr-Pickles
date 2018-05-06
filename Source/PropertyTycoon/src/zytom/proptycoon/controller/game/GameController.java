@@ -1,6 +1,5 @@
 package zytom.proptycoon.controller.game;
 
-import jdk.nashorn.internal.runtime.NumberToString;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Game;
 import zytom.proptycoon.model.Player;
@@ -32,9 +31,5 @@ public class GameController {
 
     public GameController(Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
         this.game = game;
-    }
-
-    public BoardController getBoardController(){
-        return boardController;
     }
 }
