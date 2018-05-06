@@ -40,7 +40,7 @@ public class AssetManagementController {
 
         StreetPropertyCard.Colour colour = streetPropertyCard.getColour();
         ArrayList<StreetPropertyCard> propOfSameColour = bank.getGroupOfStreetProperties(colour);
-        Boolean ownsAllProperly = true;
+        boolean ownsAllProperly = true;
         for (StreetPropertyCard p: propOfSameColour
              ) {
             if(!player.checkHasAsset(p)){
@@ -126,7 +126,7 @@ public class AssetManagementController {
     }
 
     /**
-     *  unmorgages a property and handles transactions ;
+     * unmorgages a property and handles transactions ;
      * @param player
      * @param streetPropertyCard
      * @throws MortagagingError
@@ -156,7 +156,7 @@ public class AssetManagementController {
     }
 
     /**
-     *  sells a property back to the bank and handles transactions ;
+     * sells a property back to the bank and handles transactions ;
      * @param player
      * @param streetPropertyCard
      * @throws MortagagingError

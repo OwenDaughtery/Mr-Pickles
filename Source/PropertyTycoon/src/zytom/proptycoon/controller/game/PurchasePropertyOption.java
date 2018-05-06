@@ -33,8 +33,8 @@ public class PurchasePropertyOption {
             Transaction transaction = new Transaction(
                     player,
                     bank,
-                    new AssetCollection(card),
-                    new AssetCollection(card.getPrice()));
+                    new AssetCollection(card.getPrice()),
+                    new AssetCollection(card));
             transaction.settleTransaction();
         }catch (AssetOwner.AssetNotFoundException ex){
             //TODO
@@ -49,8 +49,8 @@ public class PurchasePropertyOption {
             Transaction transaction = new Transaction(
                     player,
                     bank,
-                    new AssetCollection(card),
-                    new AssetCollection(card.getPrice()));
+                    new AssetCollection(card.getPrice()),
+                    new AssetCollection(card));
             transaction.settleTransaction();
         }catch (AssetOwner.AssetNotFoundException ex){
             //TODO
@@ -64,8 +64,8 @@ public class PurchasePropertyOption {
             Transaction transaction = new Transaction(
                     player,
                     bank,
-                    new AssetCollection(card),
-                    new AssetCollection(card.getPrice()));
+                    new AssetCollection(card.getPrice()),
+                    new AssetCollection(card));
             transaction.settleTransaction();
         }catch (AssetOwner.AssetNotFoundException ex){
             //TODO
