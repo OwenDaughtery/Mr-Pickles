@@ -111,6 +111,6 @@ public class FreeParking implements AssetOwner {
 
     @Override
     public boolean checkHasAsset(int money) {
-        return true;
+        return this.assetCollection.getMoney() >= money;
     }
 }

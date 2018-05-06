@@ -26,7 +26,7 @@ public class TransactionTest {
     private ArrayList<PotLuckCard> potLuckCards;
     
     @Before
-    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
+    public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException, StreetPropertyCard.InvalidColourGroupException {
         DeckCreator dc = new DeckCreator();
         this.board = new Board(dc.getPropertyData());
         this.bank = new Bank(dc.createPotLuckDeck(), 

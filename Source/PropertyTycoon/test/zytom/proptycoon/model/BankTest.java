@@ -21,7 +21,7 @@ public class BankTest {
     private Bank bank;
     
     @Before
-    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
+    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {
         this.dc = new DeckCreator();
         this.board = new Board(dc.getPropertyData());
         this.bank = new Bank(dc.createPotLuckDeck(), 
@@ -58,7 +58,7 @@ public class BankTest {
     }
 
     @Test
-    public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException, CardAction.InvalidActionException {
+    public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException, CardAction.InvalidActionException, StreetPropertyCard.InvalidColourGroupException {
         ArrayList<Player> players = new ArrayList<>();
         Player player1 = new Player("zenos", Player.TokenType.SMARTPHONE);
         Player player2 = new Player("Tom", Player.TokenType.BOOT);
