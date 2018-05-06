@@ -1,9 +1,17 @@
 package zytom.proptycoon.controller.game;
 
+import jdk.nashorn.internal.runtime.NumberToString;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Game;
 import zytom.proptycoon.model.Player;
+<<<<<<< Updated upstream:Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LeadController.java
 import zytom.proptycoon.model.card.PotLuckCard;
+=======
+import zytom.proptycoon.model.cell.Cell;
+import zytom.proptycoon.model.cell.StationPropertyCell;
+import zytom.proptycoon.model.cell.StreetPropertyCell;
+import zytom.proptycoon.model.cell.UtilityPropertyCell;
+>>>>>>> Stashed changes:Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Creates
  */
-public class LeadController {
+public class GameController {
     Game game;
     int playerTurn;
     PlayerController playerController = new PlayerController(game,this);
@@ -24,8 +32,14 @@ public class LeadController {
     StartTurn startTurn = new StartTurn(game.getBank(),this);
     EndTurnController endTurnController = new EndTurnController(game,this);
 
-    public LeadController(ArrayList<Player> players, Player startingPlayer,Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
+    private BoardController boardController = new BoardController(game.getBoard());
+
+    public GameController(ArrayList<Player> players, Player startingPlayer, Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
         this.game = game;
 
+    }
+
+    public BoardController getBoardController(){
+        return boardController;
     }
 }

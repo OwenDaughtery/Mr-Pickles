@@ -31,7 +31,7 @@ public class TurnOrderDecider {
      * @throws zytom.proptycoon.controller.preGame.TurnOrderDecider.EveryPlayerHasRolledException
      */
     public void rollDice() throws EveryPlayerHasRolledException {
-        if(rollDiceTurn>players.size()-2){
+        if(rollDiceTurn>players.size()-1){
             throw new EveryPlayerHasRolledException();
         }
         Player currentPlayer = players.get(rollDiceTurn);

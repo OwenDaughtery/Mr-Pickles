@@ -8,11 +8,11 @@ import zytom.proptycoon.model.assets.Transaction;
 
 public class RetireController {
 
-    private LeadController leadController;
+    private GameController gameController;
     private Game game;
 
-    public RetireController(LeadController leadController, Game game) {
-        this.leadController = leadController;
+    public RetireController(GameController gameController, Game game) {
+        this.gameController = gameController;
         this.game = game;
     }
 
@@ -28,6 +28,6 @@ public class RetireController {
         tx.settleTransaction();
         
         game.getPlayers().remove(currentPlayer);
-        leadController.startTurn.startTurnSequence(game.getCurrentPlayer());
+        gameController.startTurn.startTurnSequence(game.getCurrentPlayer());
     }
 }

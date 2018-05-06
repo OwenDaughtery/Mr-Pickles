@@ -13,14 +13,21 @@ import java.util.ArrayList;
 
 public class PropertyLandedLogic {
 
+<<<<<<< Updated upstream
     private final ArrayList<Player> players;
     private final Bank bank;
     private final LeadController leadController;
     
     public PropertyLandedLogic( ArrayList<Player> players,Bank bank, LeadController leadController){
+=======
+    private ArrayList<Player> players;
+    private Bank bank;
+    private GameController gameController;
+    public PropertyLandedLogic( ArrayList<Player> players,Bank bank, GameController gameController){
+>>>>>>> Stashed changes
         this.players = players;
         this.bank = bank;
-        this.leadController = leadController;
+        this.gameController = gameController;
     }
 
     public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.ToManyDaymHousesException{

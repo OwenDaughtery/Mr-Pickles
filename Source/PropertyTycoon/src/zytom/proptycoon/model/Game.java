@@ -55,6 +55,10 @@ public class Game{
         dice = new Dice();
     }
 
+    public Game(ArrayList<Object> players, Object get) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * @author Tom Chesters
      * @return currentPlayer

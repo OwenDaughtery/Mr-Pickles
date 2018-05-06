@@ -7,17 +7,22 @@ import zytom.proptycoon.model.Player;
  * @author aymanfree
  */
 public class EndTurnController {
+<<<<<<< Updated upstream
     private final Game game;
     private final LeadController leadController;
+=======
+    private Game game;
+    private GameController gameController;
+>>>>>>> Stashed changes
 
     /**
      *
      * @param game
-     * @param leadController
+     * @param gameController
      */
-    public EndTurnController(Game game,LeadController leadController) {
+    public EndTurnController(Game game,GameController gameController) {
         this.game = game;
-        this.leadController = leadController;
+        this.gameController = gameController;
     }
 
     /**
@@ -27,11 +32,11 @@ public class EndTurnController {
     public void endTurn(Player currentPlayer){
             if (game.getDice().getFirstValue() != game.getDice().getSecondValue()) {
                 if(game.getCurrentPlayer().getPosition()!=40) {
-                leadController.playerTurn = leadController.playerTurn++ % game.getPlayers().size();
-                game.setCurrentPlayer(game.getPlayers().get(game.getPlayers().indexOf(leadController.playerTurn)));
+                gameController.playerTurn = gameController.playerTurn++ % game.getPlayers().size();
+                game.setCurrentPlayer(game.getPlayers().get(game.getPlayers().indexOf(gameController.playerTurn)));
             }
         }
-        leadController.startTurn.startTurnSequence(game.getCurrentPlayer());
+        gameController.startTurn.startTurnSequence(game.getCurrentPlayer());
     }
 
 }
