@@ -8,6 +8,7 @@ import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import zytom.proptycoon.model.card.StreetPropertyCard;
 
 /**
  *
@@ -33,7 +34,7 @@ public class Game{
      * @throws PlayerNumberException
      * @throws java.io.FileNotFoundException
      */
-    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException {
+    public Game(ArrayList<Player> players, Player startingPlayer) throws PlayerNumberException, FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException, StreetPropertyCard.InvalidColourGroupException {
         //Check number of players is valid.
         if (players.size() < 1  || players.size() > 6) {
             throw new PlayerNumberException(players.size());

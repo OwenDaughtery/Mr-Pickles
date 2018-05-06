@@ -8,6 +8,7 @@ import org.junit.Before;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.card.CardAction;
+import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
 
 public class AssetCollectionTest {
@@ -17,7 +18,7 @@ public class AssetCollectionTest {
     private Bank bank;
     
     @Before
-    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
+    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {
         this.dc = new DeckCreator();
         this.board = new Board(dc.getPropertyData());
         this.bank = new Bank(dc.createPotLuckDeck(), 
