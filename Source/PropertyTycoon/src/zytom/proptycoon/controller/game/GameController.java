@@ -29,6 +29,7 @@ public class GameController {
     private BoardController boardController ;
 
     public GameController(Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
+
         this.game = game;
         this.playerController = new PlayerController(this.game,this);
         this.propertyLandedLogic = new PropertyLandedLogic(game.getPlayers(),game.getBank(),this);
@@ -42,6 +43,15 @@ public class GameController {
         this.boardController = new BoardController(game.getBoard());
     }
 
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+    public void incrementPlayerTurn(){
+        playerTurn++;
+    }
+    public void setPlayerTurn(){
+
+    }
 
     public Game getGame() {
         return game;
