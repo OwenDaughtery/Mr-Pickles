@@ -26,8 +26,7 @@ public class GameController {
     private AssetManagementController assetManagementController;
     private StartTurn startTurn;
     private EndTurnController endTurnController;
-
-    private BoardController boardController = new BoardController(game.getBoard());
+    private BoardController boardController ;
 
     public GameController(Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
         this.game = game;
@@ -40,6 +39,7 @@ public class GameController {
         this.assetManagementController = new AssetManagementController(game.getBank(),this);
         this.startTurn = new StartTurn(game.getBank(),this);
         this.endTurnController = new EndTurnController(this.game,this);
+        this.boardController = new BoardController(game.getBoard());
     }
 
 
@@ -49,6 +49,10 @@ public class GameController {
 
     public PlayerController getPlayerController() {
         return playerController;
+    }
+
+    public BoardController getBoardController() {
+        return boardController;
     }
 
     public PropertyLandedLogic getPropertyLandedLogic() {
@@ -82,4 +86,5 @@ public class GameController {
     public EndTurnController getEndTurnController() {
         return endTurnController;
     }
+
 }
