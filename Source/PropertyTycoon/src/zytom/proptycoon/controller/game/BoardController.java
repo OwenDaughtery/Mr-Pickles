@@ -54,7 +54,7 @@ public class BoardController {
         for (Cell c:board.getCells()
                 ) {
             if(c instanceof StreetPropertyCell){
-                streetNames.add(String.valueOf(((StationPropertyCell) c).getAssociatedCard().getPrice()));
+                streetNames.add(String.valueOf(((StreetPropertyCell) c).getAssociatedCard().getPrice()));
             }
         }
         return streetNames;
@@ -74,7 +74,7 @@ public class BoardController {
         for (Cell c:board.getCells()
                 ) {
             if(c instanceof UtilityPropertyCell){
-                utilityNames.add(String.valueOf(((StationPropertyCell) c).getAssociatedCard().getPrice()));
+                utilityNames.add(String.valueOf(((UtilityPropertyCell) c).getAssociatedCard().getPrice()));
             }
         }
         return utilityNames;

@@ -18,6 +18,8 @@ public class GameFrame extends JFrame {
     BoardCanvas boardCanvas;
     
     public GameFrame(GameController gameController) {
+        this.setSize(720, 720);
+        this.setMininumSize(new Dimension(720, 720));
         this.setLayout(new BorderLayout());
         
         BoardController boardController = gameController.getBoardController();
@@ -26,10 +28,13 @@ public class GameFrame extends JFrame {
                 boardController.getStreetNames(),
                 boardController.getStationNames(),
                 boardController.getUtilityNames(),
-                boardController.getStationPrices(),
                 boardController.getStreetPrices(),
+                boardController.getStationPrices(),
                 boardController.getUtilityPrices()
         );
         add(boardCanvas);
+        boardCanvas.setVisible(true);
+        pack();
+
     }
 }
