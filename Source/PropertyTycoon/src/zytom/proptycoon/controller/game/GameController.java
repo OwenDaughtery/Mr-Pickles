@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Creates
  */
-public class LeadController {
+public class GameController {
     Game game;
     int playerTurn;
     PlayerController playerController = new PlayerController(game,this);
@@ -24,7 +24,7 @@ public class LeadController {
     StartTurn startTurn = new StartTurn(game.getBank(),this);
     EndTurnController endTurnController = new EndTurnController(game,this);
 
-    public LeadController(ArrayList<Player> players, Player startingPlayer,Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
+    public GameController(ArrayList<Player> players, Player startingPlayer, Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
         this.game = game;
 
     }

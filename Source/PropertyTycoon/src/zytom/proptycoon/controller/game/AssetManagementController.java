@@ -17,15 +17,15 @@ import java.util.ArrayList;
  */
 public class AssetManagementController {
     Bank bank;
-    LeadController leadController;
+    GameController gameController;
 
     /**
      * @param bank
-     * @param leadController
+     * @param gameController
      */
-    public AssetManagementController(Bank bank, LeadController leadController) {
+    public AssetManagementController(Bank bank, GameController gameController) {
         this.bank = bank;
-        this.leadController = leadController;
+        this.gameController = gameController;
 
     }
 

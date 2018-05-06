@@ -8,10 +8,10 @@ public class StartTurn {
 
     private Bank bank;
 
-    LeadController leadController;
-    public StartTurn(Bank bank, LeadController leadController) {
+    GameController gameController;
+    public StartTurn(Bank bank, GameController gameController) {
         this.bank = bank;
-        this.leadController = leadController;
+        this.gameController = gameController;
     }
 
     public void startTurnSequence(Player currentPlayer) {

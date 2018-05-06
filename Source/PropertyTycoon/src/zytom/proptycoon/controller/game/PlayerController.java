@@ -12,10 +12,10 @@ import zytom.proptycoon.model.cell.*;
  */
 public class PlayerController {
     private Game game;
-    private LeadController leadController;
-    public PlayerController(Game game,LeadController leadController) {
+    private GameController gameController;
+    public PlayerController(Game game,GameController gameController) {
         this.game = game;
-        this.leadController = leadController;
+        this.gameController = gameController;
     }
     public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException, PropertyCard.ToManyDaymHousesException, Board.CellNotFoundException, AssetOwner.AssetNotFoundException {
 
@@ -59,7 +59,7 @@ public class PlayerController {
             case JAIL:
                 throw new LandedOnJailException();
             case POT_LUCK:
-                leadController.potLuckController.pickupCard();
+                gameController.potLuckController.pickupCard();
 
                 //draw a potluck card
                 break;
@@ -85,16 +85,16 @@ public class PlayerController {
                 //Do nothing
                 break;
             case STREET_PROPERTY:
-                leadController.propertyLandedLogic.landedOnProperty((StreetPropertyCell)cell,currentPlayer,dice);
+                gameController.propertyLandedLogic.landedOnProperty((StreetPropertyCell)cell,currentPlayer,dice);
                 break;
             case STATION_PROPERTY:
-                leadController.propertyLandedLogic.landedOnProperty((StationPropertyCell)cell,currentPlayer,dice);
+                gameController.propertyLandedLogic.landedOnProperty((StationPropertyCell)cell,currentPlayer,dice);
                 break;
             case UTILITY_PROPERTY:
-                leadController.propertyLandedLogic.landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
+                gameController.propertyLandedLogic.landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
                 break;
             case OPPORTUNITY_KNOCKS:
-                leadController.opportunityKnocksController.pickupCard();
+                gameController.opportunityKnocksController.pickupCard();
                 break;
             default:
                 throw new CellNotFoundException();

@@ -6,18 +6,18 @@ import zytom.proptycoon.model.card.OpportunityKnocksCard;
 
 public class OpportunityKnocksController {
     private final Game game;
-    private final LeadController leadController;
+    private final GameController gameController;
     private final Board board ;
     private final Dice dice;
     private final Player currentplayer;
     private final Bank bank;
     private final FreeParking freeParking;
 
-    public OpportunityKnocksController(Game game , LeadController leadController, Board board,Bank bank, Dice dice, Player currentPlayer){
+    public OpportunityKnocksController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;
         this.freeParking = game.getFreeParking();
         this.bank  = bank;
-        this.leadController = leadController;
+        this.gameController = gameController;
         this.board = board;
         this.dice = dice;
         this.currentplayer = currentPlayer;

@@ -7,7 +7,7 @@ import zytom.proptycoon.model.card.PotLuckCard;
 public class PotLuckController {
     
     private final Game game;
-    private final LeadController leadController;
+    private final GameController gameController;
     private final Board board ;
     private final Dice dice;
     private final Player currentplayer;
@@ -15,11 +15,11 @@ public class PotLuckController {
     private final FreeParking freeParking;
     
 
-    public PotLuckController(Game game , LeadController leadController, Board board,Bank bank, Dice dice, Player currentPlayer){
+    public PotLuckController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;
         this.freeParking = game.getFreeParking();
         this.bank  = bank;
-        this.leadController = leadController;
+        this.gameController = gameController;
         this.board = board;
         this.dice = dice;
         this.currentplayer = currentPlayer;

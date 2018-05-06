@@ -15,12 +15,12 @@ public class PropertyLandedLogic {
 
     private final ArrayList<Player> players;
     private final Bank bank;
-    private final LeadController leadController;
+    private final GameController gameController;
     
-    public PropertyLandedLogic( ArrayList<Player> players,Bank bank, LeadController leadController){
+    public PropertyLandedLogic( ArrayList<Player> players,Bank bank, GameController gameController){
         this.players = players;
         this.bank = bank;
-        this.leadController = leadController;
+        this.gameController = gameController;
     }
 
     public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.ToManyDaymHousesException{

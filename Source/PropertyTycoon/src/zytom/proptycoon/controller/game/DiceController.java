@@ -9,11 +9,11 @@ import zytom.proptycoon.model.card.PropertyCard;
 
 public class DiceController {
     private final Dice dice;
-    private final LeadController leadController;
+    private final GameController gameController;
 
-    public DiceController(Dice dice,LeadController leadController) {
+    public DiceController(Dice dice,GameController gameController) {
         this.dice = dice;
-        this.leadController = leadController;
+        this.gameController = gameController;
 
     }
 
@@ -43,7 +43,7 @@ public class DiceController {
         } else {
             player.move(moveAmount, bank);
             player.setDoublesRolled(0);
-            leadController.playerController.hasLanded(board.getCell(player.getPosition()),board,dice,player);
+            gameController.playerController.hasLanded(board.getCell(player.getPosition()),board,dice,player);
         }
 
     }

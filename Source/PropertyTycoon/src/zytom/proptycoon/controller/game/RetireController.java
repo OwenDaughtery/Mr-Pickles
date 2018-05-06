@@ -8,18 +8,18 @@ import zytom.proptycoon.model.assets.Transaction;
 
 public class RetireController {
 
-    private LeadController leadController;
+    private GameController gameController;
     private Game game;
 
-    public RetireController(LeadController leadController, Game game) {
-        this.leadController = leadController;
+    public RetireController(GameController gameController, Game game) {
+        this.gameController = gameController;
         this.game = game;
     }
 
     public void retire() throws AssetOwner.AssetNotFoundException {
         Player currentPlayer = game.getCurrentPlayer();
-        leadController.playerTurn = leadController.playerTurn++ % game.getPlayers().size();
-        game.setCurrentPlayer(game.getPlayers().get(leadController.playerTurn));
+        gameController.playerTurn = gameController.playerTurn++ % game.getPlayers().size();
+        game.setCurrentPlayer(game.getPlayers().get(gameController.playerTurn));
         
         AssetCollection fromPlayer = currentPlayer.getAssetCollection();
         AssetCollection fromBank = new AssetCollection(0);
@@ -28,6 +28,6 @@ public class RetireController {
         tx.settleTransaction();
         
         game.getPlayers().remove(currentPlayer);
-        leadController.startTurn.startTurnSequence(game.getCurrentPlayer());
+        gameController.startTurn.startTurnSequence(game.getCurrentPlayer());
     }
 }
