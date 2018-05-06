@@ -1,6 +1,5 @@
 package zytom.proptycoon.controller.game;
 
-import zytom.proptycoon.controller.game.LeadController;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Player;
 

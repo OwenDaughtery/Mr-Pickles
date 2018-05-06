@@ -83,6 +83,14 @@ public final class Board {
     }
 
     /**
+     *
+     * @return
+     */
+    public ArrayList<Cell> getCells() {
+        return cells;
+    }
+
+    /**
      * Method queries cells based on their idex on the board
      * @param index The index of the board of which the cell is being queried
      * @return The cell at the given index

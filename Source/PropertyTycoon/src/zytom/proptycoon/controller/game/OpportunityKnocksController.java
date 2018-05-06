@@ -5,6 +5,7 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.OpportunityKnocksCard;
 
 public class OpportunityKnocksController {
+<<<<<<< Updated upstream
     private final Game game;
     private final GameController gameController;
     private final Board board ;
@@ -12,6 +13,15 @@ public class OpportunityKnocksController {
     private final Player currentplayer;
     private final Bank bank;
     private final FreeParking freeParking;
+=======
+    private Game game;
+    private GameController gameController;
+    private Board board ;
+    private Dice dice;
+    private Player currentplayer;
+    private Bank bank;
+    private FreeParking freeParking;
+>>>>>>> Stashed changes
 
     public OpportunityKnocksController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;

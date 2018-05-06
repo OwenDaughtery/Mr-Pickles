@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class PropertyLandedLogic {
 
+<<<<<<< Updated upstream
     private final ArrayList<Player> players;
     private final Bank bank;
     private final GameController gameController;
