@@ -22,7 +22,7 @@ public class CardActionTest {
     
     
     @Before
-    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException {
+    public void init() throws FileNotFoundException, CardAction.InvalidActionException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {
         this.freeParking = new FreeParking();
         DeckCreator dc = new DeckCreator();
         Board board = new Board(dc.getPropertyData());
@@ -47,6 +47,7 @@ public class CardActionTest {
                                                                                            .size() - 1).equals(oppCard));
     }
     
+    
     @Test
     public void givePlayerJailFreeCard() throws AssetOwner.AssetNotFoundException {
         
@@ -59,14 +60,56 @@ public class CardActionTest {
             }
         }
         
+        //CHECK THAT THE BANK HAS THE CARD
         assertTrue(bank.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
+        
+        //CHECK THAT THE PALYER DOES NOT HAVE THE CARD YET
         assertFalse(player.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
         
+        //PERFORM THE CARD ACTION WHICH WILL GIVE THE PLAYER THE CARD
         getOutOfJailCard.getCardAction().performAction(freeParking, bank, player, players, getOutOfJailCard);
         
+        //CHECK THAT THE PLAYER HAS THE CARD NOW
         assertTrue(player.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
+        
+        //CHECK THAT THE BANK NO LONGER HAS THE CARD
         assertFalse(bank.getAssetCollection().getPotLuckCards().contains(getOutOfJailCard));
        
+    }
+    
+    
+    
+    @Test
+    public void playerPaysFreeParking() throws AssetOwner.AssetNotFoundException {
+        PotLuckCard potLuckCard = null;
+        
+        for(PotLuckCard card : this.bank.getAssetCollection().getPotLuckCards()) {
+            if(card.getCardAction().type.equals(CardAction.Type.PAY_FREE_PARKING)) {
+                potLuckCard = card;
+                break;
+            }
+        }
+        
+        //CHECK THAT THE BANK HAS THE POT LUCK CARD
+        assertTrue(bank.getAssetCollection().getPotLuckCards().contains(potLuckCard));
+        
+        //REMOVE THE CARD FROM THE POT LUCK DECK IN BANK
+        bank.getAssetCollection().getPotLuckCards().remove(potLuckCard);
+        
+        //PERFORM THE CARD ACTION
+        potLuckCard.getCardAction().performAction(freeParking, bank, player, players, potLuckCard);
+        
+        //RECORD THE FEE THAT WAS PAID
+        int taxFee = 1500 - player.getAssetCollection().getMoney();
+        
+        //CHECK THAT THE PLAYER'S BALANCE HAS BEEN UPDATED
+        assertTrue(player.getAssetCollection().getMoney() == 1500 - taxFee);
+        
+        //CHECK THAT FREE PARKING'S BALANCE HAS UPDATED
+        assertTrue(freeParking.getAssetCollection().getMoney() == taxFee);
+        
+        //CHECK THAT THE CARD HAS BEEN PUT BACK AT THE BOTTOM OF THE POT LUCK DECK IN BANK
+        assertTrue(bank.getAssetCollection().getPotLuckCards().get(bank.getAssetCollection().getPotLuckCards().size()-1).equals(potLuckCard));
     }
     
 }
