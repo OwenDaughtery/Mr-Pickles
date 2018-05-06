@@ -4,14 +4,10 @@ import jdk.nashorn.internal.runtime.NumberToString;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Game;
 import zytom.proptycoon.model.Player;
-<<<<<<< Updated upstream:Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LeadController.java
-import zytom.proptycoon.model.card.PotLuckCard;
-=======
 import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StationPropertyCell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
->>>>>>> Stashed changes:Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -34,9 +30,8 @@ public class GameController {
 
     private BoardController boardController = new BoardController(game.getBoard());
 
-    public GameController(ArrayList<Player> players, Player startingPlayer, Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
+    public GameController(Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
         this.game = game;
-
     }
 
     public BoardController getBoardController(){

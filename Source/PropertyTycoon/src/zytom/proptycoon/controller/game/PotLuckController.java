@@ -5,17 +5,6 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.PotLuckCard;
 
 public class PotLuckController {
-<<<<<<< Updated upstream
-    
-    private final Game game;
-    private final LeadController leadController;
-    private final Board board ;
-    private final Dice dice;
-    private final Player currentplayer;
-    private final Bank bank;
-    private final FreeParking freeParking;
-    
-=======
     private Game game;
     private GameController gameController;
     private Board board ;
@@ -23,7 +12,6 @@ public class PotLuckController {
     private Player currentplayer;
     private Bank bank;
     private FreeParking freeParking;
->>>>>>> Stashed changes
 
     public PotLuckController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;

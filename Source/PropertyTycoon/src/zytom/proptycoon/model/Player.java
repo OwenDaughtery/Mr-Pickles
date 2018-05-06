@@ -37,7 +37,7 @@ public class Player implements AssetOwner {
      * @param name
      * @param tokenType
      */
-    public Player(String name,TokenType tokenType){
+    public Player(String name, TokenType tokenType){
         this.name = name;
         this.position = 0;
         this.assetCollection = new AssetCollection(INITIAL_BALANCE);

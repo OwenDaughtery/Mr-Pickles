@@ -6,6 +6,8 @@ package zytom.proptycoon.view;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import zytom.proptycoon.controller.game.BoardController;
+import zytom.proptycoon.controller.game.GameController;
 import zytom.proptycoon.view.board.BoardCanvas;
 
 /**

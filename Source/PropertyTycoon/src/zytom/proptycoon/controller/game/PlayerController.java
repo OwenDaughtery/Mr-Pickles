@@ -59,7 +59,7 @@ public class PlayerController {
             case JAIL:
                 throw new LandedOnJailException();
             case POT_LUCK:
-                leadController.potLuckController.pickupCard();
+                gameController.potLuckController.pickupCard();
 
                 //draw a potluck card
                 break;
@@ -94,7 +94,7 @@ public class PlayerController {
                 gameController.propertyLandedLogic.landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
                 break;
             case OPPORTUNITY_KNOCKS:
-                leadController.opportunityKnocksController.pickupCard();
+                gameController.opportunityKnocksController.pickupCard();
                 break;
             default:
                 throw new CellNotFoundException();

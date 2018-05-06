@@ -18,8 +18,8 @@ public class RetireController {
 
     public void retire() throws AssetOwner.AssetNotFoundException {
         Player currentPlayer = game.getCurrentPlayer();
-        leadController.playerTurn = leadController.playerTurn++ % game.getPlayers().size();
-        game.setCurrentPlayer(game.getPlayers().get(leadController.playerTurn));
+        gameController.playerTurn = gameController.playerTurn++ % game.getPlayers().size();
+        game.setCurrentPlayer(game.getPlayers().get(gameController.playerTurn));
         
         AssetCollection fromPlayer = currentPlayer.getAssetCollection();
         AssetCollection fromBank = new AssetCollection(0);

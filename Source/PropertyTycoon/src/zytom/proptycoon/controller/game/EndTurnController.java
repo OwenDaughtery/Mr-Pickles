@@ -7,13 +7,8 @@ import zytom.proptycoon.model.Player;
  * @author aymanfree
  */
 public class EndTurnController {
-<<<<<<< Updated upstream
-    private final Game game;
-    private final LeadController leadController;
-=======
     private Game game;
     private GameController gameController;
->>>>>>> Stashed changes
 
     /**
      *
