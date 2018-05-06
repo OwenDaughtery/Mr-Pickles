@@ -48,7 +48,7 @@ public class StreetPropertyCardTest {
         rentCosts[5] = 300; // 1 hotel
 
         this.streetPropertyCell = new StreetPropertyCell("BRIGHTON ROAD");
-        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, Colour.RED);
+        this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, "RED");
         this.player =  new Player("zenos", Player.TokenType.BOOT);
         this.dice = new Dice();
     }
