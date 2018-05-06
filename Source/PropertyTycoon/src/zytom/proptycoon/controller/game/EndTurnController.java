@@ -27,8 +27,10 @@ public class EndTurnController {
     public void endTurn(Player currentPlayer){
             if (game.getDice().getFirstValue() != game.getDice().getSecondValue()) {
                 if(game.getCurrentPlayer().getPosition()!=40) {
-                gameController.playerTurn = gameController.playerTurn++ % game.getPlayers().size();
-                game.setCurrentPlayer(game.getPlayers().get(game.getPlayers().indexOf(gameController.playerTurn)));
+                    gameController.incrementPlayerTurn();
+                int turn = gameController.getPlayerTurn() % game.getPlayers().size();
+                gameController.setPlayerTurn(turn);
+                game.setCurrentPlayer(game.getPlayers().get(game.getPlayers().indexOf(gameController.getPlayerTurn())));
             }
         }
         gameController.getStartTurn().startTurnSequence(game.getCurrentPlayer());

@@ -49,7 +49,8 @@ public class GameController {
     public void incrementPlayerTurn(){
         playerTurn++;
     }
-    public void setPlayerTurn(){
+    public void setPlayerTurn(int turn){
+        playerTurn = turn;
 
     }
 
