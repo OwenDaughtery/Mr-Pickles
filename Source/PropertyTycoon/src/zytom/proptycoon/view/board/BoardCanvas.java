@@ -6,8 +6,11 @@ package zytom.proptycoon.view.board;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import zytom.proptycoon.controller.game.BoardController;
+import zytom.proptycoon.view.GameFrame;
 import zytom.proptycoon.view.board.cell.FreeParkingCell;
 import zytom.proptycoon.view.board.cell.GoCell;
 import zytom.proptycoon.view.board.cell.GoToJailCell;
@@ -32,7 +35,7 @@ public class BoardCanvas extends JPanel implements Runnable {
      */
     public static final float CELL_PROPORTION = 0.125f;
     
-    private boolean running;
+    private boolean running = true;
     private final Thread thread;
     
     private GoCell goCell;
@@ -50,30 +53,41 @@ public class BoardCanvas extends JPanel implements Runnable {
     private IncomeTaxCell incomeTaxCell;
     private SuperTaxCell superTaxCell;
     
-    public BoardCanvas (
-            ArrayList<String> streetNames,
-            ArrayList<String> stationNames,
-            ArrayList<String> utilityNames,
-            ArrayList<String> streetPrices,
-            ArrayList<String> stationPrices,
-            ArrayList<String> utilityPrices,
-            String incomeTaxPrice,
-            String superTaxPrice
-    ) {
+    private BoardCamera camera;
+    
+    private final GameFrame parent;
+    
+    public BoardCanvas (GameFrame parent, BoardController boardController) {
+        this.parent = parent;
         setSize(720, 720);
         thread = new Thread(this);
         thread.start();
         initCells(
-                streetNames,
-                stationNames,
-                utilityNames,
-                streetPrices,
-                stationPrices,
-                utilityPrices,
-                incomeTaxPrice,
-                superTaxPrice
+                boardController.getStreetNames(),
+                boardController.getStationNames(),
+                boardController.getUtilityNames(),
+                boardController.getStreetPrices(),
+                boardController.getStationPrices(),
+                boardController.getUtilityPrices(),
+                boardController.getIncomeTaxPrice(),
+                boardController.getSuperTaxPrice()
         );
+        camera = new BoardCamera(this);
+        
+        //Give camera controller instance of camera view.
+        boardController
+                .getCameraController()
+                .setCameraView(camera);
+        
+        //Attach camera controller to this panel.
+        //(As a key listener).
+        this.addKeyListener(
+                boardController.getCameraController()
+        );
+        this.setFocusTraversalKeysEnabled(false);
+        this.setFocusable(true);
     }
+    
     
     private void initCells (
             ArrayList<String> streetNames,
@@ -269,7 +283,8 @@ public class BoardCanvas extends JPanel implements Runnable {
         long timer = System.currentTimeMillis();
         int updates = 0;
         int frames = 0;
-        while(running) {
+        
+        while(this.running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -289,6 +304,7 @@ public class BoardCanvas extends JPanel implements Runnable {
                 Thread.sleep(5);
             } catch (InterruptedException ex) {
                 //Do nothing
+                System.out.println("Interrupted");
             }
         }
     }
@@ -333,7 +349,13 @@ public class BoardCanvas extends JPanel implements Runnable {
                 getHeight()
         );
         
+        Graphics2D g2 = (Graphics2D) g;
+        
+        camera.applyTransform(g2);
+        
         //Render stuff.
         renderCells(g);
+        
+        camera.clearTransform(g2);
     }
 }
