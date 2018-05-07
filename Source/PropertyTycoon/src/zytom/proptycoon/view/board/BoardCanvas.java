@@ -314,17 +314,17 @@ public class BoardCanvas extends JPanel implements Runnable {
                 tick();
                 updates++;
                 delta--;
-                repaint();
-                frames ++;
             }
             if (System.currentTimeMillis() - timer > 1000) {
-                this.parent.setTitle("FPS: " + frames);
+                this.parent.setTitle("FPS: " + frames + " | Updates:" + updates);
                 timer += 1000;
                 frames = 0;
                 updates = 0;
             }
+            repaint();
+            frames ++;
             try {
-                Thread.sleep(20);
+                Thread.sleep(15);
             } catch (InterruptedException ex) {
                 //Do nothing
                 System.out.println("Interrupted");
@@ -333,7 +333,8 @@ public class BoardCanvas extends JPanel implements Runnable {
     }
     
     private void tick() {
-        
+        if (camera != null)
+            camera.update();
     }
     
     private void renderCells(Graphics g) {

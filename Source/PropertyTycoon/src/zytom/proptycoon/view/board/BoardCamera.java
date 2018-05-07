@@ -186,10 +186,9 @@ public class BoardCamera {
     }
     
     /**
-     * To be called before rendering anything on board canvas.
-     * @param g2 
+     * Perform logical updates.
      */
-    public void applyTransform(Graphics2D g2) {
+    public void update() {
         //Work out directional vector of camera's motion.
         double velX = 0.0;
         double velY = 0.0;
@@ -218,10 +217,17 @@ public class BoardCamera {
         
         //Move camera based on velocity.
         this.position.x += velX;
-        this.position.y += velY;
+        this.position.y += velY;  
         
         //Prevent camera from going too far away from board.
         limitBounds();
+    }
+    
+    /**
+     * To be called before rendering anything on board canvas.
+     * @param g2 
+     */
+    public void applyTransform(Graphics2D g2) {      
         
         //Perform transform.
         at = g2.getTransform();
