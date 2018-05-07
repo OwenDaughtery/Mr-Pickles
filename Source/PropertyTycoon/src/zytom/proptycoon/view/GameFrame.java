@@ -4,6 +4,7 @@
 package zytom.proptycoon.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import zytom.proptycoon.controller.game.BoardController;
@@ -19,7 +20,7 @@ public class GameFrame extends JFrame {
     
     public GameFrame(GameController gameController) {
         this.setSize(720, 720);
-        //this.setMininumSize(new Dimension(720, 720));
+        this.setMinimumSize(new Dimension(720, 720));
         this.setLayout(new BorderLayout());
         
         BoardController boardController = gameController.getBoardController();
