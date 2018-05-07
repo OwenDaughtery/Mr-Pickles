@@ -5,13 +5,13 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.PotLuckCard;
 
 public class PotLuckController {
-    private Game game;
-    private GameController gameController;
-    private Board board ;
-    private Dice dice;
-    private Player currentplayer;
-    private Bank bank;
-    private FreeParking freeParking;
+    private final Game game;
+    private final GameController gameController;
+    private final Board board ;
+    private final Dice dice;
+    private final Player currentplayer;
+    private final Bank bank;
+    private final FreeParking freeParking;
 
     public PotLuckController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;
