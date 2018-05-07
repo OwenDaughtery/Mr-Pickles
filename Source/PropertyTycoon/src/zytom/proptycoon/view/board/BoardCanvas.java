@@ -317,6 +317,9 @@ public class BoardCanvas extends JPanel implements Runnable {
         }for (PotLuckCell cell : potLuckCells) {
             cell.render(g);
         }
+        
+        incomeTaxCell.render(g);
+        superTaxCell.render(g);
     }
     
     @Override

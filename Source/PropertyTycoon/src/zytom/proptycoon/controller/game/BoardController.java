@@ -82,13 +82,11 @@ public class BoardController {
     }
     
     public String getIncomeTaxPrice() {
-        
-        for (Cell c:board.getCells()
-                ) {
-            if(c instanceof IncomeTaxCell){
-                return ((IncomeTaxCell) c).
-                utilityNames.add(String.valueOf(((UtilityPropertyCell) c).getAssociatedCard().getPrice()));
-            }
-        }
+        //TODO, MAKE READ FROM CSV.
+        return "100";
+    }
+    public String getSuperTaxPrice() {
+        //TODO, MAKE READ FROM CSV.
+        return "200";
     }
 }

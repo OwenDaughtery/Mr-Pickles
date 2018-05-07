@@ -24,7 +24,8 @@ public class FreeParkingCell extends CornerCell {
     @Override
     public void renderContents(Graphics2D g2) {
         g2.setColor(Color.black);
-        g2.setFont(new Font("Arial", Font.PLAIN, 32));
-        g2.drawString("FREE\nPARKING", 18, 48);
+        g2.setFont(new Font("Arial", Font.PLAIN, 16));
+        g2.drawString("FREE", 24, 36);
+        g2.drawString("PARKING", 8, 74);
     }
 }
