@@ -58,6 +58,9 @@ public class BoardCanvas extends JPanel implements Runnable {
     
     private final GameFrame parent;
     
+    private PotLuckDeckCell potLuckDeckCell;
+    private OpportunityKnocksDeckCell opportunityKnocksDeckCell;
+    
     public BoardCanvas (GameFrame parent, BoardController boardController) {
         this.parent = parent;
         setSize(720, 720);
