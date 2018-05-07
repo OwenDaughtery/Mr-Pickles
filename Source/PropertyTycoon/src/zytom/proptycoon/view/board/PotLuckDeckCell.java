@@ -3,7 +3,9 @@
  */
 package zytom.proptycoon.view.board;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.AffineTransform;
@@ -14,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import zytom.proptycoon.view.board.cell.Cell;
+import static zytom.proptycoon.view.board.cell.Cell.getRadians;
 import zytom.proptycoon.view.board.cell.CornerCell;
 import zytom.proptycoon.view.board.cell.InJailCell;
 
@@ -21,39 +24,13 @@ import zytom.proptycoon.view.board.cell.InJailCell;
  *
  * @author zenos
  */
-public class PotLuckDeckCell extends Cell {
+public class PotLuckDeckCell {
 
- private BufferedImage image;
-    
-    public static Dimension calcDimension(
-            Dimension boardSize,
-            float boardProportion
-    ) {
-        return new Dimension(
-                    Math.round((float)boardSize.width * boardProportion / 1.5f),
-                    Math.round((float)boardSize.height * boardProportion /1.5f)
-                );
-    }
-    
-    public static Point calcPosition(
-            Dimension boardSize,
-            float boardProportion
-    ) {
-        Dimension dimension = calcDimension(boardSize, boardProportion);
-        Dimension cornerDimension = CornerCell.calcDimension(boardSize, boardProportion);
-        
-        return new Point(
-                cornerDimension.width,
-                boardSize.height - cornerDimension.height - dimension.height
-        );
-    }
-    
-    public PotLuckDeckCell(Dimension boardSize, float boardProportion) {
-        super(
-                calcDimension(boardSize, boardProportion),
-                calcPosition(boardSize, boardProportion),
-                Cell.Orientation.RIGHT
-        );
+    private BufferedImage image;
+    Dimension boardSize;
+
+    public PotLuckDeckCell(Dimension boardSize) {
+        this.boardSize = boardSize;
         try {
             this.image = ImageIO.read(new File("./resources/images/opKnockCardBack/card_back_Blue.png"));
         } catch (IOException ex) {
@@ -61,15 +38,19 @@ public class PotLuckDeckCell extends Cell {
         }
 
     }
-    
-    @Override
+
     public void renderContents(Graphics2D g2) {
         AffineTransform at = g2.getTransform();
+        double posX = boardSize.width / 2.0 - 200;
+        double posY = boardSize.height / 2.0 - 200;
+        g2.translate(posX, posY);
         g2.scale(0.33, 0.33);
         g2.drawImage(image, 0, 0, null);
         g2.setTransform(at);
-        
+    }
+    
+    public void render(Graphics g) {
+        renderContents((Graphics2D) g);
     }
 
-    
 }
