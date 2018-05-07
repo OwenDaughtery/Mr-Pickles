@@ -34,6 +34,7 @@ public class GameFrame extends JFrame {
         );
         add(boardCanvas);
         boardCanvas.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
 
     }
