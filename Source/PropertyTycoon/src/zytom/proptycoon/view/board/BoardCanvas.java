@@ -308,10 +308,11 @@ public class BoardCanvas extends JPanel implements Runnable {
                 tick();
                 updates++;
                 delta--;
+                repaint();
+                frames ++;
             }
-            repaint();
-            frames ++;
             if (System.currentTimeMillis() - timer > 1000) {
+                this.parent.setTitle("FPS: " + frames);
                 timer += 1000;
                 frames = 0;
                 updates = 0;

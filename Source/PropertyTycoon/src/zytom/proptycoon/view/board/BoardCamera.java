@@ -48,7 +48,7 @@ public class BoardCamera {
     /**
      * How fast the camera moves.
      */
-    private static final double SPEED = 120.0 / 60.0;
+    private static final double SPEED = 320.0 / 60.0;
     
     /**
      * Keeps track of the directions the camera is moving in.
@@ -205,11 +205,16 @@ public class BoardCamera {
                 velY += 1.0;
             //Normalise it.
             double dist = Math.sqrt(Math.pow(velX, 2) + Math.pow(velY, 2));
-            velX /= dist;
-            velY /= dist;
-            //Multiply by speed.
-            velX *= SPEED;
-            velY *= SPEED;
+            if (dist != 0) {
+                velX /= dist;
+                velY /= dist;
+                //Multiply by speed.
+                velX *= SPEED;
+                velY *= SPEED;
+            } else {
+                velX = 0.0;
+                velY = 0.0;
+            }
         }
         
         //Move camera based on velocity.
