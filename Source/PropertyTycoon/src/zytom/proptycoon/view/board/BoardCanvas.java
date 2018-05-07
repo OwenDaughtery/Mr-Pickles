@@ -22,6 +22,7 @@ import zytom.proptycoon.view.board.cell.StationPropertyCell;
 import zytom.proptycoon.view.board.cell.StreetPropertyCell;
 import zytom.proptycoon.view.board.cell.SuperTaxCell;
 import zytom.proptycoon.view.board.cell.UtilityPropertyCell;
+import zytom.proptycoon.view.dice.DiceCell;
 
 /**
  *
@@ -53,7 +54,9 @@ public class BoardCanvas extends JPanel implements Runnable {
     private SuperTaxCell superTaxCell;
     
     private InJailCell inJailCell;
-    
+
+    private ArrayList<DiceCell>die;
+
     public BoardCanvas (
             ArrayList<String> streetNames,
             ArrayList<String> stationNames,

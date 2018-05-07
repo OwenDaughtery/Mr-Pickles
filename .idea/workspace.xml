@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5010686-51f6-4f7e-a987-fc1abb4d787a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/StationPropertyCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/StationPropertyCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/dice/DiceCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Source/PropertyTycoon/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,13 +28,13 @@
       <file leaf-file-name="BoardCanvas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-323">
-              <caret line="158" column="65" selection-start-line="158" selection-start-column="65" selection-end-line="158" selection-end-column="65" />
+            <state relative-caret-position="3750">
+              <caret line="271" column="5" selection-start-line="271" selection-start-column="5" selection-end-line="271" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StationPropertyCell.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StationPropertyCell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/StationPropertyCell.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="590">
@@ -41,21 +43,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="question_mark.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/resources/images/cells/question_mark.png">
-          <provider selected="true" editor-type-id="images" />
+      <file leaf-file-name="FreeParkingCell.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/FreeParkingCell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="25" column="48" lean-forward="true" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DiceCell.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/dice/DiceCell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="JailCell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/JailCell.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
-              <caret line="42" column="47" lean-forward="true" selection-start-line="42" selection-start-column="47" selection-end-line="46" selection-end-column="28" />
+              <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="46" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <replaceStrings>
@@ -75,13 +100,14 @@
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/test/zytom/proptycoon/controller/game/BoardControllerTest.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/GameFrame.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/GoToJailCell.java" />
-        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/StationPropertyCell.java" />
+        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java" />
+        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/dice/DiceCell.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="36" />
+    <option name="x" value="38" />
     <option name="y" value="22" />
     <option name="width" value="1275" />
     <option name="height" value="878" />
@@ -91,6 +117,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,16 +167,7 @@
               <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="cells" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mr-Pickles" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mr-Pickles" type="462c0819:PsiDirectoryNode" />
-              <item name="Source" type="462c0819:PsiDirectoryNode" />
-              <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="opKnockCardBack" type="462c0819:PsiDirectoryNode" />
+              <item name="dice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Mr-Pickles" type="b2602c69:ProjectViewProjectNode" />
@@ -163,44 +183,11 @@
               <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mr-Pickles" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mr-Pickles" type="462c0819:PsiDirectoryNode" />
-              <item name="Source" type="462c0819:PsiDirectoryNode" />
-              <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mr-Pickles" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mr-Pickles" type="462c0819:PsiDirectoryNode" />
-              <item name="Source" type="462c0819:PsiDirectoryNode" />
-              <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mr-Pickles" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mr-Pickles" type="462c0819:PsiDirectoryNode" />
-              <item name="Source" type="462c0819:PsiDirectoryNode" />
-              <item name="PropertyTycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="proptycoon" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-              <item name="cell" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,7 +313,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="36" y="22" width="1275" height="878" extended-state="0" />
+    <frame x="38" y="22" width="1275" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -337,12 +324,12 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.043533932" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.043533932" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.35036495" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.35604218" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -356,11 +343,67 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.043533932" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35604218" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3290653" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/test/zytom/proptycoon/model/DiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2070">
+          <caret line="158" column="65" selection-start-line="158" selection-start-column="65" selection-end-line="158" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/JailCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="42" column="47" lean-forward="true" selection-start-line="42" selection-start-column="47" selection-end-line="46" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/StationPropertyCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/PlayerNamesPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -546,20 +589,14 @@
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/JailCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
-          <caret line="42" column="47" lean-forward="true" selection-start-line="42" selection-start-column="47" selection-end-line="46" selection-end-column="28" />
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="46" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/resources/images/cells/train.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/resources/images/cells/question_mark.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java">
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/newgame/ChoosePlayersPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="158" column="65" selection-start-line="158" selection-start-column="65" selection-end-line="158" selection-end-column="65" />
+        <state relative-caret-position="135">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -567,6 +604,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="590">
           <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/BoardCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3750">
+          <caret line="271" column="5" selection-start-line="271" selection-start-column="5" selection-end-line="271" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/FreeParkingCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="25" column="48" lean-forward="true" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/dice/DiceCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
