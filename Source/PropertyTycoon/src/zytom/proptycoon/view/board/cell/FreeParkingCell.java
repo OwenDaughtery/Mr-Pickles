@@ -11,6 +11,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -19,15 +21,19 @@ import javax.imageio.ImageIO;
  */
 public class FreeParkingCell extends CornerCell {
     
-    final BufferedImage image;
+    private BufferedImage image;
     
-    public FreeParkingCell(Dimension boardSize, float boardProportion) throws IOException {
+    public FreeParkingCell(Dimension boardSize, float boardProportion)  {
         super(
                 boardSize,
                 boardProportion,
                 CornerCell.Corner.TOPLEFT
         );
-        this.image = ImageIO.read(new File("./resources/images/cells/free_parking.png"));
+        try {
+            this.image = ImageIO.read(new File("./resources/images/cells/free_parking.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(FreeParkingCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Override

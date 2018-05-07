@@ -8,7 +8,6 @@ package zytom.proptycoon.controller.game;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import jdk.nashorn.internal.objects.NativeArray;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

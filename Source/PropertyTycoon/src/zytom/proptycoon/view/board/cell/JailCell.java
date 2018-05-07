@@ -12,6 +12,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -20,16 +22,21 @@ import javax.imageio.ImageIO;
  */
 public class JailCell extends CornerCell {
     
-    final BufferedImage image;
+    private BufferedImage image;
     
-    public JailCell(Dimension boardSize, float boardProportion) throws IOException {
+    public JailCell(Dimension boardSize, float boardProportion)  {
         super(
                 boardSize,
                 boardProportion,
                 CornerCell.Corner.BOTTOMLEFT
         );
-        
-        this.image = ImageIO.read(new File("./resources/images/cells/just_visiting.png"));
+
+        try {
+            this.image = ImageIO.read(new File("./resources/images/cells/just_visiting.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(JailCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
     @Override

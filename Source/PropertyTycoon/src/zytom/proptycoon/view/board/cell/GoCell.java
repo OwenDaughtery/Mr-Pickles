@@ -25,7 +25,7 @@ public class GoCell extends CornerCell {
     
     private BufferedImage image;
     
-    public GoCell(Dimension boardSize, float boardProportion){
+    public GoCell(Dimension boardSize, float boardProportion)  {
         super(
                 boardSize,
                 boardProportion,

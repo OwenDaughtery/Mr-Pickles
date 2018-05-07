@@ -25,7 +25,7 @@ public class PlayerNamesPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tokenPanel1 = new zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel();
+        tokenPanel1 = new zytom.proptycoon.view.newgame.chooseplayers.TokenPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -153,6 +153,6 @@ public class PlayerNamesPanel extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
-    private zytom.proptycoon.view.NewGameMenu.ChoosePlayers.TokenPanel tokenPanel1;
+    private zytom.proptycoon.view.newgame.chooseplayers.TokenPanel tokenPanel1;
     // End of variables declaration//GEN-END:variables
 }
