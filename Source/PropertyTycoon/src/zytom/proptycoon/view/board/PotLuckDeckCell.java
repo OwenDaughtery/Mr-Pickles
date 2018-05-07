@@ -46,7 +46,7 @@ public class PotLuckDeckCell {
         g2.translate(posX, posY);
         g2.scale(0.25, 0.25);
         g2.drawImage(image, 0, 0, null);
-        g2.setTransform(at);
+        g2.setTransform(at); 
     }
     
     public void render(Graphics g) {

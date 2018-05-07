@@ -24,8 +24,8 @@ public class AssetManagementController {
      * @param gameController
      */
     public AssetManagementController(Bank bank, GameController gameController){
-    this.bank = bank;
-    this.gameController = gameController;
+        this.bank = bank;
+        this.gameController = gameController;
 
     }
 

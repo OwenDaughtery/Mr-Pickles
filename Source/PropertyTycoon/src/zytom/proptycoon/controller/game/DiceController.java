@@ -29,7 +29,7 @@ public class DiceController {
      * @throws zytom.proptycoon.model.card.PropertyCard.ToManyDaymHousesException
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
-    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, PlayerController.LandedOnJailException, PlayerController.CellNotFoundException, PropertyCard.ToManyDaymHousesException, AssetOwner.AssetNotFoundException {
+    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, LandedOnCell.LandedOnJailException, LandedOnCell.CellNotFoundException, PropertyCard.ToManyDaymHousesException, AssetOwner.AssetNotFoundException {
         dice.roll();
         int dice1 = dice.getFirstValue();
         int dice2 = dice.getSecondValue();

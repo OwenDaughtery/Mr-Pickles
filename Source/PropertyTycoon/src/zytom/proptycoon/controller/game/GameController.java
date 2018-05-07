@@ -2,36 +2,30 @@ package zytom.proptycoon.controller.game;
 
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Game;
-import zytom.proptycoon.model.Player;
-import zytom.proptycoon.model.cell.Cell;
-import zytom.proptycoon.model.cell.StationPropertyCell;
-import zytom.proptycoon.model.cell.StreetPropertyCell;
-import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 /**
  * Creates
  */
 public class GameController {
-    private Game game;
+    private final Game game;
     private int playerTurn;
-    private PlayerController playerController;
-    private PropertyLandedLogic propertyLandedLogic;
-    private PurchasePropertyOption purchasePropertyOption;
-    private OpportunityKnocksController opportunityKnocksController;
-    private PotLuckController potLuckController;
-    private DiceController diceController;
-    private AssetManagementController assetManagementController;
-    private StartTurn startTurn;
-    private EndTurnController endTurnController;
-    private BoardController boardController ;
+    private final LandedOnCell playerController;
+    private final PropertyLandedLogic propertyLandedLogic;
+    private final PurchasePropertyOption purchasePropertyOption;
+    private final OpportunityKnocksController opportunityKnocksController;
+    private final PotLuckController potLuckController;
+    private final DiceController diceController;
+    private final AssetManagementController assetManagementController;
+    private final StartTurn startTurn;
+    private final EndTurnController endTurnController;
+    private final BoardController boardController ;
 
     public GameController(Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
 
         this.game = game;
-        this.playerController = new PlayerController(this.game,this);
+        this.playerController = new LandedOnCell(this.game,this);
         this.propertyLandedLogic = new PropertyLandedLogic(game.getPlayers(),game.getBank(),this);
         this.purchasePropertyOption = new PurchasePropertyOption(game.getBank(),this);
         this.opportunityKnocksController = new OpportunityKnocksController(this.game,this,game.getBoard(),game.getBank(),game.getDice(),game.getCurrentPlayer());
@@ -58,7 +52,7 @@ public class GameController {
         return game;
     }
 
-    public PlayerController getPlayerController() {
+    public LandedOnCell getPlayerController() {
         return playerController;
     }
 
