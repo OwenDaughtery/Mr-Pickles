@@ -37,8 +37,8 @@ public class LogoView {
     
     public void renderContents(Graphics2D g2) {
         AffineTransform at = g2.getTransform();
-        double posX = 210;
-        double posY = 210;
+        double posX = 240;
+        double posY = 240;
         g2.translate(posX, posY);
         g2.scale(0.33, 0.33);
         g2.drawImage(image, 0, 0, null);

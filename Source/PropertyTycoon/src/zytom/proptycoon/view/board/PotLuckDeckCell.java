@@ -44,7 +44,7 @@ public class PotLuckDeckCell {
         double posX = boardSize.width / 2.0 - 200;
         double posY = boardSize.height / 2.0 - 200;
         g2.translate(posX, posY);
-        g2.scale(0.33, 0.33);
+        g2.scale(0.25, 0.25);
         g2.drawImage(image, 0, 0, null);
         g2.setTransform(at);
     }

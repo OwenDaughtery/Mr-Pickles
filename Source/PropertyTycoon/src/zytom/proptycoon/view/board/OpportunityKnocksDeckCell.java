@@ -41,10 +41,10 @@ public class OpportunityKnocksDeckCell {
 
     public void renderContents(Graphics2D g2) {
         AffineTransform at = g2.getTransform();
-        double posX = boardSize.width / 2.0 + 100;
+        double posX = boardSize.width / 2.0 + 140;
         double posY = boardSize.height / 2.0 + 100;
         g2.translate(posX, posY);
-        g2.scale(0.33, 0.33);
+        g2.scale(0.25, 0.25);
         g2.drawImage(image, 0, 0, null);
         g2.setTransform(at);
     }
