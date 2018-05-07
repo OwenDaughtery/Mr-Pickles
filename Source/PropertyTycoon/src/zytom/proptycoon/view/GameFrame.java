@@ -16,7 +16,6 @@ import zytom.proptycoon.view.board.BoardCanvas;
  */
 public class GameFrame extends JFrame {
     BoardCanvas boardCanvas;
-    
     public GameFrame(GameController gameController) {
         this.getContentPane()
                 .setPreferredSize(
@@ -26,6 +25,7 @@ public class GameFrame extends JFrame {
         this.setMinimumSize(new Dimension(720, 720));
         this.setResizable(false);
         this.pack();
+        setResizable(false);
         
         BoardController boardController = gameController.getBoardController();
         
@@ -43,6 +43,5 @@ public class GameFrame extends JFrame {
         boardCanvas.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-
     }
 }

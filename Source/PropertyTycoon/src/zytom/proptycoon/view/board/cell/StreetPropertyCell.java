@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,9 @@ public class StreetPropertyCell extends InsideCell {
     private final Color colour;
     private final String title;
     private final String price;
+    
+    private final ArrayList<String> lines;
+    private static final int CHAR_LIMIT = 8;
     
     public StreetPropertyCell(
             Dimension boardSize, 
@@ -30,6 +34,14 @@ public class StreetPropertyCell extends InsideCell {
         this.colour = colour;
         this.title = title;
         this.price = price;
+        
+        lines = new ArrayList<>();
+        String remainder = this.title;
+        while (remainder.length() > CHAR_LIMIT) {
+            lines.add(remainder.substring(0, CHAR_LIMIT));
+            remainder = remainder.substring(CHAR_LIMIT);
+        }
+        lines.add(remainder);
     }
 
     @Override
@@ -49,7 +61,13 @@ public class StreetPropertyCell extends InsideCell {
                 Math.round((float)dimension.height * 0.2f)
         );
         g2.setFont(new Font("Arial", Font.PLAIN, 8));
-        g2.drawString(title, 4, dimension.height * 0.5f);
+        
+        float yPos = dimension.height * 0.325f;
+        for (int i=0; i<lines.size(); i++) {
+            g2.drawString(lines.get(i), 4, yPos);
+            yPos += 10.0f;
+        }
+        
         g2.drawString("Price: " + price, 4, dimension.height * 0.85f);
     }
 }
