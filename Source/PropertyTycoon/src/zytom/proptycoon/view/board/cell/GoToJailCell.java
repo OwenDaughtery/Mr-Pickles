@@ -25,7 +25,7 @@ public class GoToJailCell extends CornerCell{
     @Override
     public void renderContents(Graphics2D g2) {
         g2.setColor(Color.black);
-        g2.setFont(new Font("Arial", Font.PLAIN, 32));
+        g2.setFont(new Font("Monaco", Font.PLAIN, 32));
         g2.drawString("GO TO\nJAIL", 18, 48);
     }
 }

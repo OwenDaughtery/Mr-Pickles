@@ -60,14 +60,14 @@ public class StreetPropertyCell extends InsideCell {
                 dimension.width, 
                 Math.round((float)dimension.height * 0.2f)
         );
-        g2.setFont(new Font("Arial", Font.PLAIN, 8));
+        g2.setFont(new Font("Monaco", Font.PLAIN, 8));
         
         float yPos = dimension.height * 0.325f;
         for (int i=0; i<lines.size(); i++) {
-            g2.drawString(lines.get(i), 4, yPos);
+            g2.drawString(lines.get(i), 6, yPos);
             yPos += 10.0f;
         }
         
-        g2.drawString("Price: " + price, 4, dimension.height * 0.85f);
+        g2.drawString("Price: " + price, 6, dimension.height * 0.85f);
     }
 }

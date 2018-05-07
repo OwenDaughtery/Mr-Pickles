@@ -27,7 +27,7 @@ public class GoCell extends CornerCell {
     @Override
     protected void renderContents(Graphics2D g2) {
         g2.setColor(Color.black);
-        g2.setFont(new Font("Arial", Font.PLAIN, 32));
+        g2.setFont(new Font("Monaco", Font.PLAIN, 32));
         g2.drawString("GO", 18, 48);
     }
 }

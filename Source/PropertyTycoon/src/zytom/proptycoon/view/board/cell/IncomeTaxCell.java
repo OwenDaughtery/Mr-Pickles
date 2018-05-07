@@ -27,9 +27,9 @@ public class IncomeTaxCell extends InsideCell {
     
     @Override
     protected void renderContents(Graphics2D g2) {
-        g2.setFont(new Font("Arial", Font.PLAIN, 8));
+        g2.setFont(new Font("Monaco", Font.PLAIN, 8));
         g2.drawString("Income", 4, dimension.height * 0.25f);
-        g2.drawString("Tax", 4, dimension.height * 0.4f);
-        g2.drawString("Price: " + price, 4, dimension.height * 0.85f);
+        g2.drawString("Tax", 4, dimension.height * 0.25f + 10.0f);
+        g2.drawString("Price:  " + price, 4, dimension.height * 0.85f);
     }
 }

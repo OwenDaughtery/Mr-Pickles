@@ -31,7 +31,7 @@ public class UtilityPropertyCell extends InsideCell {
     
     @Override
     protected void renderContents(Graphics2D g2) {
-        g2.setFont(new Font("Arial", Font.PLAIN, 8));
+        g2.setFont(new Font("Monaco", Font.PLAIN, 8));
         g2.drawString(title, 4, dimension.height * 0.25f);
         g2.drawString("Price: " + price, 4, dimension.height * 0.85f);
     }
