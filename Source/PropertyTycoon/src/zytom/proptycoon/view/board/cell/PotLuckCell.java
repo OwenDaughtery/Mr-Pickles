@@ -24,8 +24,8 @@ public class PotLuckCell extends InsideCell {
     
     @Override
     protected void renderContents(Graphics2D g2) {
-        g2.setFont(new Font("Monaco", Font.PLAIN, 8));
-        g2.drawString("Pot", 4, dimension.height * 0.25f);
-        g2.drawString("Luck", 4, dimension.height * 0.25f + 10.0f);
+        g2.setFont(new Font("Monaco", Font.BOLD, 12));
+        g2.drawString("Pot", 18, dimension.height * 0.25f);
+        g2.drawString("Luck", 14, dimension.height * 0.25f + 10.0f);
     }
 }
