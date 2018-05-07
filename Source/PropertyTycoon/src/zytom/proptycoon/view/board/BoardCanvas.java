@@ -24,7 +24,7 @@ import zytom.proptycoon.view.board.cell.StationPropertyCell;
 import zytom.proptycoon.view.board.cell.StreetPropertyCell;
 import zytom.proptycoon.view.board.cell.SuperTaxCell;
 import zytom.proptycoon.view.board.cell.UtilityPropertyCell;
-import zytom.proptycoon.view.dice.DiceCell;
+//import zytom.proptycoon.view.dice.DiceCell;
 
 /**
  *
