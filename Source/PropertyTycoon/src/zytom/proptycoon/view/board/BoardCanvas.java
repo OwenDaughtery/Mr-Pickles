@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import zytom.proptycoon.view.board.cell.FreeParkingCell;
 import zytom.proptycoon.view.board.cell.GoCell;
 import zytom.proptycoon.view.board.cell.GoToJailCell;
+import zytom.proptycoon.view.board.cell.InJailCell;
 import zytom.proptycoon.view.board.cell.IncomeTaxCell;
 import zytom.proptycoon.view.board.cell.InsideCell.Side;
 import zytom.proptycoon.view.board.cell.JailCell;
@@ -49,6 +50,8 @@ public class BoardCanvas extends JPanel implements Runnable {
     
     private IncomeTaxCell incomeTaxCell;
     private SuperTaxCell superTaxCell;
+    
+    private InJailCell inJailCell;
     
     public BoardCanvas (
             ArrayList<String> streetNames,
@@ -124,6 +127,10 @@ public class BoardCanvas extends JPanel implements Runnable {
                 Side.RIGHT,
                 7,
                 superTaxPrice
+        );
+        inJailCell = new InJailCell(
+                boardSize, 
+                CELL_PROPORTION
         );
     }
     
@@ -320,6 +327,7 @@ public class BoardCanvas extends JPanel implements Runnable {
         
         incomeTaxCell.render(g);
         superTaxCell.render(g);
+        inJailCell.render(g);
     }
     
     @Override
