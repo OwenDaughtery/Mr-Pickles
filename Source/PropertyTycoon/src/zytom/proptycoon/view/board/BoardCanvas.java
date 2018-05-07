@@ -6,6 +6,7 @@ package zytom.proptycoon.view.board;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import zytom.proptycoon.view.board.cell.FreeParkingCell;
@@ -148,14 +149,14 @@ public class BoardCanvas extends JPanel implements Runnable {
             0, 1, 3, 6, 8
         };
         Color[] streetColours = {
-            Color.GRAY, Color.GRAY,
-            Color.CYAN, Color.CYAN, Color.CYAN,
-            Color.PINK, Color.PINK, Color.PINK, 
-            Color.ORANGE, Color.ORANGE, Color.ORANGE, 
-            Color.RED, Color.RED, Color.RED,
-            Color.YELLOW, Color.YELLOW, Color.YELLOW,
-            Color.GREEN, Color.GREEN, Color.GREEN,
-            Color.BLUE, Color.BLUE
+            Color.getHSBColor(0.11f,0.9f,0.65f), Color.getHSBColor(0.11f,0.9f,0.65f),
+            Color.getHSBColor(0.5f,1.0f,0.9f), Color.getHSBColor(0.5f,1.0f,0.9f), Color.getHSBColor(0.5f,1.0f,0.9f),
+            Color.getHSBColor(0.75f,0.9f,0.95f), Color.getHSBColor(0.75f,0.9f,0.95f), Color.getHSBColor(0.75f,0.9f,0.95f),
+            Color.getHSBColor(0.1f,0.9f,0.95f), Color.getHSBColor(0.1f,0.9f,0.95f), Color.getHSBColor(0.1f,0.9f,0.95f),
+            Color.getHSBColor(0.0f,0.9f,0.95f), Color.getHSBColor(0.0f,0.9f,0.95f), Color.getHSBColor(0.0f,0.9f,0.95f),
+            Color.getHSBColor(0.15f,0.95f,1.0f), Color.getHSBColor(0.15f,0.95f,1.0f), Color.getHSBColor(0.15f,0.95f,1.0f),
+            Color.getHSBColor(0.3f,0.95f,0.8f), Color.getHSBColor(0.3f,0.95f,0.8f), Color.getHSBColor(0.3f,0.95f,0.8f),
+            Color.getHSBColor(0.7f,0.95f,1.0f), Color.getHSBColor(0.7f,0.95f,1.0f)
         };
         for (int i=0; i<22; i++) {
             Side side;
@@ -333,7 +334,7 @@ public class BoardCanvas extends JPanel implements Runnable {
     @Override
     protected void paintComponent(Graphics g) {
         //Overlay background.
-        g.setColor(Color.white);
+        g.setColor(Color.getHSBColor(0.13f,0.12f,1.0f));
         g.fillRect(
                 0, 
                 0, 
