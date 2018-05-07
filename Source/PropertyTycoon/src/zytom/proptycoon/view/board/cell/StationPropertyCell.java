@@ -3,11 +3,18 @@
  */
 package zytom.proptycoon.view.board.cell;
 
+import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +24,8 @@ public class StationPropertyCell extends InsideCell {
     
     private final String title;
     private final String price;
-    
+
+    private BufferedImage image;
     
     private final ArrayList<String> lines;
     private static final int CHAR_LIMIT = 8;
@@ -39,6 +47,12 @@ public class StationPropertyCell extends InsideCell {
             remainder = remainder.substring(CHAR_LIMIT);
         }
         lines.add(remainder);
+
+        try {
+            this.image = ImageIO.read(new File("./resources/images/cells/train.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(StationPropertyCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Override
@@ -52,5 +66,10 @@ public class StationPropertyCell extends InsideCell {
         }
         
         g2.drawString("Price: " + price, 6, dimension.height * 0.85f);
+
+        AffineTransform at = g2.getTransform();
+        g2.scale(0.30, 0.30);
+        g2.drawImage(image, 56, 120, null);
+        g2.setTransform(at);
     }
 }

@@ -21,7 +21,7 @@ import javax.imageio.ImageIO;
  */
 public class GoToJailCell extends CornerCell{
     
-    BufferedImage image;
+    private BufferedImage image;
     
     public GoToJailCell(Dimension boardSize, float boardProportion) {
         super(
@@ -42,6 +42,5 @@ public class GoToJailCell extends CornerCell{
         g2.scale(0.70, 0.70);
         g2.drawImage(image, 20, 25, null);
         g2.setTransform(at);
-        
     }
 }
