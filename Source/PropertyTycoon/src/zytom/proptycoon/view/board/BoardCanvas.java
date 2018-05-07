@@ -64,6 +64,8 @@ public class BoardCanvas extends JPanel implements Runnable {
     private PotLuckDeckCell potLuckDeckCell;
     private OpportunityKnocksDeckCell opportunityKnocksDeckCell;
     
+    private LogoView logoView;
+    
     public BoardCanvas (GameFrame parent, BoardController boardController) {
         this.parent = parent;
         setSize(720, 720);
@@ -154,6 +156,9 @@ public class BoardCanvas extends JPanel implements Runnable {
                 boardSize
         );
         opportunityKnocksDeckCell = new OpportunityKnocksDeckCell(
+                boardSize
+        );
+        logoView = new LogoView(
                 boardSize
         );
     }
@@ -357,6 +362,7 @@ public class BoardCanvas extends JPanel implements Runnable {
         inJailCell.render(g);
         potLuckDeckCell.render(g);
         opportunityKnocksDeckCell.render(g);
+        logoView.render(g);
     }
     
     @Override

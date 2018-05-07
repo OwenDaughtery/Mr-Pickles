@@ -32,7 +32,7 @@ public class PotLuckDeckCell {
     public PotLuckDeckCell(Dimension boardSize) {
         this.boardSize = boardSize;
         try {
-            this.image = ImageIO.read(new File("./resources/images/opKnockCardBack/card_back_Blue.png"));
+            this.image = ImageIO.read(new File("./resources/images/cards/potLuckCard.png"));
         } catch (IOException ex) {
             Logger.getLogger(InJailCell.class.getName()).log(Level.SEVERE, null, ex);
         }
