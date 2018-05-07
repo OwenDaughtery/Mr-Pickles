@@ -18,10 +18,7 @@ public class PotLuckCell extends InsideCell {
             Dimension boardSize, 
             float boardProportion, 
             InsideCell.Side side, 
-            int rowIndex,
-            Color colour,
-            String title,
-            int price) {
+            int rowIndex) {
         super(boardSize, boardProportion, side, rowIndex);
     }
     

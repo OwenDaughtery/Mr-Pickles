@@ -7,10 +7,11 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 import java.util.ArrayList;
+import zytom.proptycoon.model.cell.IncomeTaxCell;
 
 public class BoardController {
     
-    private Board board;
+    private final Board board;
     
     public BoardController(Board board) {
         this.board = board;
@@ -78,5 +79,16 @@ public class BoardController {
             }
         }
         return utilityNames;
+    }
+    
+    public String getIncomeTaxPrice() {
+        
+        for (Cell c:board.getCells()
+                ) {
+            if(c instanceof IncomeTaxCell){
+                return ((IncomeTaxCell) c).
+                utilityNames.add(String.valueOf(((UtilityPropertyCell) c).getAssociatedCard().getPrice()));
+            }
+        }
     }
 }

@@ -13,14 +13,14 @@ import java.awt.Graphics2D;
  * @author Tom
  */
 public class IncomeTaxCell extends InsideCell {
-    private final int price;
+    private final String price;
     
     public IncomeTaxCell(
             Dimension boardSize, 
             float boardProportion, 
             InsideCell.Side side, 
             int rowIndex,
-            int price) {
+            String price) {
         super(boardSize, boardProportion, side, rowIndex);
         this.price = price;
     }

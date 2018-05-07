@@ -5,7 +5,6 @@ package zytom.proptycoon.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import zytom.proptycoon.controller.game.BoardController;
 import zytom.proptycoon.controller.game.GameController;
@@ -19,9 +18,12 @@ public class GameFrame extends JFrame {
     BoardCanvas boardCanvas;
     
     public GameFrame(GameController gameController) {
-        this.setSize(720, 720);
-        this.setMinimumSize(new Dimension(720, 720));
+        this.getContentPane()
+                .setPreferredSize(
+                        new Dimension(720, 720)
+                );
         this.setLayout(new BorderLayout());
+        this.pack();
         
         BoardController boardController = gameController.getBoardController();
         
@@ -31,7 +33,9 @@ public class GameFrame extends JFrame {
                 boardController.getUtilityNames(),
                 boardController.getStreetPrices(),
                 boardController.getStationPrices(),
-                boardController.getUtilityPrices()
+                boardController.getUtilityPrices(),
+                boardController.getIncomeTaxPrice(),
+                boardController.getSuperTaxPrice()
         );
         add(boardCanvas);
         boardCanvas.setVisible(true);

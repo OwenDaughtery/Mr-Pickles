@@ -56,7 +56,9 @@ public class BoardCanvas extends JPanel implements Runnable {
             ArrayList<String> utilityNames,
             ArrayList<String> streetPrices,
             ArrayList<String> stationPrices,
-            ArrayList<String> utilityPrices
+            ArrayList<String> utilityPrices,
+            String incomeTaxPrice,
+            String superTaxPrice
     ) {
         setSize(720, 720);
         thread = new Thread(this);
@@ -67,7 +69,9 @@ public class BoardCanvas extends JPanel implements Runnable {
                 utilityNames,
                 streetPrices,
                 stationPrices,
-                utilityPrices
+                utilityPrices,
+                incomeTaxPrice,
+                superTaxPrice
         );
     }
     
@@ -77,18 +81,15 @@ public class BoardCanvas extends JPanel implements Runnable {
             ArrayList<String> utilityNames,
             ArrayList<String> streetPrices,
             ArrayList<String> stationPrices,
-            ArrayList<String> utilityPrices
+            ArrayList<String> utilityPrices,
+            String incomeTaxPrice,
+            String superTaxPrice
     ) {
         Dimension boardSize = new Dimension(getWidth(), getHeight());
         goCell = new GoCell(boardSize, CELL_PROPORTION);
         jailCell = new JailCell(boardSize, CELL_PROPORTION);
         freeParkingCell = new FreeParkingCell(boardSize, CELL_PROPORTION);
         goToJailCell = new GoToJailCell(boardSize, CELL_PROPORTION);
-        
-        this.streetPropertyCells = new ArrayList<>();
-        this.stationPropertyCells = new ArrayList<>();
-        this.utilityPropertyCells = new ArrayList<>();
-        
         initStreetCells(
                 boardSize,
                 streetNames,
@@ -104,6 +105,26 @@ public class BoardCanvas extends JPanel implements Runnable {
                 utilityNames,
                 utilityPrices
         );
+        initPotLuckCells(
+                boardSize
+        );
+        initOpportunityKnocksCells(
+                boardSize
+        );
+        incomeTaxCell = new IncomeTaxCell(
+                boardSize, 
+                CELL_PROPORTION,
+                Side.BOTTOM,
+                3,
+                incomeTaxPrice
+        );
+        superTaxCell = new SuperTaxCell(
+                boardSize, 
+                CELL_PROPORTION,
+                Side.RIGHT,
+                7,
+                superTaxPrice
+        );
     }
     
     private void initStreetCells(
@@ -111,6 +132,8 @@ public class BoardCanvas extends JPanel implements Runnable {
             ArrayList<String> streetNames,
             ArrayList<String> streetPrices
     ) {
+        
+        this.streetPropertyCells = new ArrayList<>();
         int[] streetPositions = {
             0, 2, 5, 7, 8,
             0, 2, 3, 5, 7, 8,
@@ -154,6 +177,7 @@ public class BoardCanvas extends JPanel implements Runnable {
             ArrayList<String> stationNames,
             ArrayList<String> stationPrices
     ) {
+        this.stationPropertyCells = new ArrayList<>();
         Side[] sides = {
             Side.BOTTOM, Side.LEFT, Side.TOP, Side.RIGHT
         };
@@ -175,11 +199,12 @@ public class BoardCanvas extends JPanel implements Runnable {
             Dimension boardSize,
             ArrayList<String> utilityNames,
             ArrayList<String> utilityPrices) {
+        this.utilityPropertyCells = new ArrayList<>();
         int[] positions = {
             1, 7
         };
         Side[] sides = {
-            Side.BOTTOM, Side.LEFT, Side.TOP, Side.RIGHT
+             Side.LEFT, Side.TOP
         };
         for (int i=0; i<2; i++) {
             this.utilityPropertyCells.add(
@@ -190,6 +215,46 @@ public class BoardCanvas extends JPanel implements Runnable {
                             positions[i],
                             utilityNames.get(i),
                             utilityPrices.get(i)
+                    )
+            );
+        }
+    }
+    
+    private void initPotLuckCells(Dimension boardSize) {
+        potLuckCells = new ArrayList<>();
+        int[] positions = {
+            1, 6, 2
+        };
+        Side[] sides = {
+            Side.BOTTOM, Side.LEFT, Side.RIGHT
+        };
+        for (int i=0; i<3; i++) {
+            this.potLuckCells.add(
+                    new PotLuckCell(
+                            boardSize,
+                            CELL_PROPORTION,
+                            sides[i],
+                            positions[i]
+                    )
+            );
+        }
+    }
+    
+    private void initOpportunityKnocksCells(Dimension boardSize) {
+        opportunityKnocksCells = new ArrayList<>();
+        int[] positions = {
+            6, 1, 5
+        };
+        Side[] sides = {
+            Side.BOTTOM, Side.TOP, Side.RIGHT
+        };
+        for (int i=0; i<3; i++) {
+            this.opportunityKnocksCells.add(
+                    new OpportunityKnocksCell(
+                            boardSize,
+                            CELL_PROPORTION,
+                            sides[i],
+                            positions[i]
                     )
             );
         }
@@ -241,12 +306,15 @@ public class BoardCanvas extends JPanel implements Runnable {
         for (StreetPropertyCell cell : streetPropertyCells) {
             cell.render(g);
         }
-        
         for (StationPropertyCell cell : stationPropertyCells) {
             cell.render(g);
         }
-        
         for (UtilityPropertyCell cell : utilityPropertyCells) {
+            cell.render(g);
+        }
+        for (OpportunityKnocksCell cell : opportunityKnocksCells) {
+            cell.render(g);
+        }for (PotLuckCell cell : potLuckCells) {
             cell.render(g);
         }
     }
