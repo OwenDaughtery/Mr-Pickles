@@ -13,6 +13,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -21,15 +23,19 @@ import javax.imageio.ImageIO;
  */
 public class GoCell extends CornerCell {
     
-    final BufferedImage image;
+    private BufferedImage image;
     
-    public GoCell(Dimension boardSize, float boardProportion) throws IOException {
+    public GoCell(Dimension boardSize, float boardProportion)  {
         super(
                 boardSize,
                 boardProportion,
                 Corner.BOTTOMRIGHT
         );
-        this.image = ImageIO.read(new File("./resources/images/cells/go_arrow.png"));
+        try {
+            this.image = ImageIO.read(new File("./resources/images/cells/go_arrow.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(GoCell.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Override
