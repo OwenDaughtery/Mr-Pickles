@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class PlayerInitalizer {
 
-    private ArrayList<Player> players;
-    private ArrayList<Player.TokenType> tokens;
+    private final ArrayList<Player> players;
+    private final ArrayList<Player.TokenType> tokens;
 
 
     public PlayerInitalizer(){
@@ -25,7 +25,7 @@ public class PlayerInitalizer {
     }
 
     public void createPlayer(String name, Player.TokenType tokenType) throws ToManyPlayersException, TokenNotFoundException {
-        if(players.size() < 7 ) {
+        if(players.size() < 6 ) {
             if(tokens.contains(tokenType)) {
                 Player player = new Player(name, tokenType);
                 this.players.add(player);
