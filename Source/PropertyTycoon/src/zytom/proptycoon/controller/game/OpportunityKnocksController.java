@@ -41,6 +41,4 @@ public class OpportunityKnocksController {
         opportunityKnocksCard.getCardAction().performAction(freeParking,bank,currentplayer,game.getPlayers(),opportunityKnocksCard);
 
     }
-
-
 }

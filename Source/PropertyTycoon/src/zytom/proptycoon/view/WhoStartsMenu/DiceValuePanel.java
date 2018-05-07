@@ -3,8 +3,6 @@
  */
 package zytom.proptycoon.view.WhoStartsMenu;
 
- import zytom.proptycoon.view.NewGameMenu.ChoosePlayers.*;
-
 /**
  *
  * @author utopia

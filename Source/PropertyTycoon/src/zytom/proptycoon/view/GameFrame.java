@@ -19,7 +19,7 @@ public class GameFrame extends JFrame {
     
     public GameFrame(GameController gameController) {
         this.setSize(720, 720);
-        this.setMininumSize(new Dimension(720, 720));
+        //this.setMininumSize(new Dimension(720, 720));
         this.setLayout(new BorderLayout());
         
         BoardController boardController = gameController.getBoardController();

@@ -51,5 +51,4 @@ public class Dice {
         return this.getFirstValue() == this.getSecondValue();
     }
 
-
 }
