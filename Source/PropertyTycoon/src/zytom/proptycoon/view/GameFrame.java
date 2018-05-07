@@ -12,7 +12,7 @@ import zytom.proptycoon.view.board.BoardCanvas;
 
 /**
  *
- * @author utopia
+ * @author Tom
  */
 public class GameFrame extends JFrame {
     BoardCanvas boardCanvas;
@@ -26,9 +26,7 @@ public class GameFrame extends JFrame {
         this.setResizable(false);
         this.pack();
         setResizable(false);
-        
         BoardController boardController = gameController.getBoardController();
-        
         boardCanvas = new BoardCanvas(
                 boardController.getStreetNames(),
                 boardController.getStationNames(),
