@@ -54,6 +54,9 @@ public class BoardCanvas extends JPanel implements Runnable {
     
     private InJailCell inJailCell;
     
+    private PotLuckDeckCell potLuckDeckCell;
+    private OpportunityKnocksDeckCell opportunityKnocksDeckCell;
+    
     public BoardCanvas (
             ArrayList<String> streetNames,
             ArrayList<String> stationNames,
@@ -131,6 +134,14 @@ public class BoardCanvas extends JPanel implements Runnable {
         );
         inJailCell = new InJailCell(
                 boardSize, 
+                CELL_PROPORTION
+        );
+        potLuckDeckCell = new PotLuckDeckCell(
+                boardSize,
+                CELL_PROPORTION
+        );
+        opportunityKnocksDeckCell = new OpportunityKnocksDeckCell(
+                boardSize,
                 CELL_PROPORTION
         );
     }
@@ -329,6 +340,8 @@ public class BoardCanvas extends JPanel implements Runnable {
         incomeTaxCell.render(g);
         superTaxCell.render(g);
         inJailCell.render(g);
+        potLuckDeckCell.render(g);
+        opportunityKnocksDeckCell.render(g);
     }
     
     @Override
