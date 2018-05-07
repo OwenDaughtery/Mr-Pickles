@@ -43,6 +43,7 @@ public class BoardCanvas extends JPanel implements Runnable {
     private JailCell jailCell;
     private FreeParkingCell freeParkingCell;
     private GoToJailCell goToJailCell;
+    private InJailCell inJailCell;
     
     private ArrayList<StreetPropertyCell> streetPropertyCells;
     private ArrayList<StationPropertyCell> stationPropertyCells;
