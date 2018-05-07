@@ -319,7 +319,7 @@ public class BoardCanvas extends JPanel implements Runnable {
                 updates = 0;
             }
             try {
-                Thread.sleep(8);
+                Thread.sleep(20);
             } catch (InterruptedException ex) {
                 //Do nothing
                 System.out.println("Interrupted");
