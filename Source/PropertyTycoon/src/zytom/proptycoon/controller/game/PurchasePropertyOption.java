@@ -10,8 +10,8 @@ import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
 
 public class PurchasePropertyOption {
-    private Bank bank;
-    private GameController gameController;
+    private final Bank bank;
+    private final GameController gameController;
     public PurchasePropertyOption (Bank bank,GameController gameController){
         this.bank = bank;
         this.gameController = gameController;

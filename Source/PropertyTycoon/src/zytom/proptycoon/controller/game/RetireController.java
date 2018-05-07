@@ -8,8 +8,8 @@ import zytom.proptycoon.model.assets.Transaction;
 
 public class RetireController {
 
-    private GameController gameController;
-    private Game game;
+    private final GameController gameController;
+    private final Game game;
 
     public RetireController(GameController gameController, Game game) {
         this.gameController = gameController;
