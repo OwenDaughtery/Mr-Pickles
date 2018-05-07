@@ -27,16 +27,8 @@ public class GameFrame extends JFrame {
         this.pack();
         setResizable(false);
         BoardController boardController = gameController.getBoardController();
-        boardCanvas = new BoardCanvas(
-                boardController.getStreetNames(),
-                boardController.getStationNames(),
-                boardController.getUtilityNames(),
-                boardController.getStreetPrices(),
-                boardController.getStationPrices(),
-                boardController.getUtilityPrices(),
-                boardController.getIncomeTaxPrice(),
-                boardController.getSuperTaxPrice()
-        );
+        boardCanvas = new BoardCanvas(this, boardController);
+               
         add(boardCanvas);
         boardCanvas.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

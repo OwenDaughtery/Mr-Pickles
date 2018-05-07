@@ -7,14 +7,19 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 import java.util.ArrayList;
-import zytom.proptycoon.model.cell.IncomeTaxCell;
 
 public class BoardController {
     
     private final Board board;
+    private final CameraController camera;
     
     public BoardController(Board board) {
         this.board = board;
+        this.camera = new CameraController();
+    }
+    
+    public CameraController getCameraController() {
+        return camera;
     }
 
     public ArrayList<String>getStreetNames(){

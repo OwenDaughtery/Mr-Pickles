@@ -3,7 +3,6 @@
  */
 package zytom.proptycoon.view.board.cell;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
