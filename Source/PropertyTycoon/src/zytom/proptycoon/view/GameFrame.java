@@ -22,6 +22,8 @@ public class GameFrame extends JFrame {
                         new Dimension(720, 720)
                 );
         this.setLayout(new BorderLayout());
+        this.setMinimumSize(new Dimension(720, 720));
+        this.setResizable(false);
         this.pack();
         setResizable(false);
         
