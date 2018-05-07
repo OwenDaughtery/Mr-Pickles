@@ -40,7 +40,7 @@ public class PotLuckCell extends InsideCell {
     protected void renderContents(Graphics2D g2) {
         AffineTransform at = g2.getTransform();
         g2.scale(0.50, 0.50);
-        g2.drawImage(image, 0, 0,null);
+        g2.drawImage(image, 13, 50, null);
         g2.setTransform(at);
     }
 }

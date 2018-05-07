@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import zytom.proptycoon.controller.game.BoardController;
@@ -150,12 +151,10 @@ public class BoardCanvas extends JPanel implements Runnable {
                 CELL_PROPORTION
         );
         potLuckDeckCell = new PotLuckDeckCell(
-                boardSize,
-                CELL_PROPORTION
+                boardSize
         );
         opportunityKnocksDeckCell = new OpportunityKnocksDeckCell(
-                boardSize,
-                CELL_PROPORTION
+                boardSize
         );
     }
     
@@ -319,7 +318,7 @@ public class BoardCanvas extends JPanel implements Runnable {
                 updates = 0;
             }
             try {
-                Thread.sleep(5);
+                Thread.sleep(8);
             } catch (InterruptedException ex) {
                 //Do nothing
                 System.out.println("Interrupted");
@@ -371,6 +370,16 @@ public class BoardCanvas extends JPanel implements Runnable {
         );
         
         Graphics2D g2 = (Graphics2D) g;
+        
+        g2.setRenderingHint(
+            RenderingHints.KEY_ANTIALIASING,
+            RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(
+            RenderingHints.KEY_TEXT_ANTIALIASING,
+            RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2.setRenderingHint(
+            RenderingHints.KEY_FRACTIONALMETRICS,
+            RenderingHints.VALUE_FRACTIONALMETRICS_ON);
         
         camera.applyTransform(g2);
         
