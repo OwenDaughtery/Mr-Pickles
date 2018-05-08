@@ -295,7 +295,7 @@ public class DeckCreator {
                     int buyPrice = Integer.parseInt(data[3]);
                     int buildPrice = Integer.parseInt(data[10]);
                     this.rentPrices[0] = Integer.parseInt(data[4]); //0 houses
-                    this.rentPrices[1] = Integer.parseInt(data[5]); //1 house
+                    this.rentPrices[1] = Integer.parseInt(data[5]); //1 House
                     this.rentPrices[2] = Integer.parseInt(data[6]); //2 houses
                     this.rentPrices[3] = Integer.parseInt(data[7]); //3 houses
                     this.rentPrices[4] = Integer.parseInt(data[8]); //4 houses

@@ -31,7 +31,7 @@ public class AssetManagementController {
 
 
     /**
-     * buys a house on given property
+     * buys a House on given property
      *
      * @param player
      * @param streetPropertyCard
@@ -68,7 +68,7 @@ public class AssetManagementController {
         }
 
 
-        // are we elible to build a house here . boolean
+        // are we elible to build a House here . boolean
         if(ownsAllProperly && eligibleToBuild)
 
     {
@@ -95,7 +95,7 @@ public class AssetManagementController {
 }
 
     /**
-     * sells a house on a given property
+     * sells a House on a given property
      *
      * @param player
      * @param streetPropertyCard
