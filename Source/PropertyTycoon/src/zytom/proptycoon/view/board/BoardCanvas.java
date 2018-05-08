@@ -66,6 +66,9 @@ public class BoardCanvas extends JPanel implements Runnable {
     
     private LogoView logoView;
     
+    private LeftDie leftDie;
+    private RightDie rightDie;
+    
     public BoardCanvas (GameFrame parent, BoardController boardController) {
         this.parent = parent;
         setSize(720, 720);
@@ -159,6 +162,12 @@ public class BoardCanvas extends JPanel implements Runnable {
                 boardSize
         );
         logoView = new LogoView(
+                boardSize
+        );
+        leftDie = new LeftDie(
+                boardSize
+        );
+        rightDie = new RightDie(
                 boardSize
         );
     }
@@ -364,6 +373,8 @@ public class BoardCanvas extends JPanel implements Runnable {
         potLuckDeckCell.render(g);
         opportunityKnocksDeckCell.render(g);
         logoView.render(g);
+        leftDie.render(g);
+        rightDie.render(g);
     }
     
     @Override

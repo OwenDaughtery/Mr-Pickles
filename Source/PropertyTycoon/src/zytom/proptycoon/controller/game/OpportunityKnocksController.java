@@ -25,6 +25,9 @@ public class OpportunityKnocksController {
 
     /**
      * Method Calls the model to pick up the first card, performs the actions on the card , returns the card to the bank
+     * @return 
+     * @throws zytom.proptycoon.model.Board.CellNotFoundException
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
     public OpportunityKnocksCard pickupCard() throws Board.CellNotFoundException, AssetOwner.AssetNotFoundException {
         OpportunityKnocksCard opportunityKnocksCard = bank.getAssetCollection().getOpportunityKnocksCards().get(0);
