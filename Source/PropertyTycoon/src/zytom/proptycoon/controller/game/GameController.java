@@ -5,6 +5,7 @@ import zytom.proptycoon.model.Game;
 import zytom.proptycoon.model.Player;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  * Creates
@@ -37,6 +38,7 @@ public class GameController {
         this.startTurn = new StartTurn(game.getBank(),this);
         this.endTurnController = new EndTurnController(this.game,this);
         this.boardController = new BoardController(game.getBoard());
+        this.playerControllers = new ArrayList<>();
         for (Player player:game.getPlayers()){
             playerControllers.add(new PlayerController(player));
         }
