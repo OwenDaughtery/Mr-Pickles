@@ -19,7 +19,7 @@ public class StationPropertyCardTest {
         rentCosts = new int[6];
         
         rentCosts[0] = 50;  // 0 houses
-        rentCosts[1] = 100; // 1 house
+        rentCosts[1] = 100; // 1 House
         rentCosts[2] = 150; // 2 houses
         rentCosts[3] = 200; // 3 houses
         rentCosts[4] = 250; // 4 houses

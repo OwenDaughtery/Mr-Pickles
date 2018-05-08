@@ -11,9 +11,9 @@ import zytom.proptycoon.model.cell.*;
  *
  */
 public class LandedOnCell {
-    private final Game game;
-    private final GameController gameController;
-    public LandedOnCell(Game game,GameController gameController) {
+    private Game game;
+    private GameController gameController;
+    public LandedOnCell(Game game, GameController gameController) {
         this.game = game;
         this.gameController = gameController;
     }

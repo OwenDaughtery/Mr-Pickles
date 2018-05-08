@@ -24,8 +24,8 @@ public class DiceController {
      * @param board
      * @param bank
      * @throws Board.CellNotFoundException
-     * @throws PlayerController.LandedOnJailException
-     * @throws PlayerController.CellNotFoundException
+     * @throws LandedOnCell.LandedOnJailException
+     * @throws LandedOnCell.CellNotFoundException
      * @throws zytom.proptycoon.model.card.PropertyCard.ToManyDaymHousesException
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
@@ -43,7 +43,7 @@ public class DiceController {
         } else {
             player.move(moveAmount, bank);
             player.setDoublesRolled(0);
-            gameController.getPlayerController().hasLanded(board.getCell(player.getPosition()),board,dice,player);
+            gameController.getLandedOnCell().hasLanded(board.getCell(player.getPosition()),board,dice,player);
         }
 
     }
