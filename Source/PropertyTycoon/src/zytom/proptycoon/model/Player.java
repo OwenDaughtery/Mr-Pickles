@@ -3,6 +3,7 @@
  */
 package zytom.proptycoon.model;
 
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.Transaction;
@@ -26,11 +27,7 @@ public class Player implements AssetOwner {
     private final String name;
     private int position;
     private final AssetCollection assetCollection;
-
-    public enum TokenType {
-        BOOT, SMARTPHONE, GOBLET, HATSTAND, CAT, SPOON
-    }
-    TokenType tokenType;
+    private final TokenType tokenType;
 
     /**
      * 
@@ -43,6 +40,14 @@ public class Player implements AssetOwner {
         this.assetCollection = new AssetCollection(INITIAL_BALANCE);
         this.hasPassedGo =false;
         this.tokenType = tokenType;
+    }
+    
+    /**
+     * @author Tom
+     * @return The type of token this player is represented by.
+     */
+    public TokenType getTokenType() {
+        return this.tokenType;
     }
 
     /**
@@ -283,6 +288,12 @@ public class Player implements AssetOwner {
      */
     public void playerPassedGo(){
         this.hasPassedGo = true;
+    }
+    
+    public void sendToJail() {
+        //So long as 'movingForewards' is false.
+        //No need to pass a bank.
+        this.moveTo(41, false, null);
     }
 
     @Override

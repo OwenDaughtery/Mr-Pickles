@@ -34,7 +34,7 @@ public abstract class PropertyCard extends Card {
         return this.price;
     }
 
-    public abstract int getRent(Dice dice, Player owner,Bank bank)throws ToManyDaymHousesException;
+    public abstract int getRent(Dice dice, Player owner,Bank bank) throws TooManyHousesException;
 
     public void mortagage(){
         this.isMortaged = true;
@@ -52,8 +52,8 @@ public abstract class PropertyCard extends Card {
     }
 
 
-    public static class ToManyDaymHousesException extends Exception {
-        public ToManyDaymHousesException(int numberOfHouses){
+    public static class TooManyHousesException extends Exception {
+        public TooManyHousesException(int numberOfHouses){
             super (
                     "Can't have "+String.valueOf(numberOfHouses) +"houses on property"
             );

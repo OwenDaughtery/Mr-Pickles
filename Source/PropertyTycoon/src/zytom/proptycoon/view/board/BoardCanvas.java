@@ -10,8 +10,11 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.controller.game.BoardController;
+import zytom.proptycoon.controller.game.PlayerController;
 import zytom.proptycoon.view.GameFrame;
+import zytom.proptycoon.view.board.cell.Cell;
 import zytom.proptycoon.view.board.cell.FreeParkingCell;
 import zytom.proptycoon.view.board.cell.GoCell;
 import zytom.proptycoon.view.board.cell.GoToJailCell;
@@ -61,16 +64,31 @@ public class BoardCanvas extends JPanel implements Runnable {
     
     private final GameFrame parent;
     
-    private PotLuckDeckCell potLuckDeckCell;
-    private OpportunityKnocksDeckCell opportunityKnocksDeckCell;
+    private PotLuckDeck potLuckDeckCell;
+    private OpportunityKnocksDeck opportunityKnocksDeckCell;
     
     private LogoView logoView;
     
-    public BoardCanvas (GameFrame parent, BoardController boardController) {
+    private ArrayList<PlayerView> playerViews;
+    private ArrayList<PlayerController> playerControllers;
+    
+    public BoardCanvas (
+            GameFrame parent, 
+            BoardController boardController
+    ) {
         this.parent = parent;
         setSize(720, 720);
         thread = new Thread(this);
-        thread.start();
+        
+        this.playerControllers = null;
+        
+        playerViews = new ArrayList<>();
+        playerViews.add(new PlayerView(TokenType.BOOT));
+        playerViews.add(new PlayerView(TokenType.SMARTPHONE));
+        playerViews.add(new PlayerView(TokenType.GOBLET));
+        playerViews.add(new PlayerView(TokenType.HATSTAND));
+        playerViews.add(new PlayerView(TokenType.CAT));
+        playerViews.add(new PlayerView(TokenType.SPOON));
         initCells(
                 boardController.getStreetNames(),
                 boardController.getStationNames(),
@@ -95,8 +113,46 @@ public class BoardCanvas extends JPanel implements Runnable {
         );
         this.setFocusTraversalKeysEnabled(false);
         this.setFocusable(true);
+        
+        thread.start();
     }
     
+    private void clearPlayerTokens() {
+        for(Cell cell : this.getCells()) {
+            cell.clearTokenViews();
+        }
+    }
+    
+    private void removePlayerToken(PlayerView playerView) {
+        for(Cell cell : this.getCells()) {
+            if (cell.containsTokenView(playerView))
+                cell.removeTokenView(playerView);
+        }
+    }
+    
+    private void addPlayerToken(PlayerView playerView, int cellIndex) {
+        this.getCells().get(cellIndex).addTokenView(playerView);
+    }
+    
+    public void movePlayerToken(TokenType tokenType, int newCellIndex) { 
+        PlayerView playerView = null;        
+        for (PlayerView p : playerViews) {
+            if (p.getTokenType() == tokenType) {
+                playerView = p;
+            }
+        }
+        removePlayerToken(playerView);
+        addPlayerToken(playerView, newCellIndex);
+    }
+    
+    private void updatePlayerTokenPosition(PlayerView tokenView, int newIndex) {
+        for(Cell cell : this.getCells()) {
+            if (cell.containsTokenView(tokenView))
+                cell.removeTokenView(tokenView);
+            break;
+        }
+        this.getCells().get(newIndex).addTokenView(tokenView);
+    }
     
     private void initCells (
             ArrayList<String> streetNames,
@@ -152,15 +208,32 @@ public class BoardCanvas extends JPanel implements Runnable {
                 boardSize, 
                 CELL_PROPORTION
         );
-        potLuckDeckCell = new PotLuckDeckCell(
+        potLuckDeckCell = new PotLuckDeck(
                 boardSize
         );
-        opportunityKnocksDeckCell = new OpportunityKnocksDeckCell(
+        opportunityKnocksDeckCell = new OpportunityKnocksDeck(
                 boardSize
         );
         logoView = new LogoView(
                 boardSize
         );
+    }
+    
+    private ArrayList<Cell> getCells() {
+        ArrayList<Cell> cells = new ArrayList<>();
+        cells.add(goCell);
+        cells.add(jailCell);
+        cells.add(inJailCell);
+        cells.add(goToJailCell);
+        cells.add(freeParkingCell);
+        cells.addAll(this.streetPropertyCells);
+        cells.addAll(this.stationPropertyCells);
+        cells.addAll(this.utilityPropertyCells);
+        cells.addAll(this.potLuckCells);
+        cells.addAll(this.opportunityKnocksCells);
+        cells.add(incomeTaxCell);
+        cells.add(superTaxCell);
+        return cells;
     }
     
     private void initStreetCells(

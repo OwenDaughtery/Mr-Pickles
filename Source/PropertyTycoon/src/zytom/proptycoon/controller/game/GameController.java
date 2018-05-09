@@ -31,7 +31,7 @@ public class GameController {
     public GameController(Game game) throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException {
 
         this.game = game;
-        this.playerController = new PlayerController(this.game,this);
+        this.playerController = new PlayerController();
         this.propertyLandedLogic = new PropertyLandedLogic(game.getPlayers(),game.getBank(),this);
         this.purchasePropertyOption = new PurchasePropertyOption(game.getBank(),this);
         this.opportunityKnocksController = new OpportunityKnocksController(this.game,this,game.getBoard(),game.getBank(),game.getDice(),game.getCurrentPlayer());

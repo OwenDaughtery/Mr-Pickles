@@ -26,10 +26,10 @@ public class DiceController {
      * @throws Board.CellNotFoundException
      * @throws PlayerController.LandedOnJailException
      * @throws PlayerController.CellNotFoundException
-     * @throws zytom.proptycoon.model.card.PropertyCard.ToManyDaymHousesException
+     * @throws zytom.proptycoon.model.card.PropertyCard.TooManyHousesException
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
-    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, PlayerController.LandedOnJailException, PlayerController.CellNotFoundException, PropertyCard.ToManyDaymHousesException, AssetOwner.AssetNotFoundException {
+    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, PlayerController.LandedOnJailException, PlayerController.CellNotFoundException, PropertyCard.TooManyHousesException, AssetOwner.AssetNotFoundException {
         dice.roll();
         int dice1 = dice.getFirstValue();
         int dice2 = dice.getSecondValue();
@@ -43,7 +43,7 @@ public class DiceController {
         } else {
             player.move(moveAmount, bank);
             player.setDoublesRolled(0);
-            gameController.getPlayerController().hasLanded(board.getCell(player.getPosition()),board,dice,player);
+            //gameController.getPlayerController().hasLanded(board.getCell(player.getPosition()),board,dice,player);
         }
 
     }

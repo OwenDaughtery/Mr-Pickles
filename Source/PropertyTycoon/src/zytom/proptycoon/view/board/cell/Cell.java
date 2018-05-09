@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import zytom.proptycoon.view.board.PlayerView;
 
 /**
  *
@@ -21,11 +23,29 @@ public abstract class Cell {
     protected final Point position;
     private final Orientation orientation;
     
+    private final ArrayList<PlayerView> tokenViews;
     
     public Cell(Dimension dimension, Point position, Orientation orientation) {
         this.dimension = dimension;
         this.position = position;
         this.orientation = orientation;
+        tokenViews = new ArrayList<>();
+    }
+    
+    public void clearTokenViews() {
+        tokenViews.clear();
+    }
+    
+    public void addTokenView(PlayerView tokenView) {
+        tokenViews.add(tokenView);
+    }
+    
+    public void removeTokenView(PlayerView tokenView) {
+        tokenViews.remove(tokenView);
+    }
+    
+    public boolean containsTokenView(PlayerView tokenView) {
+        return tokenViews.contains(tokenView);
     }
     
     protected abstract void renderContents(Graphics2D g2);
@@ -42,6 +62,12 @@ public abstract class Cell {
                 return 3 * Math.PI / 2;
         }
         return 0;
+    }
+    
+    private void renderTokens(Graphics2D g2) {
+        for (PlayerView token : tokenViews) {
+            token.render(g2);
+        }
     }
     
     public void render(Graphics g) {
@@ -62,6 +88,8 @@ public abstract class Cell {
                 dimension.height
         );
         renderContents(g2);
+        renderTokens(g2);
+        
         
         // Restore original transform
         g2.setTransform(saveAT);

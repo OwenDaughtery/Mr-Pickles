@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Player;
@@ -35,7 +36,7 @@ public class TransactionTest {
                              dc.createStationPropertyCardDeck(board),
                              dc.createUtilityPropertyCardDeck(board));
         
-        this.zenos = new Player("Zenos", Player.TokenType.SMARTPHONE);
+        this.zenos = new Player("Zenos", TokenType.SMARTPHONE);
         
         this.utilityCards = new ArrayList<>();
         this.stationCards = new ArrayList<>();

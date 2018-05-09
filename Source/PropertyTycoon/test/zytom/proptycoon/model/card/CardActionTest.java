@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.FreeParking;
@@ -30,7 +31,7 @@ public class CardActionTest {
         ArrayList<StationPropertyCard> stationDeck = dc.createStationPropertyCardDeck(board);
         ArrayList<UtilityPropertyCard> utilityDeck = dc.createUtilityPropertyCardDeck(board);
         this.bank = new Bank(dc.createPotLuckDeck(), dc.createOpportunityKnocksDeck(), streetDeck, stationDeck, utilityDeck);
-        this.player = new Player("Zenos", Player.TokenType.BOOT);
+        this.player = new Player("Zenos", TokenType.BOOT);
         this.players = new ArrayList<>();
         this.players.add(player);
     }
@@ -165,9 +166,9 @@ public class CardActionTest {
     @Test
     public void collectFromAll() throws AssetOwner.AssetNotFoundException {
         
-        Player max = new Player("max", Player.TokenType.BOOT);
-        Player tom = new Player("tom", Player.TokenType.CAT);
-        Player ayman = new Player("ayman", Player.TokenType.HATSTAND);
+        Player max = new Player("max", TokenType.BOOT);
+        Player tom = new Player("tom", TokenType.CAT);
+        Player ayman = new Player("ayman", TokenType.HATSTAND);
         
         players.add(max);
         players.add(tom);

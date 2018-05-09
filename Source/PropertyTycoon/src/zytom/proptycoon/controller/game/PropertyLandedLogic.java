@@ -21,7 +21,7 @@ public class PropertyLandedLogic {
         this.gameController = gameController;
     }
 
-    public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.ToManyDaymHousesException{
+    public void landedOnProperty(PropertyCell cell, Player currentPlayer,Dice dice) throws PropertyCard.TooManyHousesException{
         PropertyCard card = cell.getAssociatedCard();
         if(currentPlayer.checkHasAsset(card)){
             //do nothing

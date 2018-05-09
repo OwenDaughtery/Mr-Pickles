@@ -9,6 +9,7 @@ import zytom.proptycoon.model.cell.Cell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 
 import static org.junit.Assert.*;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.deckCreator.DeckCreator;
@@ -23,8 +24,6 @@ public class StreetPropertyCardTest {
     DeckCreator dc;
     Bank bank;
     Board board;
-
-
 
     @Before
     public void init() throws FileNotFoundException, Board.CellNotFoundException, CardAction.InvalidActionException, StreetPropertyCard.InvalidColourGroupException {
@@ -42,7 +41,7 @@ public class StreetPropertyCardTest {
         this.dc = new DeckCreator();
         this.streetPropertyCell = new StreetPropertyCell("BRIGHTON ROAD");
         this.streetPropertyCard = new StreetPropertyCard(this.streetPropertyCell, "BRIGHTON ROAD", 200,rentCosts,50, "RED");
-        this.player =  new Player("zenos", Player.TokenType.BOOT);
+        this.player =  new Player("zenos", TokenType.BOOT);
         this.dice = new Dice();
         this.board = new Board(dc.getPropertyData());
         this.bank = new Bank(dc.createPotLuckDeck(), 

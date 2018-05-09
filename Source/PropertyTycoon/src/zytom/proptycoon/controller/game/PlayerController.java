@@ -6,92 +6,97 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.PropertyCard;
 import zytom.proptycoon.model.cell.*;
+import zytom.proptycoon.view.board.BoardCanvas;
 
 /**
  *
  */
 public class PlayerController {
-    private Game game;
-    private GameController gameController;
-    public PlayerController(Game game,GameController gameController) {
-        this.game = game;
-        this.gameController = gameController;
+    private final Player player;
+    
+    /**
+     * Reference needed for communicating with board view in order
+     * to move around corresponding player token.
+     */
+    private BoardCanvas boardView;
+    
+    
+    public PlayerController(Player player) {
+        this.player = player;
     }
-    public void hasLanded(Cell cell, Board board, Dice dice,Player currentPlayer) throws CellNotFoundException, LandedOnJailException, PropertyCard.ToManyDaymHousesException, Board.CellNotFoundException, AssetOwner.AssetNotFoundException {
-
+    
+    public void setBoardView(BoardCanvas boardView) {
+        this.boardView = boardView;
+    }
+    
+    public void updateTokenView() {
+        if (this.boardView == null) return;
+        this.boardView.movePlayerToken(
+                player.getTokenType(),
+                player.getPosition()
+        );
+    }
+    
+    public void hasLanded(
+            Cell cell, 
+            Board board, 
+            Dice dice,
+            FreeParking freeParking,
+            PotLuckController potLuckController
+    ) 
+            throws CellNotFoundException, 
+            LandedOnJailException, 
+            PropertyCard.TooManyHousesException, 
+            Board.CellNotFoundException, 
+            AssetOwner.AssetNotFoundException 
+    {
         Board.CellType cellType = board.getCellClass(cell);
 
         switch (cellType) {
-
             case GO:
                 //hands off to asset management controller
                 break;
 
             case INCOME_TAX:
-                FreeParking incomeTaxPayment = game.getFreeParking();
-                try {
-                    Transaction transaction = new Transaction(
-                            currentPlayer,
-                            incomeTaxPayment,
-                            new AssetCollection(200),
-                            new AssetCollection(0)
-                    );
-                    transaction.settleTransaction();
-                } catch (AssetOwner.AssetNotFoundException ex) {
-
-                }
-                //try transaction to pay taxman
-                break;
+                hasLandedIncomeTax(player, freeParking);
             case SUPER_TAX:
-                FreeParking superTaxPayment = game.getFreeParking();
-                try {
-                    Transaction transaction = new Transaction(
-                            currentPlayer,
-                            superTaxPayment,
-                            new AssetCollection(100),
-                            new AssetCollection(0)
-                    );
-                    transaction.settleTransaction();
-                } catch (AssetOwner.AssetNotFoundException ex) {
-
-                }
+                hasLandedSuperTax(player, freeParking);
                 break;
             case JAIL:
                 throw new LandedOnJailException();
             case POT_LUCK:
-                gameController.getPotLuckController().pickupCard();
-
-                //draw a potluck card
+                potLuckController.pickupCard();
                 break;
             case GO_TO_JAIL:
-                currentPlayer.moveTo(40, false, game.getBank());
-                //move player to jail
+                player.sendToJail();
                 break;
             case FREE_PARKING:
-                //player receives free parking
-                FreeParking freeParking = game.getFreeParking();
+                //Hand over free parking's entire asset collection
+                //to player.
                 try {
                     Transaction transaction = new Transaction(
                             freeParking,
-                            currentPlayer,
-                            new AssetCollection(game.getFreeParking().getAssetCollection().getMoney()),
+                            player,
+                            freeParking.getAssetCollection(),
                             new AssetCollection(0)
                     );
                     transaction.settleTransaction();
                 } catch (AssetOwner.AssetNotFoundException ex) {
+                    //Do nothing.
+                    //(Won't happen anyway.)
                 }
                 break;
             case JUST_VISITING:
                 //Do nothing
                 break;
             case STREET_PROPERTY:
-                gameController.getPropertyLandedLogic().landedOnProperty((StreetPropertyCell)cell,currentPlayer,dice);
+                gameController.getPropertyLandedLogic().landedOnProperty((StreetPropertyCell)cell,player,dice);
                 break;
             case STATION_PROPERTY:
-                gameController.getPropertyLandedLogic().landedOnProperty((StationPropertyCell)cell,currentPlayer,dice);
+                gameController.getPropertyLandedLogic().landedOnProperty((StationPropertyCell)cell,player,dice);
                 break;
             case UTILITY_PROPERTY:
-                gameController.getPropertyLandedLogic().landedOnProperty((UtilityPropertyCell)cell,currentPlayer,dice);
+                gameController.getPropertyLandedLogic().landedOnProperty((UtilityPropertyCell)cell,player,dice);
                 break;
             case OPPORTUNITY_KNOCKS:
                 gameController.getOpportunityKnocksController().pickupCard();
@@ -102,6 +107,34 @@ public class PlayerController {
 
         }
 
+    }
+
+    private void hasLandedSuperTax(Player currentPlayer, FreeParking freeParking) {
+        try {
+            Transaction transaction = new Transaction(
+                    currentPlayer,
+                    freeParking,
+                    new AssetCollection(100),
+                    new AssetCollection(0)
+            );
+            transaction.settleTransaction();
+        } catch (AssetOwner.AssetNotFoundException ex) {
+            
+        }
+    }
+
+    private void hasLandedIncomeTax(Player currentPlayer, FreeParking freeParking)  {
+        try {
+            Transaction transaction = new Transaction(
+                    currentPlayer,
+                    freeParking,
+                    new AssetCollection(200),
+                    new AssetCollection(0)
+            );
+            transaction.settleTransaction();
+        } catch (AssetOwner.AssetNotFoundException ex) {
+            
+        }
     }
 
     public static class CellNotFoundException extends Exception {

@@ -24,12 +24,12 @@ import zytom.proptycoon.view.board.cell.InJailCell;
  *
  * @author zenos
  */
-public class OpportunityKnocksDeckCell {
+public class OpportunityKnocksDeck {
 
     private BufferedImage image;
     Dimension boardSize;
 
-    public OpportunityKnocksDeckCell(Dimension boardSize) {
+    public OpportunityKnocksDeck(Dimension boardSize) {
         this.boardSize = boardSize;
         try {
             this.image = ImageIO.read(new File("./resources/images/cards/opportunityKnocksCard.png"));

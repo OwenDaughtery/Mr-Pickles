@@ -26,7 +26,6 @@ public class UtilityPropertyCell extends InsideCell {
     private final String price;
     private final ArrayList<String> lines;
     private static final int CHAR_LIMIT = 8;
-    
 
     private BufferedImage tesla;
     private BufferedImage drop;
@@ -63,9 +62,9 @@ public class UtilityPropertyCell extends InsideCell {
     protected void renderContents(Graphics2D g2) {
         g2.setFont(new Font("Monaco", Font.PLAIN, 8));
         
-        float yPos = dimension.height * 0.325f;
+        float yPos = dimension.height * 0.175f;
         for (int i=0; i<lines.size(); i++) {
-            g2.drawString(lines.get(i), 6, yPos);
+            g2.drawString(lines.get(i), 8, yPos);
             yPos += 10.0f;
         }
         

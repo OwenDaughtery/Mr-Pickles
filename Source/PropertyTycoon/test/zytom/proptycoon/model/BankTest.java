@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.StreetPropertyCard.Colour;
@@ -60,10 +61,10 @@ public class BankTest {
     @Test
     public void getAssetCollectionWithDeckCreator() throws FileNotFoundException, Board.CellNotFoundException, Game.PlayerNumberException, CardAction.InvalidActionException, StreetPropertyCard.InvalidColourGroupException {
         ArrayList<Player> players = new ArrayList<>();
-        Player player1 = new Player("zenos", Player.TokenType.SMARTPHONE);
-        Player player2 = new Player("Tom", Player.TokenType.BOOT);
-        Player player3 = new Player("Max", Player.TokenType.GOBLET);
-        Player player4 = new Player("Ayman", Player.TokenType.CAT);
+        Player player1 = new Player("zenos", TokenType.SMARTPHONE);
+        Player player2 = new Player("Tom", TokenType.BOOT);
+        Player player3 = new Player("Max", TokenType.GOBLET);
+        Player player4 = new Player("Ayman", TokenType.CAT);
         players.add(player1);
         players.add(player2);
         players.add(player3);

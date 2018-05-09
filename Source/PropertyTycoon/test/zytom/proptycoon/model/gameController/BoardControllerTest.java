@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.controller.game.BoardController;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Game;
@@ -30,11 +31,11 @@ public class BoardControllerTest {
     
     public BoardControllerTest() throws Game.PlayerNumberException, CardAction.InvalidActionException, FileNotFoundException, Board.CellNotFoundException, StreetPropertyCard.InvalidColourGroupException {    
         this.players = new ArrayList<>();
-        this.players.add(new Player("zenos", Player.TokenType.BOOT));
-        this.players.add(new Player("tom", Player.TokenType.CAT));
-        this.players.add(new Player("ayman", Player.TokenType.HATSTAND));      
-        this.players.add(new Player("max", Player.TokenType.GOBLET));      
-        this.players.add(new Player("owen", Player.TokenType.SPOON));
+        this.players.add(new Player("zenos", TokenType.BOOT));
+        this.players.add(new Player("tom", TokenType.CAT));
+        this.players.add(new Player("ayman", TokenType.HATSTAND));      
+        this.players.add(new Player("max", TokenType.GOBLET));      
+        this.players.add(new Player("owen", TokenType.SPOON));
         Player startingPlayer = players.get(0);
         this.game = new Game(players, startingPlayer);
         this.boardController = new BoardController(game.getBoard());

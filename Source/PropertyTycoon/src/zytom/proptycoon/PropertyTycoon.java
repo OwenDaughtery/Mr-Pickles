@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.controller.game.GameController;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Game;
@@ -31,8 +32,8 @@ public class PropertyTycoon {
     private static void startGame() {
         
         ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player("p1", Player.TokenType.BOOT));
-        players.add(new Player("p2", Player.TokenType.CAT));
+        players.add(new Player("p1", TokenType.BOOT));
+        players.add(new Player("p2", TokenType.CAT));
         try {
             Game game = new Game(
                     players, players.get(0)
