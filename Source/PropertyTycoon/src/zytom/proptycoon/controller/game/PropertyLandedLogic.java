@@ -12,9 +12,9 @@ import zytom.proptycoon.model.cell.PropertyCell;
 import java.util.ArrayList;
 
 public class PropertyLandedLogic {
-    private ArrayList<Player> players;
-    private Bank bank;
-    private GameController gameController;
+    private final ArrayList<Player> players;
+    private final Bank bank;
+    private final GameController gameController;
     public PropertyLandedLogic( ArrayList<Player> players,Bank bank, GameController gameController){
         this.players = players;
         this.bank = bank;

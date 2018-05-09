@@ -23,7 +23,8 @@ import javax.imageio.ImageIO;
  */
 public class GoCell extends CornerCell {
     
-    private BufferedImage image;
+    private BufferedImage goImage;
+    private BufferedImage arrowImage;
     
     public GoCell(Dimension boardSize, float boardProportion)  {
         super(
@@ -32,7 +33,8 @@ public class GoCell extends CornerCell {
                 Corner.BOTTOMRIGHT
         );
         try {
-            this.image = ImageIO.read(new File("./resources/images/cells/go_arrow.png"));
+            this.goImage = ImageIO.read(new File("./resources/images/cells/go.png"));
+            this.arrowImage = ImageIO.read(new File("./resources/images/cells/go_arrow.png"));
         } catch (IOException ex) {
             Logger.getLogger(GoCell.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -40,11 +42,12 @@ public class GoCell extends CornerCell {
     
     @Override
     protected void renderContents(Graphics2D g2) {
-        g2.setColor(Color.black);
-        g2.drawString("GO", 30, 45);
+        //g2.setColor(Color.black);
+        //g2.drawString("GO", 30, 45);
         AffineTransform at = g2.getTransform();
         g2.scale(0.5, 0.5);
-        g2.drawImage(image, 35, 80, null);
+        g2.drawImage(goImage, 40, 30, null);
+        g2.drawImage(arrowImage, 40, 100, null);
         g2.setTransform(at);
         g2.setFont(new Font("Arial", Font.BOLD, 16));
     }

@@ -8,9 +8,6 @@ import zytom.proptycoon.model.card.PropertyCard;
 import zytom.proptycoon.model.cell.*;
 import zytom.proptycoon.view.board.BoardCanvas;
 
-/**
- *
- */
 public class PlayerController {
     private final Player player;
     
@@ -142,25 +139,6 @@ public class PlayerController {
         ) {
             super(
                     "Cell not Found"
-            );
-        }
-
-        /**
-         * Gets the message
-         *
-         * @return The exception message.
-         */
-        @Override
-        public String getMessage() {
-            return super.getMessage();
-        }
-    }
-
-    public static class LandedOnJailException extends Exception {
-        public LandedOnJailException(
-        ) {
-            super(
-                    "Landed on jail cell"
             );
         }
 

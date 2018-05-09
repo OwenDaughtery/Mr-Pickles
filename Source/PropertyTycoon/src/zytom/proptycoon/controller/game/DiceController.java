@@ -43,7 +43,7 @@ public class DiceController {
         } else {
             player.move(moveAmount, bank);
             player.setDoublesRolled(0);
-            //gameController.getPlayerController().hasLanded(board.getCell(player.getPosition()),board,dice,player);
+            gameController.getLandedOnCell().hasLanded(board.getCell(player.getPosition()),board,dice,player);
         }
 
     }

@@ -5,13 +5,13 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.OpportunityKnocksCard;
 
 public class OpportunityKnocksController {
-    private Game game;
-    private GameController gameController;
-    private Board board ;
-    private Dice dice;
-    private Player currentplayer;
-    private Bank bank;
-    private FreeParking freeParking;
+    private final Game game;
+    private final GameController gameController;
+    private final Board board ;
+    private final Dice dice;
+    private final Player currentplayer;
+    private final Bank bank;
+    private final FreeParking freeParking;
 
     public OpportunityKnocksController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;
@@ -25,6 +25,9 @@ public class OpportunityKnocksController {
 
     /**
      * Method Calls the model to pick up the first card, performs the actions on the card , returns the card to the bank
+     * @return 
+     * @throws zytom.proptycoon.model.Board.CellNotFoundException
+     * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
     public OpportunityKnocksCard pickupCard() throws Board.CellNotFoundException, AssetOwner.AssetNotFoundException {
         OpportunityKnocksCard opportunityKnocksCard = bank.getAssetCollection().getOpportunityKnocksCards().get(0);

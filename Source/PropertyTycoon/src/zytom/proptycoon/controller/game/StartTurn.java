@@ -5,7 +5,7 @@ import zytom.proptycoon.model.Player;
 
 public class StartTurn {
 
-    private Bank bank;
+    private final Bank bank;
 
     GameController gameController;
     public StartTurn(Bank bank, GameController gameController) {

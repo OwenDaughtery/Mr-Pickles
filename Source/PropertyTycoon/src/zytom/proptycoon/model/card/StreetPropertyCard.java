@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * 
  * @author Ayman Free
  *
- * Stores rent prices and house prices.
+ * Stores rent prices and House prices.
  */
 public class StreetPropertyCard extends PropertyCard {
     private final int[] rentCost;
