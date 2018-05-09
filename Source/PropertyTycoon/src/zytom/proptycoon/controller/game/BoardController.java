@@ -18,6 +18,10 @@ public class BoardController {
         this.camera = new CameraController();
     }
     
+    public Board getBoard() {
+        return board;
+    }
+    
     public CameraController getCameraController() {
         return camera;
     }
@@ -56,34 +60,34 @@ public class BoardController {
     }
 
     public ArrayList<String>getStreetPrices(){
-        ArrayList<String>streetNames = new ArrayList<>();
+        ArrayList<String>streetPrices = new ArrayList<>();
         for (Cell c:board.getCells()
                 ) {
             if(c instanceof StreetPropertyCell){
-                streetNames.add(String.valueOf(((StreetPropertyCell) c).getAssociatedCard().getPrice()));
+                streetPrices.add(String.valueOf(((StreetPropertyCell) c).getAssociatedCard().getPrice()));
             }
         }
-        return streetNames;
+        return streetPrices;
     }
     public ArrayList<String>getStationPrices(){
-        ArrayList<String>stationNames = new ArrayList<>();
+        ArrayList<String>stationPrices = new ArrayList<>();
         for (Cell c:board.getCells()
                 ) {
             if(c instanceof StationPropertyCell){
-                stationNames.add(String.valueOf(((StationPropertyCell) c).getAssociatedCard().getPrice()));
+                stationPrices.add(String.valueOf(((StationPropertyCell) c).getAssociatedCard().getPrice()));
             }
         }
-        return stationNames;
+        return stationPrices;
     }
     public ArrayList<String>getUtilityPrices(){
-        ArrayList<String>utilityNames = new ArrayList<>();
+        ArrayList<String>utilityPrices = new ArrayList<>();
         for (Cell c:board.getCells()
                 ) {
             if(c instanceof UtilityPropertyCell){
-                utilityNames.add(String.valueOf(((UtilityPropertyCell) c).getAssociatedCard().getPrice()));
+                utilityPrices.add(String.valueOf(((UtilityPropertyCell) c).getAssociatedCard().getPrice()));
             }
         }
-        return utilityNames;
+        return utilityPrices;
     }
     
     public String getIncomeTaxPrice() {

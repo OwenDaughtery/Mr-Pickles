@@ -1,25 +1,30 @@
 package zytom.proptycoon.controller.game;
 
-import zytom.proptycoon.model.Board;
+import java.util.ArrayList;
+import zytom.proptycoon.model.Dice;
 import zytom.proptycoon.model.Game;
 import zytom.proptycoon.model.Player;
-
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 /**
  * Creates
  */
 public class GameController {
+
     private final Game game;
     private BoardController boardController;
     private ArrayList<PlayerController> playerControllers;
-    private DiceController diceController;
+    private final DiceController diceController;
     private int playerTurn;
 
-    public GameController(Game game){
+    public GameController(Game game) {
+        //Store game reference.
         this.game = game;
+        //Set up board controller.
+        this.boardController = new BoardController(
+                this.game.getBoard()
+        );
         //Set up player controllers.
+        this.playerControllers = new ArrayList<>();
         game.getPlayers().stream().forEach((player) -> {
             this.playerControllers.add(
                     new PlayerController(
@@ -28,9 +33,66 @@ public class GameController {
             );
         });
         playerTurn = 0;
+        //Set up dice controller.
+        this.diceController = new DiceController(
+                this.game.getDice()
+        );
+        //Start first turn.
+        startTurn();
     }
     
+    public BoardController getBoardController() {
+        return this.boardController;
+    }
     
+    private void startTurn() {
+        //Show/enable roll dice UI.
+        //TODO.
+    }
+    
+    public void diceRolled() {
+        //Get current player controller.
+        PlayerController playerController = getCurrentPlayerController();
+        //Get dice instance
+        Dice dice = diceController.getDice();
+        //Get other players (whose turn it is currently not).
+        ArrayList<Player> otherPlayers = new ArrayList<>();
+        game.getPlayers().stream().filter(
+                (player) -> (player != playerController.getPlayer())
+        ).forEach((player) -> {
+            otherPlayers.add(player);
+        });
+        //Tell player that dice have been rolled.
+        playerController.diceRolled(
+                dice.getFirstValue(),
+                dice.getSecondValue(),
+                boardController.getBoard(),
+                game.getBank(),
+                dice,
+                game.getFreeParking(),
+                otherPlayers
+        );
+    }
+
+    public void rollDice() {
+        //Get current player controller.
+        PlayerController playerController = getCurrentPlayerController();
+        //Roll dice.
+        this.diceController.roll(
+                playerController
+        );
+        //Move to next phase.
+        diceRolled();
+    }
+    
+    public void nextTurn() {
+        incrementPlayerTurn();
+        startTurn();
+    }
+
+    private PlayerController getCurrentPlayerController() {
+        return this.playerControllers.get(playerTurn);
+    }
 
     /**
      *
@@ -43,15 +105,16 @@ public class GameController {
     /**
      * Changes player turn
      */
-    private void incrementPlayerTurn(){
+    private void incrementPlayerTurn() {
         playerTurn = playerTurn++ % game.getPlayers().size();
     }
 
     /**
      * Sets players turn
+     *
      * @param turn
      */
-    private void setPlayerTurn(int turn){
+    private void setPlayerTurn(int turn) {
         playerTurn = turn;
     }
 

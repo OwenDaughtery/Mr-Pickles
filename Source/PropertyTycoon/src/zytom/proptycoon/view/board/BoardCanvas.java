@@ -75,6 +75,8 @@ public class BoardCanvas extends JPanel implements Runnable {
     private final ArrayList<PlayerView> playerViews;
     private final ArrayList<PlayerController> playerControllers;
     
+    private final RollDiceButton rollDiceButton;
+    
     public BoardCanvas (
             GameFrame parent, 
             BoardController boardController
@@ -116,6 +118,10 @@ public class BoardCanvas extends JPanel implements Runnable {
         );
         this.setFocusTraversalKeysEnabled(false);
         this.setFocusable(true);
+        
+        rollDiceButton = new RollDiceButton();
+        this.add(rollDiceButton);
+        
         
         thread.start();
     }

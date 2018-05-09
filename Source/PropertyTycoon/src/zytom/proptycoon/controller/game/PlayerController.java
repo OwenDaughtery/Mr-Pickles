@@ -60,12 +60,12 @@ public class PlayerController {
             ArrayList<Player> otherPlayers
     ) {
         int moveAmount = dice1 + dice2;
-        if (player.getDoublesRolled() > 3) {
+        if (player.getDoublesRolled() == 3) {
             player.sendToJail();
             player.clearDoublesRolled();
         } else {
             player.move(moveAmount, bank);
-            player.clearDoublesRolled();
+            
             try {
                 Cell newCell = board.getCell(
                         player.getPosition()
@@ -167,10 +167,12 @@ public class PlayerController {
                 );
                 break;
             default:
-                throw new CellNotFoundException();
-
+                //throw new CellNotFoundException();
         }
-
+    }
+    
+    public void manageAssets() {
+        
     }
 
     private void hasLandedProperty(
