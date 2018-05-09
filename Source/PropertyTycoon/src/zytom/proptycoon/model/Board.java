@@ -19,6 +19,8 @@ import zytom.proptycoon.model.cell.SuperTaxCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 public final class Board {
+    public static final int JAIL_INDEX = 0;
+    
     ArrayList<Cell> cells = new ArrayList<>();
 
     /**

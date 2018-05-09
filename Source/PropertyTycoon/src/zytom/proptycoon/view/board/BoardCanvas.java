@@ -72,9 +72,8 @@ public class BoardCanvas extends JPanel implements Runnable {
     private LeftDie leftDie;
     private RightDie rightDie;
     
-    public BoardCanvas (GameFrame parent, BoardController boardController) {
-    private ArrayList<PlayerView> playerViews;
-    private ArrayList<PlayerController> playerControllers;
+    private final ArrayList<PlayerView> playerViews;
+    private final ArrayList<PlayerController> playerControllers;
     
     public BoardCanvas (
             GameFrame parent, 

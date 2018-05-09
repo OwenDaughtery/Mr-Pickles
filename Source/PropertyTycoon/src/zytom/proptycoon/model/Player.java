@@ -38,7 +38,7 @@ public class Player implements AssetOwner {
         this.name = name;
         this.position = 0;
         this.assetCollection = new AssetCollection(INITIAL_BALANCE);
-        this.hasPassedGo =false;
+        this.hasPassedGo = false;
         this.tokenType = tokenType;
     }
     
@@ -207,12 +207,23 @@ public class Player implements AssetOwner {
     }
     
 
+    /*
     /**
      * Invoked everytime a player rolls a double
      * @param doublesRolled The number of times the player rolled a double 
      */
+    /*
     public void setDoublesRolled(int doublesRolled) {
         this.doublesRolled = doublesRolled;
+    }
+    */
+    
+    public void incrementDoublesRolled() {
+        this.doublesRolled ++;
+    }
+    
+    public void clearDoublesRolled() {
+        this.doublesRolled = 0;
     }
     
 
@@ -293,7 +304,7 @@ public class Player implements AssetOwner {
     public void sendToJail() {
         //So long as 'movingForewards' is false.
         //No need to pass a bank.
-        this.moveTo(41, false, null);
+        this.moveTo(Board.JAIL_INDEX, false, null);
     }
 
     @Override

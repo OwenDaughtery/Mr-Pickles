@@ -273,7 +273,8 @@ public class StreetPropertyCardPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9))
+                .addComponent(jLabel9)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLabel7.getAccessibleContext().setAccessibleName("Houses cost £[x] each");

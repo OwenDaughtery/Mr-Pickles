@@ -1,51 +1,60 @@
 package zytom.proptycoon.controller.game;
 
+import java.util.ArrayList;
 import zytom.proptycoon.model.Bank;
 import zytom.proptycoon.model.Board;
 import zytom.proptycoon.model.Dice;
+import zytom.proptycoon.model.FreeParking;
 import zytom.proptycoon.model.Player;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.PropertyCard;
+import zytom.proptycoon.model.cell.Cell;
 
 public class DiceController {
+
     private final Dice dice;
     private final GameController gameController;
 
-    public DiceController(Dice dice,GameController gameController) {
+    public DiceController(
+            Dice dice,
+            GameController gameController) {
         this.dice = dice;
         this.gameController = gameController;
 
     }
 
-
     /**
-     * Rolls the dice and moves the player. If they roll a double, increment the tile.
-     * @param player
+     * Rolls the dice and moves the player. If they roll a double, increment the
+     * tile.
+     *
+     * @param playerController
+     * @param otherPlayers
      * @param board
      * @param bank
+     * @param freeParking
      * @throws Board.CellNotFoundException
-     * @throws PlayerController.LandedOnJailException
      * @throws PlayerController.CellNotFoundException
      * @throws zytom.proptycoon.model.card.PropertyCard.TooManyHousesException
      * @throws zytom.proptycoon.model.assets.AssetOwner.AssetNotFoundException
      */
-    public void roll(Player player, Board board, Bank bank) throws Board.CellNotFoundException, PlayerController.LandedOnJailException, PlayerController.CellNotFoundException, PropertyCard.TooManyHousesException, AssetOwner.AssetNotFoundException {
+    public void roll(
+            PlayerController playerController,
+            ArrayList<Player> otherPlayers,
+            Board board,
+            Bank bank,
+            FreeParking freeParking
+    ) throws
+            Board.CellNotFoundException,
+            PlayerController.CellNotFoundException,
+            PropertyCard.TooManyHousesException,
+            AssetOwner.AssetNotFoundException {
+        Player player = playerController.getPlayer();
         dice.roll();
         int dice1 = dice.getFirstValue();
         int dice2 = dice.getSecondValue();
-        int moveAmount = dice1 + dice2;
         if (dice1 == dice2) {
-            player.setDoublesRolled(player.getDoublesRolled()+1);
+            player.incrementDoublesRolled();
         }
-        if (player.getDoublesRolled() > 3) {
-            player.moveTo(40, false, bank);
-            player.setDoublesRolled(0);
-        } else {
-            player.move(moveAmount, bank);
-            player.setDoublesRolled(0);
-            gameController.getLandedOnCell().hasLanded(board.getCell(player.getPosition()),board,dice,player);
-        }
-
     }
 
 }

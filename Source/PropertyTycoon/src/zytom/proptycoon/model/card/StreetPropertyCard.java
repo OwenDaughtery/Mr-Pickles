@@ -69,7 +69,8 @@ public class StreetPropertyCard extends PropertyCard {
 
     }
 
-    public int getRent(Dice dice, Player player, Bank bank) throws TooManyHousesException {
+    @Override
+    public int getRent(Dice dice, Player player, Bank bank) {
         StreetPropertyCell propCell = (StreetPropertyCell)cellRef;
         if (propCell.getNumberOfBuildings() > 0 && propCell.getNumberOfBuildings() < 6 ) {
             return rentCost[propCell.getNumberOfBuildings()];
@@ -90,9 +91,8 @@ public class StreetPropertyCard extends PropertyCard {
             } else {
                 return rentCost[0];
             }
-        }else{
-            throw new TooManyHousesException(propCell.getNumberOfBuildings());
         }
+        return 0;
     }
 
     
