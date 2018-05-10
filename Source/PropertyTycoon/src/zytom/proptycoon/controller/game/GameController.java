@@ -123,7 +123,7 @@ public class GameController {
      * 
      * @return player controller
      */
-    public PlayerController getCurrentPlayerController() {
+    private PlayerController getCurrentPlayerController() {
         return this.playerControllers.get(playerTurn);
     }
 
@@ -131,14 +131,14 @@ public class GameController {
      *
      * @return index of player whose turn it is.
      */
-    public int getPlayerTurn() {
+    private int getPlayerTurn() {
         return playerTurn;
     }
 
     /**
      * Moves turn onto next player.
      */
-    public void incrementPlayerTurn() {
+    private void incrementPlayerTurn() {
         int numberOfPlayers = this.playerControllers.size();
         playerTurn = (playerTurn == numberOfPlayers - 1) ? 0 : playerTurn + 1;
     }
@@ -148,7 +148,7 @@ public class GameController {
      *
      * @param turn
      */
-    public void setPlayerTurn(int turn) {
+    private void setPlayerTurn(int turn) {
         playerTurn = turn;
     }
 

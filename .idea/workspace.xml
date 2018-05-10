@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5010686-51f6-4f7e-a987-fc1abb4d787a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/AssetManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/AssetManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/EndTurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/EndTurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/CameraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/CameraController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LandedOnPropertyScenario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LandedOnPropertyScenario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PurchasePropertyOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PurchasePropertyOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/RetireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/RetireController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/StartTurn.java" beforeDir="false" afterPath="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/StartTurn.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Source/PropertyTycoon/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,35 +33,21 @@
       <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="122" column="7" lean-forward="true" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
+            <state relative-caret-position="652">
+              <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="11" />
+              <folding>
+                <element signature="e#2750#2751#0" expanded="true" />
+                <element signature="e#2811#2812#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EndTurnController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EndTurnController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/EndTurnController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssetManagementController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/AssetManagementController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="56" column="15" selection-start-line="54" selection-start-column="14" selection-end-line="56" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PotLuckController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PotLuckController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="105">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -66,44 +55,21 @@
       <file leaf-file-name="DiceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="495">
               <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+              <folding>
+                <element signature="e#807#808#0" expanded="true" />
+                <element signature="e#839#840#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CameraController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CameraController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/CameraController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PlayerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RetireController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/RetireController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PropertyTycoon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/PropertyTycoon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+              <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -149,19 +115,17 @@
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PurchasePropertyOption.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LandedOnPropertyScenario.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/BoardController.java" />
-        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PlayerController.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/RetireController.java" />
-        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/EndTurnController.java" />
-        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/AssetManagementController.java" />
         <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java" />
+        <option value="$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="43" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="38" />
     <option name="y" value="22" />
-    <option name="width" value="1397" />
+    <option name="width" value="1402" />
     <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -172,7 +136,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,12 +216,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -273,7 +236,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PropertyTycoon">
+  <component name="RunManager" selected="JUnit.zytom.proptycoon.model in Mr-Pickles">
     <configuration name="PropertyTycoon" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="zytom.proptycoon.PropertyTycoon" />
       <module name="Mr-Pickles" />
@@ -403,9 +366,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PropertyTycoon" />
         <item itemvalue="JUnit.zytom.proptycoon.model in Mr-Pickles" />
         <item itemvalue="JUnit.zytom.proptycoon in Mr-Pickles" />
+        <item itemvalue="Application.PropertyTycoon" />
         <item itemvalue="JUnit.DiceTest" />
       </list>
     </recent_temporary>
@@ -429,31 +392,31 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="22" width="1397" height="878" extended-state="0" />
+    <frame x="43" y="22" width="1397" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="8" />
       <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.18950064" />
-      <window_info anchor="right" id="Code explorer" order="9" />
+      <window_info active="true" anchor="bottom" id="Messages" order="16" visible="true" weight="0.0" />
+      <window_info anchor="right" id="Code explorer" />
       <window_info anchor="right" id="Palette&#9;" order="11" />
       <window_info id="Image Layers" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="12" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.043533932" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.043533932" />
       <window_info anchor="bottom" id="Version Control" order="14" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info id="Capture Tool" order="11" />
       <window_info id="Designer" order="8" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.36605167" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.35571957" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="12" />
       <window_info anchor="right" id="Theme Preview" order="10" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info id="Favorites" order="9" side_tool="true" />
-      <window_info anchor="right" id="Code Iris" order="9" />
+      <window_info anchor="right" id="Code Iris" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -466,20 +429,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/CameraController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/test/zytom/proptycoon/model/cell/PotLuckCellTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -632,6 +581,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -642,7 +594,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/OpportunityKnocksDeckCell.java" />
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/OpportunityKnocksDeckCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="34" column="73" selection-start-line="34" selection-start-column="73" selection-end-line="34" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/cell/PotLuckCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -657,7 +615,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/PotLuckDeckCell.java" />
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/board/PotLuckDeckCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/view/dice/DiceCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -679,7 +643,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LandedOnCell.java" />
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/LandedOnCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/RunGame.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/InitaliseGame.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/StartGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
@@ -687,10 +663,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/PropertyTycoon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="40" column="64" selection-start-line="40" selection-start-column="64" selection-end-line="40" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/Common.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PotLuckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -708,6 +698,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="184" column="46" selection-start-line="184" selection-start-column="46" selection-end-line="184" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/RetireController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/OpportunityKnocksController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -715,10 +719,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="11" />
+          <folding>
+            <element signature="e#2750#2751#0" expanded="true" />
+            <element signature="e#2811#2812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/EndTurnController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/DiceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="495">
           <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding>
+            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -743,59 +769,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/AssetManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/CameraController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/PropertyTycoon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PlayerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/RetireController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="122" column="7" lean-forward="true" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/PotLuckController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/AssetManagementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="56" column="15" selection-start-line="54" selection-start-column="14" selection-end-line="56" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/PropertyTycoon/src/zytom/proptycoon/controller/game/EndTurnController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
         </state>
       </provider>
     </entry>

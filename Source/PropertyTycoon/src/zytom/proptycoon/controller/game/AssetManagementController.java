@@ -52,9 +52,9 @@ public class AssetManagementController {
             StreetPropertyCell cell = (StreetPropertyCell) p.getCellRef();
             int buildingNum = cell.getNumberOfBuildings();
 
-//            if (!player.checkHasAsset(p)) {
-//                ownsAllProperly = false;
-//            }
+            if (!player.checkHasAsset(p)) {
+                ownsAllProperly = false;
+            }
             if (buildingNum <= lowest) {
                 lowest = buildingNum;
             }
