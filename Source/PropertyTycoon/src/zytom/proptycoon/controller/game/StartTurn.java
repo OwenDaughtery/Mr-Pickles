@@ -13,6 +13,10 @@ public class StartTurn {
         this.gameController = gameController;
     }
 
+    /**
+     * Starts the events which happen to a player at the beginning of the turn
+     * @param currentPlayer
+     */
     public void startTurnSequence(Player currentPlayer) {
         if (currentPlayer.getPosition() == 40)
         {

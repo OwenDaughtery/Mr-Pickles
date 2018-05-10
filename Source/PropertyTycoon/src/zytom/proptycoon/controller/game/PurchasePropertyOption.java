@@ -9,6 +9,9 @@ import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
 
+/**
+ *  @author Ayman, Max, Tom
+ */
 public class PurchasePropertyOption {
     private final Bank bank;
     private final GameController gameController;
@@ -27,6 +30,12 @@ public class PurchasePropertyOption {
 
     }
 
+    /**
+     *
+     * Player purchases a street property from the bank
+     * @param card
+     * @param player
+     */
     public void purchaseProperty(StreetPropertyCard card,Player player){
         try{
 
@@ -43,6 +52,11 @@ public class PurchasePropertyOption {
         }
     }
 
+    /**
+     * Player purchases a station property from the bank
+     * @param card
+     * @param player
+     */
     public void purchaseProperty(StationPropertyCard card,Player player){
         try{
 
@@ -58,6 +72,12 @@ public class PurchasePropertyOption {
 
         }
     }
+
+    /**
+     * Player purchases a utility property from the bank
+     * @param card
+     * @param player
+     */
     public void purchaseProperty(UtilityPropertyCard card,Player player){
         try{
 

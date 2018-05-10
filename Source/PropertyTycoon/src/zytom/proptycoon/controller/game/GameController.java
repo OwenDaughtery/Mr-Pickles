@@ -49,7 +49,10 @@ public class GameController {
         //Show/enable roll dice UI.
         //TODO.
     }
-    
+
+    /**
+     * Updats the view
+     */
     public void diceRolled() {
         //Get current player controller.
         PlayerController playerController = getCurrentPlayerController();

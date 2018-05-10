@@ -8,8 +8,8 @@ import java.awt.event.KeyListener;
 import zytom.proptycoon.view.board.BoardCamera;
 
 /**
- *
- * @author utopia
+ * Moves camera around board canvas
+ * @author Tom
  */
 public class CameraController implements KeyListener {
     private BoardCamera camera;
