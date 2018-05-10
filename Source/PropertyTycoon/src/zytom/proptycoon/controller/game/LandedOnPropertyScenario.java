@@ -16,6 +16,10 @@ import zytom.proptycoon.model.cell.StationPropertyCell;
 import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
+/**
+ * @author Max Ayman Tom
+ * Handels events which unfold after a player lands on a property
+ */
 public class LandedOnPropertyScenario {
     private final PlayerController currentPlayerController;
     private final Player currentPlayer;
@@ -36,7 +40,10 @@ public class LandedOnPropertyScenario {
         this.dice = dice;
     }
 
-
+    /**
+     * Do action on street property cell which player is on
+     * @param cell
+     */
     public void landedOnProperty(StreetPropertyCell cell) {
         StreetPropertyCard card = (StreetPropertyCard) cell.getAssociatedCard();
         if (currentPlayer.checkHasAsset(card)) {
@@ -57,7 +64,11 @@ public class LandedOnPropertyScenario {
         }
 
     }
-    
+
+    /**
+     * Do action on station property cell which player is on
+     * @param cell
+     */
     public void landedOnProperty(StationPropertyCell cell) {
         StationPropertyCard card = (StationPropertyCard) cell.getAssociatedCard();
         if (currentPlayer.checkHasAsset(card)) {
@@ -77,7 +88,11 @@ public class LandedOnPropertyScenario {
             tryToPayRent(propertyOwner, rent);
         }
     }
-    
+
+    /**
+     * Do action on utility property cell which player is on
+     * @param cell
+     */
     public void landedOnProperty(UtilityPropertyCell cell) {
         UtilityPropertyCard card = (UtilityPropertyCard) cell.getAssociatedCard();
         if (currentPlayer.checkHasAsset(card)) {
@@ -98,6 +113,11 @@ public class LandedOnPropertyScenario {
         }
     }
 
+    /**
+     * current player pays rent to property owner
+     * @param propertyOwner
+     * @param rent
+     */
     private void tryToPayRent(Player propertyOwner, int rent) {
         //Attempt to pay rent.
         try {
@@ -121,6 +141,11 @@ public class LandedOnPropertyScenario {
         }
     }
 
+    /**
+     * Finds the property owner of the property card
+     * @param card
+     * @return player who owns card
+     */
     private Player findPropertyOwner(PropertyCard card) {
         //Find who owns the card for this property.
         Player propertyOwner = null;

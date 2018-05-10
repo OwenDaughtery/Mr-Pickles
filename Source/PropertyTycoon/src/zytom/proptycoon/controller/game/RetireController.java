@@ -16,7 +16,12 @@ public class RetireController {
         this.game = game;
     }
 
-    public void retire() throws AssetOwner.AssetNotFoundException {
+    /**
+     * @author Ayman Max
+     * Moves currents players assets back to the bank and then retires this player
+     * @throws AssetOwner.AssetNotFoundException
+     */
+    public void retire(Player player) throws AssetOwner.AssetNotFoundException {
         Player currentPlayer = game.getCurrentPlayer();
 
         gameController.incrementPlayerTurn();

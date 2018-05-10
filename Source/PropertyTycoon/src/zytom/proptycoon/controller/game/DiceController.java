@@ -14,8 +14,7 @@ public class DiceController {
     }
 
     /**
-     * Rolls the dice and moves the player. If they roll a double, increment the
-     * tile.
+     * Rolls the dice and moves the player. If they roll a double, increment doublesRolled
      *
      * @param playerController
      */
@@ -30,8 +29,11 @@ public class DiceController {
             player.incrementDoublesRolled();
         }
     }
-    
-    
+
+    /**
+     *
+     * @return dice
+     */
     public Dice getDice() {
         return this.dice;
     }
