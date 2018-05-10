@@ -112,4 +112,14 @@ public class PlayerTest {
     public void getInitialBalance() {
         assertEquals(1500, player.getAssetCollection().getMoney());
     }
+    
+    @Test
+    public void playerStartsAtGo() {
+        assertEquals(0, player.getPosition());
+    }
+    
+    @Test
+    public void calculatePlayerValue() {
+        assertEquals(1500, player.getAssetCollection().calculateValue());
+    }
 }

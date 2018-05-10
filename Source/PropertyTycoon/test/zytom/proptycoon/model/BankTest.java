@@ -161,4 +161,19 @@ public class BankTest {
         assertTrue("HAWKING WAY".equals(deepBlueProperties.get(0).getTitle()));
         assertTrue("TURING HEIGHTS".equals(deepBlueProperties.get(1).getTitle()));
     }
+    
+    @Test
+    public void checkBankHasAllAssets() {
+        int totalAssets = 0;
+        totalAssets += this.bank.getAssetCollection().getPotLuckCards().size();
+        assertTrue(totalAssets == 16);
+        totalAssets += this.bank.getAssetCollection().getOpportunityKnocksCards().size();
+        assertTrue(totalAssets == 32);
+        totalAssets += this.bank.getAssetCollection().getStreetPropertyCards().size();
+        assertTrue(totalAssets == 54);
+        totalAssets += this.bank.getAssetCollection().getStationPropertyCards().size();
+        assertTrue(totalAssets == 58);
+        totalAssets += this.bank.getAssetCollection().getUtilityPropertyCards().size();
+        assertTrue(totalAssets == 60);
+    }
 }

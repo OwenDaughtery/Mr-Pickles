@@ -163,4 +163,15 @@ public class TransactionTest {
         assertFalse(bank.getAssetCollection().getUtilityPropertyCards().contains(card));
     }
     
+    @Test
+    public void bankHasInfiniteMoney() throws AssetOwner.AssetNotFoundException {
+        assertTrue(bank.getAssetCollection().getMoney() == 50000);
+        AssetCollection fromBank = new AssetCollection(50000);
+        AssetCollection fromPlayer = new AssetCollection(0);
+        Transaction tx = new Transaction(bank, zenos, fromBank, fromPlayer);
+        tx.settleTransaction();
+        assertTrue(zenos.getAssetCollection().getMoney() == 51500);
+        assertTrue(bank.getAssetCollection().getMoney() == 50000);
+    }
+    
 }
