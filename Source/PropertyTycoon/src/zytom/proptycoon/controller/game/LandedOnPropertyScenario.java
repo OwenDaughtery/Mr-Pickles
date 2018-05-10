@@ -141,11 +141,11 @@ public class LandedOnPropertyScenario {
     }
 
     /**
-     * Finds the property owner of the property card
+     * Finds the property owner of a street property card
      * @param card
      * @return player who owns card
      */
-    private Player findPropertyOwner(PropertyCard card) {
+    private Player findPropertyOwner(StreetPropertyCard card) {
         //Find who owns the card for this property.
         Player propertyOwner = null;
         for (Player p : otherPlayers) {
@@ -156,6 +156,11 @@ public class LandedOnPropertyScenario {
         }
         return propertyOwner;
     }
+    /**
+     * Finds the property owner of a station property card
+     * @param card
+     * @return player who owns card
+     */
     private Player findPropertyOwner(StationPropertyCard card) {
         //Find who owns the card for this property.
         Player propertyOwner = null;
@@ -167,7 +172,11 @@ public class LandedOnPropertyScenario {
         }
         return propertyOwner;
     }
-    
+    /**
+     * Finds the property owner of a utility property card
+     * @param card
+     * @return player who owns card
+     */
     private Player findPropertyOwner(UtilityPropertyCard card) {
         //Find who owns the card for this property.
         Player propertyOwner = null;

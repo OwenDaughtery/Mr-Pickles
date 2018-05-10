@@ -11,8 +11,15 @@ import java.awt.Point;
  * @author Tom
  */
 public abstract class CornerCell extends Cell {
+    /** which corner the cell is located at */
     public enum Corner { TOPLEFT, TOPRIGHT, BOTTOMRIGHT, BOTTOMLEFT };
     
+    /**
+     * Get the width & height this cell should be based on the board it is in.
+     * @param boardSize How wide & high the board is.
+     * @param boardProportion The proportion of the board's width/height one side of this cell takes up.
+     * @return the width & height this cell should be based on the board it is in.
+     */
     public static Dimension calcDimension(
             Dimension boardSize,
             float boardProportion
@@ -23,6 +30,13 @@ public abstract class CornerCell extends Cell {
                 );
     }
     
+    /**
+     * Get the absolute position of the the cell based on the board.
+     * @param boardSize How wide & high the board is.
+     * @param boardProportion The proportion of the board's width/height one side of this cell takes up.
+     * @param corner Which corner the cell is in
+     * @return the absolute position of the the cell based on the board.
+     */
     public static Point calcPosition(
             Dimension boardSize,
             float boardProportion,
@@ -54,6 +68,12 @@ public abstract class CornerCell extends Cell {
         return new Point(0, 0);
     }
     
+    /**
+     * 
+     * @param boardSize
+     * @param boardProportion
+     * @param corner 
+     */
     public CornerCell(
             Dimension boardSize, 
             float boardProportion, 

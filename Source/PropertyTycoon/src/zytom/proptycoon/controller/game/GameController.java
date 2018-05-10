@@ -15,7 +15,11 @@ public class GameController {
     private ArrayList<PlayerController> playerControllers;
     private final DiceController diceController;
     private int playerTurn;
-
+    
+    /**
+     * Root controller.
+     * @param game corresponding game model
+     */
     public GameController(Game game) {
         //Store game reference.
         this.game = game;
@@ -40,29 +44,44 @@ public class GameController {
         );
     }
 
+    /**
+     * 
+     * @return controller for the board.
+     */
     public BoardController getBoardController() {
         return this.boardController;
     }
     
+    /**
+     * 
+     * @return controller for the dice.
+     */
     public DiceController getDiceController() {
         return this.diceController;
     }
     
-    //When roll dice button is all set up
+    /**
+     * Event for when roll dice button is all set up
+     */
     public void readyToRoll() {
         //Initial start turn.
         this.startTurn();
     }
 
+    /**
+     * Tell's the dice that they can be rolled.
+     */
     private void startTurn() {
         //Show/enable roll dice UI.
         this.diceController.timeToRoll();
     }
 
     /**
-     * Updats the view
+     * Event called when dice have been rolled.
+     * Tells player controller that dice have been rolled so
+     * that it can move the current player.
      */
-    public void diceRolled() {
+    public void diceRolled(boolean wasDouble) {
         //Get current player controller.
         PlayerController playerController = getCurrentPlayerController();
         //Roll dice.
@@ -92,25 +111,32 @@ public class GameController {
         nextTurn();
     }
 
+    /**
+     * Move on to next turn.
+     */
     public void nextTurn() {
         incrementPlayerTurn();
         startTurn();
     }
 
+    /**
+     * 
+     * @return player controller
+     */
     private PlayerController getCurrentPlayerController() {
         return this.playerControllers.get(playerTurn);
     }
 
     /**
      *
-     * @return players
+     * @return index of player whose turn it is.
      */
     private int getPlayerTurn() {
         return playerTurn;
     }
 
     /**
-     * Changes player turn
+     * Moves turn onto next player.
      */
     private void incrementPlayerTurn() {
         int numberOfPlayers = this.playerControllers.size();

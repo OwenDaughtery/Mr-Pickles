@@ -28,18 +28,35 @@ public class PlayerController {
         this.debt = 0;
     }
 
+    /**
+     * 
+     * @return player model.
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * Record debt for player (if player cannot make a payment and 
+     * is in asset selling or resign phase).
+     * @param amount 
+     */
     public void setDebt(int amount) {
         this.debt = amount;
     }
 
+    /**
+     * Assign board view to this controller.
+     * @param boardView 
+     */
     public void setBoardView(BoardCanvas boardView) {
         this.boardView = boardView;
     }
 
+    /**
+     * Tells board view to move player token view
+     * to correct cell.
+     */
     public void updateTokenView() {
         if (this.boardView == null) {
             return;
@@ -276,7 +293,6 @@ public class PlayerController {
     }
 
     public static class CellNotFoundException extends Exception {
-
         public CellNotFoundException() {
             super(
                     "Cell not Found"

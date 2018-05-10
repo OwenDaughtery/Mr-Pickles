@@ -13,6 +13,15 @@ public class PotLuckController {
     private final Bank bank;
     private final FreeParking freeParking;
 
+    /**
+     * 
+     * @param game
+     * @param gameController
+     * @param board
+     * @param bank
+     * @param dice
+     * @param currentPlayer 
+     */
     public PotLuckController(Game game , GameController gameController, Board board, Bank bank, Dice dice, Player currentPlayer){
         this.game = game;
         this.freeParking = game.getFreeParking();

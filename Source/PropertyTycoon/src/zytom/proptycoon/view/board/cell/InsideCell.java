@@ -12,7 +12,7 @@ import java.awt.Point;
 
 /**
  *
- * @author utopia
+ * @author Tom
  */
 public abstract class InsideCell extends Cell {
     public enum Side { BOTTOM, LEFT, TOP, RIGHT};
