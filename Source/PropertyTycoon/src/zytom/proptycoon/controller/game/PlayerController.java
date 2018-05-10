@@ -143,7 +143,7 @@ public class PlayerController {
                 //hands off to asset management controller 
                 break;
             case INCOME_TAX:
-                hasLandedIncomeTax(player, freeParking);
+                hasLandedIncomeTax(freeParking);
                 break;
             case SUPER_TAX:
                 hasLandedSuperTax(freeParking);
