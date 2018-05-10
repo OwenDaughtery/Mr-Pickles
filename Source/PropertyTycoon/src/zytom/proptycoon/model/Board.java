@@ -18,6 +18,10 @@ import zytom.proptycoon.model.cell.StreetPropertyCell;
 import zytom.proptycoon.model.cell.SuperTaxCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
+/**
+ * Class represents the Board of the game
+ * @author zenos
+ */
 public final class Board {
     public static final int JAIL_INDEX = 0;
     
@@ -84,8 +88,7 @@ public final class Board {
     }
 
     /**
-     *
-     * @return
+     * @return The ArrayList of cells which are contained in the board. 
      */
     public ArrayList<Cell> getCells() {
         return cells;
