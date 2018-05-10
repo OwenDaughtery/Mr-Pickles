@@ -23,7 +23,7 @@ public class PlayerInitializerTest {
         assertTrue("Zenos".equals(playerInit.getPlayers().get(0).getName()));
     }
     
-    @Test
+    @Test (expected = PlayerInitalizer.ToManyPlayersException.class)
     public void noMoreThanSixPlayers() throws PlayerInitalizer.ToManyPlayersException, PlayerInitalizer.TokenNotFoundException {
         PlayerInitalizer playerInit = new PlayerInitalizer();
         playerInit.createPlayer("Zenos", TokenType.BOOT);
@@ -36,7 +36,7 @@ public class PlayerInitializerTest {
         assertTrue(playerInit.getPlayers().size() == 6);
     }
     
-    @Test
+    @Test (expected = PlayerInitalizer.TokenNotFoundException.class)
     public void noDuplicateTokens() throws PlayerInitalizer.ToManyPlayersException, PlayerInitalizer.TokenNotFoundException {
         PlayerInitalizer playerInit = new PlayerInitalizer();
         playerInit.createPlayer("Zenos", TokenType.BOOT);
