@@ -49,10 +49,10 @@ public class DiceController implements ActionListener {
     
     private void updateDiceViews() {
         this.leftDieView.setValue(
-                this.dice.getFirstValue()
+                this.dice.getFirstValue()-1
         );
         this.rightDieView.setValue(
-                this.dice.getSecondValue()
+                this.dice.getSecondValue()-1
         );
     }
 
