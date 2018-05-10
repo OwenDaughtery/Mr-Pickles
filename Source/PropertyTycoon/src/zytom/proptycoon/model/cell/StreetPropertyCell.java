@@ -26,6 +26,11 @@ public class StreetPropertyCell extends PropertyCell {
         return this.numberOfBuildings;
     }
 
+    /**
+     * Method adds a new building to the StreetPropertyCell if and only if the current number
+     * of buildings is less than 5. 
+     * @throws zytom.proptycoon.model.cell.StreetPropertyCell.ConstructionError 
+     */
     public void addBuilding() throws ConstructionError {
         if (this.getNumberOfBuildings() < 5){
             this.numberOfBuildings += 1;
@@ -34,6 +39,11 @@ public class StreetPropertyCell extends PropertyCell {
         }
     }
     
+    /**
+     * Method removes a building from the StreetPropertyCell so long as there is at least 
+     * 1 property on the cell. 
+     * @throws zytom.proptycoon.model.cell.StreetPropertyCell.ConstructionError 
+     */
     public void removeBuilding() throws ConstructionError {
         if (this.getNumberOfBuildings()>0){
             this.numberOfBuildings -= 1;
@@ -42,6 +52,9 @@ public class StreetPropertyCell extends PropertyCell {
         }
     }
     
+    /**
+     * @return True if the number of buildings is 5 (i.e. when there is a hotel)
+     */
     public boolean hasHotel() {
         return this.numberOfBuildings == 5;
     }

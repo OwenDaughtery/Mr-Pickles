@@ -7,7 +7,7 @@ import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.*;
 
 /**
- * @author Max Pattman
+ * Class represents the Bank
  */
 public final class Bank implements AssetOwner {
 
@@ -107,7 +107,7 @@ public final class Bank implements AssetOwner {
     /**
      * 
      * @param groupColour
-     * @return 
+     * @return the ArrayList of street properties which belong to the specified groupColour
      */
     public ArrayList<StreetPropertyCard> getGroupOfStreetProperties(StreetPropertyCard.Colour groupColour) {
         return this.streetPropertyByColourGroup.get(groupColour);
@@ -199,6 +199,7 @@ public final class Bank implements AssetOwner {
         );*/
     }
 
+    
 
     @Override
     public String toString(){

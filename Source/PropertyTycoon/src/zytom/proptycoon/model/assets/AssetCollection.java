@@ -23,6 +23,19 @@ public class AssetCollection {
     private final ArrayList<UtilityPropertyCard> utilityPropertyCards;
     private int money;
     
+    
+    /**
+     * Constructor creates an AssetCollection which is intended to be a long-lived object
+     * which is used for the bank so that it can initially own all PotLuckCards, OpportunityKnocksCards,
+     * StreetPropertyCards, StationPropertyCards, and UtilityPropertyCards.
+     * 
+     * @param potLuckCards The ArrayList of PotLuckCards
+     * @param opportunityKnocksCards The ArrayList of OpportunityKnocksCard
+     * @param streetPropertyCards The ArrayList of StreetPropertyCards
+     * @param stationPropertyCards The ArrayList of StationPropertyCards
+     * @param utilityPropertyCards The ArrayList of UtilityPropertyCards
+     * @param money The amount of money
+     */
     public AssetCollection
         (
             ArrayList<PotLuckCard> potLuckCards,
@@ -41,6 +54,11 @@ public class AssetCollection {
         this.money = money;
     }
 
+    /**
+     * Constructor allows for the creation of a new StreetPropertyCard containing only
+     * a single StationPropertyCard which is intended to be a short-lived object for a transaction to occur. 
+     * @param streetPropertyCard The StreetPropertyCard 
+     */
     public AssetCollection (StreetPropertyCard streetPropertyCard) {
         this.potLuckCards = new ArrayList<>();
         this.opportunityKnocksCards = new ArrayList<>();
@@ -50,6 +68,12 @@ public class AssetCollection {
         this.streetPropertyCards.add(streetPropertyCard);
     }
 
+
+    /**
+     * Constructor allows for the creation of a new AssetCollection containing only
+     * a single StationPropertyCard which is intended to be a short-lived object for a transaction to occur. 
+     * @param stationPropertyCard The StationPropertyCard 
+     */
     public AssetCollection (StationPropertyCard stationPropertyCard) {
         this.potLuckCards = new ArrayList<>();
         this.opportunityKnocksCards = new ArrayList<>();
@@ -59,6 +83,11 @@ public class AssetCollection {
         this.stationPropertyCards.add(stationPropertyCard);
     }
 
+    /**
+     * Constructor allows for the creation of a new AssetCollection containing only
+     * a single UtilityPropertyCard which is intended to be a short-lived object for a transaction to occur. 
+     * @param utilityPropertyCard The UtilityPropertyCard 
+     */
     public AssetCollection (UtilityPropertyCard utilityPropertyCard) {
         this.potLuckCards = new ArrayList<>();
         this.opportunityKnocksCards = new ArrayList<>();
@@ -68,6 +97,11 @@ public class AssetCollection {
         this.utilityPropertyCards.add(utilityPropertyCard);
     }
 
+    /**
+     * Constructor allows for the creation of a new AssetCollection containing only
+     * a single OpportunityKnocksCard which is intended to be a short-lived object for a transaction to occur. 
+     * @param opportunityKnocksCard The OpportunityKnocksCard 
+     */
     public AssetCollection (OpportunityKnocksCard opportunityKnocksCard) {
         this.potLuckCards = new ArrayList<>();
         this.opportunityKnocksCards = new ArrayList<>();
@@ -77,6 +111,11 @@ public class AssetCollection {
         this.opportunityKnocksCards.add(opportunityKnocksCard);
     }
 
+    /**
+     * Constructor allows for the creation of a new AssetCollection containing only
+     * a single PotLuckCard which is intended to be a short-lived object for a transaction to occur. 
+     * @param potLuckCard The PotLuckCard 
+     */
     public AssetCollection (PotLuckCard potLuckCard) {
         this.potLuckCards = new ArrayList<>();
         this.opportunityKnocksCards = new ArrayList<>();
@@ -85,7 +124,14 @@ public class AssetCollection {
         this.utilityPropertyCards = new ArrayList<>();
         this.potLuckCards.add(potLuckCard);
     }
-        
+    
+    /**
+     * Constructor allows for the creation of a new AssetCollection containing only
+     * money which is intended to be a short-lived object for a transaction to occur
+     * or a long-lived object for when initializing a player with an initial balance 
+     * of £1,500. 
+     * @param money The amount of money in the AssetCollection. 
+     */
     public AssetCollection (int money) {
         this.potLuckCards = new ArrayList<>();
         this.opportunityKnocksCards = new ArrayList<>();
@@ -97,20 +143,23 @@ public class AssetCollection {
    
 
     /**
-     *
      * @return Array list of Potluck cards
      */
     public ArrayList<PotLuckCard> getPotLuckCards() {
         return potLuckCards;
     }
     
+    /**
+     * @return The ArrayList of OpportunityKnocksCards contianed within the 
+     * AssetCollection.
+     */
     public ArrayList<OpportunityKnocksCard> getOpportunityKnocksCards() {
         return opportunityKnocksCards;
     }
     
     /**
-     * 
-     * @return 
+     * @return The ArrayList of StreetPropertyCards contained within the 
+     * AssetCollection.
      */
     public ArrayList<StreetPropertyCard> getStreetPropertyCards() {
         return streetPropertyCards;

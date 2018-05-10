@@ -17,6 +17,7 @@ import zytom.proptycoon.model.cell.GoCell;
 
 
 /**
+ * Class represents a player in the game
  * @author Tom Chesters
  */
 public class Player implements AssetOwner {
@@ -94,8 +95,7 @@ public class Player implements AssetOwner {
     }
     
     /**
-     * 
-     * @param bank 
+     * @param bank The bank of the game so that the bank can pay the player 
      */
     private void hasPassedGo(Bank bank) {
         try {
@@ -269,6 +269,10 @@ public class Player implements AssetOwner {
         this.hasPassedGo = true;
     }
     
+    /**
+     * Moves player to the jail cell which is in the 40th index of the cell ArrayList
+     * of cells within the board.
+     */
     public void sendToJail() {
         //So long as 'movingForewards' is false.
         //No need to pass a bank.

@@ -4,6 +4,10 @@ import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.card.Card;
 
+/**
+ * Class represents the Free Parking entity of the game
+ * @author zenos
+ */
 public class FreeParking implements AssetOwner {
 
     public static final int INITIAL_BALANCE = 0;

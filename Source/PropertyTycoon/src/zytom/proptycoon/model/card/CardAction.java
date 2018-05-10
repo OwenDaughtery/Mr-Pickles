@@ -126,7 +126,12 @@ public class CardAction {
         }  
     }
     
-    
+    /**
+     * Method gives card objects back to the bank from a player
+     * @param bank The instance of the bank
+     * @param player The player which will be giving the card back to the bank
+     * @param card The card which is being given back. 
+     */
     private void giveCardBackToBank(Bank bank, Player player, ActionCard card) {
         if(card instanceof PotLuckCard) {
             player.getAssetCollection().getPotLuckCards().remove((PotLuckCard)card);
@@ -298,7 +303,11 @@ public class CardAction {
     }
     
     
-    
+    /**
+     * Method moves players to the Jail Cell
+     * @param player The player being sent to jail
+     * @param bank The instance of the bank
+     */
     private void moveToJail(Player player, Bank bank) {
         player.moveTo(40, false, bank);
     }
