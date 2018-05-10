@@ -126,7 +126,10 @@ public class DeckCreator {
         return data; 
     }
     
-    
+    /**
+     * @return The ArrayList of String arrays containing all the information regarding the 
+     * properties of the game
+     */
     public ArrayList<String[]> getPropertyData() {
         return this.propertyDeckData;
     }
