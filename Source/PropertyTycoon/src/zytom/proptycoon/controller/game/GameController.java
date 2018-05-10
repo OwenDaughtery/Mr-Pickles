@@ -35,24 +35,37 @@ public class GameController {
         playerTurn = 0;
         //Set up dice controller.
         this.diceController = new DiceController(
-                this.game.getDice()
+                this.game.getDice(),
+                this
         );
-        //Start first turn.
-        startTurn();
     }
-    
+
     public BoardController getBoardController() {
         return this.boardController;
     }
     
-    private void startTurn() {
-        //Show/enable roll dice UI.
-        //TODO.
+    public DiceController getDiceController() {
+        return this.diceController;
     }
     
-    public void diceRolled() {
+    //When roll dice button is all set up
+    public void readyToRoll() {
+        //Initial start turn.
+        this.startTurn();
+    }
+
+    private void startTurn() {
+        //Show/enable roll dice UI.
+        this.diceController.timeToRoll();
+    }
+
+    public void diceRolled(boolean wasDouble) {
         //Get current player controller.
         PlayerController playerController = getCurrentPlayerController();
+        //Roll dice.
+        if (wasDouble) {
+            playerController.getPlayer().incrementDoublesRolled();
+        }
         //Get dice instance
         Dice dice = diceController.getDice();
         //Get other players (whose turn it is currently not).
@@ -72,19 +85,10 @@ public class GameController {
                 game.getFreeParking(),
                 otherPlayers
         );
+        //Enable the dice again.
+        nextTurn();
     }
 
-    public void rollDice() {
-        //Get current player controller.
-        PlayerController playerController = getCurrentPlayerController();
-        //Roll dice.
-        this.diceController.roll(
-                playerController
-        );
-        //Move to next phase.
-        diceRolled();
-    }
-    
     public void nextTurn() {
         incrementPlayerTurn();
         startTurn();
@@ -106,7 +110,8 @@ public class GameController {
      * Changes player turn
      */
     private void incrementPlayerTurn() {
-        playerTurn = playerTurn++ % game.getPlayers().size();
+        int numberOfPlayers = this.playerControllers.size();
+        playerTurn = (playerTurn == numberOfPlayers - 1) ? 0 : playerTurn + 1;
     }
 
     /**

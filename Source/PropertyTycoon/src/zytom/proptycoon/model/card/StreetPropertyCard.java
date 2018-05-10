@@ -81,7 +81,7 @@ public class StreetPropertyCard extends PropertyCard {
             Boolean ownsAllProperly = true;
             for (StreetPropertyCard p: propOfSameColour
                     ) {
-                if(!player.checkHasAsset(p)){
+                if(!player.getAssetCollection().checkHasAsset(p)){
                     ownsAllProperly = false;
                 }
 

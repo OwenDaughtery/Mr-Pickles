@@ -19,13 +19,15 @@ import zytom.proptycoon.model.cell.SuperTaxCell;
 import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 public final class Board {
+
     public static final int JAIL_INDEX = 0;
-    
+
     ArrayList<Cell> cells = new ArrayList<>();
 
     /**
-     * @param propertyData An ArrayList of String arrays which contain the title of all cells
-     * @throws FileNotFoundException 
+     * @param propertyData An ArrayList of String arrays which contain the title
+     * of all cells
+     * @throws FileNotFoundException
      */
     public Board(ArrayList<String[]> propertyData) throws FileNotFoundException {
         this.cells = initCells(propertyData);
@@ -33,7 +35,8 @@ public final class Board {
 
     /**
      * @author Zenos Pavlakou
-     * @param cellTitles An ArrayList of String arrays which contain the title of all cells
+     * @param cellTitles An ArrayList of String arrays which contain the title
+     * of all cells
      * @return An ArrayList of cells representing the board
      */
     private ArrayList<Cell> initCells(ArrayList<String[]> cellTitles) {
@@ -79,7 +82,7 @@ public final class Board {
         boardCells.add(new SuperTaxCell());                                     //index 38
         boardCells.add(new StreetPropertyCell(cellTitles.get(39)[2]));          //index 39
         boardCells.add(new JailCell());                                         //index 40
-        
+
         return boardCells;
     }
 
@@ -93,15 +96,15 @@ public final class Board {
 
     /**
      * Method queries cells based on their idex on the board
+     *
      * @param index The index of the board of which the cell is being queried
      * @return The cell at the given index
-     * @throws zytom.proptycoon.model.Board.CellNotFoundException 
+     * @throws zytom.proptycoon.model.Board.CellNotFoundException
      */
     public Cell getCell(int index) throws CellNotFoundException {
         try {
             return this.cells.get(index);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new CellNotFoundException(index);
         }
     }
@@ -116,7 +119,7 @@ public final class Board {
     }
 
     public enum CellType {
-        GO, FREE_PARKING, GO_TO_JAIL, INCOME_TAX,SUPER_TAX, STREET_PROPERTY,
+        GO, FREE_PARKING, GO_TO_JAIL, INCOME_TAX, SUPER_TAX, STREET_PROPERTY,
         STATION_PROPERTY, UTILITY_PROPERTY, POT_LUCK,
         OPPORTUNITY_KNOCKS, JAIL, JUST_VISITING
     }
@@ -128,38 +131,37 @@ public final class Board {
     public CellType getCellClass(Cell cell) {
         int index = this.cells.indexOf(cell);
         ArrayList<Integer> streetIndices = new ArrayList(
-                Arrays.asList(new int[] {
+                Arrays.asList(
                         1, 3, 6, 8, 9, 11, 13, 14, 16, 18, 19, 21,
                         23, 24, 26, 27, 29, 31, 32, 34, 37, 39
-                })
+                )
         );
         ArrayList<Integer> stationIndices = new ArrayList(
-                Arrays.asList(new int[] {
+                Arrays.asList(
                         5, 15, 25, 35
-                })
+                )
         );
         //Jail cell is 40
-        return (index == 0) ? CellType.GO :
-                (streetIndices.contains(index)) ? CellType.STREET_PROPERTY :
-                        (stationIndices.contains(index)) ? CellType.STATION_PROPERTY :
-                                (index == 4) ? CellType.INCOME_TAX :
-                                        (index == 38) ? CellType.SUPER_TAX :
-                                        (index == 20) ? CellType.FREE_PARKING :
-                                                (index == 30) ? CellType.GO_TO_JAIL :
-                                                        (index == 12 || index == 28) ? CellType.UTILITY_PROPERTY :
-                                                                (index == 2 || index == 17) ? CellType.POT_LUCK :
-                                                                        (index == 7 || index == 36) ? CellType.OPPORTUNITY_KNOCKS :
-                                                                                (index == 40) ? CellType.JAIL :
-                                                                                        (index == 10) ? CellType.JUST_VISITING : null;
-
+        return (index == 0) ? CellType.GO
+                : (streetIndices.contains(index)) ? CellType.STREET_PROPERTY
+                : (stationIndices.contains(index)) ? CellType.STATION_PROPERTY
+                : (index == 4) ? CellType.INCOME_TAX
+                        : (index == 38) ? CellType.SUPER_TAX
+                                : (index == 20) ? CellType.FREE_PARKING
+                                        : (index == 30) ? CellType.GO_TO_JAIL
+                                                : (index == 12 || index == 28) ? CellType.UTILITY_PROPERTY
+                                                        : (index == 2 || index == 17 || index == 33) ? CellType.POT_LUCK
+                                                                : (index == 7 || index == 22 || index == 36) ? CellType.OPPORTUNITY_KNOCKS
+                                                                        : (index == 40) ? CellType.JAIL
+                                                                                : (index == 10) ? CellType.JUST_VISITING : null;
 
     }
-
 
     /**
      * Exception is thrown if a cell is queried and does not exist
      */
     public static class CellNotFoundException extends Exception {
+
         /**
          * Generate the exception message.
          *
@@ -167,11 +169,10 @@ public final class Board {
          */
         public CellNotFoundException(int index) {
             super(
-                    "Requested cell could not be found at Board Index " +
-                            ": \n" + index
+                    "Requested cell could not be found at Board Index "
+                    + ": \n" + index
             );
         }
-
 
     }
 }

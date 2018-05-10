@@ -163,6 +163,31 @@ public class AssetCollection {
         }
         return value;
     }
+    
+    public boolean checkHasAsset(StreetPropertyCard card) {
+        return streetPropertyCards.contains(card);
+    }
+    
+    public boolean checkHasAsset(StationPropertyCard card) {
+        return stationPropertyCards.contains(card);
+    }
+    
+    public boolean checkHasAsset(UtilityPropertyCard card) {
+        return utilityPropertyCards.contains(card);
+    }
+    
+    public boolean checkHasAsset(PotLuckCard card) {
+        return potLuckCards.contains(card);
+    }
+    
+    public boolean checkHasAsset(OpportunityKnocksCard card) {
+        return opportunityKnocksCards.contains(card);
+    }
+    
+    public boolean checkHasAsset(int money){
+        return (this.money > money);
+    }
+
 
     @Override
     public String toString(){

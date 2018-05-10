@@ -199,29 +199,6 @@ public final class Bank implements AssetOwner {
         );*/
     }
 
-    /**
-     * Method checks if the bank has a certain asset
-     * @param asset The asset being queried 
-     * @return True if bank has asset, false otherwise
-     */
-    @Override
-    public boolean checkHasAsset(Card asset) {
-        if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
-        }else if (this.getAssetCollection().getUtilityPropertyCards().contains((UtilityPropertyCard)asset)){
-            return true;
-        }else if (this.getAssetCollection().getStationPropertyCards().contains((StationPropertyCard)asset)){
-            return true;
-        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains((OpportunityKnocksCard)asset)){
-            return true;
-        }else if (this.getAssetCollection().getPotLuckCards().contains((PotLuckCard)asset)){
-            return true;
-        }
-        return false;
-    }
-    @Override
-    public boolean checkHasAsset(int money){
-        return this.getAssetCollection().getMoney() > money;
-    }
 
     @Override
     public String toString(){

@@ -8,7 +8,6 @@ import zytom.proptycoon.model.assets.AssetCollection;
 import zytom.proptycoon.model.assets.AssetOwner;
 import zytom.proptycoon.model.assets.Transaction;
 import zytom.proptycoon.model.card.Card;
-import zytom.proptycoon.model.card.PropertyCard;
 import zytom.proptycoon.model.card.StationPropertyCard;
 import zytom.proptycoon.model.card.StreetPropertyCard;
 import zytom.proptycoon.model.card.UtilityPropertyCard;
@@ -39,10 +38,10 @@ public class LandedOnPropertyScenario {
 
     public void landedOnProperty(StreetPropertyCell cell) {
         StreetPropertyCard card = (StreetPropertyCard) cell.getAssociatedCard();
-        if (currentPlayer.checkHasAsset(card)) {
+        if (currentPlayer.getAssetCollection().checkHasAsset(card)) {
             //Do nothing.
             //Current player owns this property.
-        } else if (bank.checkHasAsset(card)) {
+        } else if (bank.getAssetCollection().checkHasAsset(card)) {
             //Commence buying scenario.
             //TODO
         } else {
@@ -60,10 +59,10 @@ public class LandedOnPropertyScenario {
     
     public void landedOnProperty(StationPropertyCell cell) {
         StationPropertyCard card = (StationPropertyCard) cell.getAssociatedCard();
-        if (currentPlayer.checkHasAsset(card)) {
+        if (currentPlayer.getAssetCollection().checkHasAsset(card)) {
             //Do nothing.
             //Current player owns this property.
-        } else if (bank.checkHasAsset(card)) {
+        } else if (bank.getAssetCollection().checkHasAsset(card)) {
             //Commence buying scenario.
             //TODO
         } else {
@@ -80,10 +79,10 @@ public class LandedOnPropertyScenario {
     
     public void landedOnProperty(UtilityPropertyCell cell) {
         UtilityPropertyCard card = (UtilityPropertyCard) cell.getAssociatedCard();
-        if (currentPlayer.checkHasAsset(card)) {
+        if (currentPlayer.getAssetCollection().checkHasAsset(card)) {
             //Do nothing.
             //Current player owns this property.
-        } else if (bank.checkHasAsset(card)) {
+        } else if (bank.getAssetCollection().checkHasAsset(card)) {
             //Commence buying scenario.
             //TODO
         } else {
@@ -121,11 +120,34 @@ public class LandedOnPropertyScenario {
         }
     }
 
-    private Player findPropertyOwner(PropertyCard card) {
+    private Player findPropertyOwner(StreetPropertyCard card) {
         //Find who owns the card for this property.
         Player propertyOwner = null;
         for (Player p : otherPlayers) {
-            if (p.checkHasAsset(card)) {
+            if (p.getAssetCollection().checkHasAsset(card)) {
+                propertyOwner = p;
+                break;
+            }
+        }
+        return propertyOwner;
+    }
+    private Player findPropertyOwner(StationPropertyCard card) {
+        //Find who owns the card for this property.
+        Player propertyOwner = null;
+        for (Player p : otherPlayers) {
+            if (p.getAssetCollection().checkHasAsset(card)) {
+                propertyOwner = p;
+                break;
+            }
+        }
+        return propertyOwner;
+    }
+    
+    private Player findPropertyOwner(UtilityPropertyCard card) {
+        //Find who owns the card for this property.
+        Player propertyOwner = null;
+        for (Player p : otherPlayers) {
+            if (p.getAssetCollection().checkHasAsset(card)) {
                 propertyOwner = p;
                 break;
             }
