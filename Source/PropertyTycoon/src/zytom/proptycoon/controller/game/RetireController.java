@@ -36,6 +36,6 @@ public class RetireController {
         tx.settleTransaction();
         
         game.getPlayers().remove(currentPlayer);
-        gameController.getStartTurn().startTurnSequence(game.getCurrentPlayer());
+        //gameController.getStartTurn().startTurnSequence(game.getCurrentPlayer());
     }
 }

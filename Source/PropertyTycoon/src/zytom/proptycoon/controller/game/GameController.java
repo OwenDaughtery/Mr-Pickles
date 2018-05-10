@@ -71,7 +71,7 @@ public class GameController {
     /**
      * Tell's the dice that they can be rolled.
      */
-    private void startTurn() {
+    public void startTurn() {
         //Show/enable roll dice UI.
         this.diceController.timeToRoll();
     }
@@ -123,7 +123,7 @@ public class GameController {
      * 
      * @return player controller
      */
-    private PlayerController getCurrentPlayerController() {
+    public PlayerController getCurrentPlayerController() {
         return this.playerControllers.get(playerTurn);
     }
 
@@ -131,14 +131,14 @@ public class GameController {
      *
      * @return index of player whose turn it is.
      */
-    private int getPlayerTurn() {
+    public int getPlayerTurn() {
         return playerTurn;
     }
 
     /**
      * Moves turn onto next player.
      */
-    private void incrementPlayerTurn() {
+    public void incrementPlayerTurn() {
         int numberOfPlayers = this.playerControllers.size();
         playerTurn = (playerTurn == numberOfPlayers - 1) ? 0 : playerTurn + 1;
     }
@@ -148,7 +148,7 @@ public class GameController {
      *
      * @param turn
      */
-    private void setPlayerTurn(int turn) {
+    public void setPlayerTurn(int turn) {
         playerTurn = turn;
     }
 
@@ -167,4 +167,5 @@ public class GameController {
     public ArrayList<PlayerController> getPlayerControllers() {
         return playerControllers;
     }
+
 }

@@ -33,7 +33,7 @@ public class EndTurnController {
                 game.setCurrentPlayer(game.getPlayers().get(game.getPlayers().indexOf(gameController.getPlayerTurn())));
             }
         }
-        gameController.getStartTurn().startTurnSequence(game.getCurrentPlayer());
+        //gameController.getStartTurn().startTurnSequence(game.getCurrentPlayer());
     }
 
 }
