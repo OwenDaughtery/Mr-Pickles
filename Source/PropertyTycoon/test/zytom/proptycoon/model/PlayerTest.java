@@ -1,7 +1,6 @@
 package zytom.proptycoon.model;
 
 import java.io.FileNotFoundException;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -112,5 +111,15 @@ public class PlayerTest {
     @Test
     public void getInitialBalance() {
         assertEquals(1500, player.getAssetCollection().getMoney());
+    }
+    
+    @Test
+    public void playerStartsAtGo() {
+        assertEquals(0, player.getPosition());
+    }
+    
+    @Test
+    public void calculatePlayerValue() {
+        assertEquals(1500, player.getAssetCollection().calculateValue());
     }
 }

@@ -50,7 +50,17 @@ public class PlayerController {
                 player.getPosition()
         );
     }
-    
+
+    /**
+     * Moves the player based on the numbers on the dice
+     * @param dice1
+     * @param dice2
+     * @param board
+     * @param bank
+     * @param dice
+     * @param freeParking
+     * @param otherPlayers
+     */
     public void diceRolled(
             int dice1, 
             int dice2,
@@ -91,6 +101,15 @@ public class PlayerController {
         }
     }
 
+    /**
+     * Calls the relevant methods depending on which cell the player has landed on
+     * @param cell
+     * @param cellType
+     * @param otherPlayers
+     * @param bank
+     * @param dice
+     * @param freeParking
+     */
     public void hasLanded(
             Cell cell,
             Board.CellType cellType,
@@ -110,7 +129,7 @@ public class PlayerController {
                 hasLandedIncomeTax(player, freeParking);
                 break;
             case SUPER_TAX:
-                hasLandedSuperTax(player, freeParking);
+                hasLandedSuperTax(freeParking);
                 break;
             case JAIL:
                 //TODO
@@ -183,6 +202,14 @@ public class PlayerController {
         
     }
 
+    /**
+     * Calls the relevant method depending on which type of property a player has landed on.
+     * @param otherPlayers
+     * @param bank
+     * @param dice
+     * @param cell
+     * @throws PropertyCard.TooManyHousesException
+     */
     private void hasLandedProperty(
             ArrayList<Player> otherPlayers,
             Bank bank,
@@ -192,6 +219,10 @@ public class PlayerController {
 
     }
 
+    /**
+     * settles transaction if player lands on free parking
+     * @param freeParking
+     */
     private void hasLandedFreeParking(FreeParking freeParking) {
         //Hand over free parking's entire asset collection
         //to player.
@@ -209,10 +240,14 @@ public class PlayerController {
         }
     }
 
-    private void hasLandedSuperTax(Player currentPlayer, FreeParking freeParking) {
+    /**
+     * settles transaction if player lands on super tax
+     * @param freeParking
+     */
+    private void hasLandedSuperTax(FreeParking freeParking) {
         try {
             Transaction transaction = new Transaction(
-                    currentPlayer,
+                    player,
                     freeParking,
                     new AssetCollection(100),
                     new AssetCollection(0)
@@ -222,11 +257,14 @@ public class PlayerController {
 
         }
     }
-
-    private void hasLandedIncomeTax(Player currentPlayer, FreeParking freeParking) {
+    /**
+     * settles transaction if player lands on income tax
+     * @param freeParking
+     */
+    private void hasLandedIncomeTax(FreeParking freeParking) {
         try {
             Transaction transaction = new Transaction(
-                    currentPlayer,
+                    player,
                     freeParking,
                     new AssetCollection(200),
                     new AssetCollection(0)

@@ -57,8 +57,7 @@ public class DiceController implements ActionListener {
     }
 
     /**
-     * Rolls the dice and moves the player. If they roll a double, increment the
-     * tile.
+     * Rolls the dice and moves the player. If they roll a double, increment doublesRolled
      *
      * @return True if double was rolled.
      */
@@ -72,6 +71,10 @@ public class DiceController implements ActionListener {
         return (dice1 == dice2);
     }
 
+    /**
+     *
+     * @return dice
+     */
     public Dice getDice() {
         return this.dice;
     }

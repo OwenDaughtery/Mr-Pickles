@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import zytom.proptycoon.model.card.StreetPropertyCard;
-import zytom.proptycoon.model.card.StreetPropertyCard.Colour;
 
 public class StreetPropertyCellTest {
     
@@ -35,5 +34,44 @@ public class StreetPropertyCellTest {
     @Test
     public void getTitle() {
         assertTrue("CRAPPER STREET".equals(this.streetPropertyCell.getTitle()));
+    }
+    
+    @Test
+    public void addBulding() throws StreetPropertyCell.ConstructionError {
+        this.streetPropertyCell.addBuilding();
+        assertTrue(this.streetPropertyCell.getNumberOfBuildings() == 1);
+    }
+    
+    @Test
+    public void cellHasHotel() throws StreetPropertyCell.ConstructionError {
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        assertTrue(this.streetPropertyCell.hasHotel());
+    }
+    
+    @Test(expected = StreetPropertyCell.ConstructionError.class)
+    public void noMoreThanFiveBuildings() throws StreetPropertyCell.ConstructionError {
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+        this.streetPropertyCell.addBuilding();
+    }
+    
+    @Test
+    public void removeBuilding() throws StreetPropertyCell.ConstructionError {
+        this.streetPropertyCell.addBuilding();
+        assertTrue(this.streetPropertyCell.getNumberOfBuildings() == 1);
+        this.streetPropertyCell.removeBuilding();
+        assertTrue(this.streetPropertyCell.getNumberOfBuildings() == 0);
+    }
+    
+    @Test (expected = StreetPropertyCell.ConstructionError.class)
+    public void noLessThatZeroBuildings() throws StreetPropertyCell.ConstructionError {
+        this.streetPropertyCell.removeBuilding();
     }
 }

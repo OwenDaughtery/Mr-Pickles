@@ -167,4 +167,15 @@ public class BoardTest {
         assertTrue(board.getCell(40) instanceof JailCell);
     }
     
+    @Test
+    public void getTotalCells() throws FileNotFoundException, Board.CellNotFoundException {
+        DeckCreator deckCreator = new DeckCreator();
+        Board board = new Board(deckCreator.getPropertyData());
+        int i = 0;
+        while(i < 40){
+            assertTrue(board.getCell(i) != null);
+            i++;
+        }
+    }
+    
 }

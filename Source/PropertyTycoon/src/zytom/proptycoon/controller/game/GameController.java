@@ -59,7 +59,10 @@ public class GameController {
         this.diceController.timeToRoll();
     }
 
-    public void diceRolled(boolean wasDouble) {
+    /**
+     * Updats the view
+     */
+    public void diceRolled() {
         //Get current player controller.
         PlayerController playerController = getCurrentPlayerController();
         //Roll dice.

@@ -8,6 +8,10 @@ import zytom.proptycoon.model.cell.UtilityPropertyCell;
 
 import java.util.ArrayList;
 
+/**
+ * @author Ayman Tom
+ * Gets all fields needed by the view such as the street names and camera controller.
+ */
 public class BoardController {
     
     private final Board board;
@@ -26,6 +30,10 @@ public class BoardController {
         return camera;
     }
 
+    /**
+     *
+     * @return street names
+     */
     public ArrayList<String>getStreetNames(){
         ArrayList<String>streetNames = new ArrayList<>();
         for (Cell c:board.getCells()
@@ -37,6 +45,10 @@ public class BoardController {
         return streetNames;
     }
 
+    /**
+     *
+     * @return station names
+     */
     public ArrayList<String>getStationNames(){
         ArrayList<String>stationNames = new ArrayList<>();
         for (Cell c:board.getCells()
@@ -48,6 +60,10 @@ public class BoardController {
         return stationNames;
     }
 
+    /**
+     *
+     * @return Utility Names
+     */
     public ArrayList<String> getUtilityNames(){
         ArrayList<String>utilityNames = new ArrayList<>();
         for (Cell c:board.getCells()
@@ -59,6 +75,10 @@ public class BoardController {
         return utilityNames;
     }
 
+    /**
+     *
+     * @return street Prices
+     */
     public ArrayList<String>getStreetPrices(){
         ArrayList<String>streetPrices = new ArrayList<>();
         for (Cell c:board.getCells()
@@ -79,6 +99,11 @@ public class BoardController {
         }
         return stationPrices;
     }
+
+    /**
+     *
+     * @return utility Prices
+     */
     public ArrayList<String>getUtilityPrices(){
         ArrayList<String>utilityPrices = new ArrayList<>();
         for (Cell c:board.getCells()
@@ -89,11 +114,20 @@ public class BoardController {
         }
         return utilityPrices;
     }
-    
+
+    /**
+     *
+     * @return income tax price
+     */
     public String getIncomeTaxPrice() {
         //TODO, MAKE READ FROM CSV.
         return "100";
     }
+
+    /**
+     *
+     * @return super tax price
+     */
     public String getSuperTaxPrice() {
         //TODO, MAKE READ FROM CSV.
         return "200";

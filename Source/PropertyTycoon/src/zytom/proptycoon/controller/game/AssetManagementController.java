@@ -148,8 +148,6 @@ public class AssetManagementController {
         } else {
             throw new MortagagingError(streetPropertyCard);
         }
-
-
     }
 
     /**

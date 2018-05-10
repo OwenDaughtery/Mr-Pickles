@@ -33,15 +33,19 @@ public class StreetPropertyCell extends PropertyCell {
             throw new ConstructionError(this.getNumberOfBuildings());
         }
     }
+    
     public void removeBuilding() throws ConstructionError {
         if (this.getNumberOfBuildings()>0){
             this.numberOfBuildings -= 1;
         }else {
             throw new ConstructionError(this.getNumberOfBuildings());
         }
-
-
     }
+    
+    public boolean hasHotel() {
+        return this.numberOfBuildings == 5;
+    }
+    
     public static class ConstructionError extends Exception {
         public ConstructionError(int numberOfBuildings){
             super (
