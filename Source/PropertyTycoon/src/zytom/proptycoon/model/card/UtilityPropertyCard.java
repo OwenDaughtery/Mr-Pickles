@@ -10,7 +10,7 @@ import zytom.proptycoon.model.cell.Cell;
 
 
 /**
- *
+ * Class represents a utlility property card
  * @author utopia
  */
 public class UtilityPropertyCard extends PropertyCard {
@@ -18,7 +18,9 @@ public class UtilityPropertyCard extends PropertyCard {
     private final int rentMultiplierOnPair;
     
     /**
-     *
+     * Constructor assigns the UtilityPropertyCard with the cell associated with the utility property card, 
+     * the name of the utility property, the buy price, the rent when the utility property's owner only owns 
+     * one of the utility properties and the rent when the owner owns both. 
      * @param cellRef The cell the Utility property card is associated with
      * @param title The name of the property
      * @param price The buy price of the property

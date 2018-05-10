@@ -23,13 +23,14 @@ public class StreetPropertyCard extends PropertyCard {
 
     public enum Colour{BROWN,BLUE,PURPLE,ORANGE,RED,YELLOW,GREEN,DEEPBLUE}
     /**
-     *
-     * @param rentCost
-     * @param title
-     * @param price
-     * @param cellRef
-     * @param buildCost
-     * @param colour
+     * Constructor assigns the SteetPropertyCard with the cell associated witht the card, the name of the StreetProperty,
+     * the buy price, the array of rent prices, the building cost and the colour group the property belongs to.
+     * @param rentCost The costs of rent
+     * @param title The name of the property
+     * @param price The buy price of the property
+     * @param cellRef The cell associated with the StreetPropertyCard
+     * @param buildCost The cost of building
+     * @param colour The colour group the StreetProperty belongs to. 
      */
     public StreetPropertyCard(Cell cellRef, String title, int price, int[] rentCost,int buildCost, String colour) throws InvalidColourGroupException {
         super(cellRef, title, price);
@@ -95,12 +96,16 @@ public class StreetPropertyCard extends PropertyCard {
         return 0;
     }
 
-    
+    /**
+     * @return The cost of building
+     */
     public int getBuildCost() {
         return this.buildCost;
     }
     
-    
+    /**
+     * @return The colour group the StreetProperty belongs to
+     */
     public Colour getColour() {
         return this.colour;
     } 
