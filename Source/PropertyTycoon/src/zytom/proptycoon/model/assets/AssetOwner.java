@@ -4,6 +4,11 @@
 package zytom.proptycoon.model.assets;
 
 import zytom.proptycoon.model.card.Card;
+import zytom.proptycoon.model.card.OpportunityKnocksCard;
+import zytom.proptycoon.model.card.PotLuckCard;
+import zytom.proptycoon.model.card.StationPropertyCard;
+import zytom.proptycoon.model.card.StreetPropertyCard;
+import zytom.proptycoon.model.card.UtilityPropertyCard;
 
 /**
  * An entity that can own assets and therefor can
@@ -39,11 +44,6 @@ public interface AssetOwner {
      */
     public void giveAssetCollection(AssetCollection giving)
             throws CannotAcceptAssetException;
-
-
-    public boolean checkHasAsset(Card card);
-
-    public boolean checkHasAsset(int money);
     /**
      * An exception to be thrown if an asset is trying to be taken
      * but does not exist within the specified asset owner.

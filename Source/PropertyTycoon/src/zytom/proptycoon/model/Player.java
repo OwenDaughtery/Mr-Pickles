@@ -255,38 +255,6 @@ public class Player implements AssetOwner {
         );
     }
 
-
-    /**
-     * Checks if the player has a certain card
-     * @param asset The card being queried
-     * @return True if the player has the card, false otherwise
-     */
-    @Override
-    public boolean checkHasAsset(Card asset) {
-        if(this.getAssetCollection().getStreetPropertyCards().contains((StreetPropertyCard)asset)){
-
-        }else if (this.getAssetCollection().getUtilityPropertyCards().contains((UtilityPropertyCard)asset)){
-            return true;
-        }else if (this.getAssetCollection().getStationPropertyCards().contains((StationPropertyCard)asset)){
-            return true;
-        }else if (this.getAssetCollection().getOpportunityKnocksCards().contains((OpportunityKnocksCard)asset)){
-            return true;
-        }else if (this.getAssetCollection().getPotLuckCards().contains((PotLuckCard)asset)){
-            return true;
-        }
-        return false;
-    }
-    
-    /**
-     * Checks if the player has enough money
-     * @param money The amount of money 
-     * @return  True if the player has enough money, false otherwise. 
-     */
-    @Override
-    public boolean checkHasAsset(int money){
-        return this.getAssetCollection().getMoney() > money;
-    }
-
     /**
      * @return True if player has passed the Go cell, false otherwise
      */

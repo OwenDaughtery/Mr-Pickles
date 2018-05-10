@@ -3,6 +3,7 @@
  */
 package zytom.proptycoon.view.board;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import zytom.proptycoon.Common.TokenType;
 import zytom.proptycoon.controller.game.BoardController;
+import zytom.proptycoon.controller.game.DiceController;
 import zytom.proptycoon.controller.game.PlayerController;
 import zytom.proptycoon.view.GameFrame;
 import zytom.proptycoon.view.board.cell.Cell;
@@ -35,65 +37,64 @@ import zytom.proptycoon.view.board.cell.UtilityPropertyCell;
  * @author Tom
  */
 public class BoardCanvas extends JPanel implements Runnable {
-    
+
     /**
-     * 
+     *
      */
     public static final float CELL_PROPORTION = 0.125f;
-    
+
     private boolean running = true;
     private final Thread thread;
-    
+
     private GoCell goCell;
     private JailCell jailCell;
     private FreeParkingCell freeParkingCell;
     private GoToJailCell goToJailCell;
     private InJailCell inJailCell;
-    
+
     private ArrayList<StreetPropertyCell> streetPropertyCells;
     private ArrayList<StationPropertyCell> stationPropertyCells;
     private ArrayList<UtilityPropertyCell> utilityPropertyCells;
-    
+
     private ArrayList<OpportunityKnocksCell> opportunityKnocksCells;
     private ArrayList<PotLuckCell> potLuckCells;
-    
+
     private IncomeTaxCell incomeTaxCell;
     private SuperTaxCell superTaxCell;
-    
+
     private BoardCamera camera;
-    
+
     private final GameFrame parent;
-    
+
     private PotLuckDeck potLuckDeckCell;
     private OpportunityKnocksDeck opportunityKnocksDeckCell;
-    
+
     private LogoView logoView;
-    
+
     private LeftDie leftDie;
     private RightDie rightDie;
-    
+
     private final ArrayList<PlayerView> playerViews;
     private final ArrayList<PlayerController> playerControllers;
-    
+
     private final RollDiceButton rollDiceButton;
-    
-    public BoardCanvas (
-            GameFrame parent, 
-            BoardController boardController
+
+    public BoardCanvas(
+            GameFrame parent,
+            BoardController boardController,
+            DiceController diceController,
+            ArrayList<PlayerController> playerControllers
     ) {
         this.parent = parent;
+        this.setLayout(null);
+
         setSize(720, 720);
         thread = new Thread(this);
-        
+
         this.playerControllers = null;
-        
+
         playerViews = new ArrayList<>();
-        playerViews.add(new PlayerView(TokenType.BOOT));
-        playerViews.add(new PlayerView(TokenType.SMARTPHONE));
-        playerViews.add(new PlayerView(TokenType.GOBLET));
-        playerViews.add(new PlayerView(TokenType.HATSTAND));
-        playerViews.add(new PlayerView(TokenType.CAT));
-        playerViews.add(new PlayerView(TokenType.SPOON));
+        
         initCells(
                 boardController.getStreetNames(),
                 boardController.getStationNames(),
@@ -105,12 +106,12 @@ public class BoardCanvas extends JPanel implements Runnable {
                 boardController.getSuperTaxPrice()
         );
         camera = new BoardCamera(this);
-        
+
         //Give camera controller instance of camera view.
         boardController
                 .getCameraController()
                 .setCameraView(camera);
-        
+
         //Attach camera controller to this panel.
         //(As a key listener).
         this.addKeyListener(
@@ -119,32 +120,52 @@ public class BoardCanvas extends JPanel implements Runnable {
         this.setFocusTraversalKeysEnabled(false);
         this.setFocusable(true);
         
-        rollDiceButton = new RollDiceButton();
-        this.add(rollDiceButton);
+        leftDie = new LeftDie(
+                this.getSize()
+        );
+        rightDie = new RightDie(
+                this.getSize()
+        );
         
+        rollDiceButton = new RollDiceButton();
+        this.add(rollDiceButton, BorderLayout.CENTER);
+        
+        diceController.setLeftDieView(leftDie);
+        diceController.setRightDieView(rightDie);
+        diceController.setDiceButtonView(rollDiceButton);
+        
+        for (PlayerController playerController : playerControllers) {
+            int index = playerControllers.indexOf(playerController);
+            playerController.setBoardView(this);
+            playerViews.add(new PlayerView(
+                    playerController.getPlayer().getTokenType()
+            ));
+            addPlayerToken(playerViews.get(index), 0);
+        }
         
         thread.start();
     }
-    
+
     private void clearPlayerTokens() {
-        for(Cell cell : this.getCells()) {
+        for (Cell cell : this.getCells()) {
             cell.clearTokenViews();
         }
     }
-    
+
     private void removePlayerToken(PlayerView playerView) {
-        for(Cell cell : this.getCells()) {
-            if (cell.containsTokenView(playerView))
+        for (Cell cell : this.getCells()) {
+            if (cell.containsTokenView(playerView)) {
                 cell.removeTokenView(playerView);
+            }
         }
     }
-    
+
     private void addPlayerToken(PlayerView playerView, int cellIndex) {
         this.getCells().get(cellIndex).addTokenView(playerView);
     }
-    
-    public void movePlayerToken(TokenType tokenType, int newCellIndex) { 
-        PlayerView playerView = null;        
+
+    public void movePlayerToken(TokenType tokenType, int newCellIndex) {
+        PlayerView playerView = null;
         for (PlayerView p : playerViews) {
             if (p.getTokenType() == tokenType) {
                 playerView = p;
@@ -153,17 +174,8 @@ public class BoardCanvas extends JPanel implements Runnable {
         removePlayerToken(playerView);
         addPlayerToken(playerView, newCellIndex);
     }
-    
-    private void updatePlayerTokenPosition(PlayerView tokenView, int newIndex) {
-        for(Cell cell : this.getCells()) {
-            if (cell.containsTokenView(tokenView))
-                cell.removeTokenView(tokenView);
-            break;
-        }
-        this.getCells().get(newIndex).addTokenView(tokenView);
-    }
-    
-    private void initCells (
+
+    private void initCells(
             ArrayList<String> streetNames,
             ArrayList<String> stationNames,
             ArrayList<String> utilityNames,
@@ -200,21 +212,21 @@ public class BoardCanvas extends JPanel implements Runnable {
                 boardSize
         );
         incomeTaxCell = new IncomeTaxCell(
-                boardSize, 
+                boardSize,
                 CELL_PROPORTION,
                 Side.BOTTOM,
                 3,
                 incomeTaxPrice
         );
         superTaxCell = new SuperTaxCell(
-                boardSize, 
+                boardSize,
                 CELL_PROPORTION,
                 Side.RIGHT,
                 7,
                 superTaxPrice
         );
         inJailCell = new InJailCell(
-                boardSize, 
+                boardSize,
                 CELL_PROPORTION
         );
         potLuckDeckCell = new PotLuckDeck(
@@ -226,37 +238,67 @@ public class BoardCanvas extends JPanel implements Runnable {
         logoView = new LogoView(
                 boardSize
         );
-        leftDie = new LeftDie(
-                boardSize
-        );
-        rightDie = new RightDie(
-                boardSize
-        );
     }
-    
+
     private ArrayList<Cell> getCells() {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(goCell);
-        cells.add(jailCell);
-        cells.add(inJailCell);
-        cells.add(goToJailCell);
-        cells.add(freeParkingCell);
-        cells.addAll(this.streetPropertyCells);
-        cells.addAll(this.stationPropertyCells);
-        cells.addAll(this.utilityPropertyCells);
-        cells.addAll(this.potLuckCells);
-        cells.addAll(this.opportunityKnocksCells);
+        
+        cells.add(streetPropertyCells.get(0));
+        cells.add(potLuckCells.get(0));
+        cells.add(streetPropertyCells.get(1));
         cells.add(incomeTaxCell);
-        cells.add(superTaxCell);
+        cells.add(stationPropertyCells.get(0));
+        cells.add(streetPropertyCells.get(2));
+        cells.add(opportunityKnocksCells.get(0));
+        cells.add(streetPropertyCells.get(3));
+        cells.add(streetPropertyCells.get(4));
+        
+        cells.add(jailCell);
+        
+        cells.add(streetPropertyCells.get(5));
+        cells.add(utilityPropertyCells.get(0));
+        cells.add(streetPropertyCells.get(6));
+        cells.add(streetPropertyCells.get(7));
+        cells.add(stationPropertyCells.get(1));
+        cells.add(streetPropertyCells.get(8));
+        cells.add(potLuckCells.get(1));
+        cells.add(streetPropertyCells.get(9));
+        cells.add(streetPropertyCells.get(10));
+        
+        cells.add(freeParkingCell);
+        
+        cells.add(streetPropertyCells.get(11));
+        cells.add(opportunityKnocksCells.get(1));
+        cells.add(streetPropertyCells.get(12));
+        cells.add(streetPropertyCells.get(13));
+        cells.add(stationPropertyCells.get(2));
+        cells.add(streetPropertyCells.get(14));
+        cells.add(streetPropertyCells.get(15));
+        cells.add(utilityPropertyCells.get(1));
+        cells.add(streetPropertyCells.get(16));
+        
+        cells.add(goToJailCell);
+        
+        cells.add(streetPropertyCells.get(17));
+        cells.add(streetPropertyCells.get(18));
+        cells.add(potLuckCells.get(2));
+        cells.add(streetPropertyCells.get(19));
+        cells.add(stationPropertyCells.get(3));
+        cells.add(opportunityKnocksCells.get(2));
+        cells.add(streetPropertyCells.get(20));
+        cells.add(streetPropertyCells.get(21));
+        
+        cells.add(inJailCell);
         return cells;
     }
-    
+
     private void initStreetCells(
             Dimension boardSize,
             ArrayList<String> streetNames,
             ArrayList<String> streetPrices
     ) {
-        
+
         this.streetPropertyCells = new ArrayList<>();
         int[] streetPositions = {
             0, 2, 5, 7, 8,
@@ -265,21 +307,26 @@ public class BoardCanvas extends JPanel implements Runnable {
             0, 1, 3, 6, 8
         };
         Color[] streetColours = {
-            Color.getHSBColor(0.11f,0.9f,0.65f), Color.getHSBColor(0.11f,0.9f,0.65f),
-            Color.getHSBColor(0.5f,1.0f,0.9f), Color.getHSBColor(0.5f,1.0f,0.9f), Color.getHSBColor(0.5f,1.0f,0.9f),
-            Color.getHSBColor(0.75f,0.9f,0.95f), Color.getHSBColor(0.75f,0.9f,0.95f), Color.getHSBColor(0.75f,0.9f,0.95f),
-            Color.getHSBColor(0.1f,0.9f,0.95f), Color.getHSBColor(0.1f,0.9f,0.95f), Color.getHSBColor(0.1f,0.9f,0.95f),
-            Color.getHSBColor(0.0f,0.9f,0.95f), Color.getHSBColor(0.0f,0.9f,0.95f), Color.getHSBColor(0.0f,0.9f,0.95f),
-            Color.getHSBColor(0.15f,0.95f,1.0f), Color.getHSBColor(0.15f,0.95f,1.0f), Color.getHSBColor(0.15f,0.95f,1.0f),
-            Color.getHSBColor(0.3f,0.95f,0.8f), Color.getHSBColor(0.3f,0.95f,0.8f), Color.getHSBColor(0.3f,0.95f,0.8f),
-            Color.getHSBColor(0.7f,0.95f,1.0f), Color.getHSBColor(0.7f,0.95f,1.0f)
+            Color.getHSBColor(0.11f, 0.9f, 0.65f), Color.getHSBColor(0.11f, 0.9f, 0.65f),
+            Color.getHSBColor(0.5f, 1.0f, 0.9f), Color.getHSBColor(0.5f, 1.0f, 0.9f), Color.getHSBColor(0.5f, 1.0f, 0.9f),
+            Color.getHSBColor(0.75f, 0.9f, 0.95f), Color.getHSBColor(0.75f, 0.9f, 0.95f), Color.getHSBColor(0.75f, 0.9f, 0.95f),
+            Color.getHSBColor(0.1f, 0.9f, 0.95f), Color.getHSBColor(0.1f, 0.9f, 0.95f), Color.getHSBColor(0.1f, 0.9f, 0.95f),
+            Color.getHSBColor(0.0f, 0.9f, 0.95f), Color.getHSBColor(0.0f, 0.9f, 0.95f), Color.getHSBColor(0.0f, 0.9f, 0.95f),
+            Color.getHSBColor(0.15f, 0.95f, 1.0f), Color.getHSBColor(0.15f, 0.95f, 1.0f), Color.getHSBColor(0.15f, 0.95f, 1.0f),
+            Color.getHSBColor(0.3f, 0.95f, 0.8f), Color.getHSBColor(0.3f, 0.95f, 0.8f), Color.getHSBColor(0.3f, 0.95f, 0.8f),
+            Color.getHSBColor(0.7f, 0.95f, 1.0f), Color.getHSBColor(0.7f, 0.95f, 1.0f)
         };
-        for (int i=0; i<22; i++) {
+        for (int i = 0; i < 22; i++) {
             Side side;
-            if (i<5) side = Side.BOTTOM;
-            else if (i<11) side = Side.LEFT;
-            else if (i<17) side = Side.TOP;
-            else side = Side.RIGHT;
+            if (i < 5) {
+                side = Side.BOTTOM;
+            } else if (i < 11) {
+                side = Side.LEFT;
+            } else if (i < 17) {
+                side = Side.TOP;
+            } else {
+                side = Side.RIGHT;
+            }
             int position = streetPositions[i];
             Color colour = streetColours[i];
             this.streetPropertyCells.add(
@@ -295,8 +342,8 @@ public class BoardCanvas extends JPanel implements Runnable {
             );
         }
     }
-    
-    private void initStationCells (
+
+    private void initStationCells(
             Dimension boardSize,
             ArrayList<String> stationNames,
             ArrayList<String> stationPrices
@@ -305,7 +352,7 @@ public class BoardCanvas extends JPanel implements Runnable {
         Side[] sides = {
             Side.BOTTOM, Side.LEFT, Side.TOP, Side.RIGHT
         };
-        for (int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             this.stationPropertyCells.add(
                     new StationPropertyCell(
                             boardSize,
@@ -318,8 +365,8 @@ public class BoardCanvas extends JPanel implements Runnable {
             );
         }
     }
-    
-    private void initUtilityCells (
+
+    private void initUtilityCells(
             Dimension boardSize,
             ArrayList<String> utilityNames,
             ArrayList<String> utilityPrices) {
@@ -328,9 +375,9 @@ public class BoardCanvas extends JPanel implements Runnable {
             1, 7
         };
         Side[] sides = {
-             Side.LEFT, Side.TOP
+            Side.LEFT, Side.TOP
         };
-        for (int i=0; i<2; i++) {
+        for (int i = 0; i < 2; i++) {
             this.utilityPropertyCells.add(
                     new UtilityPropertyCell(
                             boardSize,
@@ -343,7 +390,7 @@ public class BoardCanvas extends JPanel implements Runnable {
             );
         }
     }
-    
+
     private void initPotLuckCells(Dimension boardSize) {
         potLuckCells = new ArrayList<>();
         int[] positions = {
@@ -352,7 +399,7 @@ public class BoardCanvas extends JPanel implements Runnable {
         Side[] sides = {
             Side.BOTTOM, Side.LEFT, Side.RIGHT
         };
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             this.potLuckCells.add(
                     new PotLuckCell(
                             boardSize,
@@ -363,7 +410,7 @@ public class BoardCanvas extends JPanel implements Runnable {
             );
         }
     }
-    
+
     private void initOpportunityKnocksCells(Dimension boardSize) {
         opportunityKnocksCells = new ArrayList<>();
         int[] positions = {
@@ -372,7 +419,7 @@ public class BoardCanvas extends JPanel implements Runnable {
         Side[] sides = {
             Side.BOTTOM, Side.TOP, Side.RIGHT
         };
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             this.opportunityKnocksCells.add(
                     new OpportunityKnocksCell(
                             boardSize,
@@ -383,7 +430,7 @@ public class BoardCanvas extends JPanel implements Runnable {
             );
         }
     }
-    
+
     @Override
     public void run() {
         long lastTime = System.nanoTime();
@@ -393,8 +440,8 @@ public class BoardCanvas extends JPanel implements Runnable {
         long timer = System.currentTimeMillis();
         int updates = 0;
         int frames = 0;
-        
-        while(this.running) {
+
+        while (this.running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -410,7 +457,7 @@ public class BoardCanvas extends JPanel implements Runnable {
                 updates = 0;
             }
             repaint();
-            frames ++;
+            frames++;
             try {
                 Thread.sleep(15);
             } catch (InterruptedException ex) {
@@ -419,18 +466,19 @@ public class BoardCanvas extends JPanel implements Runnable {
             }
         }
     }
-    
+
     private void tick() {
-        if (camera != null)
+        if (camera != null) {
             camera.update();
+        }
     }
-    
+
     private void renderCells(Graphics g) {
         goCell.render(g);
         jailCell.render(g);
         freeParkingCell.render(g);
         goToJailCell.render(g);
-        
+
         for (StreetPropertyCell cell : streetPropertyCells) {
             cell.render(g);
         }
@@ -442,10 +490,11 @@ public class BoardCanvas extends JPanel implements Runnable {
         }
         for (OpportunityKnocksCell cell : opportunityKnocksCells) {
             cell.render(g);
-        }for (PotLuckCell cell : potLuckCells) {
+        }
+        for (PotLuckCell cell : potLuckCells) {
             cell.render(g);
         }
-        
+
         incomeTaxCell.render(g);
         superTaxCell.render(g);
         inJailCell.render(g);
@@ -455,35 +504,35 @@ public class BoardCanvas extends JPanel implements Runnable {
         leftDie.render(g);
         rightDie.render(g);
     }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         //Overlay background.
-        g.setColor(Color.getHSBColor(0.13f,0.12f,1.0f));
+        g.setColor(Color.getHSBColor(0.13f, 0.12f, 1.0f));
         g.fillRect(
-                0, 
-                0, 
-                getWidth(), 
+                0,
+                0,
+                getWidth(),
                 getHeight()
         );
-        
+
         Graphics2D g2 = (Graphics2D) g;
-        
+
         g2.setRenderingHint(
-            RenderingHints.KEY_ANTIALIASING,
-            RenderingHints.VALUE_ANTIALIAS_ON);
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setRenderingHint(
-            RenderingHints.KEY_TEXT_ANTIALIASING,
-            RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setRenderingHint(
-            RenderingHints.KEY_FRACTIONALMETRICS,
-            RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        
+                RenderingHints.KEY_FRACTIONALMETRICS,
+                RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+
         camera.applyTransform(g2);
-        
+
         //Render stuff.
         renderCells(g);
-        
+
         camera.clearTransform(g2);
     }
 }

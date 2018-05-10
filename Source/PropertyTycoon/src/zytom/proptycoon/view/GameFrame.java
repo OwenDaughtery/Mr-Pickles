@@ -5,9 +5,12 @@ package zytom.proptycoon.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import zytom.proptycoon.controller.game.BoardController;
+import zytom.proptycoon.controller.game.DiceController;
 import zytom.proptycoon.controller.game.GameController;
+import zytom.proptycoon.controller.game.PlayerController;
 import zytom.proptycoon.view.board.BoardCanvas;
 
 /**
@@ -27,8 +30,14 @@ public class GameFrame extends JFrame {
         this.pack();
         setResizable(false);
         BoardController boardController = gameController.getBoardController();
-        boardCanvas = new BoardCanvas(this, boardController);
-               
+        DiceController diceController = gameController.getDiceController();
+        ArrayList<PlayerController> playerControllers = gameController.getPlayerControllers();
+        boardCanvas = new BoardCanvas(
+                this, 
+                boardController,
+                diceController,
+                playerControllers
+        );
         add(boardCanvas);
         boardCanvas.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

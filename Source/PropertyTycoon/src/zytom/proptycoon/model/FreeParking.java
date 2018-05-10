@@ -107,24 +107,4 @@ public class FreeParking implements AssetOwner {
                 this.assetCollection.getMoney() + giving.getMoney()
         );
     }
-
-    /**
-     * 
-     * @param card The card being checked for
-     * @return Will always return false because Free Parking should never own any cards
-     */
-    @Override
-    public boolean checkHasAsset(Card card) {
-        return false;
-    }
-
-    /**
-     * 
-     * @param money The amount of money
-     * @return True if Free Parking has enough money, false otherwise. 
-     */
-    @Override
-    public boolean checkHasAsset(int money) {
-        return this.assetCollection.getMoney() >= money;
-    }
 }

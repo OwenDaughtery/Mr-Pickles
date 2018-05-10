@@ -44,6 +44,7 @@ public class PlayerController {
         if (this.boardView == null) {
             return;
         }
+        System.out.println(player.getPosition());
         this.boardView.movePlayerToken(
                 player.getTokenType(),
                 player.getPosition()
@@ -78,6 +79,12 @@ public class PlayerController {
             
             try {
                 Cell newCell = board.getCell(
+                        player.getPosition()
+                );
+                System.out.println(
+                        board.getCellClass(newCell)
+                );
+                System.out.println(
                         player.getPosition()
                 );
                 this.hasLanded(
@@ -119,7 +126,8 @@ public class PlayerController {
                 //hands off to asset management controller 
                 break;
             case INCOME_TAX:
-                hasLandedIncomeTax(freeParking);
+                hasLandedIncomeTax(player, freeParking);
+                break;
             case SUPER_TAX:
                 hasLandedSuperTax(freeParking);
                 break;
